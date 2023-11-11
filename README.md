@@ -1,2 +1,1 @@
-# CSC190-191-MASTER
-master repo
+# csc190-191-runtime-terrors
