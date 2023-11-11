@@ -1,0 +1,187 @@
+.navbar {
+    background-color: #000000;
+    height: 100px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.hamburger-bars {
+    margin-left: 2rem;
+    font-size: 2.7rem;
+    background: none;
+}
+.logo {
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+}
+.logo img {
+    width: 200px;
+    margin-left: 3rem;
+    padding-bottom: 80px;
+}
+
+.nav-menu {
+    background-color: #000;
+    width: 270px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: -100%; /*display the hamburgerMenu bar*/
+    transition: 850ms;
+}
+
+.nav-menu.active {
+    left: 0;
+    transition: 350ms;
+}
+
+.nav-text {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 8px 0px 8px 16px;
+    list-style: none;
+    height: 60px;
+}
+
+.nav-text a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 22px;
+    width: 85%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    border-radius: 4px;
+}
+
+.nav-text a:hover {
+    background-color: rgb(2, 125, 167);
+}
+
+.nav-menu-items {
+    width: 100%;
+}
+
+.navbar-toggle {
+    background-color: #000;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+span {
+    margin-left: 16px;
+}
+
+
+.container{
+    height: 800px;
+}
+.login-box{
+    background:#e2e2e2;
+    padding: 30px 120px;
+    width: 550px;
+    height: 550px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    border-radius: 20px;
+}
+.login-box h1{
+    font-size: 36px;
+    margin-bottom: 0.5rem;
+}
+.login-box h3{
+    font-size: 18px;
+    margin-bottom: 1rem;    
+}
+.input-box input{
+    width: 85%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid #626262;
+    border-radius: 30px;
+    font-size: 14px;
+    color: #000;
+    margin-top: 1rem;
+    padding: 10px 10px;
+    
+}
+.login-box input::placeholder{
+    color:#000;  
+}
+.login-box .remember-forgot{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin: -15px 0 15px;
+    margin-top: 0.5rem;
+}
+.remember-forgot label input{
+    accent-color: #fff;
+    margin-right: 1px;
+}
+.remember-forgot a{
+    color: #2d6efa;
+    text-decoration: none;
+    font-weight: 700;
+}
+.remember-forgot a:hover{
+    text-decoration: underline;
+}
+.login-box .btn{
+    width: 50%;
+    height: 45%;
+    background: #ccc;
+    border:1px solid #060606;
+    outline: none;
+    border-radius: 20px;
+    padding: 10px 0;
+    font-size: 16px;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+}
+.social-connect button{
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0;
+    border-radius: 30px;
+    background: transparent;
+    border: 1px solid #000;
+    cursor: pointer;
+    font-weight: 500;
+}
+.register-link p{
+    font-size: 14px;
+}
+.register-link p a{
+    color: #2d6efa;
+    text-decoration: none;
+    font-weight: 600;
+}
+.login-box button img{
+    width: 20px;
+    margin-right: 0.5rem;
+}
+.register-link p a:hover{
+    text-decoration: underline;
+}
