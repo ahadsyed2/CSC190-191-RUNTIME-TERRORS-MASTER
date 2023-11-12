@@ -54,13 +54,13 @@ function Login() {
                     <h1>Welcome!</h1>
                     <h3>Log in to access your Carmony account.</h3>
                     <div className="register-link">
-                        <p>New to Carmony? <Link to="/Signup">Create an account</Link></p>
+                        <h4>New to Carmony? <Link to="/Signup">Create an account</Link></h4>
                     </div>
                     <div className="input-box">
                         <input type="text" placeholder="Username" required />
                     </div>
                     <div className="input-box">
-                        <input type="password" placeholder="password" required />
+                        <input type="password" placeholder="Password" required />
                     </div>
 
                     <div className="remember-forgot">
