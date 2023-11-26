@@ -52,6 +52,7 @@ const createListing = async (req, res) => {
 
   // add to the database
   try {
+    const user_id = req.user._id
     const listing = await Listing.create({ make, model, year, mileage, price })
     res.status(200).json(listing)
   } catch (error) {

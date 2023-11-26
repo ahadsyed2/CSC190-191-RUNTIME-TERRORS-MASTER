@@ -6,7 +6,7 @@ const {
   deleteListing,
   updateListing
 } = require('../controllers/listingController')
-const requireAuth = require('../middleware/requireAuth')
+//const requireAuth = require('../middleware/requireAuth')
 
 const router = express.Router()
 
