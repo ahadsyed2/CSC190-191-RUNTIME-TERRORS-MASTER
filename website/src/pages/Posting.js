@@ -77,6 +77,20 @@ function Posting() {
             <i className="enter price" style={{ marginRight: '5px' }}></i>    Enter Price:  $
         </label>
     
+
+        <form>
+                <label>Enter the model: </label>
+                <textarea
+                    required
+                ></textarea>
+            </form>
+            <form>
+                <label>Enter the description: </label>
+                <textarea
+                    required
+                ></textarea>
+            </form>
+            
     <input
         type="text"
         id="price"
