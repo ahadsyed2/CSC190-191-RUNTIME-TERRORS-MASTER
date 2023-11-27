@@ -93,13 +93,10 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 ### Built With
 
-* [![Next][Next.js]][Next-url]
+* [![MongoDB][MongoDB]][MongoDB-url]
+* [![Express][Express.js]][Express.js-url]
 * [![React][React.js]][React-url]
 * [![Node][Node.js]][Node.js-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -215,16 +212,16 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
-[contributors-url]: https://github.com/github_username/repo_name/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/repo_name/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/repo_name/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo_name/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
-[license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/ahadsyed2/CSC190-191-RUNTIME-TERRORS-MASTER.svg?style=for-the-badge
+[contributors-url]: https://github.com/ahadsyed2/CSC190-191-RUNTIME-TERRORS-MASTER/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/ahadsyed2/CSC190-191-RUNTIME-TERRORS-MASTER.svg?style=for-the-badge
+[forks-url]: https://github.com/ahadsyed2/CSC190-191-RUNTIME-TERRORS-MASTER/network/members
+[stars-shield]: https://img.shields.io/github/stars/ahadsyed2/CSC190-191-RUNTIME-TERRORS-MASTER.svg?style=for-the-badge
+[stars-url]: https://github.com/ahadsyed2/CSC190-191-RUNTIME-TERRORS-MASTER/stargazers
+[issues-shield]: https://img.shields.io/github/issues/ahadsyed2/CSC190-191-RUNTIME-TERRORS-MASTER.svg?style=for-the-badge
+[issues-url]: https://github.com/ahadsyed2/CSC190-191-RUNTIME-TERRORS-MASTER/issues
+[license-shield]: https://img.shields.io/github/license/ahadsyed2/CSC190-191-RUNTIME-TERRORS-MASTER.svg?style=for-the-badge
+[license-url]: https://github.com/ahadsyed2/repo_name/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [product-screenshot]: images/screenshot.png
@@ -235,7 +232,7 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 [MongoDB]: https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white
 [MongoDB-url]: https://www.mongodb.com/  
 [Node.js]: https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white
-[Node-js.url]: https://nodejs.org/en
+[Node.js-url]: https://nodejs.org/en
 [vsc]: https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white
 [vsc-url]: https://code.visualstudio.com/
 [Express.js]: https://img.shields.io/badge/Express.js-404D59?style=for-the-badge
