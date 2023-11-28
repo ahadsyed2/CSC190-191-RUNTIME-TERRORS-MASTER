@@ -4,24 +4,34 @@ import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import { hamburgerMenu } from './hamburgerMenu';
 import { IconContext } from 'react-icons';
+import './Signup.css'
 import { BsUpload } from 'react-icons/bs';
-
-import './Posting.css'
 
 
 function Posting() {
   const [sidebar, setSidebar] = useState(false) 
-  const showSidebar = () =>  setSidebar(!sidebar)
-
-  const [isActive, setIsActive] = useState(false)
-  const [selected, setSelected] = useState("");
-  const options = ['Sedan', 'Hatchback', 'Crossover', 'Coupe', 'Convertible', 
-  'Minivan', 'Compact SUV', 'Midsize SUV', 'Full Size SUV']
-
-  const handleSelect = (option) => {
-    setSelected(option);
-    setIsActive(false); 
+//image 
+// const [image, setImage] = useState(null);
+/* const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setImage(file);
   };
+
+  const handleUpload = () => {
+    // Here, you can implement the logic to upload the image
+    
+    console.log("Uploading image:", image);
+  };/
+
+
+
+  /*setSidebar=update*/ /*false means the current value is not showing*/
+  const showSidebar = () =>  setSidebar(!sidebar)
+  /* utilize set side bar and this is going to update the value to whatever the opposite of it is currently*/
+  /*(!sidebar) it's reversing the value true/false*/
+//image 
+
+
 
   return (
       <>
@@ -57,58 +67,64 @@ function Posting() {
       </nav>
       </IconContext.Provider>
 
-        <section className="car-listing-info">
-            <h1>Enter information for your listing</h1>
-            <div className="listing-box">
-                <div className='listing-details'>
+    <div className='posting'>
+    <h1 style={{ fontFamily: 'YourChosenFont, sans-serif', color: '#333', fontSize: '24px', fontWeight: 'bold',textAlign: 'center' }}>
+    Enter information for your listing
+</h1>
+        <br></br>
+        <br></br>
+            <label htmlFor="price" style={{ fontFamily: 'Arial, Helvetica, sans-serif', fontWeight: 'lighter' }}>
+            <i className="enter price" style={{ marginRight: '5px' }}></i>    Enter Price:  $
+        </label>
+    
 
+        <form>
+                <label>Enter the model: </label>
+                <textarea
+                    required
+                ></textarea>
+            </form>
+            <form>
+                <label>Enter the description: </label>
+                <textarea
+                    required
+                ></textarea>
+            </form>
+            
+    <input
+        type="text"
+        id="price"
+        name="price"
+        placeholder="Enter price..."
+    
+        style={{ fontFamily: 'Arial, Helvetica, sans-serif', border: '1px solid #ccc', padding: '8px' }}
+    />
 
-                <div className="dropdown">
-                    <div className="dropdown-btn" onClick={() => setIsActive(!isActive)}>
-                        Vehicle Type <div className={`carret ${isActive ? 'up' : 'down'}`}></div>
-                    </div>
+    
+        <br></br>
+        <br></br>
+        <label htmlFor="image" style={{ fontFamily: 'YourChosenFont, sans-serif', fontWeight: 'lighter',marginRight: '10px' }}>
+        Upload image
+        <BsUpload style={{ marginLeft: '5px', fontSize: '15px' }} />
 
-                    {isActive && (
-                        <div className="dropdown-content">
-                        {options.map((option) => (
-                            <div key={option} onClick={() => handleSelect(option)} className="dropdown-item">
-                            {option}
-                            </div>
-                        ))}
-                        </div>
-                    )}
-                </div>
+        </label>
+        <input
+            type="file"
+            id="image"
+            name="image"
+            accept="image/*"
+        
+        />
+ <div className="make-box">
+       <h3>Enter make</h3><input type="text" placeholder="" required />
+         </div>
+   
+         <div className="location-box">
+       <h3>Enter location</h3><input type="text" placeholder="" required />
+         </div>
+         
+        </div>
 
-                    <div className="make-box">
-                        <h2>Enter Make: </h2><input type="text" placeholder="Enter make" required />
-                    </div>
-
-                    <div className="model-box">
-                        <h2>Enter Model: </h2><input type="text" placeholder="Enter model" required />
-                    </div>
-
-                    <div className="price-box">
-                        <h2>Enter Price: $ </h2><input type="text" placeholder="Enter price..." required />
-                    </div> 
-
-                    <div className='photo-upload'>
-                        <h2>Upload image</h2>
-                        <BsUpload />
-
-                        <input
-                            type="file"
-                            id="image"
-                            name="image"
-                            accept="image/*"
-                        
-                        />
-                    </div>
-
-                    <button type="submit" className="btn">Submit</button>
-                </div>
-
-            </div>
-        </section>
 
     </>
 )
