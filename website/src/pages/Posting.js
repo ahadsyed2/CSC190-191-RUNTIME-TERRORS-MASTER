@@ -115,14 +115,7 @@ function Posting() {
             accept="image/*"
         
         />
- <div className="make-box">
-       <h3>Enter make</h3><input type="text" placeholder="" required />
-         </div>
-   
-         <div className="location-box">
-       <h3>Enter location</h3><input type="text" placeholder="" required />
-         </div>
-         
+ 
         </div>
 
 
@@ -131,3 +124,5 @@ function Posting() {
 }
 
 export default Posting
+
+//hi
