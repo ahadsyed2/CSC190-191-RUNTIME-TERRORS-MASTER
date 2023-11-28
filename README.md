@@ -30,11 +30,10 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/github_username/repo_name">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
+    <img src="CARMONY_ICON2.png" width="500" title="carmony logo">
+  
 
-<h3 align="center">CarMoney</h3>
+  <h3 align="center">CarMoney</h3>
 
   <p align="center">
     project_description
