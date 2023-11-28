@@ -31,7 +31,7 @@
 <br />
 <div align="center">
   <p>
-    <img src="CARMONY_ICON2.png" alt="Logo" width="150" height="80">
+    <img src="website/src/pages/CARMONY_ICON2.png" alt="Logo" width="350" height="100">
   </p>
 
 <h3 align="center">CarMoney</h3>
