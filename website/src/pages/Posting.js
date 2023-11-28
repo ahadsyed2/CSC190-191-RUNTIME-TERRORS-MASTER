@@ -4,7 +4,7 @@ import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import { hamburgerMenu } from './hamburgerMenu';
 import { IconContext } from 'react-icons';
-import './Signup.css'
+import './Posting.css'
 
 function Posting() {
   const [sidebar, setSidebar] = useState(false) 
@@ -56,5 +56,3 @@ function Posting() {
 }
 
 export default Posting
-
-//hi
