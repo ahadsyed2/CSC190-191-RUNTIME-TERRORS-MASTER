@@ -4,14 +4,24 @@ import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import { hamburgerMenu } from './hamburgerMenu';
 import { IconContext } from 'react-icons';
-import './Signup.css'
+import { BsUpload } from 'react-icons/bs';
+
+import './Posting.css'
+
 
 function Posting() {
   const [sidebar, setSidebar] = useState(false) 
-  /*setSidebar=update*/ /*false means the current value is not showing*/
   const showSidebar = () =>  setSidebar(!sidebar)
-  /* utilize set side bar and this is going to update the value to whatever the opposite of it is currently*/
-  /*(!sidebar) it's reversing the value true/false*/
+
+  const [isActive, setIsActive] = useState(false)
+  const [selected, setSelected] = useState("");
+  const options = ['Sedan', 'Hatchback', 'Crossover', 'Coupe', 'Convertible', 
+  'Minivan', 'Compact SUV', 'Midsize SUV', 'Full Size SUV']
+
+  const handleSelect = (option) => {
+    setSelected(option);
+    setIsActive(false); 
+  };
 
   return (
       <>
@@ -36,7 +46,7 @@ function Posting() {
               {hamburgerMenu.map((item, index) => {
                   return (
                       <li key={index} className={item.cName}>
-                          <Link to={item.path}>
+          <Link to={item.path}>
                               {item.icon}
                               <span>{item.title}</span>
                           </Link>
@@ -47,12 +57,61 @@ function Posting() {
       </nav>
       </IconContext.Provider>
 
-      <div className='posting'>
-          <h1>posting page</h1>
-        </div>
+        <section className="car-listing-info">
+            <h1>Enter information for your listing</h1>
+            <div className="listing-box">
+                <div className='listing-details'>
 
-      </>
-  )
+
+                <div className="dropdown">
+                    <div className="dropdown-btn" onClick={() => setIsActive(!isActive)}>
+                        Vehicle Type <div className={`carret ${isActive ? 'up' : 'down'}`}></div>
+                    </div>
+
+                    {isActive && (
+                        <div className="dropdown-content">
+                        {options.map((option) => (
+                            <div key={option} onClick={() => handleSelect(option)} className="dropdown-item">
+                            {option}
+                            </div>
+                        ))}
+                        </div>
+                    )}
+                </div>
+
+                    <div className="make-box">
+                        <h2>Enter Make: </h2><input type="text" placeholder="Enter make" required />
+                    </div>
+
+                    <div className="model-box">
+                        <h2>Enter Model: </h2><input type="text" placeholder="Enter model" required />
+                    </div>
+
+                    <div className="price-box">
+                        <h2>Enter Price: $ </h2><input type="text" placeholder="Enter price..." required />
+                    </div> 
+
+                    <div className='photo-upload'>
+                        <h2>Upload image</h2>
+                        <BsUpload />
+
+                        <input
+                            type="file"
+                            id="image"
+                            name="image"
+                            accept="image/*"
+                        
+                        />
+                    </div>
+
+                    <button type="submit" className="btn">Submit</button>
+                </div>
+
+            </div>
+        </section>
+
+    </>
+)
 }
 
 export default Posting
