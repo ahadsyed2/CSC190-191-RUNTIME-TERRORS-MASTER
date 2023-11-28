@@ -115,14 +115,11 @@ function Posting() {
             accept="image/*"
         
         />
- 
-        </div>
 
+        </div>
 
     </>
 )
 }
 
 export default Posting
-
-//hi
