@@ -30,7 +30,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-    <img src="CARMONY_ICON2.png" width="500" title="carmony logo">
+    <img src="website/src/pages/CARMONY_ICON2.png" width="500" title="carmony logo">
   
 
   <h3 align="center">CarMoney</h3>
