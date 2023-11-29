@@ -42,11 +42,8 @@
     <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <p>Demo</p>
+    <img src="website/src/pages/Demo.png" alt="Logo" width="350" height="250">
   </p>
 </div>
 
