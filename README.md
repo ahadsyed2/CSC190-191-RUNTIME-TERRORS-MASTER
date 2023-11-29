@@ -43,7 +43,7 @@
     <br />
     <br />
     <p>Demo</p>
-    <img src="website/src/pages/Demo.png" alt="Logo" width="450" height="250">
+    <img src="website/src/pages/Demo.png" alt="Logo" width="500" height="300">
   </p>
 </div>
 
@@ -161,7 +161,7 @@ See the [open issues](https://github.com/github_username/repo_name/issues) for a
 <!-- DIAGRAMS -->
 ## Diagrams
 <p align="center">
-  <img src="website/src/pages/Demo.png" alt="Logo" width="350" height="250">
+  <img src="website/src/pages/Diagram.png" alt="Logo" width="450" height="300">
 </p>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
