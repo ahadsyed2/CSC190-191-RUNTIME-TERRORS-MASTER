@@ -22,8 +22,7 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+[![Christmas][Christmas]][Christmas-url]
 
 
 
@@ -34,16 +33,14 @@
     <img src="website/src/pages/CARMONY_ICON2.png" alt="Logo" width="450" height="250">
   </p>
 
-<h3 align="center">CarMoney</h3>
+<h3 align="center">Carmony</h3>
 
   <p align="center">
-    project_description
+    A free-free consumer-first, automotive marketplace. No tricks, no games, and no barriers to entry. Sell your car, your way.
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/ahadsyed2/CSC190-191-RUNTIME-TERRORS-MASTER/tree/main/website"><strong>Explore the Project »</strong></a>
     <br />
     <br />
-    <p>Demo</p>
-    <img src="website/src/pages/Demo.png" alt="Logo" width="450" height="250">
   </p>
 </div>
 
@@ -54,7 +51,10 @@
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
+    <a href="#preface">Preface</a>
+    </li>
+    <li>
+    <a href="#about-the-project">About The Project</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
       </ul>
@@ -75,7 +75,10 @@
   </ol>
 </details>
 
+<!-- PREFACE -->
+## Preface
 
+This is a student senior project for the California State University of Sacramento. Any and all development of this project will end by May 12th, 2024. 
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
@@ -85,7 +88,6 @@
 Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 ### Built With
@@ -98,7 +100,6 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
 <!-- GETTING STARTED -->
 ## Getting Started
 
@@ -107,27 +108,25 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+Make sure to have Express.js, React, and Node.js installed to their latest versions
 * npm
   ```sh
   npm install npm@latest -g
+  npm install express
+  npm install react
   ```
+Make sure to create your own MongoDB deployment and follow their connection instructions. 
+Additionally, install the MongoDB extension on your IDE. For Visual Studio Code proceed with the following:
+1. Open VSC
+2. Click extensions on the left menu bar
+3. search for MongoDB in the search bar and click install
 
+<!-- INSTALLATION -->
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/github_username/repo_name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
+Installation Packages pending...
+Please wait for the full release
+   
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -161,6 +160,7 @@ See the [open issues](https://github.com/github_username/repo_name/issues) for a
 <!-- DIAGRAMS -->
 ## Diagrams
 <p align="center">
+  Current front-end UI (WIP) <br />
   <img src="website/src/pages/Demo.png" alt="Logo" width="350" height="250">
 </p>
 
@@ -171,7 +171,7 @@ See the [open issues](https://github.com/github_username/repo_name/issues) for a
 <!-- LICENSE -->
 ## License
 
-No License is currently available. See `LICENSE.txt` for more information.
+No License is currently available nor is it guaranteed to be available. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -182,7 +182,7 @@ No License is currently available. See `LICENSE.txt` for more information.
 
 Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [https://github.com/ahadsyed2/CSC190-191-RUNTIME-TERRORS-MASTER](https://github.com/ahadsyed2/CSC190-191-RUNTIME-TERRORS-MASTER)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -214,6 +214,8 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [product-screenshot]: images/screenshot.png
+[Christmas]:https://img.shields.io/badge/Days_until-Christmas-red?style=for-the-badge&labelColor=009c27&color=9c0a00
+[Christmas-url]: https://www.calendarr.com/united-states/countdown/christmas-day/
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
