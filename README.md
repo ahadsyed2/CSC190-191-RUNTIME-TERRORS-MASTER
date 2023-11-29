@@ -1,23 +1,5 @@
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a name="readme-top"></a>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
 
-
-
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -41,8 +23,6 @@
     <a href="https://github.com/ahadsyed2/CSC190-191-RUNTIME-TERRORS-MASTER/tree/main/website"><strong>Explore the Project »</strong></a>
     <br />
     <br />
-    <p>Demo</p>
-    <img src="website/src/pages/Demo.png" alt="Logo" width="500" height="300">
   </p>
 </div>
 
@@ -98,8 +78,10 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 * [![Express][Express.js]][Express.js-url]
 * [![React][React.js]][React-url]
 * [![Node][Node.js]][Node.js-url]
+* [![vsc][vsc]][vsc-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 
 <!-- GETTING STARTED -->
@@ -111,7 +93,6 @@ To get a local copy up and running follow these simple example steps.
 ### Prerequisites
 
 Make sure to have Express.js, React, and Node.js installed to their latest versions
-* npm
   ```sh
   npm install npm@latest -g
   npm install express
@@ -121,7 +102,9 @@ Make sure to create your own MongoDB deployment and follow their connection inst
 Additionally, install the MongoDB extension on your IDE. For Visual Studio Code proceed with the following:
 1. Open VSC
 2. Click extensions on the left menu bar
-3. search for MongoDB in the search bar and click install
+3. Search for MongoDB in the search bar and click install
+
+If you do not have Node.js or the Node Package Manager installed, you can download them [here](https://nodejs.org/en). NPM comes with Node.js so there is no need to worry about a second download. 
 
 <!-- INSTALLATION -->
 ### Installation
@@ -162,12 +145,16 @@ See the [open issues](https://github.com/github_username/repo_name/issues) for a
 <!-- DIAGRAMS -->
 ## Diagrams
 <p align="center">
-  Current front-end UI (WIP) <br />
   <img src="website/src/pages/Diagram.png" alt="Logo" width="450" height="300">
 </p>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- SCREENSHOTS -->
+## Screenshots
+<p align="center">Current front-end UI (WIP)</p><p align="center">
+    <img src="website/src/pages/Demo.png" alt="Logo" width="500" height="300">
+</p>
 
 
 <!-- LICENSE -->
@@ -230,8 +217,8 @@ Project Link: [https://github.com/ahadsyed2/CSC190-191-RUNTIME-TERRORS-MASTER](h
 [vsc-url]: https://code.visualstudio.com/
 [Express.js]: https://img.shields.io/badge/Express.js-404D59?style=for-the-badge
 [Express.js-url]: https://expressjs.com/
-[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
-[Vue-url]: https://vuejs.org/
+[vsc]: https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white
+[vsc-url]: https://code.visualstudio.com/
 [Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
 [Angular-url]: https://angular.io/
 [Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
