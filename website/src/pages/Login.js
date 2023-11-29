@@ -4,18 +4,23 @@ import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import { hamburgerMenu } from './hamburgerMenu';
 import { IconContext } from 'react-icons';
-import './Login.css'
+import './Login.css';
+import Facebooklogin from './Facebooklogin'
+import {LoginSocialFacebook} from 'reactjs-social-login';
+import {FacebookLoginButton} from 'react-social-login-buttons'
 
 function Login() {
 
     const [sidebar, setSidebar] = useState(false) 
+
     /*setSidebar=update*/ /*false means the current value is not showing*/
     const showSidebar = () =>  setSidebar(!sidebar)
     /* utilize set side bar and this is going to update the value to whatever the opposite of it is currently*/
     /*(!sidebar) it's reversing the value true/false*/
+    const [profile,setProfile]=useState(null);
 
     return (
-        <>
+<>
         <IconContext.Provider value= {{color: '#fff'}}>
             <div className='navbar'>
                 <Link to="#" className='hamburger-bars'>
@@ -48,19 +53,21 @@ function Login() {
         </nav>
         </IconContext.Provider>
 
-        <section className="container">
+
+
+<section className="container">
             <div className="login-box">
                 <form action="">
                     <h1>Welcome!</h1>
                     <h3>Log in to access your Carmony account.</h3>
                     <div className="register-link">
-                        <p>New to Carmony? <Link to="/Signup">Create an account</Link></p>
+                        <h4>New to Carmony? <Link to="/Signup">Create an account</Link></h4>
                     </div>
                     <div className="input-box">
                         <input type="text" placeholder="Username" required />
                     </div>
                     <div className="input-box">
-                        <input type="password" placeholder="password" required />
+                        <input type="password" placeholder="Password" required />
                     </div>
 
                     <div className="remember-forgot">
@@ -73,7 +80,8 @@ function Login() {
                     <div className="social-connect">
                         <button>
                             <img src="https://seeklogo.com/images/F/facebook-icon-logo-819DD0A07B-seeklogo.com.png" alt="Facebook" />
-                            Continue with Facebook
+                            <Link to="/Facebooklogin">Continue with Facebook</Link>
+                        
                         </button>
                         <button>
                             <img src="https://www.deliverlogic.com/wp-content/uploads/2021/04/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png" alt="Google" />
@@ -87,9 +95,7 @@ function Login() {
                 </form>
             </div>
         </section>
-
-     </>
-  );
+        </>
+);
 }
-
 export default Login

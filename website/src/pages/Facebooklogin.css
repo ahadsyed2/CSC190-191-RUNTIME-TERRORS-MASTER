@@ -1,0 +1,31 @@
+/* Style for the container that wraps the Facebook login button */
+.FacebookLoginContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+}
+
+  /* Style for the Facebook login button */
+.FacebookLoginButton {
+    background-color: #1877f2;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.FacebookLoginButton img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.FacebookLoginButton:hover {
+    background-color: #135f9e;
+}

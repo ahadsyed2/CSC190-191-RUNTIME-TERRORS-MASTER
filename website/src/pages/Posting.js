@@ -1,41 +1,36 @@
 import { Link } from 'react-router-dom';
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import { hamburgerMenu } from './hamburgerMenu';
 import { IconContext } from 'react-icons';
-import './Posting.css'
-//STUCK IN TUTORIAL AT 8:08
-function Posting(selected, setSelected) {
+import './Signup.css'
+import { BsUpload } from 'react-icons/bs';
+
+
+function Posting() {
   const [sidebar, setSidebar] = useState(false) 
+//image 
+// const [image, setImage] = useState(null);
+/* const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setImage(file);
+  };
+
+  const handleUpload = () => {
+    // Here, you can implement the logic to upload the image
+    
+    console.log("Uploading image:", image);
+  };/
+
+
+
   /*setSidebar=update*/ /*false means the current value is not showing*/
   const showSidebar = () =>  setSidebar(!sidebar)
   /* utilize set side bar and this is going to update the value to whatever the opposite of it is currently*/
   /*(!sidebar) it's reversing the value true/false*/
-  const [isActive, setIsActive] = useState(false)
-  const [selected, setSelected] = useState("");
-  const options = ['Sedan', 'Hatchback', 'Crossover', 'Coupe', 'Convertible', 'Minivan', 'Compact SUV', 'Midsize SUV', 'Full Size SUV']
+//image 
 
-
-  // const [isDropdownVisible, setIsDropdownVisible] = useState(false);
-
-  // const toggleDropdown = () => {
-  //   setIsDropdownVisible(!isDropdownVisible);
-  // };
-
-  // const handleOutsideClick = (event) => {
-  //   if (!event.target.matches('.dropbtn')) {
-  //     setIsDropdownVisible(false);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   window.addEventListener('click', handleOutsideClick);
-
-  //   return () => {
-  //     window.removeEventListener('click', handleOutsideClick);
-  //   };
-  // }, []);
 
 
   return (
@@ -61,7 +56,7 @@ function Posting(selected, setSelected) {
               {hamburgerMenu.map((item, index) => {
                   return (
                       <li key={index} className={item.cName}>
-                          <Link to={item.path}>
+          <Link to={item.path}>
                               {item.icon}
                               <span>{item.title}</span>
                           </Link>
@@ -72,74 +67,59 @@ function Posting(selected, setSelected) {
       </nav>
       </IconContext.Provider>
 
+    <div className='posting'>
+    <h1 style={{ fontFamily: 'YourChosenFont, sans-serif', color: '#333', fontSize: '24px', fontWeight: 'bold',textAlign: 'center' }}>
+    Enter information for your listing
+</h1>
+        <br></br>
+        <br></br>
+            <label htmlFor="price" style={{ fontFamily: 'Arial, Helvetica, sans-serif', fontWeight: 'lighter' }}>
+            <i className="enter price" style={{ marginRight: '5px' }}></i>    Enter Price:  $
+        </label>
+    
 
-        <div className="make-box">
-            <h3>Enter make</h3><input type="text" placeholder="" required />
+        <form>
+                <label>Enter the model: </label>
+                <textarea
+                    required
+                ></textarea>
+            </form>
+            <form>
+                <label>Enter the description: </label>
+                <textarea
+                    required
+                ></textarea>
+            </form>
+            
+    <input
+        type="text"
+        id="price"
+        name="price"
+        placeholder="Enter price..."
+    
+        style={{ fontFamily: 'Arial, Helvetica, sans-serif', border: '1px solid #ccc', padding: '8px' }}
+    />
+
+    
+        <br></br>
+        <br></br>
+        <label htmlFor="image" style={{ fontFamily: 'YourChosenFont, sans-serif', fontWeight: 'lighter',marginRight: '10px' }}>
+        Upload image
+        <BsUpload style={{ marginLeft: '5px', fontSize: '15px' }} />
+
+        </label>
+        <input
+            type="file"
+            id="image"
+            name="image"
+            accept="image/*"
+        
+        />
+
         </div>
 
-
-        {/* <div className="dropdown">
-      <button className="dropbtn" onClick={toggleDropdown}>
-        Vehicle Type
-      </button>
-      <div
-        id="myDropdown"
-        className={`dropdown-content ${isDropdownVisible ? 'show' : ''}`}
-      >
-        <a href="#">Truck</a>
-            <a href="#">Midsize SUV</a>
-            <a href="#">Compact SUV</a>
-            <a href="#">Full Size SUV</a>
-            <a href="#">Sedan</a>
-            <a href="#">Hatchback</a>
-            <a href="#">Crossover</a>
-            <a href="#">Coupe</a>
-            <a href="#">Convertible</a>
-            <a href="#">Minivan</a>
-      </div>
-    </div> */}
-   <dropdown selected={selected} setSelected= {setSelected} />
-
-    <div className="dropdown">
-      <div className="dropdown-btn" onClick={e => setIsActive(!isActive)}>Vehicle Type<div class='carret'> </div></div>
-        {isActive && (
-                <div className="dropdown-content">
-                  {options.map(option => (
-                     <div OnClick = {e => setSelected(option)}
-                     className="dropdown-item">{option}</div>
-
-                  ))}
-                 
-                <div className="dropdown-item">
-                  Hatchback
-                </div>
-                <div className="dropdown-item">
-                  Crossover
-                </div>
-                <div className="dropdown-item">
-                  Coupe
-                </div>
-                <div className="dropdown-item">
-                  Convertible
-                </div>
-                <div className="dropdown-item">
-                  Minivan
-                </div>
-                <div className="dropdown-item">
-                  Compact SUV
-                </div>
-                <div className="dropdown-item">
-                  Midsize SUV
-                </div>
-                <div className="dropdown-item">
-                  Full Size SUV
-                </div>
-              </div>
-        )}
-    </div>
-      
     </>
-  )
+)
 }
 
 export default Posting
