@@ -42,7 +42,7 @@
     <br />
     <br />
     <p>Demo</p>
-    <img src="website/src/pages/Demo.png" alt="Logo" width="500" height="300">
+    <img src="website/src/pages/Demo.png" alt="Logo" width="450" height="250">
   </p>
 </div>
 
