@@ -116,6 +116,47 @@ function Posting() {
         
         />
 
+<dropdown selected={selected} setSelected= {setSelected} />
+
+<div className="dropdown">
+  <div className="dropdown-btn" onClick={e => setIsActive(!isActive)}>Vehicle Type<div class='carret'> </div></div>
+    {isActive && (
+            <div className="dropdown-content">
+              {options.map(option => (
+                 <div OnClick = {e => setSelected(option)}
+                 className="dropdown-item">{option}</div>
+
+              ))}
+             
+            <div className="dropdown-item">
+              Hatchback
+            </div>
+            <div className="dropdown-item">
+              Crossover
+            </div>
+            <div className="dropdown-item">
+              Coupe
+            </div>
+            <div className="dropdown-item">
+              Convertible
+            </div>
+            <div className="dropdown-item">
+              Minivan
+            </div>
+            <div className="dropdown-item">
+              Compact SUV
+            </div>
+            <div className="dropdown-item">
+              Midsize SUV
+            </div>
+            <div className="dropdown-item">
+              Full Size SUV
+            </div>
+          </div>
+    )}
+</div>
+  
+
         </div>
 
     </>
