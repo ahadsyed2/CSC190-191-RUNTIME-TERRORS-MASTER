@@ -41,6 +41,8 @@
     <a href="https://github.com/ahadsyed2/CSC190-191-RUNTIME-TERRORS-MASTER/tree/main/website"><strong>Explore the Project »</strong></a>
     <br />
     <br />
+    <p>Demo</p>
+    <img src="website/src/pages/Demo.png" alt="Logo" width="500" height="300">
   </p>
 </div>
 
@@ -161,7 +163,7 @@ See the [open issues](https://github.com/github_username/repo_name/issues) for a
 ## Diagrams
 <p align="center">
   Current front-end UI (WIP) <br />
-  <img src="website/src/pages/Demo.png" alt="Logo" width="350" height="250">
+  <img src="website/src/pages/Diagram.png" alt="Logo" width="450" height="300">
 </p>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
