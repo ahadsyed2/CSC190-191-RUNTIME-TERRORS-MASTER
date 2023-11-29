@@ -31,7 +31,7 @@
 <br />
 <div align="center">
   <p>
-    <img src="website/src/pages/CARMONY_ICON2.png" alt="Logo" width="350" height="100">
+    <img src="website/src/pages/CARMONY_ICON2.png" alt="Logo" width="450" height="250">
   </p>
 
 <h3 align="center">CarMoney</h3>
@@ -43,7 +43,7 @@
     <br />
     <br />
     <p>Demo</p>
-    <img src="website/src/pages/Demo.png" alt="Logo" width="350" height="250">
+    <img src="website/src/pages/Demo.png" alt="Logo" width="450" height="250">
   </p>
 </div>
 
@@ -160,8 +160,9 @@ See the [open issues](https://github.com/github_username/repo_name/issues) for a
 
 <!-- DIAGRAMS -->
 ## Diagrams
-
-(Put Diagram Here)
+<p align="center">
+  <img src="website/src/pages/Demo.png" alt="Logo" width="350" height="250">
+</p>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
