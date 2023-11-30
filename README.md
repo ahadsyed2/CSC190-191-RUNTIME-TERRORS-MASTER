@@ -18,7 +18,7 @@
 <h3 align="center">Carmony</h3>
 
   <p align="center">
-    A free-free consumer-first, automotive marketplace. No tricks, no games, and no barriers to entry. Sell your car, your way.
+    A free consumer-first, automotive marketplace. No tricks, no games, and no barriers to entry. Sell your car, your way.
     <br />
     <a href="https://github.com/ahadsyed2/CSC190-191-RUNTIME-TERRORS-MASTER/tree/main/website"><strong>Explore the Project »</strong></a>
     <br />
@@ -50,10 +50,9 @@
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li><a href="#supported-platforms">Supported Platforms</a></li>
+    <li><a href="#additional-information">Additional Information</a></li>
   </ol>
 </details>
 
@@ -61,6 +60,7 @@
 ## Preface
 
 This is a student senior project for the California State University of Sacramento. Any and all development of this project will end by May 12th, 2024. 
+
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
@@ -87,8 +87,8 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+This is an example of how you may give instructions on setting up your project on your local machine.
+To get a local copy up and running, complete the following steps.
 
 ### Prerequisites
 
@@ -98,11 +98,12 @@ Make sure to have Express.js, React, and Node.js installed to their latest versi
   npm install express
   npm install react
   ```
-Make sure to create your own MongoDB deployment and follow their connection instructions. 
+Make sure to create your own MongoDB deployment and follow their connection instructions for connecting to MongoDB by 'Driver' and receive your connection string. 
 Additionally, install the MongoDB extension on your IDE. For Visual Studio Code proceed with the following:
 1. Open VSC
 2. Click extensions on the left menu bar
 3. Search for MongoDB in the search bar and click install
+4. Copy your connection string and authentication information into the ".env" file in the backend folder [here](https://github.com/ahadsyed2/CSC190-191-RUNTIME-TERRORS-MASTER/blob/main/website/backend/.env).
 
 If you do not have Node.js or the Node Package Manager installed, you can download them [here](https://nodejs.org/en). NPM comes with Node.js so there is no need to worry about a second download. 
 
@@ -120,7 +121,17 @@ Please wait for the full release
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+To run the program in a testing environment, you must have followed the **Prerequisites** and **Installation** instructions. 
+| :warning: It is your responsibility to ensure your environment, database connection, extensions, and installed software are all correctly installed before using the program. Otherwise, the program will not work. :warning: |
+| --- |
+
+1. Open your development environment
+2. Using the terminal, move into the ***backend*** folder and run
+```
+npm start
+```
+3. Open up a second shell in your terminal and repeat the same command but inside of the ***frontend*** folder
+4. A web browser window should automatically open with the locally running program with an active connection to your MongoDB database. 
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
@@ -133,8 +144,8 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 - [ ] Feature 1
 - [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
+- [ ] UI Overhaul
+    - [ ] Implement a CSS framework
 
 See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
 
@@ -167,24 +178,26 @@ No License is currently available nor is it guaranteed to be available. See `LIC
 
 
 <!-- CONTACT -->
-## Contact
+## Supported-Platforms
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+* **Windows 10/11** and **MacOS** are supported.
+* Any IDE should work but we are using **VSC**
 
-Project Link: [https://github.com/ahadsyed2/CSC190-191-RUNTIME-TERRORS-MASTER](https://github.com/ahadsyed2/CSC190-191-RUNTIME-TERRORS-MASTER)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
 <!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
+## Additional-Information
 
 * []()
 * []()
 * []()
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 
 
@@ -219,13 +232,3 @@ Project Link: [https://github.com/ahadsyed2/CSC190-191-RUNTIME-TERRORS-MASTER](h
 [Express.js-url]: https://expressjs.com/
 [vsc]: https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white
 [vsc-url]: https://code.visualstudio.com/
-[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[Angular-url]: https://angular.io/
-[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[Svelte-url]: https://svelte.dev/
-[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
-[Laravel-url]: https://laravel.com
-[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[Bootstrap-url]: https://getbootstrap.com
-[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com 
