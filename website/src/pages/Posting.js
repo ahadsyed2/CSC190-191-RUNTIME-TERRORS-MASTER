@@ -67,67 +67,69 @@ function Posting() {
         <h1>Enter information for your listing</h1>
           <div className='container-box'>
             <div className='leftside-box'>
-              <h1>About the Vehicle</h1>
-              <div className='vehicle-dropdown'>
-                <div className='dropdown-box' onClick={() => setIsActive(!isActive)}>
-                  {selected}
-                  <span className='caret-icon'>{isActive ? <FaCaretUp /> : <FaCaretDown />}</span>
+              <form action="">
+                <h1>About the Vehicle</h1>
+                <div className='vehicle-dropdown'>
+                  <div className='dropdown-box' onClick={() => setIsActive(!isActive)}>
+                    {selected}
+                    <span className='caret-icon'>{isActive ? <FaCaretUp /> : <FaCaretDown />}</span>
+                  </div>
+                  {isActive && (
+                    <div className='dropdown-listings'>
+                      {options.map((option) => (
+                        <div
+                          key={option}
+                          onClick={() => handleSelect(option)}
+                          className={`dropdown-item ${option === selected ? 'selected' : ''}`}
+                        >
+                          {option}
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
-                {isActive && (
-                  <div className='dropdown-listings'>
-                    {options.map((option) => (
-                      <div
-                        key={option}
-                        onClick={() => handleSelect(option)}
-                        className={`dropdown-item ${option === selected ? 'selected' : ''}`}
-                      >
-                        {option}
-                      </div>
-                    ))}
+
+                <div className="listing-box">
+                  <div className='listing-details'>
+                    <div className="make-box">
+                      <h2>Enter Make: </h2><input type="text" placeholder="Enter make" required />
+                    </div>
+
+                    <div className="model-box">
+                      <h2>Enter Model: </h2><input type="text" placeholder="Enter model" required />
+                    </div>
+                    <div className="year-box">
+                      <h2>Enter Year: </h2><input type="text" placeholder="Enter year" required />
+                    </div>
+
+                    <div className="price-box">
+                      <h2>Enter Price: $ </h2><input type="text" placeholder="Enter price..." required />
+                    </div> 
+
+                    <div className="location-box">
+                      <h2>Enter Location: </h2><input type="text" placeholder="Enter Location" required />
+                    </div>
+
+                    <div className="description-box">
+                      <h2>Description: </h2><input type="text" placeholder="" required />
+                    </div>
+
+                    <div className='photo-upload'>
+                      <h2>Upload image</h2>
+                      <BsUpload />
+
+                      <input
+                      type="file"
+                      id="image"
+                      name="image"
+                      accept="image/*"
+                      />
+                    </div>
+
+                    <button type="submit" className="btn">Submit</button>
                   </div>
-                )}
-              </div>
-
-              <div className="listing-box">
-                <div className='listing-details'>
-                  <div className="make-box">
-                    <h2>Enter Make: </h2><input type="text" placeholder="Enter make" required />
-                  </div>
-
-                  <div className="model-box">
-                    <h2>Enter Model: </h2><input type="text" placeholder="Enter model" required />
-                  </div>
-                  <div className="year-box">
-                    <h2>Enter Year: </h2><input type="text" placeholder="Enter year" required />
-                  </div>
-
-                  <div className="price-box">
-                    <h2>Enter Price: $ </h2><input type="text" placeholder="Enter price..." required />
-                  </div> 
-
-                  <div className="location-box">
-                    <h2>Enter Location: </h2><input type="text" placeholder="Enter Location" required />
-                  </div>
-
-                  <div className="description-box">
-                    <h2>Description: </h2><input type="text" placeholder="" required />
-                  </div>
-
-                  <div className='photo-upload'>
-                    <h2>Upload image</h2>
-                    <BsUpload />
-
-                    <input
-                    type="file"
-                    id="image"
-                    name="image"
-                    accept="image/*"
-                    />
-                  </div>
-
-                  <button type="submit" className="btn">Submit</button>
                 </div>
-              </div>
+              </form>
             </div>
 
             <div className='righside-box'>
