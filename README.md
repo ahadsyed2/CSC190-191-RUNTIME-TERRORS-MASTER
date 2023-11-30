@@ -65,9 +65,7 @@ This is a student senior project for the California State University of Sacramen
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+Carmony is a second-hand automotive retail marketplace aiming to create a consumer-friendly alternative in the online space. Carmony removes initial or recurring fees from private individuals just trying to access the site. Instead, the large focus on getting partnered dealerships involved allows the burden of operation to be shifted. Additionally, Carmony is focused on protecting sensitive user data from data harvesters unlike other competitors. 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -87,8 +85,8 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project on your local machine.
-To get a local copy up and running, complete the following steps.
+To get a local copy up and running, complete the following steps. 
+However, please note that this project is still in active development. Prerequisites and installation instructions are still being iterated upon and will be updated once they are in a stable position.
 
 ### Prerequisites
 
@@ -142,12 +140,15 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Feature 1
-- [ ] Feature 2
+- [ ] Backend Connections
+    - [ ] Finish connecting the front-end interface to the backend database
+    - [ ] Stress test
+    - [ ] Gather data to readjust hosting resource estimates
 - [ ] UI Overhaul
     - [ ] Implement a CSS framework
+    - [ ] Refine User experience and application flow
 
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/ahadsyed2/CSC190-191-RUNTIME-TERRORS-MASTER/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -181,7 +182,7 @@ No License is currently available nor is it guaranteed to be available. See `LIC
 ## Supported-Platforms
 
 * **Windows 10/11** and **MacOS** are supported.
-* Any IDE should work but we are using **VSC**
+* Any widely used IDE should work but we are using **VSC**
 
 
 
@@ -192,9 +193,10 @@ No License is currently available nor is it guaranteed to be available. See `LIC
 <!-- ACKNOWLEDGMENTS -->
 ## Additional-Information
 
+* None Currently
+<!--* []()
 * []()
-* []()
-* []()
+* []() -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
