@@ -6,6 +6,8 @@ import { hamburgerMenu } from './hamburgerMenu';
 import { IconContext } from 'react-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
+import NavbarMenu from '../components/navbarMenu';
+
 
 function SellCar() {
   const [sidebar, setSidebar] = useState(false) 
@@ -17,33 +19,16 @@ function SellCar() {
   return (
       <>
       <IconContext.Provider value= {{color: '#fff'}}>
-          <div className='navbar'>
+      <div className='navbar'>
             <Link to="#" className='hamburger-bars'>
                 <FaBars onClick={showSidebar} />
             </Link>
 
-            <div className="logo">
-                <img src="https://www.clker.com/cliparts/u/O/L/Q/c/m/car-icon-hi.png" alt="Logo" />
+            <div className="carmony-logo">
+                <img src="CARMONY_ICON2.png" alt="" />
             </div>
 
-            <div className="top-rightbox">
-                <div id="Login">
-                  <ul>
-                    <li>
-                    <Link to="/Login"><FontAwesomeIcon icon={faUser} className="user-icon" /> Login
-                    </Link>
-                    </li>
-                  </ul>
-                </div>
-                <div id="SignUp">
-                  <ul>
-                    <li>
-                    <Link to="/Signup"><FontAwesomeIcon icon={faUser} className="user-icon" /> Sign Up
-                    </Link>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+            <NavbarMenu />
           </div>
           
           <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>

@@ -27,8 +27,8 @@ function Login() {
                     <FaBars onClick={showSidebar} />
                 </Link>
 
-                <div className="logo">
-                    <img src="https://www.clker.com/cliparts/u/O/L/Q/c/m/car-icon-hi.png" alt="Logo" />
+                <div className="carmony-logo">
+                    <img src="CARMONY_ICON2.png" alt="" />
                 </div>
             </div>
         
@@ -77,7 +77,7 @@ function Login() {
 
                     <button type="submit" className="btn">Login</button>
 
-                    <div className="social-connect">
+                    <div className="socialConnect">
                         <button>
                             <img src="https://seeklogo.com/images/F/facebook-icon-logo-819DD0A07B-seeklogo.com.png" alt="Facebook" />
                             <Link to="/Facebooklogin">Continue with Facebook</Link>
