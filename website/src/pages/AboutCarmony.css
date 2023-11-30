@@ -103,7 +103,7 @@ span {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #10ef38;
+    background-color:rgb(47, 255, 99);
     padding: 0.5rem;
     text-decoration: none;
     list-style: none;
@@ -147,6 +147,7 @@ span {
 #Login a:hover{
     color:#022b84;
 }
+
 #SignUp ul {
     width: 130px;
     display: flex;
@@ -173,39 +174,36 @@ span {
     color:#022b84;
 }
 
-.row {
+.aboutCarmony {
+    height: 888px;
     display: flex;
+    justify-content: center;
+    align-content: center;
 }
 
-.left { 
-    flex: 15%;
-    padding: 15px 0;
+.carmony-detail h1 {
+    font-size: 50px;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.6);
 }
-.left h2 {
-    padding-left: 8px;
-    color: #000000;
+
+.carmony-detail {
+    margin-top: 6rem;
+    width: 1100px;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    font-size: 30px;
 }
-#mySearch {
-    width: 100%;
-    font-size: 18px;
-    padding: 11px;
-    border: 1px solid #a0a0a0;
+
+.carmony-detail p {
+    margin-top: 1rem;
 }
-#myMenu {
-    list-style-type: none;
-    display: contents;
-    width: 100%;
-}
-#myMenu li {
-    margin: 0;
-    transition: 0.5s;
-}
-#myMenu li a {
-    padding: 12px;
-    text-decoration: none;
-    color: rgb(0, 0, 0);
-    display: block;
-}
-#myMenu li a:hover {
-    background-color: #8bdaf7;
+
+footer {
+    background:#000;
+    padding: 1.5rem;
+    text-align:center;
+    color: #fff;
 }

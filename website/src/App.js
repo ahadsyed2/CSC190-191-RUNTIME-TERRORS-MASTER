@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './pages/Home';
+import HomePage from './pages/HomePage';
 import SellCar from './pages/SellCar';
 import AboutCarmony from './pages/AboutCarmony';
 import AboutDealers from './pages/AboutDealers';
@@ -18,7 +18,7 @@ function App() {
   return (
       <Router>
         <Routes>
-          <Route path='/' exact Component={Home} />
+          <Route path='/' exact Component={HomePage} />
           <Route path='/SellCar'  Component={SellCar} />
           <Route path='/AboutCarmony' Component={AboutCarmony} />
           <Route path='/AboutDealers' Component={AboutDealers} />

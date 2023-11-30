@@ -2,18 +2,17 @@ import React, {useState} from 'react'
 import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import { Link } from 'react-router-dom';
-import { hamburgerMenu } from './hamburgerMenu';
+import { hamburgerMenu } from '../components/hamburgerMenu';
 import { IconContext } from 'react-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
+import NavbarMenu from '../components/navbarMenu';
 import './AboutCarmony.css'
 
 function AboutCarmony() {
   const [sidebar, setSidebar] = useState(false) 
-  /*setSidebar=update*/ /*false means the current value is not showing*/
   const showSidebar = () =>  setSidebar(!sidebar)
-  /* utilize set side bar and this is going to update the value to whatever the opposite of it is currently*/
-  /*(!sidebar) it's reversing the value true/false*/
+
 
   return (
       <>
@@ -23,36 +22,11 @@ function AboutCarmony() {
                 <FaBars onClick={showSidebar} />
             </Link>
 
-            <div className="logo">
-                <img src="https://www.clker.com/cliparts/u/O/L/Q/c/m/car-icon-hi.png" alt="Logo" />
+            <div className="carmony-logo">
+                <img src="CARMONY_ICON2.png" alt="" />
             </div>
 
-            <div className="top-rightbox">
-                <div id='Post'>
-                  <ul>
-                    <li>
-                    <Link to="/Posting">+ Create a listing
-                    </Link>
-                    </li>
-                  </ul>
-                </div>
-                <div id="Login">
-                  <ul>
-                    <li>
-                    <Link to="/Login"><FontAwesomeIcon icon={faUser} className="user-icon" /> Login
-                    </Link>
-                    </li>
-                  </ul>
-                </div>
-                <div id="SignUp">
-                  <ul>
-                    <li>
-                    <Link to="/Signup"><FontAwesomeIcon icon={faUser} className="user-icon" /> Sign Up
-                    </Link>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+            <NavbarMenu />
           </div>
           
           <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
@@ -77,8 +51,17 @@ function AboutCarmony() {
           </IconContext.Provider>
 
         <div className='aboutCarmony'>
-          <h1>About Carmony</h1>
+            <div className='carmony-detail'>
+                <h1>About Carmony</h1>
+                <p>Carmony is an online open-source marketplace that gets rid of the fees and hassles.</p>
+                <p>Instead of paying an upfront fee to list your car, Carmony lets you list your vehicle for free</p>
+                <p>more money going back into your pocket.</p>
+            </div>
         </div>
+
+        <footer>
+        <p>&copy; 2023</p>
+    </footer>
 
       </>
   )
