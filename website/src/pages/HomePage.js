@@ -287,6 +287,7 @@ const HomeIndex = () => {
         </nav>
       </IconContext.Provider>
 
+{/*Working on filter part(filter out cars with the dropdown options)--Janeeya Chanta*/}
       <div className="filter-container">
         <div className="filter-box">
           <div className="side-bar">
