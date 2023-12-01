@@ -67,7 +67,7 @@ This is a student senior project for the California State University of Sacramen
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Carmony is a second-hand automotive retail marketplace aiming to create a consumer-friendly alternative in the online space. Carmony removes initial or recurring fees from private individuals just trying to access the site. Instead, the large focus on getting partnered dealerships involved allows the burden of operation to be shifted. The focus on connecting private individuals and dealerships also serves to facilitate a Additionally, Carmony is focused on protecting sensitive user data from data harvesters, unlike other competitors. 
+Carmony is a second-hand automotive retail marketplace aiming to create a consumer-friendly alternative in the online space. Carmony removes initial or recurring fees from private individuals just trying to access the site. Instead, the large focus on getting partnered dealerships involved allows the burden of operation to be shifted. The focus on connecting private individuals and dealerships also allows for a more secure, online individual-to-business opportunity instead of the oversaturated individual-to-individual ecosystems. Additionally, Carmony is focused on protecting sensitive user data from data harvesters, unlike other competitors. 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
