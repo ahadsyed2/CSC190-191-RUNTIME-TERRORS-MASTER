@@ -69,7 +69,7 @@ function Signup() {
                     <h3>Create an account to access Carmony account.</h3>
                     
                     <div className='accountOption'>
-                        <Link to="#"><h2>Private Onwer</h2></Link>
+                        <Link to="#"><h2>Private Owner</h2></Link>
                         <h3>OR</h3>
                         <Link to="#"><h2>Dealership</h2></Link>
                     </div>
