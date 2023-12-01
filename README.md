@@ -67,7 +67,7 @@ This is a student senior project for the California State University of Sacramen
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Carmony is a second-hand automotive retail marketplace aiming to create a consumer-friendly alternative in the online space. Carmony removes initial or recurring fees from private individuals just trying to access the site. Instead, the large focus on getting partnered dealerships involved allows the burden of operation to be shifted. Additionally, Carmony is focused on protecting sensitive user data from data harvesters unlike other competitors. 
+Carmony is a second-hand automotive retail marketplace aiming to create a consumer-friendly alternative in the online space. Carmony removes initial or recurring fees from private individuals just trying to access the site. Instead, the large focus on getting partnered dealerships involved allows the burden of operation to be shifted. The focus on connecting private individuals and dealerships also serves to facilitate a Additionally, Carmony is focused on protecting sensitive user data from data harvesters, unlike other competitors. 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -147,13 +147,17 @@ Not Currently Available...
 <!-- ROADMAP -->
 ## Roadmap
 
+- [ ] Build out front-end more front-end interfaces
+  - [ ] Profile, Create-a-post, edit-post, dealer sign-in / login, payment, "My Deals" manager pages
 - [ ] Backend Connections
-    - [ ] Finish connecting the front-end interface to the backend database
-    - [ ] Stress test
+    - [ ] Finish connecting the front-end interface to the backend database for current pages
+      - [ ] Repeat with each subsequent new page
+    - [ ] Stress and optimization testing
     - [ ] Gather data to readjust hosting resource estimates
 - [ ] UI Overhaul
     - [ ] Implement a CSS framework
     - [ ] Refine User experience and application flow
+    - [ ] Establish a consistent style
 
 See the [open issues](https://github.com/ahadsyed2/CSC190-191-RUNTIME-TERRORS-MASTER/issues) for a full list of proposed features (and known issues).
 
