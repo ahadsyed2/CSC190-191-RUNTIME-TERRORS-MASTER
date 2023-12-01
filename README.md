@@ -111,7 +111,7 @@ If you do not have Node.js or the Node Package Manager installed, you can downlo
 ### Installation
 
 Installation Packages pending...
-Please wait for the full release
+Please wait for updates...
    
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
