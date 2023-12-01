@@ -42,14 +42,16 @@
       </ul>
     </li>
     <li>
-      <a href="#getting-started">Getting Started</a>
+      <a href="#developer-instructions">Developer Instructions</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
+    <li><a href="#testing">Testing</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#deployment">Deployment</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#supported-platforms">Supported Platforms</a></li>
     <li><a href="#additional-information">Additional Information</a></li>
@@ -82,8 +84,8 @@ Carmony is a second-hand automotive retail marketplace aiming to create a consum
 
 
 
-<!-- GETTING STARTED -->
-## Getting Started
+<!-- Dev Instructions -->
+## Developer Instructions
 
 To get a local copy up and running, complete the following steps. 
 However, please note that this project is still in active development. Prerequisites and installation instructions are still being iterated upon and will be updated once they are in a stable position.
@@ -134,6 +136,13 @@ npm start
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
+<!-- Testing -->
+## Testing
+
+Not Currently Available...
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 <!-- ROADMAP -->
 ## Roadmap
@@ -151,6 +160,12 @@ See the [open issues](https://github.com/ahadsyed2/CSC190-191-RUNTIME-TERRORS-MA
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
+<!-- Deployment -->
+## Deployment
+
+Deployment date TBD
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- DIAGRAMS -->
 ## Diagrams
@@ -183,7 +198,7 @@ No License is currently available nor is it guaranteed to be available. See `LIC
 ## Supported-Platforms
 
 * **Windows 10/11** and **MacOS** are supported.
-* Any widely used IDE should work but we are using **VSC**
+* Any widely used IDE should work but we are using [**VSC**](https://code.visualstudio.com/)
 
 
 
