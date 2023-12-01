@@ -286,7 +286,8 @@ const HomeIndex = () => {
           </ul>
         </nav>
       </IconContext.Provider>
-
+      
+{/*working on filter part--Janeeya Chant*/}
       <div className="filter-container">
         <div className="filter-box">
           <div className="side-bar">
