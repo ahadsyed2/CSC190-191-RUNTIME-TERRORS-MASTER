@@ -12,7 +12,7 @@
 <br />
 <div align="center">
   <p>
-    <img src="website/src/pages/CARMONY_ICON2.png" alt="Logo" width="450" height="250">
+    <img src="images/CARMONY_ICON2.png" alt="Logo" width="450" height="250">
   </p>
 
 <h3 align="center">Carmony</h3>
@@ -131,8 +131,6 @@ npm start
 3. Open up a second shell in your terminal and repeat the same command but inside of the ***frontend*** folder
 4. A web browser window should automatically open with the locally running program with an active connection to your MongoDB database. 
 
-_For more examples, please refer to the [Documentation](https://example.com)_
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -157,7 +155,10 @@ See the [open issues](https://github.com/ahadsyed2/CSC190-191-RUNTIME-TERRORS-MA
 <!-- DIAGRAMS -->
 ## Diagrams
 <p align="center">
-  <img src="website/src/pages/Diagram.png" alt="Logo" width="450" height="300">
+  <img src="images/Diagram.png" alt="diagram" width="450" height="300">
+</p>
+<p align="center">
+  <img src="images/erd.JPG" alt="erd" width="450" height="300">
 </p>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -165,7 +166,7 @@ See the [open issues](https://github.com/ahadsyed2/CSC190-191-RUNTIME-TERRORS-MA
 <!-- SCREENSHOTS -->
 ## Screenshots
 <p align="center">Current front-end UI (WIP)</p><p align="center">
-    <img src="website/src/pages/Demo.png" alt="Logo" width="500" height="300">
+    <img src="images/Demo.png" alt="Logo" width="500" height="300">
 </p>
 
 
@@ -178,7 +179,7 @@ No License is currently available nor is it guaranteed to be available. See `LIC
 
 
 
-<!-- CONTACT -->
+<!-- Supported Platforms -->
 ## Supported-Platforms
 
 * **Windows 10/11** and **MacOS** are supported.
