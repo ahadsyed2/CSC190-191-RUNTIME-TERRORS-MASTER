@@ -155,7 +155,10 @@ See the [open issues](https://github.com/ahadsyed2/CSC190-191-RUNTIME-TERRORS-MA
 <!-- DIAGRAMS -->
 ## Diagrams
 <p align="center">
-  <img src="images/Diagram.png" alt="Logo" width="450" height="300">
+  <img src="images/Diagram.png" alt="diagram" width="450" height="300">
+</p>
+<p align="center">
+  <img src="images/erd.JPG" alt="erd" width="450" height="300">
 </p>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
