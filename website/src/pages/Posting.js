@@ -1,166 +1,157 @@
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import React, {useState} from 'react'
-import { FaBars } from "react-icons/fa";
-import { AiOutlineClose } from "react-icons/ai";
+import { FaBars, FaCaretDown, FaCaretUp } from 'react-icons/fa';
+import { AiOutlineClose } from 'react-icons/ai';
 import { hamburgerMenu } from './hamburgerMenu';
-import { IconContext } from 'react-icons';
-import './Signup.css'
 import { BsUpload } from 'react-icons/bs';
+import { IconContext } from 'react-icons';
+import './Posting.css';
 
+const options = [
+  'Sedan',
+  'Hatchback',
+  'Crossover',
+  'Coupe',
+  'Convertible',
+  'Minivan',
+  'Compact SUV',
+  'Midsize SUV',
+  'Full Size SUV',
+];
 
 function Posting() {
-  const [sidebar, setSidebar] = useState(false) 
-//image 
-// const [image, setImage] = useState(null);
-/* const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    setImage(file);
+  const [sidebar, setSidebar] = useState(false);
+  const showSidebar = () => setSidebar(!sidebar);
+
+  const [isActive, setIsActive] = useState(false);
+  const [selected, setSelected] = useState('Vehicle Type');
+
+  const handleSelect = (option) => {
+    setSelected(option);
+    setIsActive(false);
   };
 
-  const handleUpload = () => {
-    // Here, you can implement the logic to upload the image
-    
-    console.log("Uploading image:", image);
-  };/
-
-
-
-  /*setSidebar=update*/ /*false means the current value is not showing*/
-  const showSidebar = () =>  setSidebar(!sidebar)
-  /* utilize set side bar and this is going to update the value to whatever the opposite of it is currently*/
-  /*(!sidebar) it's reversing the value true/false*/
-//image 
-
-
-
   return (
-      <>
-      <IconContext.Provider value= {{color: '#fff'}}>
-          <div className='navbar'>
-              <Link to="#" className='hamburger-bars'>
-                  <FaBars onClick={showSidebar} />
-              </Link>
+    <>
+      <IconContext.Provider value={{ color: '#fff' }}>
+        <div className='navbar'>
+          <Link to='#' className='hamburger-bars'>
+            <FaBars onClick={showSidebar} />
+          </Link>
 
-              <div className="logo">
-                  <img src="https://www.clker.com/cliparts/u/O/L/Q/c/m/car-icon-hi.png" alt="Logo" />
-              </div>
+          <div className="carmony-logo">
+            <img src="CARMONY_ICON2.png" alt="" />
           </div>
-      
-      <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-          <ul className='nav-menu-items' onClick={showSidebar}>
-              <li className="navbar-toggle">
-                  <Link to="#" className='hamburger-bars'>
-                      <AiOutlineClose />
-                  </Link>
-              </li>
-              {hamburgerMenu.map((item, index) => {
-                  return (
-                      <li key={index} className={item.cName}>
-          <Link to={item.path}>
-                              {item.icon}
-                              <span>{item.title}</span>
-                          </Link>
-                      </li>
-                  );
-              })}
-          </ul>
-      </nav>
-      </IconContext.Provider>
-
-    <div className='posting'>
-    <h1 style={{ fontFamily: 'YourChosenFont, sans-serif', color: '#333', fontSize: '24px', fontWeight: 'bold',textAlign: 'center' }}>
-    Enter information for your listing
-</h1>
-        <br></br>
-        <br></br>
-            <label htmlFor="price" style={{ fontFamily: 'Arial, Helvetica, sans-serif', fontWeight: 'lighter' }}>
-            <i className="enter price" style={{ marginRight: '5px' }}></i>    Enter Price:  $
-        </label>
-    
-
-        <form>
-                <label>Enter the model: </label>
-                <textarea
-                    required
-                ></textarea>
-            </form>
-            <form>
-                <label>Enter the description: </label>
-                <textarea
-                    required
-                ></textarea>
-            </form>
-            
-    <input
-        type="text"
-        id="price"
-        name="price"
-        placeholder="Enter price..."
-    
-        style={{ fontFamily: 'Arial, Helvetica, sans-serif', border: '1px solid #ccc', padding: '8px' }}
-    />
-
-    
-        <br></br>
-        <br></br>
-        <label htmlFor="image" style={{ fontFamily: 'YourChosenFont, sans-serif', fontWeight: 'lighter',marginRight: '10px' }}>
-        Upload image
-        <BsUpload style={{ marginLeft: '5px', fontSize: '15px' }} />
-
-        </label>
-        <input
-            type="file"
-            id="image"
-            name="image"
-            accept="image/*"
-        
-        />
-
-<dropdown selected={selected} setSelected= {setSelected} />
-
-<div className="dropdown">
-  <div className="dropdown-btn" onClick={e => setIsActive(!isActive)}>Vehicle Type<div class='carret'> </div></div>
-    {isActive && (
-            <div className="dropdown-content">
-              {options.map(option => (
-                 <div OnClick = {e => setSelected(option)}
-                 className="dropdown-item">{option}</div>
-
-              ))}
-             
-            <div className="dropdown-item">
-              Hatchback
-            </div>
-            <div className="dropdown-item">
-              Crossover
-            </div>
-            <div className="dropdown-item">
-              Coupe
-            </div>
-            <div className="dropdown-item">
-              Convertible
-            </div>
-            <div className="dropdown-item">
-              Minivan
-            </div>
-            <div className="dropdown-item">
-              Compact SUV
-            </div>
-            <div className="dropdown-item">
-              Midsize SUV
-            </div>
-            <div className="dropdown-item">
-              Full Size SUV
-            </div>
-          </div>
-    )}
-</div>
-  
 
         </div>
 
+        <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+          <ul className='nav-menu-items' onClick={showSidebar}>
+            <li className='navbar-toggle'>
+              <Link to='#' className='hamburger-bars'>
+                <AiOutlineClose />
+              </Link>
+            </li>
+            {hamburgerMenu.map((item, index) => (
+              <li key={index} className={item.cName}>
+                <Link to={item.path}>
+                  {item.icon}
+                  <span>{item.title}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </IconContext.Provider>
+
+      <section className='car-listing-info'>
+        <h1>Enter information for your listing</h1>
+          <div className='container-box'>
+            <div className='leftside-box'>
+              <form action="">
+                <h1>About the Vehicle</h1>
+                <div className='vehicle-dropdown'>
+                  <div className='dropdown-box' onClick={() => setIsActive(!isActive)}>
+                    {selected}
+                    <span className='caret-icon'>{isActive ? <FaCaretUp /> : <FaCaretDown />}</span>
+                  </div>
+                  {isActive && (
+                    <div className='dropdown-listings'>
+                      {options.map((option) => (
+                        <div
+                          key={option}
+                          onClick={() => handleSelect(option)}
+                          className={`dropdown-item ${option === selected ? 'selected' : ''}`}
+                        >
+                          {option}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                <div className="listing-box">
+                  <div className='listing-details'>
+                    <div className="make-box">
+                      <h2>Enter Make: </h2><input type="text" placeholder="Enter make" required />
+                    </div>
+
+                    <div className="model-box">
+                      <h2>Enter Model: </h2><input type="text" placeholder="Enter model" required />
+                    </div>
+                    {/* working on year part——Kailee */}
+                    <div className="year-box"> 
+                      <h2>Enter Year: </h2><input type="text" placeholder="Enter year" required />
+                    </div>
+
+                    <div className="price-box">
+                      <h2>Enter Price: $ </h2><input type="text" placeholder="Enter price..." required />
+                    </div> 
+
+                    <div className="location-box">
+                      <h2>Enter Location: </h2><input type="text" placeholder="Enter Location" required />
+                    </div>
+
+                    <div className="description-box">
+                      <h2>Description: </h2><input type="text" placeholder="" required />
+                    </div>
+
+                    <div className='photo-upload'>
+                      <h2>Upload image</h2>
+                      <BsUpload />
+
+                      <input
+                      type="file"
+                      id="image"
+                      name="image"
+                      accept="image/*"
+                      />
+                    </div>
+
+                    <button type="submit" className="btn">Submit</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <div className='righside-box'>
+              <h1>Preview</h1>
+
+                  <div className='preview-box'>
+                    <div className='preview-left'>
+                      <h2>Your Listing Preview</h2>
+                      <p>As you create your listing, you can preview how it will apperar</p>
+                    </div>
+                    <div className='preview-right'>
+                      <h2>Title</h2>
+                    </div>
+                  </div>
+            </div>
+          </div>
+
+      </section>
     </>
-)
+  );
 }
 
-export default Posting
+export default Posting;
