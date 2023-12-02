@@ -42,7 +42,6 @@ function Posting() {
           <div className="carmony-logo">
             <img src="CARMONY_ICON2.png" alt="" />
           </div>
-
         </div>
 
         <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
@@ -99,8 +98,7 @@ function Posting() {
                     <div className="model-box">
                       <h2>Enter Model: </h2><input type="text" placeholder="Enter model" required />
                     </div>
-                    {/* working on year part——Kailee */}
-                    <div className="year-box"> 
+                    <div className="year-box">
                       <h2>Enter Year: </h2><input type="text" placeholder="Enter year" required />
                     </div>
 
