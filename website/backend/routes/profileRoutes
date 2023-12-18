@@ -1,7 +1,7 @@
 const express = require ('express')
 
 //controller functions
-const { profile } = require ('../controllers/profileController')
+const { getProfile, createProfile, updateProfile, deleteProfile } = require ('../controllers/profileController')
 
 const router = express.Router()
 
@@ -9,7 +9,7 @@ const router = express.Router()
 
 router.get('/:id', getProfile)
 
-router.post('/', CreateProfile)
+router.post('/', createProfile)
 
 router.patch('/"id', updateProfile)
 

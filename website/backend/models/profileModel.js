@@ -5,7 +5,7 @@ const Schema = mongoose.Schema
 const profileSchema = new Schema({
   //Object id = _id
   picture: {
-    type: Image,
+    type: String,
     required: false
   },
   display_name: {

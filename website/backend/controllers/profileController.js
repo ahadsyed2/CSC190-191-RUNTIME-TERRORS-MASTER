@@ -19,6 +19,22 @@ const getProfile = async (req, res) => {
   res.status(200).json(profile)
 }
 
+const createProfile = async (req, res) => {
+
+  res.status(200)
+}
+
+const updateProfile = async (red, res) => {
+
+}
+
+const deleteProfile = async (red, res) => {
+
+}
+
 module.exports = {
-  getProfile
+  getProfile,
+  createProfile,
+  updateProfile,
+  deleteProfile
 }
