@@ -20,7 +20,6 @@ const NavbarMenu = () => {
 
 
 
-
   return (
     <div className="top-rightbox">
       <div className='Post'>
@@ -51,10 +50,21 @@ const NavbarMenu = () => {
       </div> )}
 
       {user && (
-            <div>
+      <div className="ProfileIcon">
+        <ul>
+          <li>
+          <Link to="/Profile"><FontAwesomeIcon icon={faUser} className="user-icon" /></Link>
+          </li>
+        </ul>
+      </div> )}
+
+      {user && (
+            <div className="Logout">
               <span>{user.email}</span>
-              <button  onClick = {handleClick}>Logout</button>
+              <button  className="LogoutButton" onClick = {handleClick}>Logout</button>
             </div> )}
+
+      
 
   
 

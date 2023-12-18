@@ -1,0 +1,18 @@
+const express = require ('express')
+
+//controller functions
+const { profile } = require ('../controllers/profileController')
+
+const router = express.Router()
+
+//Does this need to be just '/:id' or '/Profile/:id'
+
+router.get('/:id', getProfile)
+
+router.post('/', CreateProfile)
+
+router.patch('/"id', updateProfile)
+
+router.delete('/:id', deleteProfile)
+
+module.exports = router

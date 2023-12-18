@@ -180,6 +180,48 @@ span {
   color:#0a4fe3;
 }
 
+.ProfileIcon ul {
+  width: 39px;
+  height: 48px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  background-color: #fff;
+  padding: 0.5rem;
+  text-decoration: none;
+  list-style: none;
+  margin: 1rem;
+}
+.ProfileIcon ul li a{
+  display: flex;
+  color: black;
+  text-decoration: none;
+  font-size: 0%;
+  font-weight: 700;
+  margin: 0.2rem;
+  
+}
+
+.ProfileIcon a:hover{
+  color:#0a4fe3;
+}
+
+.Logout {
+  display: flex;
+  margin-bottom: 30px;
+  margin-right: 30px;
+}
+
+.Logout span{
+  display: flex;
+  color:#ffffff;
+  margin-right: 20px;
+}
+
+.LogoutButton{
+  padding: 5px;
+}
+
 .filter-container {
   display: flex;
 

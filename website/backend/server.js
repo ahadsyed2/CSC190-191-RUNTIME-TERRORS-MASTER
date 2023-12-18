@@ -3,6 +3,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const userRoutes = require ('./routes/userRoutes')
 const postingRoutes = require('./routes/postingRoutes')
+const profileRoutes = require('./routes/profileRoutes')
 
 
 //express app
@@ -26,6 +27,9 @@ app.use('/api/userRoutes', userRoutes)
 
 //recieve and execute requests from posting page
 app.use('/api/postingRoutes', postingRoutes)
+
+//recieve and execute requests from profile page
+app.use('/api/profileRoutes', profileRoutes)
 
 
 //app.get('/', (req,res) => {

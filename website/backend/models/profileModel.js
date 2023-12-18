@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const profileSchema = new Schema({
+  //Object id = _id
   picture: {
     type: Image,
     required: false
@@ -24,6 +25,8 @@ const profileSchema = new Schema({
     required: true
   }
 }, { timestamps: true })
+
+//Need to add more if it is going to match the Figma.
 
 
 module.exports = mongoose.model('Profile', profileSchema)
