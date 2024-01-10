@@ -1,47 +1,41 @@
-require('dotenv').config()
-const express = require('express')
-const mongoose = require('mongoose')
-const userRoutes = require ('./routes/userRoutes')
+require('dotenv').config();
+const express = require('express');
+const mongoose = require('mongoose');
 
 
-//express app
-const app = express()
+const userRoutes = require('./routes/userRoutes');
+const postingRoutes = require('./routes/postingRoutes');
 
-//middleware, parse json body for post request
-app.use(express.json())
+const app = express();
 
 
+
+
+// Middleware to log path and request type
 app.use((req, res, next) => {
-    //LOG PATH AND REQUEST TYPE
-    console.log(req.path, req.method)
-    next()
-})
+  console.log(req.path, req.method);
+  next();
+});
+
+// Middleware to parse JSON body for POST requests
+app.use(express.json());
+
+// Routes
+app.use('/api/userRoutes', userRoutes);
+app.use('/api/postingRoutes', postingRoutes);
 
 
-//routes, fires router (carmonyRoutes) from carmonyRoutes file
 
-//recieve and execute requests
-app.use('/api/userRoutes', userRoutes)
+// Connect to MongoDB and start the server
+mongoose
+  .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    app.listen(process.env.PORT, () => {
+      console.log('CONNECTED. Listening on port 4k');
+    });
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 
-//app.get('/', (req,res) => {
-
-    //res.json({mssg:"welcome to the website"})
-
-//})
-
-//connect to db
-mongoose.connect(process.env.MONGO_URI)
-    //  once connected, listen for requests
-    .then(() => {
-        app.listen(process.env.PORT, () => {
-            console.log('CONNECTED. listening on port 4k')
-        })
-    })
-
-
-    //if any error example wrong mongo uri
-    .catch((error) =>{
-        console.log(error)
-    }
-    )
 
