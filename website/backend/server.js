@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const userRoutes = require ('./routes/userRoutes')
+const postingRoutes = require('./routes/postingRoutes')
 
 
 //express app
@@ -22,6 +23,10 @@ app.use((req, res, next) => {
 
 //recieve and execute requests
 app.use('/api/userRoutes', userRoutes)
+
+//recieve and execute requests from posting page
+app.use('/api/postingRoutes', postingRoutes)
+
 
 //app.get('/', (req,res) => {
 

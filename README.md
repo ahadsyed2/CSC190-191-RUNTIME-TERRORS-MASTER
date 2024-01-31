@@ -1,29 +1,10 @@
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a name="readme-top"></a>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
 
-
-
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+[![Christmas][Christmas]][Christmas-url]
 
 
 
@@ -31,22 +12,17 @@
 <br />
 <div align="center">
   <p>
-    <img src="website/src/pages/CARMONY_ICON2.png" alt="Logo" width="350" height="100">
+    <img src="images/CARMONY_ICON2.png" alt="Logo" width="450" height="250">
   </p>
 
-<h3 align="center">CarMoney</h3>
+<h3 align="center">Carmony</h3>
 
   <p align="center">
-    project_description
+    A free consumer-first, automotive marketplace. No tricks, no games, and no barriers to entry. Sell your car, your way.
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/ahadsyed2/CSC190-191-RUNTIME-TERRORS-MASTER/tree/main/website"><strong>Explore the Project »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
   </p>
 </div>
 
@@ -57,38 +33,43 @@
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
+    <a href="#preface">Preface</a>
+    </li>
+    <li>
+    <a href="#about-the-project">About The Project</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
     <li>
-      <a href="#getting-started">Getting Started</a>
+      <a href="#developer-instructions">Developer Instructions</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
+    <li><a href="#testing">Testing</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#deployment">Deployment</a></li>
     <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li><a href="#supported-platforms">Supported Platforms</a></li>
+    <li><a href="#additional-information">Additional Information</a></li>
   </ol>
 </details>
 
+<!-- PREFACE -->
+## Preface
+
+This is a student senior project for the California State University of Sacramento. Any and all development of this project will end by May 12th, 2024. 
 
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+Carmony is a second-hand automotive retail marketplace aiming to create a consumer-friendly alternative in the online space. Carmony removes initial or recurring fees from private individuals just trying to access the site. Instead, the large focus on getting partnered dealerships involved allows the burden of operation to be shifted. The focus on connecting private individuals and dealerships also allows for a more secure, online individual-to-business opportunity instead of the oversaturated individual-to-individual ecosystems. Additionally, Carmony is focused on protecting sensitive user data from data harvesters, unlike other competitors. 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 ### Built With
@@ -97,40 +78,41 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 * [![Express][Express.js]][Express.js-url]
 * [![React][React.js]][React-url]
 * [![Node][Node.js]][Node.js-url]
+* [![vsc][vsc]][vsc-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
-<!-- GETTING STARTED -->
-## Getting Started
+<!-- Dev Instructions -->
+## Developer Instructions
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+To get a local copy up and running, complete the following steps. 
+However, please note that this project is still in active development. Prerequisites and installation instructions are still being iterated upon and will be updated once they are in a stable position.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
+Make sure to have Express.js, React, and Node.js installed to their latest versions
   ```sh
   npm install npm@latest -g
+  npm install express
+  npm install react
   ```
+Make sure to create your own MongoDB deployment and follow their connection instructions for connecting to MongoDB by 'Driver' and receive your connection string. 
+Additionally, install the MongoDB extension on your IDE. For Visual Studio Code proceed with the following:
+1. Open VSC
+2. Click extensions on the left menu bar
+3. Search for MongoDB in the search bar and click install
+4. Copy your connection string and authentication information into the ".env" file in the backend folder [here](https://github.com/ahadsyed2/CSC190-191-RUNTIME-TERRORS-MASTER/blob/main/website/backend/.env).
 
+If you do not have Node.js or the Node Package Manager installed, you can download them [here](https://nodejs.org/en). NPM comes with Node.js so there is no need to worry about a second download. 
+
+<!-- INSTALLATION -->
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/github_username/repo_name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
+Installation Packages pending...
+Please wait for updates...
+   
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -139,74 +121,105 @@ This is an example of how to list things you need to use the software and how to
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+To run the program in a testing environment, you must have followed the **Prerequisites** and **Installation** instructions. 
+| :warning: It is your responsibility to ensure your environment, database connection, extensions, and installed software are all correctly installed before using the program. Otherwise, the program will not work. :warning: |
+| --- |
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+1. Open your development environment
+2. Using the terminal, move into the ***backend*** folder and run
+```
+npm start
+```
+3. Open up a second shell in your terminal and repeat the same command but inside of the ***frontend*** folder
+4. A web browser window should automatically open with the locally running program with an active connection to your MongoDB database. 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+
+<!-- Testing -->
+## Testing
+
+Not Currently Available...
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
+- [ ] Build out front-end more front-end interfaces
+  - [ ] Profile, Create-a-post, edit-post, dealer sign-in / login, payment, "My Deals" manager pages
+- [ ] Backend Connections
+    - [ ] Finish connecting the front-end interface to the backend database for current pages
+      - [ ] Repeat with each subsequent new page
+    - [ ] Stress and optimization testing
+    - [ ] Gather data to readjust hosting resource estimates
+- [ ] UI Overhaul
+    - [ ] Implement a CSS framework
+    - [ ] Refine User experience and application flow
+    - [ ] Establish a consistent style
 
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+See the [open issues](https://github.com/ahadsyed2/CSC190-191-RUNTIME-TERRORS-MASTER/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+
+<!-- Deployment -->
+## Deployment
+
+Deployment date TBD
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- DIAGRAMS -->
+## Diagrams
+<p align="center">
+  <img src="images/Diagram.png" alt="diagram" width="450" height="300">
+</p>
+<p align="center">
+  <img src="images/erd.JPG" alt="erd" width="450" height="300">
+</p>
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- SCREENSHOTS -->
+## Screenshots
+<p align="center">Current front-end UI (WIP)</p><p align="center">
+    <img src="images/Demo.png" alt="Logo" width="500" height="300">
+</p>
 
 
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+No License is currently available nor is it guaranteed to be available. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
-<!-- CONTACT -->
-## Contact
+<!-- Supported Platforms -->
+## Supported-Platforms
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+* **Windows 10/11** and **MacOS** are supported.
+* Any widely used IDE should work but we are using [**VSC**](https://code.visualstudio.com/)
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
 <!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
+## Additional-Information
 
+* None Currently
+<!--* []()
 * []()
-* []()
-* []()
+* []() -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 
 
@@ -221,10 +234,12 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 [issues-shield]: https://img.shields.io/github/issues/ahadsyed2/CSC190-191-RUNTIME-TERRORS-MASTER.svg?style=for-the-badge
 [issues-url]: https://github.com/ahadsyed2/CSC190-191-RUNTIME-TERRORS-MASTER/issues
 [license-shield]: https://img.shields.io/github/license/ahadsyed2/CSC190-191-RUNTIME-TERRORS-MASTER.svg?style=for-the-badge
-[license-url]: https://github.com/ahadsyed2/repo_name/blob/master/LICENSE.txt
+[license-url]: https://github.com/ahadsyed2/CSC190-191-RUNTIME-TERRORS-MASTER/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [product-screenshot]: images/screenshot.png
+[Christmas]:https://img.shields.io/badge/Days_until-Christmas-red?style=for-the-badge&labelColor=009c27&color=9c0a00
+[Christmas-url]: https://www.calendarr.com/united-states/countdown/christmas-day/
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
@@ -237,15 +252,5 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 [vsc-url]: https://code.visualstudio.com/
 [Express.js]: https://img.shields.io/badge/Express.js-404D59?style=for-the-badge
 [Express.js-url]: https://expressjs.com/
-[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
-[Vue-url]: https://vuejs.org/
-[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[Angular-url]: https://angular.io/
-[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[Svelte-url]: https://svelte.dev/
-[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
-[Laravel-url]: https://laravel.com
-[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[Bootstrap-url]: https://getbootstrap.com
-[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com 
+[vsc]: https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white
+[vsc-url]: https://code.visualstudio.com/

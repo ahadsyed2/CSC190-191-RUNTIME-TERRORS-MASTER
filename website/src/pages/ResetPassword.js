@@ -26,7 +26,7 @@ function ResetPassword() {
                     <input type={show ? 'text' : 'password'} placeholder="" required />
             </div>
 
-            <div className="show-password-toggle">
+            <div className="show-password">
               <label>
                 <input type="checkbox" checked={show} onChange={handleShow} />
                 <h5>Show Password</h5>

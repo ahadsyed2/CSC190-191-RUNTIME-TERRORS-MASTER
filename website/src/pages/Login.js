@@ -4,23 +4,39 @@ import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import { hamburgerMenu } from './hamburgerMenu';
 import { IconContext } from 'react-icons';
-import './Login.css';
-import Facebooklogin from './Facebooklogin'
-import {LoginSocialFacebook} from 'reactjs-social-login';
-import {FacebookLoginButton} from 'react-social-login-buttons'
+import './Login.css'
+import { useLogin } from '../hooks/useLogin';
 
 function Login() {
 
-    const [sidebar, setSidebar] = useState(false) 
+    //TESTING, 
 
+    
+
+
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const{login, error, isLoading} = useLogin()
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        //fires login function in useLogin after email and password have been entered
+        await login(email,password)
+        //console.log(email,password)
+    }
+
+
+
+    //TESTING
+
+    const [sidebar, setSidebar] = useState(false) 
     /*setSidebar=update*/ /*false means the current value is not showing*/
     const showSidebar = () =>  setSidebar(!sidebar)
     /* utilize set side bar and this is going to update the value to whatever the opposite of it is currently*/
     /*(!sidebar) it's reversing the value true/false*/
-    const [profile,setProfile]=useState(null);
 
     return (
-<>
+        <>
         <IconContext.Provider value= {{color: '#fff'}}>
             <div className='navbar'>
                 <Link to="#" className='hamburger-bars'>
@@ -53,49 +69,60 @@ function Login() {
         </nav>
         </IconContext.Provider>
 
-
-
-<section className="container">
+        <section className="container">
             <div className="login-box">
-                <form action="">
                     <h1>Welcome!</h1>
                     <h3>Log in to access your Carmony account.</h3>
                     <div className="register-link">
-                        <h4>New to Carmony? <Link to="/Signup">Create an account</Link></h4>
+                        <p>New to Carmony? <Link to="/Signup">Create an account</Link></p>
                     </div>
-                    <div className="input-box">
-                        <input type="text" placeholder="Username" required />
-                    </div>
-                    <div className="input-box">
-                        <input type="password" placeholder="Password" required />
-                    </div>
+                    
+                    <form className = "input-box" onSubmit = {handleSubmit}>
+                     
+
+                        <label>Email</label>
+                         <input
+                            type = "email"
+                            
+                            onChange={(e) => setEmail(e.target.value)}
+                            value = {email}
+                        />
+
+                        <label>Password</label>
+                        <input
+                            type = "password"
+                            onChange={(e) => setPassword(e.target.value)}
+                            value = {password}
+                            />
+
+                        <button disabled = {isLoading}>Login</button>
+                        {error && <div className  = "error">{error} </div>}
+                    </form>
+
+
+
+
 
                     <div className="remember-forgot">
-                        <label><input type="checkbox" /> Remember me</label>
+                        <label><input type="checkbox" />Remember me</label>
                         <Link to="/ForgotPassword">Forgot password?</Link>
                     </div>
 
-                    <button type="submit" className="btn">Login</button>
-
-                    <div className="social-connect">
-                        <button>
-                            <img src="https://seeklogo.com/images/F/facebook-icon-logo-819DD0A07B-seeklogo.com.png" alt="Facebook" />
-                            <Link to="/Facebooklogin">Continue with Facebook</Link>
-                        
-                        </button>
-                        <button>
-                            <img src="https://www.deliverlogic.com/wp-content/uploads/2021/04/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png" alt="Google" />
-                            Continue with Google
-                        </button>
-                        <button>
-                            <img src="https://i.pinimg.com/originals/1e/c1/1a/1ec11a869384bc5e59625bac39b6a099.png" alt="Apple" />
-                            Continue with Apple
-                        </button>
-                    </div>
-                </form>
             </div>
         </section>
-        </>
-);
+
+     </>
+  );
 }
+
 export default Login
+
+
+
+
+//  <div className="input-box">
+//<input type="text" placeholder="Username" required />
+//</div>
+//<div className="input-box">
+   // <input type="password" placeholder="password" required />
+//</div>
