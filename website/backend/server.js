@@ -19,6 +19,9 @@ app.use(express.json());
 // Routes
 app.use('/api/userRoutes', userRoutes);
 app.use('/api/postingRoutes', postingRoutes);
+app.use('/api/profile', profileRoutes);
+app.use('/api/postRoutes', postRoutes); //I used this for home page -Nick
+
 
 
 
