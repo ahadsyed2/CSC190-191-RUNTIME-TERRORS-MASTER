@@ -1,3 +1,4 @@
+
 const express = require('express');
 const router = express.Router();
 const Posting = require('../models/postingModel');
@@ -55,6 +56,7 @@ function sanitizeFilter(file, cb) {
     cb("Error: File type not allowed!");
   }
 }
+
 
 // Route to handle the creation of a new posting
 const posting = async (req, res) => {
@@ -114,7 +116,7 @@ const posting = async (req, res) => {
   }
 };
 
-// Export the posting function to postingRoutes
+
 module.exports = { posting };
 
-//wtf
+

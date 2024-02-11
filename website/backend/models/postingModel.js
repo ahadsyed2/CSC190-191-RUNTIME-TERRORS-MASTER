@@ -8,6 +8,7 @@ const postingSchema = new mongoose.Schema({
   make: {
     type: String,
     //required: true,
+
   },
   model: {
     type: String,

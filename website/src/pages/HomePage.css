@@ -43,6 +43,7 @@
   top: 0;
   left: -100%; /*display the hamburgerMenu bar*/
   transition: 850ms;
+  z-index: 2; /* Set a higher z-index value */
 }
 
 .nav-menu.active {
@@ -105,7 +106,6 @@ span {
   padding: 0px 6px 0px 0px;
 
 }
-
 .Post ul {
   width: 185px;
   display: flex;
