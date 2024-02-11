@@ -116,3 +116,5 @@ const posting = async (req, res) => {
 
 // Export the posting function to postingRoutes
 module.exports = { posting };
+
+//wtf
