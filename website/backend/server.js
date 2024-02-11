@@ -2,14 +2,10 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 
-
 const userRoutes = require('./routes/userRoutes');
 const postingRoutes = require('./routes/postingRoutes');
 
 const app = express();
-
-
-
 
 // Middleware to log path and request type
 app.use((req, res, next) => {
@@ -37,5 +33,3 @@ mongoose
   .catch((error) => {
     console.log(error);
   });
-
-
