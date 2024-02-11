@@ -1,0 +1,31 @@
+.MainContainer{
+  display: flex;
+  flex-direction: row;
+  background-color: yellow;
+  justify-content: center;
+  height: 55rem;
+}
+
+.LeftContainer{
+  background-color: red;
+  margin-right: 40%;
+  padding: 15px;
+}
+
+.RightContainer{
+  background-color: green;
+  padding: 15px;
+}
+
+.DisplayName{
+  background-color: aqua;
+  margin: auto;
+}
+
+.profilePicture{
+  height: 120px;
+  width: 120px;
+  background-color: brown;
+  border-radius: 50%;
+  display: inline-block;
+}

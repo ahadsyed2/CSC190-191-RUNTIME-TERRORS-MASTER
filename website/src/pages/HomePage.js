@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { hamburgerMenu } from '../components/hamburgerMenu';
 import { FaBars } from "react-icons/fa";
@@ -10,6 +10,7 @@ import { BsFillArrowRightSquareFill } from "react-icons/bs";
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
 import NavbarMenu from '../components/navbarMenu';
 import './HomePage.css';
+import { usePostContext } from '../hooks/usePostContext';
 
 
 const HomeIndex = () => {
@@ -250,6 +251,37 @@ const HomeIndex = () => {
     });
   };
 
+
+    //Saving post document so it can be called in "CarInfo" page
+    //-Nick
+    const handlePostBoxClick = (id) =>{
+      if(id == undefined){
+        id = -1;
+      }
+      //Not ideal solution but having trouble with URL method
+      localStorage.setItem("post",id);
+    }
+  
+    //Pulling and Showing Posts from Database Section
+  
+    const {posts, dispatch} = usePostContext()
+  
+    useEffect(() => {
+      const fetchPosts = async () => {
+        const response = await fetch('/api/postRoutes')
+        const json = await response.json()
+  
+        if(response.ok){
+          console.log('response Ok')
+          dispatch({type: 'SET_POSTS', payload: json})
+        }
+      }
+      
+      fetchPosts()
+    })
+  
+  
+  
 
   return (
     <section>
@@ -530,8 +562,62 @@ const HomeIndex = () => {
             </div>
           </div>
 
+
+           {/* Infinite Get Requests, whoops, probably bc of fetch() or backend server.js*/}
           <div className="container">
             <div className="products-con">
+
+              {/*{ posts ? 'Posts' : 'No Posts'}*/}
+              {/* Start Posting Box */}
+              
+              {/* Basically a For each loop */}
+              {posts && posts.map((post) =>(
+
+                <a href="/Post" onClick={() => { handlePostBoxClick(post.postID) }}>
+                  <div className="test2" key={post.id}>
+
+                    <div className='products-item'>
+                      <div className='products-img'>
+                      { /* Need to be able to pull image from DB */ }
+                        <img
+                        src="https://images.offerup.com/4uQVF_BU-_3APQkmUNUmGB3xqhE=/1280x960/d3ed/d3ed001efeac469097afcb8638e4ca76.jpg"
+                        alt="Picture Failure"
+                        />
+                      </div>
+                    
+                      <div className='products-detail'>
+                        <h3>{post.year} {post.make} {post.model}</h3>
+                      </div>
+                      <div className='products-price'>
+                        <div className='products-left'>
+                          <h3>${post.price}</h3>
+                        </div> 
+                      </div>
+                      <div className='meleage-city'>
+                        <div className='mileage'>
+                          <div className='mileage-left'>
+                            <div className='mile-image'>
+                              <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
+                            </div>
+                            <h4>{post.mileage} Miles</h4>
+                          </div>
+                        </div>
+                        <div className='city'>
+                          <div className='city-right'>
+                            <h4>{post.location}</h4>
+                          </div>
+                        </div>
+                      </div>
+                    
+                    </div>
+                  </div> 
+                  
+                </a>
+                ))}
+                {/* End Posting Box */}
+
+
+                
 
               <a href="CarInfo">
               <div className="products-item">

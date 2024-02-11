@@ -27,6 +27,11 @@ app.use('/api/userRoutes', userRoutes)
 //recieve and execute requests from posting page
 app.use('/api/postingRoutes', postingRoutes)
 
+//recieve and execute requests from posting page
+app.use('/api/postRoutes', postRoutes)
+
+//recieve and execute requests from profile page
+app.use('/api/profile', profileRoutes)
 
 //app.get('/', (req,res) => {
 
