@@ -6,9 +6,39 @@ import { hamburgerMenu } from './hamburgerMenu';
 import { IconContext } from 'react-icons';
 import NavbarMenu from '../components/navbarMenu';
 import './ProfilePage.css'
+import { useEffect} from 'react';
 import { useProfileContext } from '../hooks/useProfileContext';
+import { useAuthContext } from '../hooks/useAuthContext';
+
+//const bcrypt = require('bcrpt');
+//Use bcrypt to use email to generate a "user_id" field in profile doc
 
 const ProfilePage = () => {
+  //Destructuring to get to what we need
+  const {profiles, dispatch} = useProfileContext()
+
+  //Need to change this later so it brings you to other's profiles too
+  const { user } = useAuthContext()
+  //const id = user.profile_id
+  //console.log(user.email)
+
+  useEffect(() => {
+    const fetchProfiles = async () => {
+      //Needs to be changed for deployment; Will only work for development Net Ninja MERN #9
+      //Need CORS in backend
+      //const string = '/api/profile/'
+      //const response = await fetch(string.concat('1'))
+      const response = await fetch('/api/profile')
+      const json  = await response.json()
+
+      if(response.ok){
+        dispatch({type: 'SET_PROFILES', payload: json})
+      }
+    }
+
+      fetchProfiles()
+
+  })
 
   const [sidebar, setSidebar] = useState(false);
 
@@ -17,6 +47,7 @@ const ProfilePage = () => {
   };
 
   const displayName = "Display Name";
+  
 
   return(
     <section>
@@ -54,6 +85,10 @@ const ProfilePage = () => {
         </nav>
       </IconContext.Provider>
       <div className="MainContainer">
+        {/* Looks through all accounts until it finds matching email */}
+        {profiles && profiles.map((profile) => (
+          <p>Dude</p>
+        ))}
         <div className="LeftContainer">
           <div className="DisplayName"> { displayName } </div>
           <span className='profilePicture'></span>
@@ -65,6 +100,6 @@ const ProfilePage = () => {
     </section>
   )
 
-}
+} 
 
 export default ProfilePage;

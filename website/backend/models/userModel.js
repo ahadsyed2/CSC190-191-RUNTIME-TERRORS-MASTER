@@ -19,6 +19,11 @@ const userSchema = new Schema({
             type: String,
             required: true
 
+        },
+
+        profile_id:{
+            type: String,
+            required: false
         }
 
 

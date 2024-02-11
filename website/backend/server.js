@@ -2,7 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const userRoutes = require ('./routes/userRoutes')
-const postingRoutes = require('./routes/postingRoutes')
+const postRoutes = require('./routes/postRoutes')
 const profileRoutes = require('./routes/profileRoutes')
 
 
@@ -26,10 +26,10 @@ app.use((req, res, next) => {
 app.use('/api/userRoutes', userRoutes)
 
 //recieve and execute requests from posting page
-app.use('/api/postingRoutes', postingRoutes)
+app.use('/api/postRoutes', postRoutes)
 
 //recieve and execute requests from profile page
-app.use('/api/profileRoutes', profileRoutes)
+app.use('/api/profile', profileRoutes)
 
 
 //app.get('/', (req,res) => {

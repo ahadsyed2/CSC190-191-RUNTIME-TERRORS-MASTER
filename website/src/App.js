@@ -12,6 +12,7 @@ import Posting from './pages/Posting';
 import ForgotPassword from './pages/ForgotPassword'
 import ResetPassword from './pages/ResetPassword'
 import ProfilePage from './pages/ProfilePage'
+import ViewPost from './pages/ViewPost';
 
 
 
@@ -28,6 +29,7 @@ function App() {
           <Route path='/Signup' Component={Signup} />
           <Route path='/Posting' Component={Posting} />
           <Route path='/Profile' Component={ProfilePage} />
+          <Route path='/Post' Component={ViewPost} />
           <Route path='ForgotPassword' Component={ForgotPassword} />
           <Route path='ResetPassword' Component={ResetPassword} />
         </Routes>

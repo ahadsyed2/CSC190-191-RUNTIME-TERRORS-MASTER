@@ -19,21 +19,30 @@ const getProfile = async (req, res) => {
   res.status(200).json(profile)
 }
 
+const getAllProfiles = async (req, res) => {
+  const profiles = await Profile.find({}).sort({createdAt: -1})
+
+  res.status(200).json(profiles)
+}
+
 const createProfile = async (req, res) => {
 
   res.status(200)
 }
 
-const updateProfile = async (red, res) => {
+const updateProfile = async (req, res) => {
 
+  res.status(200)
 }
 
-const deleteProfile = async (red, res) => {
+const deleteProfile = async (req, res) => {
 
+  res.status(200)
 }
 
 module.exports = {
   getProfile,
+  getAllProfiles,
   createProfile,
   updateProfile,
   deleteProfile
