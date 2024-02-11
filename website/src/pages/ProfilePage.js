@@ -86,9 +86,17 @@ const ProfilePage = () => {
       </IconContext.Provider>
       <div className="MainContainer">
         {/* Looks through all accounts until it finds matching email */}
+        {/* Not Optimal but is a working solution*/}
+        {/* For other devs, if you want to call a field in 'profile' document, it must be in 
+        this for each loop (the map) and you must give a key like shown below*/}
         {profiles && profiles.map((profile) => (
-          <p>Dude</p>
+          <p key={profile._id}>{
+
+              profile.email == user.email ? <p key={profile._id}>{profile.display_name}</p> : ''
+
+          }</p>
         ))}
+        
         <div className="LeftContainer">
           <div className="DisplayName"> { displayName } </div>
           <span className='profilePicture'></span>
