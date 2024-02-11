@@ -5,6 +5,7 @@ import { AiOutlineClose } from 'react-icons/ai';
 import { hamburgerMenu } from './hamburgerMenu';
 import { BsUpload } from 'react-icons/bs';
 import { IconContext } from 'react-icons';
+import  usePosting  from '../hooks/usePosting';
 import './Posting.css';
 
 const options = [
@@ -22,14 +23,109 @@ const options = [
 function Posting() {
   const [sidebar, setSidebar] = useState(false);
   const showSidebar = () => setSidebar(!sidebar);
+  //message if form is submitted successfully
+  const [successMessage, setSuccessMessage] = useState('');
+
 
   const [isActive, setIsActive] = useState(false);
   const [selected, setSelected] = useState('Vehicle Type');
 
+  //NEW FUNCTIONS FOR BACKEND- Ahad
+  const { createPosting, isLoading, error } = usePosting();
+
+  const [formData, setFormData] = useState({
+    vehicleType: '',
+    make: '',
+    model: '',
+    year: '',
+    price: '',
+    location: '',
+    description: '',
+    image: null, // You might want to store the file or image URL here
+    imagePreview: null,
+  });
+
+  //update the selected state and hide dropdown list after selection
   const handleSelect = (option) => {
     setSelected(option);
     setIsActive(false);
+
+    setFormData({
+      ...formData,
+      vehicleType: option,
+    });
   };
+
+  //set the current formData attribute(name) to the new value
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  //image file capturing
+  const handleFileChange = (e) => {
+  const file = e.target.files[0];
+  console.log('Selected File:', file);
+
+  
+    // Display image preview
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setFormData({
+        ...formData,
+        image: file ? URL.createObjectURL(file) : null,
+        imagePreview: reader.result, // Add this to your state
+      });
+    };
+    reader.readAsDataURL(file);
+  };
+
+
+  //HANDLE SUBMISSION
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      // Call the createPosting function from usePosting hook
+      const result = await createPosting(formData);
+
+      if (result) {
+        // Handle success (e.g., redirect or show a success message)
+        console.log('Posting created:', result);
+        // Update success message if the form is submitted successfully
+         setSuccessMessage('Posting created successfully!');
+        // Reset success message after a few seconds
+        setTimeout(() => {
+        setSuccessMessage(null);
+        }, 5000); 
+
+
+
+        // reset the form after a successful submission
+        setFormData({
+          vehicleType: '' ,
+          make: '',
+          model: '',
+          year: '',
+          price: '',
+          location: '',
+          description: '',
+          image: null,
+        });
+      } else {
+        // Handle error (e.g., show an error message)
+        console.error('Failed to create posting:', error);
+      }
+    } catch (error) {
+      console.error('An unexpected error occurred:', error);
+    }
+  };
+
+  
+
 
   return (
     <>
@@ -63,12 +159,15 @@ function Posting() {
         </nav>
       </IconContext.Provider>
 
+      
+
       <section className='car-listing-info'>
         <h1>Enter information for your listing</h1>
           <div className='container-box'>
             <div className='leftside-box'>
-              <form action="">
+              <form onSubmit={handleSubmit} encType='multipart/form-data'>
                 <h1>About the Vehicle</h1>
+
                 <div className='vehicle-dropdown'>
                   <div className='dropdown-box' onClick={() => setIsActive(!isActive)}>
                     {selected}
@@ -91,57 +190,131 @@ function Posting() {
 
                 <div className="listing-box">
                   <div className='listing-details'>
-                    <div className="make-box">
-                      <h2>Enter Make: </h2><input type="text" placeholder="Enter make" required />
-                    </div>
 
-                    <div className="model-box">
-                      <h2>Enter Model: </h2><input type="text" placeholder="Enter model" required />
-                    </div>
-                    <div className="year-box">
-                      <h2>Enter Year: </h2><input type="text" placeholder="Enter year" required />
-                    </div>
-
-                    <div className="price-box">
-                      <h2>Enter Price: $ </h2><input type="text" placeholder="Enter price..." required />
-                    </div> 
-
-                    <div className="location-box">
-                      <h2>Enter Location: </h2><input type="text" placeholder="Enter Location" required />
-                    </div>
-
-                    <div className="description-box">
-                      <h2>Description: </h2><input type="text" placeholder="" required />
-                    </div>
-
-                    <div className='photo-upload'>
-                      <h2>Upload image</h2>
-                      <BsUpload />
-
+                    <div className='make-box'>
+                      <h2>Enter Make: </h2>
                       <input
-                      type="file"
-                      id="image"
-                      name="image"
-                      accept="image/*"
+                        type='text'
+                        name='make'
+                        placeholder='Enter make'
+                        value={formData.make}
+                        onChange={handleInputChange}
+                        required
                       />
                     </div>
 
-                    <button type="submit" className="btn">Submit</button>
+                    <div className='model-box'>
+                    <h2>Enter Model: </h2>
+                    <input
+                      type='text'
+                      name='model'
+                      placeholder='Enter model'
+                      value={formData.model}
+                      onChange={handleInputChange}
+                      required
+                    />
                   </div>
+
+                  <div className='year-box'>
+                    <h2>Enter Year: </h2>
+                    <input
+                      type='text'
+                      name='year'
+                      placeholder='Enter year'
+                      value={formData.year}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </div>
+
+                  <div className='price-box'>
+                    <h2>Enter Price: $ </h2>
+                    <input
+                      type='text'
+                      name='price'
+                      placeholder='Enter price...'
+                      value={formData.price}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </div>
+
+                  <div className='location-box'>
+                    <h2>Enter Location: </h2>
+                    <input
+                      type='text'
+                      name='location'
+                      placeholder='Enter Location'
+                      value={formData.location}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </div>
+
+                  <div className='description-box'>
+                    <h2>Description: </h2>
+                    <input
+                      type='text'
+                      name='description'
+                      placeholder='Enter description'
+                      value={formData.description}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </div>
+
+
+                    <div className='photo-upload'>
+                    <h2>Upload image</h2>
+                    <BsUpload />
+                    <input
+                      type='file'
+                      id='image'
+                      name='image'
+                      accept='image/*'
+                      onChange={handleFileChange}
+                      maxLength={"50mb"}
+                    />
+                    {/* Display image preview if available */}
+                    {formData.imagePreview && (
+                      <img
+                        src={formData.imagePreview}
+                        alt='Preview'
+                        style={{ maxWidth: '100%', maxHeight: '200px', marginTop: '10px' }}
+                      />
+                    )}
+
+                  </div>
+
+                  <button type='submit' className='btn' disabled={isLoading}>
+                    {isLoading ? 'Submitting...' : 'Submit'}
+                  </button>
+
+                  {successMessage && (
+                    <div className='success-message'>
+                      {successMessage}
+                    </div>
+                  )}
+
                 </div>
-              </form>
-            </div>
+              </div>
+            </form>
+          </div>
 
             <div className='righside-box'>
               <h1>Preview</h1>
 
                   <div className='preview-box'>
-                    <div className='preview-left'>
-                      <h2>Your Listing Preview</h2>
-                      <p>As you create your listing, you can preview how it will apperar</p>
-                    </div>
+          
                     <div className='preview-right'>
-                      <h2>Title</h2>
+                       {/* Display the preview based on the entered data */}
+                        <h2>{formData.vehicleType}</h2>
+                        <p>Make: {formData.make}</p>
+                        <p>Model: {formData.model}</p>
+                        <p>Year: {formData.year}</p>
+                        <p>Price: {formData.price}</p>
+                        <p>Location: {formData.location}</p>
+                        <p>Description: {formData.description}</p>
                     </div>
                   </div>
             </div>

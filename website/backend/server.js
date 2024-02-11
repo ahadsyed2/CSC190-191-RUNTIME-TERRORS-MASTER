@@ -24,6 +24,7 @@ app.use('/api/postRoutes', postRoutes); //I used this for home page -Nick
 
 
 
+
 // Connect to MongoDB and start the server
 mongoose
   .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })

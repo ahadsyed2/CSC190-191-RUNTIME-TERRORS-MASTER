@@ -9,6 +9,14 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { BsFillArrowRightSquareFill } from "react-icons/bs";
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
 import NavbarMenu from '../components/navbarMenu';
+import CarListing from '../components/CarListing';
+import CarMake from '../components/CarMake';
+import CarPrice from '../components/CarPrice';
+import CarYear from '../components/CarYear';
+import CarMileage from '../components/CarMileage';
+import { carConstants } from '../components/carConstants';
+import carComponent from '../components/carComponent';
+import { cars, routeMapping } from '../components/carConstants';
 import './HomePage.css';
 import { usePostContext } from '../hooks/usePostContext';
 
@@ -54,37 +62,8 @@ const HomeIndex = () => {
   const [checkedMileages, setCheckedMileages] = useState([]);
 
   // Car model function
-  const [cars, setCars] = useState([
-    { make: 'Toyota', model: 'Camry' },
-    { make: 'Toyota', model: 'Corolla' },
-    { make: 'Toyota', model: 'Prius' },
-    { make: 'Toyota', model: 'RAV4' },
+  
 
-    { make: 'Honda', model: 'Accord' },
-    { make: 'Honda', model: 'Civic' },
-    { make: 'Honda', model: 'CR-V' },
-    { make: 'Honda', model: 'Odyssey' },
-
-    { make: 'BMW', model: 'X1' },
-    { make: 'BMW', model: 'X3' },
-    { make: 'BMW', model: 'X5' },
-    { make: 'BMW', model: 'M3' },
-
-    { make: 'Tesla', model: 'Model 3' },
-    { make: 'Tesla', model: 'Model Y' },
-    { make: 'Tesla', model: 'Model X' },
-    { make: 'Tesla', model: 'Model S' },
-
-    { make: 'Chevrolet', model: 'Model 3' },
-    { make: 'Chevrolet', model: 'Model Y' },
-    { make: 'Chevrolet', model: 'Model X' },
-    { make: 'Chevrolet', model: 'Model S' },
-
-    { make: 'Ford', model: 'Model 3' },
-    { make: 'Ford', model: 'Model Y' },
-    { make: 'Ford', model: 'Model X' },
-    { make: 'Ford', model: 'Model S' },
-  ]);
   const [filteredResults, setFilteredResults] = useState({});
   const [filteredModelResults, setFilteredModelResults] = useState({});
   const [showModelOptions, setShowModelOptions] = useState(false);
@@ -150,7 +129,6 @@ const HomeIndex = () => {
   };
 
   const modelOptions = ['Toyota', 'Honda', 'BMW', 'Tesla', 'Chevrolet', 'Ford'];
-  //  const modelOptions = ['Camry', 'Corolla', 'Accord', 'Civic', 'X5', 'X3'];
 
   // Car make function
   const [makelOptions, setMakeOptions] = useState([]);
@@ -235,6 +213,7 @@ const HomeIndex = () => {
   };
 
 
+
   // Function to handle keyup event
   const myFunction = () => {
     const searchInput = document.getElementById('mySearch').value.toLowerCase();
@@ -283,6 +262,7 @@ const HomeIndex = () => {
   
   
 
+
   return (
     <section>
       <IconContext.Provider value={{ color: '#fff' }}>
@@ -319,7 +299,6 @@ const HomeIndex = () => {
         </nav>
       </IconContext.Provider>
 
-{/*Working on filter part(filter out cars with the dropdown options)--Janeeya Chanta*/}
       <div className="filter-container">
         <div className="filter-box">
           <div className="side-bar">
@@ -332,13 +311,7 @@ const HomeIndex = () => {
               </div>
             </div>
 
-            <input
-              type="text"
-              id="mySearch"
-              onKeyUp={myFunction}
-              placeholder="Search by Make...."
-              title="Type in a category"
-            />
+            <CarListing />
            
             <div className="myMenu">
               <div className="customer-choices">
@@ -360,7 +333,9 @@ const HomeIndex = () => {
                   {modelDropdown && (
                     <div className="dropdown-content">
                       <div>
-                        {modelOptions.map((model) => (
+                      {modelOptions.map((model) => {
+                        const make = cars.find((car) => car.model === model)?.make || '';
+                        return (
                           <div key={model}>
                             <label htmlFor={model} className="model-label">
                               <input
@@ -379,21 +354,19 @@ const HomeIndex = () => {
                                   <ul>
                                     {filteredResults[model].map((car, index) => (
                                       <li key={index}>
-                                        {car.model === 'Camry' ? 
-                                          (<Link to="/Login">{`${car.make} ${car.model}`}</Link>) 
-                                        : 
-                                          (<Link to="/Posting">{`${car.make} ${car.model}`}</Link>)
-                                        
-                                        }
+                                        {car.model in routeMapping ? (
+                                          <Link to={routeMapping[car.model]}>{`${car.make} ${car.model}`}</Link>
+                                        ) : null}
                                       </li>
                                     ))}
                                   </ul>
                                 </div>
                               </div>
                             )}
+                            <carComponent make={make} model={model} />
                           </div>
-                        ))}
-
+                        );
+                      })}
                         <div className='search'>
                           <button onClick={handleSearchClick} style={{ marginLeft: '10px' }}>
                             <p>Search</p>
@@ -407,156 +380,40 @@ const HomeIndex = () => {
                   )}
                 </li>
 
+                <CarMake
+                  makeOptions={makeOptions}
+                  checkedMake={checkedMake}
+                  handleMakeCheckboxClick={handleMakeCheckboxClick}
+                  handleMakeSearchClick={handleMakeSearchClick}
+                  handleMakeClearClick={handleMakeClearClick}
+                  makeDropdown={makeDropdown}
+                  toggleDropdown={toggleDropdown}
 
-                <li>
-                <div className="arrow-container">
-                    <h3 onClick={() => toggleDropdown('make')}>
-                      <p>Make</p>
-                      {makeDropdown ? <FaAngleUp className="arrow-icon" /> : <FaAngleDown className="arrow-icon" />}
-                    </h3>
-                  </div>
-                  {makeDropdown && (
-                    <div className="dropdown-content">
-                      {makeOptions.map((make) => (
-                        <div key={make}>
-                          <label htmlFor={`make-${make}`} className="make-label">
-                            <input
-                              type="checkbox"
-                              id={`make-${make}`}
-                              value={make}
-                              checked={checkedMake.includes(make)}
-                              onChange={() => handleMakeCheckboxClick(make)}
-                              style={{ marginRight: '5px' }}
-                            />
-                            {make === 'Toyota' && <Link to="/">{make}</Link>}
-                            {make === 'Honda' && <Link to="/">{make}</Link>}
-                            {make === 'BMW' && <Link to="/">{make}</Link>}
-                            {make === 'Tesla' && <Link to="/">{make}</Link>}
-                            {make === 'Chevrolet' && <Link to="/">{make}</Link>}
-                            {make === 'Ford' && <Link to="/">{make}</Link>}
-                          </label>
-                        </div>
-                      ))}
-                      <div className="search">
-                        <button onClick={handleMakeClearClick} style={{ marginLeft: '10px' }}>
-                          <p>Clear</p>
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                </li>
+                />
 
+                <CarYear
+                  checkedYears={checkedYears}
+                  handleYearCheckboxClick={handleYearCheckboxClick}
+                  handleYearClearClick={handleYearClearClick}
+                  yearsDropdown={yearsDropdown}
+                  toggleDropdown={toggleDropdown}
+                />
 
-                <li>
-                <div className="arrow-container">
-                    <h3 onClick={() => toggleDropdown('years')}>
-                      <p>Years</p>
-                      {yearsDropdown ? <FaAngleUp className="arrow-icon" /> : <FaAngleDown className="arrow-icon" />}
-                    </h3>
-                  </div>
-                  {yearsDropdown && (
-                    <div className="dropdown-content">
-                      {[2023, 2022, 2021, 2020, 2019, 2018].map((year) => (
-                        <div key={year}>
-                          <label htmlFor={`year-${year}`} className="year-label">
-                            <input
-                              type="checkbox"
-                              id={`year-${year}`}
-                              value={year}
-                              checked={checkedYears.includes(year)}
-                              onChange={() => handleYearCheckboxClick(year)}
-                              style={{ marginRight: '5px' }}
-                            />
-                            {year == 2023 && <Link to="/Posting">{year}</Link>}
-                            {year == 2022 && <Link to="/Posting">{year}</Link>}
-                            {year == 2021 && <Link to="/Posting">{year}</Link>}
-                            {year == 2020 && <Link to="/Posting">{year}</Link>}
-                            {year == 2019 && <Link to="/Posting">{year}</Link>}
-                            {year == 2018 && <Link to="/Posting">{year}</Link>}
-                          </label>
-                        </div>
-                      ))}
-                      <div className="search">
-                        <button onClick={handleYearClearClick} style={{ marginLeft: '10px' }}>
-                          <p>Clear</p>
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                </li>
+                <CarPrice
+                  checkedPrices={checkedPrices}
+                  handlePriceCheckboxClick={handlePriceCheckboxClick}
+                  handlePricesClearClick={handlePricesClearClick}
+                  priceDropdown={priceDropdown}
+                  toggleDropdown={toggleDropdown}
+                />
 
-                <li>
-                <div className="arrow-container">
-                    <h3 onClick={() => toggleDropdown('price')}>
-                      <p>Price</p>
-                      {priceDropdown ? <FaAngleUp className="arrow-icon" /> : <FaAngleDown className="arrow-icon" />}
-                    </h3>
-                  </div>
-                  {priceDropdown && (
-                    <div className="dropdown-content">
-                      {['$5,000 - $10,000', '$10,000 - $30,000', '$30,000 - $50,000', '$50,000 up'].map((price) => (
-                        <div key={price}>
-                          <label htmlFor={`price-${price}`} className="price-label">
-                            <input
-                              type="checkbox"
-                              id={`price-${price}`}
-                              value={price}
-                              checked={checkedPrices.includes(price)}
-                              onChange={() => handlePriceCheckboxClick(price)}
-                              style={{ marginRight: '5px' }}
-                            />
-                            {price === '$5,000 - $10,000' && <Link to="/">{price}</Link>}
-                            {price === '$10,000 - $30,000' && <Link to="/">{price}</Link>}
-                            {price === '$30,000 - $50,000' && <Link to="/">{price}</Link>}
-                            {price === '$50,000 up' && <Link to="/">{price}</Link>}
-                          </label>
-                        </div>
-                      ))}
-                      <div className="search">
-                        <button onClick={handlePricesClearClick} style={{ marginLeft: '10px' }}>
-                          <p>Clear</p>
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                </li>
-
-                <li>
-                  <div className="arrow-container">
-                    <h3 onClick={() => toggleDropdown('mileage')}>
-                      <p>Mileage</p>
-                      {mileageDropdown ? <FaAngleUp className="arrow-icon" /> : <FaAngleDown className="arrow-icon" />}
-                    </h3>
-                  </div>
-                  {mileageDropdown && (
-                    <div className="dropdown-content">
-                      {['40,000 - 60,000 miles', '60,000 - 80,000 miles', 
-                      '80,000 - 100,000 miles', '100,000 miles up'].map((mileage) => (
-                        <div key={mileage}>
-                          <label htmlFor={`mileage-${mileage}`} className="mileage-label">
-                            <input
-                              type="checkbox"
-                              id={`mileage-${mileage}`}
-                              value={mileage}
-                              checked={checkedMileages.includes(mileage)}
-                              onChange={() => handleMileageCheckboxClick(mileage)}
-                              style={{ marginRight: '5px' }}
-                            />
-                            {mileage === '40,000 - 60,000 miles' && <Link to="/">{mileage}</Link>}
-                            {mileage === '60,000 - 80,000 miles' && <Link to="/">{mileage}</Link>}
-                            {mileage === '80,000 - 100,000 miles' && <Link to="/">{mileage}</Link>}
-                            {mileage === '100,000 miles up' && <Link to="/">{mileage}</Link>}
-                          </label>
-                        </div>
-                      ))}
-                      <div className="search">
-                        <button onClick={handleMileageClearClick} style={{ marginLeft: '10px' }}>
-                          <p>Clear</p>
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                </li>
+                <CarMileage
+                  checkedMileages={checkedMileages}
+                  handleMileageCheckboxClick={handleMileageCheckboxClick}
+                  handleMileageClearClick={handleMileageClearClick}
+                  mileageDropdown={mileageDropdown}
+                  toggleDropdown={toggleDropdown}
+                />
 
               </div>
             </div>
@@ -1150,6 +1007,7 @@ const HomeIndex = () => {
                   </div>
                 </div>
                 </a>
+                
                 
             </div>
           </div>
