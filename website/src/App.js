@@ -13,6 +13,7 @@ import ForgotPassword from './pages/ForgotPassword'
 import ResetPassword from './pages/ResetPassword'
 import ProfilePage from './pages/ProfilePage'
 import ViewPost from './pages/ViewPost';
+import CarInfo from './pages/CarInfo';
 
 
 
@@ -33,6 +34,7 @@ function App() {
           <Route path='/Posting' Component={Posting} />
           <Route path='/Profile' Component={ProfilePage} />
           <Route path='/Post' Component={ViewPost} />
+          <Route path='/CarInfo' Component={CarInfo} />
         </Routes>
       </Router>
     
