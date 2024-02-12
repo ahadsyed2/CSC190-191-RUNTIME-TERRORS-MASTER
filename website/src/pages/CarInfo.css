@@ -1,0 +1,360 @@
+.navbar {
+    background-color: #000000;
+    height: 100px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.hamburger-bars {
+    margin-left: 2rem;
+    font-size: 2.7rem;
+    background: none;
+}
+.logo {
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+}
+.logo img {
+    width: 200px;
+    margin-left: 3rem;
+    padding-bottom: 80px;
+}
+
+.nav-menu {
+    background-color: #000;
+    width: 270px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: -100%; /*display the hamburgerMenu bar*/
+    transition: 850ms;
+}
+
+.nav-menu.active {
+    left: 0;
+    transition: 350ms;
+}
+
+.nav-text {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 8px 0px 8px 16px;
+    list-style: none;
+    height: 60px;
+}
+
+.nav-text a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 22px;
+    width: 85%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    border-radius: 4px;
+}
+
+.nav-text a:hover {
+    background-color: rgb(37, 39, 40);
+}
+
+.nav-menu-items {
+    width: 100%;
+}
+
+.navbar-toggle {
+    background-color: #000;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+span {
+    margin-left: 16px;
+}
+
+.car-listing-info {
+    width: 100%;
+    height: 1050px;
+
+}
+
+.car-listing-info h1 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 2rem;
+}
+
+.leftside-box {
+    width: 40%;
+    background-color: #f7f7f7;
+    box-shadow: 3px 3px 10px 6px rgba(0,0,0,0.06);
+}
+
+.listing-box {
+    display: flex; 
+    margin-left: 12rem;
+}
+
+.leftside-box h1 {
+    margin: 2rem;
+}
+
+.vehicle-dropdown {
+    width: 400px;
+    margin-top: 3rem;
+    margin-left: 15rem;
+    margin-bottom: 2rem;
+    position:relative;
+    user-select: none;
+}
+
+.vehicle-dropdown .dropdown-box {
+    padding: 15px 20px;
+    background-color: #fff;
+    box-shadow: 3px 3px 10px 6px rgba(0,0,0,0.06);
+    font-weight: bold;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 22px;
+    margin-left: 2rem;
+    width: 100%;
+}
+
+.vehicle-dropdown .dropdown-listings {
+    position: absolute;
+    top: 110%;
+    left: 0;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 3px 3px 10px 6px rgba(0,0,0,0.06);
+    font-weight: 500;
+    color: #333;
+    width: 100%;
+    font-size: 20px;
+    margin-left: 2rem;
+}
+
+.vehicle-dropdown .dropdown-listings .dropdown-item {
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.vehicle-dropdown .dropdown-listings .dropdown-item:hover {
+    background: #f4f4f4;
+}
+
+
+.make-box {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.make-box h2 {
+    font-size: 26px;
+    margin-top: 2rem;
+}
+
+.make-box input[type="text"] {
+    font-size: 16px;
+    width: 50%;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    border-radius: 20px;
+}
+
+.model-box {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.model-box h2 {
+    font-size: 26px;
+    margin-top: 2rem;
+}
+
+.model-box input[type="text"] {
+    font-size: 16px;
+    width: 50%;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    border-radius: 20px;
+}
+
+.year-box {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.year-box h2 {
+    font-size: 26px;
+    margin-top: 2rem;
+}
+
+.year-box input[type="text"] {
+    font-size: 16px;
+    width: 50%;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    border-radius: 20px;
+}
+
+.price-box {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.price-box h2 {
+    font-size: 26px;
+    margin-top: 2rem;
+}
+
+.price-box input[type="text"] {
+    font-size: 16px;
+    width: 50%;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    border-radius: 20px;
+}
+
+.location-box {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.location-box h2 {
+    font-size: 26px;
+    margin-top: 2rem;
+}
+
+.location-box input[type="text"] {
+    font-size: 16px;
+    width: 50%;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    border-radius: 20px;
+}
+
+.description-box {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.description-box h2 {
+    font-size: 26px;
+    margin-top: 5.5rem;
+}
+
+.description-box input[type="text"] {
+    font-size: 16px;
+    width: 100%;
+    height: 100px;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    border-radius: 20px;
+}
+
+.photo-upload {
+    display: flex;
+    margin-top: 3rem;   
+    align-items: center;
+}
+
+.photo-upload h2 {
+    margin-right: 1.5rem;
+}
+
+.photo-upload input {
+    margin-left: 1rem;
+    font-size: 18px;
+}
+
+.listing-details .btn{
+    width: 30%;
+    height: 8%;
+    background: #454545;
+    border:1px solid #a8a8a8;
+    color: #fff;
+    outline: none;
+    border-radius: 20px;
+    padding: 10px 0;
+    font-size: 20px;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 3rem;
+    margin-left: 8rem;
+}
+
+.container-box {
+    display: flex;
+
+}
+
+.rightside-box {
+    width: 60%;
+    background-color: #ffffff;
+    box-shadow: 3px 3px 10px 6px rgba(0,0,0,0.06);
+}
+
+.preview-box {
+    display: flex;
+    height: 100vh
+
+}
+.preview-left {
+    width: 60%;
+    background-color: #e6e6e6;
+    box-shadow: 3px 3px 10px 6px rgba(0,0,0,0.06);
+    border-radius: 80px;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    
+}
+
+.preview-left h2 {
+    text-align: center;
+    margin-top: 12rem;
+}
+
+.preview-left p {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 20px;
+}
+
+.preview-right {
+    width: 40%;
+    background-color: #ffffff;
+    box-shadow: 3px 3px 10px 6px rgba(0,0,0,0.06);
+    border-radius: 30px;
+    margin-right: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+
+.preview-right p {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.car-info-container 
+{
+    height: 100%;
+}
