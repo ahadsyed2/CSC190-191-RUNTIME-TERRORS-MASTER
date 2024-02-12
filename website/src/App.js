@@ -11,6 +11,8 @@ import Signup from './pages/Signup';
 import Posting from './pages/Posting'; 
 import ForgotPassword from './pages/ForgotPassword'
 import ResetPassword from './pages/ResetPassword'
+import CarListing from './components/CarListing'
+
 
 
 
@@ -28,6 +30,7 @@ function App() {
           <Route path='/Posting' Component={Posting} />
           <Route path='ForgotPassword' Component={ForgotPassword} />
           <Route path='ResetPassword' Component={ResetPassword} />
+          <Route path='/CarListing' Component={CarListing} />
         </Routes>
       </Router>
     
