@@ -255,14 +255,11 @@ const HomeIndex = () => {
     //2 options:
     //1- Set post.id in webpage, transfer webpages. Currently, too many renders so it fails
     //2- Have post details be a pop-up since data is already all here. 
-    const [price, setPrice] = useState("1,000");  //Testing purposes only
     const [viewingPost, setViewingPost] = useState(false);
     const [currentPost, setCurrentPost] = useState(-1);
     const [currentPostId, setCurrentPostId] = useState(-1);
 
     const handlePostBoxClick = (post, id) =>{
-      setPrice("2,000");
-      console.log(price);
 
       if(viewingPost == false){
         setCurrentPost(post);
@@ -272,7 +269,8 @@ const HomeIndex = () => {
         setCurrentPost(-1);
         setViewingPost(false);
       }
-
+      
+      //This is for changing the webpage to a unique one and passing the post.id through url
       setCurrentPostId(id);
       var href = "/post-details/" + id
       //window.location=href
@@ -651,7 +649,7 @@ const HomeIndex = () => {
                 
                 {/* End Posting Box */}
 
-
+ 
                 
 
               {/*<a href="CarInfo">
