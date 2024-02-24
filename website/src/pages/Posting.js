@@ -117,7 +117,10 @@ function Posting() {
         });
       } else {
         // Handle error (e.g., show an error message)
-        console.error('Failed to create posting:', error);
+        setSuccessMessage('Posting failed, incorrect syntax please try again' , error);
+        setTimeout(() => {
+          setSuccessMessage(null);
+          }, 5000);
       }
     } catch (error) {
       console.error('An unexpected error occurred:', error);
