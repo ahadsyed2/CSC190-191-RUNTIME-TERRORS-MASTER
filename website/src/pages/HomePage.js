@@ -262,18 +262,18 @@ const HomeIndex = () => {
     const handlePostBoxClick = (post, id) =>{
 
       if(viewingPost == false){
-        setCurrentPost(post);
-        setViewingPost(true);
+        //setCurrentPost(post);
+        //setViewingPost(true);
       }
       else if (viewingPost == true){
-        setCurrentPost(-1);
-        setViewingPost(false);
+        //setCurrentPost(-1);
+        //setViewingPost(false);
       }
       
       //This is for changing the webpage to a unique one and passing the post.id through url
       setCurrentPostId(id);
       var href = "/post-details/" + id
-      //window.location=href
+      window.location=href
     }
   
     //Pulling and Showing Posts from Database Section
@@ -590,9 +590,8 @@ const HomeIndex = () => {
               { !viewingPost && posts && posts.map((post) =>(
             /*  <span>{ setUrl("/post-details" + post.id)} </span><a href={url} onClick={() => { handlePostBoxClick() }}>  too many rerenders*/
             /*  <button href="" onClick={() => { handlePostBoxClick() }}> */
-                  <a onClick={() => { handlePostBoxClick(post) }}>
-                    <div className="test2" key={post.id}>
-
+               <div className="test2" key={post.id}> 
+                  <a onClick={() => { handlePostBoxClick(post, post._id) }}>
                       <div className='products-item'>
                         <div className='products-img'>
                         { /* Need to be able to pull image from DB */ }
@@ -625,11 +624,10 @@ const HomeIndex = () => {
                             </div>
                           </div>
                         </div>
-                      
                       </div>
-                    </div> 
                     
                   </a>
+                </div>
                 ))}
 
                 {/* We have clicked on a post and want to see 1 post */}
