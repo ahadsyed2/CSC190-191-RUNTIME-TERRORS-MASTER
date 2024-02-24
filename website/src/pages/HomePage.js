@@ -294,9 +294,9 @@ const HomeIndex = () => {
       }
       
       fetchPosts()
-    })
-  
-  
+    }, [])
+    //DO NOT REMOVE THE BRACKETS, empty dependancy array as a 2nd arg runs useEffect hook only once when component renders
+    //Will run hook again when page refreshes
   
 
   return (
@@ -616,7 +616,7 @@ const HomeIndex = () => {
                               <div className='mile-image'>
                                 <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
                               </div>
-                              <h4>{post.mileage} Miles</h4>
+                              <h4>{/*post.mileage*/} Miles</h4>
                             </div>
                           </div>
                           <div className='city'>

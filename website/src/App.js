@@ -32,7 +32,6 @@ function App() {
           <Route path='ResetPassword' Component={ResetPassword} />
           <Route path='/Posting' Component={Posting} />
           <Route path='/Profile' Component={ProfilePage} />
-          <Route path='/Post' Component={ViewPost} />
         </Routes>
       </Router>
     
