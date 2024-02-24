@@ -252,20 +252,38 @@ const HomeIndex = () => {
   };
 
 
-    //Saving post document so it can be called in "CarInfo" page
-    //-Nick
-    const handlePostBoxClick = (id) =>{
-      if(id == undefined){
-        id = -1;
+    //2 options:
+    //1- Set post.id in webpage, transfer webpages. Currently, too many renders so it fails
+    //2- Have post details be a pop-up since data is already all here. 
+    const [price, setPrice] = useState("1,000");  //Testing purposes only
+    const [viewingPost, setViewingPost] = useState(false);
+    const [currentPost, setCurrentPost] = useState(-1);
+    const [currentPostId, setCurrentPostId] = useState(-1);
+
+    const handlePostBoxClick = (post, id) =>{
+      setPrice("2,000");
+      console.log(price);
+
+      if(viewingPost == false){
+        setCurrentPost(post);
+        setViewingPost(true);
       }
-      //Not ideal solution but having trouble with URL method
-      localStorage.setItem("post",id);
+      else if (viewingPost == true){
+        setCurrentPost(-1);
+        setViewingPost(false);
+      }
+
+      setCurrentPostId(id);
+      var href = "/post-details/" + id
+      //window.location=href
     }
   
     //Pulling and Showing Posts from Database Section
   
     const {posts, dispatch} = usePostContext()
   
+    //Might be efficient if this only occured on refresh instead of always
+    //Need to limit how many get pulled with it getting more when it reaches bottom of screen or by clicking next page
     useEffect(() => {
       const fetchPosts = async () => {
         const response = await fetch('/api/postRoutes')
@@ -567,59 +585,76 @@ const HomeIndex = () => {
           <div className="container">
             <div className="products-con">
 
-              {/*{ posts ? 'Posts' : 'No Posts'}*/}
               {/* Start Posting Box */}
               
               {/* Basically a For each loop */}
-              {posts && posts.map((post) =>(
+              {/* We want to see many posts*/}
+              { !viewingPost && posts && posts.map((post) =>(
+            /*  <span>{ setUrl("/post-details" + post.id)} </span><a href={url} onClick={() => { handlePostBoxClick() }}>  too many rerenders*/
+            /*  <button href="" onClick={() => { handlePostBoxClick() }}> */
+                  <a onClick={() => { handlePostBoxClick(post) }}>
+                    <div className="test2" key={post.id}>
 
-                <a href="/Post" onClick={() => { handlePostBoxClick(post.postID) }}>
-                  <div className="test2" key={post.id}>
-
-                    <div className='products-item'>
-                      <div className='products-img'>
-                      { /* Need to be able to pull image from DB */ }
-                        <img
-                        src="https://images.offerup.com/4uQVF_BU-_3APQkmUNUmGB3xqhE=/1280x960/d3ed/d3ed001efeac469097afcb8638e4ca76.jpg"
-                        alt="Picture Failure"
-                        />
-                      </div>
-                    
-                      <div className='products-detail'>
-                        <h3>{post.year} {post.make} {post.model}</h3>
-                      </div>
-                      <div className='products-price'>
-                        <div className='products-left'>
-                          <h3>${post.price}</h3>
-                        </div> 
-                      </div>
-                      <div className='meleage-city'>
-                        <div className='mileage'>
-                          <div className='mileage-left'>
-                            <div className='mile-image'>
-                              <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
+                      <div className='products-item'>
+                        <div className='products-img'>
+                        { /* Need to be able to pull image from DB */ }
+                          <img
+                          src="https://images.offerup.com/4uQVF_BU-_3APQkmUNUmGB3xqhE=/1280x960/d3ed/d3ed001efeac469097afcb8638e4ca76.jpg"
+                          alt="Picture Failure"
+                          />
+                        </div>
+                      
+                        <div className='products-detail'>
+                          <h3>{post.year} {post.make} {post.model}</h3>
+                        </div>
+                        <div className='products-price'>
+                          <div className='products-left'>
+                            <h3>${post.price}</h3>
+                          </div> 
+                        </div>
+                        <div className='meleage-city'>
+                          <div className='mileage'>
+                            <div className='mileage-left'>
+                              <div className='mile-image'>
+                                <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
+                              </div>
+                              <h4>{post.mileage} Miles</h4>
                             </div>
-                            <h4>{post.mileage} Miles</h4>
+                          </div>
+                          <div className='city'>
+                            <div className='city-right'>
+                              <h4>{post.location}</h4>
+                            </div>
                           </div>
                         </div>
-                        <div className='city'>
-                          <div className='city-right'>
-                            <h4>{post.location}</h4>
-                          </div>
+                      
+                      </div>
+                    </div> 
+                    
+                  </a>
+                ))}
+
+                {/* We have clicked on a post and want to see 1 post */}
+                { viewingPost && (
+                    <div className='viewPostClickableArea' onClick={() => { handlePostBoxClick() }}>
+                      <div className='viewPostTextDisplay'>
+                        Viewing a Post
+                        <div>
+                          YMM: {currentPost.year} {currentPost.make} {currentPost.model}
+                        </div>
+                        <div>
+                          Price: {currentPost.price}
                         </div>
                       </div>
-                    
                     </div>
-                  </div> 
-                  
-                </a>
-                ))}
+                )}
+                
                 {/* End Posting Box */}
 
 
                 
 
-              <a href="CarInfo">
+              {/*<a href="CarInfo">
               <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -651,9 +686,9 @@ const HomeIndex = () => {
                       </div>
                     </div>
                   </div>
-                </a>
+                </a> */}
 
-                <a href="CarInfo">
+                {/*<a href="CarInfo">
                 <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -684,9 +719,9 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>
+                </a>*/}
 
-                <a href="CarInfo">
+                 {/*<a href="CarInfo">
                 <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -717,9 +752,9 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>
+                </a>*/}
 
-                <a href="CarInfo">
+                 {/*<a href="CarInfo">
                 <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -750,9 +785,9 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>
+                </a>*/}
 
-                <a href="CarInfo">
+                 {/*<a href="CarInfo">
                 <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -783,9 +818,9 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>
+                </a>*/}
 
-                <a href="CarInfo">
+                 {/*<a href="CarInfo">
                 <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -816,9 +851,9 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>
+                </a>*/}
 
-                <a href="CarInfo">
+                 {/*<a href="CarInfo">
               <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -850,9 +885,9 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>
+                </a>*/}
 
-                <a href="CarInfo">
+                 {/*<a href="CarInfo">
                 <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -883,9 +918,9 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>
+                </a>*/}
 
-                <a href="CarInfo">
+                 {/*<a href="CarInfo">
               <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -917,9 +952,9 @@ const HomeIndex = () => {
                       </div>
                     </div>
                   </div>
-                </a>
+                </a>*/}
 
-                <a href="CarInfo">
+                 {/*<a href="CarInfo">
                 <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -950,9 +985,9 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>
+                </a>*/}
 
-                <a href="CarInfo">
+                 {/*<a href="CarInfo">
                 <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -983,9 +1018,9 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>
+                </a>*/}
 
-                <a href="CarInfo">
+                 {/*<a href="CarInfo">
                 <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -1016,9 +1051,9 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>
+                </a>*/}
 
-                <a href="CarInfo">
+                 {/*<a href="CarInfo">
                 <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -1049,9 +1084,9 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>
+                </a>*/}
 
-                <a href="CarInfo">
+                 {/*<a href="CarInfo">
                 <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -1082,9 +1117,9 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>
+                </a>*/}
 
-                <a href="CarInfo">
+                 {/*<a href="CarInfo">
               <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -1116,9 +1151,9 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>
+                </a>*/}
 
-                <a href="CarInfo">
+                {/*<a href="CarInfo">
                 <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -1149,7 +1184,7 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>
+                </a>*/}
                 
             </div>
           </div>
