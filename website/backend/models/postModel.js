@@ -1,5 +1,6 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
+<<<<<<< HEAD
 const Schema = mongoose.Schema
 
   //Not currently in use
@@ -7,50 +8,45 @@ const Schema = mongoose.Schema
 
 const postSchema = new Schema({
   title: {
+=======
+const postSchema = new mongoose.Schema({
+  vehicleType: {
+>>>>>>> main
     type: String,
-    required: true
+    required: true,
   },
-  desc: {
+  make: {
     type: String,
-    required: true
+    required: true,
   },
-  list_date: {
+  model: {
     type: String,
-    required: true
+    //required: true,
+  },
+  year: {
+    type: Number,
+    //required: true,
+  },
+  price: {
+    type: String,
+    //required: true,
   },
   location: {
     type: String,
-    required: true
+   //required: true,
   },
-  vehicle_id: {
+  description: {
     type: String,
-    required: true
+    //required: true,
   },
-  seller_id: {
-    type: String,
-    required: true
+  image: {
+    type: String, // You might store the URL or file path of the uploaded image
+    //required: true,
   },
-  pictures_array: [{
-    type: String,
-    required: false
-  }],
-  ownership: [{
-    type: String,
-    required: false
-  }],
-  service_history: [{
-    type: String,
-    required: false
-  }],
-  flaws: [{
-    type: String,
-    required: false
-  }],
-  additional: {
-    type: String,
-    required: false
+  mileage: {
+    type:String,
+    //required: true
   }
-}, { timestamps: true })
+});
 
-
-module.exports = mongoose.model('Post', postSchema)
+module.exports = mongoose.model('Post', postSchema);

@@ -1,23 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { hamburgerMenu } from '../components/hamburgerMenu';
+import { hamburgerMenu2 } from '../components/hamburgerMenu2';
 import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import { IconContext } from 'react-icons';
 import { BsFillArrowRightSquareFill } from "react-icons/bs";
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
-import ThirdNavbarMenu from '../components/ThirdNavbarMenu';
 import CarListing from '../components/CarListing';
 import CarMake from '../components/CarMake';
 import CarPrice from '../components/CarPrice';
 import CarYear from '../components/CarYear';
 import CarMileage from '../components/CarMileage';
-import { cars, routeMapping } from '../components/carConstants';
-import './HomePage.css';
-import { usePostContext } from '../hooks/usePostContext';
+import SecondNavbar from '../components/SecondNavbar';
+import './AfterHome.css'
 
 
-const HomeIndex = () => {
+const AfterHome = () => {
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => {
@@ -58,8 +56,37 @@ const HomeIndex = () => {
   const [checkedMileages, setCheckedMileages] = useState([]);
 
   // Car model function
-  
+  const [cars, setCars] = useState([
+    { make: 'Toyota', model: 'Camry' },
+    { make: 'Toyota', model: 'Corolla' },
+    { make: 'Toyota', model: 'Prius' },
+    { make: 'Toyota', model: 'RAV4' },
 
+    { make: 'Honda', model: 'Accord' },
+    { make: 'Honda', model: 'Civic' },
+    { make: 'Honda', model: 'CR-V' },
+    { make: 'Honda', model: 'Odyssey' },
+
+    { make: 'BMW', model: 'X1' },
+    { make: 'BMW', model: 'X3' },
+    { make: 'BMW', model: 'X5' },
+    { make: 'BMW', model: 'M3' },
+
+    { make: 'Tesla', model: 'Model 3' },
+    { make: 'Tesla', model: 'Model Y' },
+    { make: 'Tesla', model: 'Model X' },
+    { make: 'Tesla', model: 'Model S' },
+
+    { make: 'Chevrolet', model: 'Model 3' },
+    { make: 'Chevrolet', model: 'Model Y' },
+    { make: 'Chevrolet', model: 'Model X' },
+    { make: 'Chevrolet', model: 'Model S' },
+
+    { make: 'Ford', model: 'Model 3' },
+    { make: 'Ford', model: 'Model Y' },
+    { make: 'Ford', model: 'Model X' },
+    { make: 'Ford', model: 'Model S' },
+  ]);
   const [filteredResults, setFilteredResults] = useState({});
   const [filteredModelResults, setFilteredModelResults] = useState({});
   const [showModelOptions, setShowModelOptions] = useState(false);
@@ -125,6 +152,7 @@ const HomeIndex = () => {
   };
 
   const modelOptions = ['Toyota', 'Honda', 'BMW', 'Tesla', 'Chevrolet', 'Ford'];
+  //  const modelOptions = ['Camry', 'Corolla', 'Accord', 'Civic', 'X5', 'X3'];
 
   // Car make function
   const [makelOptions, setMakeOptions] = useState([]);
@@ -208,95 +236,6 @@ const HomeIndex = () => {
     setCheckedMileages([]);
   };
 
-
-
-  // Function to handle keyup event
-  const myFunction = () => {
-    const searchInput = document.getElementById('mySearch').value.toLowerCase();
-    const items = document.querySelectorAll('.dropdown-content .model-label');
-
-    items.forEach((item) => {
-      const text = item.textContent.toLowerCase();
-
-      if (text.includes(searchInput)) {
-        item.style.display = 'block';
-      } else {
-        item.style.display = 'none';
-      }
-    });
-  };
-
-
-<<<<<<< HEAD
-    //2 options:
-    //1- Set post.id in webpage, transfer webpages. Currently, too many renders so it fails
-    //2- Have post details be a pop-up since data is already all here. 
-    const [viewingPost, setViewingPost] = useState(false);
-    const [currentPost, setCurrentPost] = useState(-1);
-    const [currentPostId, setCurrentPostId] = useState(-1);
-
-    const handlePostBoxClick = (post, id) =>{
-
-      if(viewingPost == false){     //This was for a pop-up feature. Still can be useful later
-        //setCurrentPost(post);
-        //setViewingPost(true);
-      }
-      else if (viewingPost == true){
-        //setCurrentPost(-1);
-        //setViewingPost(false);
-      }
-      
-      //This is for changing the webpage to a unique one and passing the post.id through url
-      setCurrentPostId(id);
-      var href = "/CarInfo/" + id;
-      window.location=href;
-=======
-    //Saving post document so it can be called in "CarInfo" page
-    //-Nick
-    const handlePostBoxClick = (id) =>{
-      if(id == undefined){
-        id = -1;
-      }
-      //Not ideal solution but having trouble with URL method
-      localStorage.setItem("post",id);
->>>>>>> main
-    }
-  
-    //Pulling and Showing Posts from Database Section
-  
-    const {posts, dispatch} = usePostContext()
-  
-<<<<<<< HEAD
-    //Might be efficient if this only occured on refresh instead of always
-    //Need to limit how many get pulled with it getting more when it reaches bottom of screen or by clicking next page
-=======
->>>>>>> main
-    useEffect(() => {
-      const fetchPosts = async () => {
-        const response = await fetch('/api/postRoutes')
-        const json = await response.json()
-  
-        if(response.ok){
-          console.log('response Ok')
-          dispatch({type: 'SET_POSTS', payload: json})
-        }
-      }
-      
-      fetchPosts()
-<<<<<<< HEAD
-    }, [])
-    //DO NOT REMOVE THE BRACKETS, empty dependancy array as a 2nd arg runs useEffect hook only once when component renders
-    //Will run hook again when page refreshes
-  
-
-=======
-    })
-  
-  
-  
-
-
->>>>>>> main
   return (
     <section>
       <IconContext.Provider value={{ color: '#fff' }}>
@@ -309,7 +248,7 @@ const HomeIndex = () => {
             <img src="CARMONY_ICON2.png" alt="" />
           </div>
 
-          <ThirdNavbarMenu />
+          <SecondNavbar />
         </div>
 
         <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
@@ -319,7 +258,7 @@ const HomeIndex = () => {
                 <AiOutlineClose />
               </Link>
             </li>
-            {hamburgerMenu.map((item, index) => {
+            {hamburgerMenu2.map((item, index) => {
                 return (
                     <li key={index} className={item.cName}>
                         <Link to={item.path}>
@@ -367,9 +306,7 @@ const HomeIndex = () => {
                   {modelDropdown && (
                     <div className="dropdown-content">
                       <div>
-                      {modelOptions.map((model) => {
-                        const make = cars.find((car) => car.model === model)?.make || '';
-                        return (
+                        {modelOptions.map((model) => (
                           <div key={model}>
                             <label htmlFor={model} className="model-label">
                               <input
@@ -388,19 +325,52 @@ const HomeIndex = () => {
                                   <ul>
                                     {filteredResults[model].map((car, index) => (
                                       <li key={index}>
-                                        {car.model in routeMapping ? (
-                                          <Link to={routeMapping[car.model]}>{`${car.make} ${car.model}`}</Link>
-                                        ) : null}
+                                        {car.model === 'Camry' ? (
+                                          <>
+                                            <Link to="/Login">{`${car.make} ${car.model}`}</Link>
+                                          </>
+                                        ) : car.model === 'Corolla' ? (
+                                          <>
+                                            <Link to="/Posting">{`${car.make} ${car.model}`}</Link>
+                                          </>
+                                        ) : car.model === 'Prius' ? (
+                                          <>
+                                            <Link to="/Contact">{`${car.make} ${car.model}`}</Link>
+                                          </>
+                                        ) : car.model === 'RAV4' ? (
+                                          <>
+                                            <Link to="/AboutCarmony">{`${car.make} ${car.model}`}</Link>
+                                          </>
+                                        ) : car.model === 'Accord' ? (
+                                          <>
+                                            <Link to="/AboutCarmony">{`${car.make} ${car.model}`}</Link>
+                                          </>
+                                        ) : car.model === 'Civic' ? (
+                                          <>
+                                            <Link to="/AboutCarmony">{`${car.make} ${car.model}`}</Link>
+                                          </>
+                                        ) : car.model === 'CR-V' ? (
+                                          <>
+                                            <Link to="/AboutCarmony">{`${car.make} ${car.model}`}</Link>
+                                          </>
+                                        ) : car.model === 'Odyssey' ? (
+                                          <>
+                                            <Link to="/AboutCarmony">{`${car.make} ${car.model}`}</Link>
+                                          </>
+                                        )
+                                          
+                                    
+                                        : null} 
+
                                       </li>
                                     ))}
                                   </ul>
                                 </div>
                               </div>
                             )}
-                            <carComponent make={make} model={model} />
                           </div>
-                        );
-                      })}
+                        ))}
+
                         <div className='search'>
                           <button onClick={handleSearchClick} style={{ marginLeft: '10px' }}>
                             <p>Search</p>
@@ -453,134 +423,10 @@ const HomeIndex = () => {
             </div>
           </div>
 
-
-           {/* Infinite Get Requests, whoops, probably bc of fetch() or backend server.js*/}
           <div className="container">
             <div className="products-con">
 
-<<<<<<< HEAD
-              {/* Start Posting Box */}
-              
-              {/* Basically a For each loop */}
-              {/* We want to see many posts*/}
-              { !viewingPost && posts && posts.map((post) =>(
-            /*  <span>{ setUrl("/post-details" + post.id)} </span><a href={url} onClick={() => { handlePostBoxClick() }}>  too many rerenders*/
-            /*  <button href="" onClick={() => { handlePostBoxClick() }}> */
-               <div className="test2" key={post.id}> 
-                  <a onClick={() => { handlePostBoxClick(post, post._id) }}>
-                      <div className='products-item'>
-                        <div className='products-img'>
-                        { /* Need to be able to pull image from DB */ }
-                          <img
-                          src="https://images.offerup.com/4uQVF_BU-_3APQkmUNUmGB3xqhE=/1280x960/d3ed/d3ed001efeac469097afcb8638e4ca76.jpg"
-                          alt="Picture Failure"
-                          />
-                        </div>
-                      
-                        <div className='products-detail'>
-                          <h3>{post.year} {post.make} {post.model}</h3>
-                        </div>
-                        <div className='products-price'>
-                          <div className='products-left'>
-                            <h3>${post.price}</h3>
-                          </div> 
-                        </div>
-                        <div className='meleage-city'>
-                          <div className='mileage'>
-                            <div className='mileage-left'>
-                              <div className='mile-image'>
-                                <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
-                              </div>
-                              <h4>{/*post.mileage*/} Miles</h4>
-                            </div>
-                          </div>
-                          <div className='city'>
-                            <div className='city-right'>
-                              <h4>{post.location}</h4>
-                            </div>
-=======
-              {/*{ posts ? 'Posts' : 'No Posts'}*/}
-              {/* Start Posting Box */}
-              
-              {/* Basically a For each loop */}
-              {posts && posts.map((post) =>(
-
-                <a href="/Post" onClick={() => { handlePostBoxClick(post.postID) }}>
-                  <div className="test2" key={post.id}>
-
-                    <div className='products-item'>
-                      <div className='products-img'>
-                      { /* Need to be able to pull image from DB */ }
-                        <img
-                        src="https://images.offerup.com/4uQVF_BU-_3APQkmUNUmGB3xqhE=/1280x960/d3ed/d3ed001efeac469097afcb8638e4ca76.jpg"
-                        alt="Picture Failure"
-                        />
-                      </div>
-                    
-                      <div className='products-detail'>
-                        <h3>{post.year} {post.make} {post.model}</h3>
-                      </div>
-                      <div className='products-price'>
-                        <div className='products-left'>
-                          <h3>${post.price}</h3>
-                        </div> 
-                      </div>
-                      <div className='meleage-city'>
-                        <div className='mileage'>
-                          <div className='mileage-left'>
-                            <div className='mile-image'>
-                              <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
-                            </div>
-                            <h4>{post.mileage} Miles</h4>
-                          </div>
-                        </div>
-                        <div className='city'>
-                          <div className='city-right'>
-                            <h4>{post.location}</h4>
->>>>>>> main
-                          </div>
-                        </div>
-                      </div>
-                    
-<<<<<<< HEAD
-                  </a>
-                </div>
-                ))}
-
-                {/* We have clicked on a post and want to see 1 post */}
-                { viewingPost && (
-                    <div className='viewPostClickableArea' onClick={() => { handlePostBoxClick() }}>
-                      <div className='viewPostTextDisplay'>
-                        Viewing a Post
-                        <div>
-                          YMM: {currentPost.year} {currentPost.make} {currentPost.model}
-                        </div>
-                        <div>
-                          Price: {currentPost.price}
-                        </div>
-                      </div>
-                    </div>
-                )}
-                
-                {/* End Posting Box */}
-
- 
-                
-
-              {/*<a href="CarInfo">
-=======
-                    </div>
-                  </div> 
-                  
-                </a>
-                ))}
-                {/* End Posting Box */}
-
-
-                
-
               <a href="CarInfo">
->>>>>>> main
               <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -612,9 +458,9 @@ const HomeIndex = () => {
                       </div>
                     </div>
                   </div>
-                </a> */}
+                </a>
 
-                {/*<a href="CarInfo">
+                <a href="CarInfo">
                 <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -645,9 +491,9 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>*/}
+                </a>
 
-                 {/*<a href="CarInfo">
+                <a href="CarInfo">
                 <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -678,9 +524,9 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>*/}
+                </a>
 
-                 {/*<a href="CarInfo">
+                <a href="CarInfo">
                 <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -711,9 +557,9 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>*/}
+                </a>
 
-                 {/*<a href="CarInfo">
+                <a href="CarInfo">
                 <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -744,9 +590,9 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>*/}
+                </a>
 
-                 {/*<a href="CarInfo">
+                <a href="CarInfo">
                 <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -777,9 +623,9 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>*/}
+                </a>
 
-                 {/*<a href="CarInfo">
+                <a href="CarInfo">
               <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -811,9 +657,9 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>*/}
+                </a>
 
-                 {/*<a href="CarInfo">
+                <a href="CarInfo">
                 <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -844,9 +690,9 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>*/}
+                </a>
 
-                 {/*<a href="CarInfo">
+                <a href="CarInfo">
               <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -878,9 +724,9 @@ const HomeIndex = () => {
                       </div>
                     </div>
                   </div>
-                </a>*/}
+                </a>
 
-                 {/*<a href="CarInfo">
+                <a href="CarInfo">
                 <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -911,9 +757,9 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>*/}
+                </a>
 
-                 {/*<a href="CarInfo">
+                <a href="CarInfo">
                 <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -944,9 +790,9 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>*/}
+                </a>
 
-                 {/*<a href="CarInfo">
+                <a href="CarInfo">
                 <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -977,9 +823,9 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>*/}
+                </a>
 
-                 {/*<a href="CarInfo">
+                <a href="CarInfo">
                 <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -1010,9 +856,9 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>*/}
+                </a>
 
-                 {/*<a href="CarInfo">
+                <a href="CarInfo">
                 <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -1043,9 +889,9 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>*/}
+                </a>
 
-                 {/*<a href="CarInfo">
+                <a href="CarInfo">
               <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -1077,9 +923,9 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>*/}
+                </a>
 
-                {/*<a href="CarInfo">
+                <a href="CarInfo">
                 <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -1110,8 +956,7 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>*/}
-                
+                </a>
                 
             </div>
           </div>
@@ -1134,4 +979,4 @@ const HomeIndex = () => {
   );
 };
 
-export default HomeIndex;
+export default AfterHome;

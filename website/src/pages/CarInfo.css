@@ -312,7 +312,7 @@ span {
 
 .preview-box {
     display: flex;
-    height: 80%;
+    height: 100vh;
 
 }
 .preview-left {
@@ -322,6 +322,8 @@ span {
     border-radius: 80px;
     margin-left: 2rem;
     margin-right: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .preview-left h2 {
@@ -341,9 +343,15 @@ span {
     box-shadow: 3px 3px 10px 6px rgba(0,0,0,0.06);
     border-radius: 30px;
     margin-right: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
-.preview-right h2 {
+.preview-right p {
     text-align: center;
     margin-top: 2rem;
+}
+
+.car-listing-info {
+    height: 100%;
 }

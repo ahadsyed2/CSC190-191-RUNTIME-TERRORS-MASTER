@@ -4,7 +4,10 @@ import App from './App';
 import { AuthContextProvider } from './context/AuthContext';
 import { ProfileContextProvider } from './context/ProfileContext';
 import { PostContextProvider } from './context/PostContext';
+<<<<<<< HEAD
 import { VehicleContextProvider } from './context/VehicleContext';  
+=======
+>>>>>>> main
 
 
 
@@ -14,9 +17,13 @@ root.render(
     <AuthContextProvider>
       <ProfileContextProvider>
        <PostContextProvider>
+<<<<<<< HEAD
         <VehicleContextProvider>
           <App />
         </VehicleContextProvider>
+=======
+        <App />
+>>>>>>> main
        </PostContextProvider>
       </ProfileContextProvider>
     </AuthContextProvider>

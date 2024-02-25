@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 const Post = require('../models/postingModel');
+=======
+const Post = require('../models/postModel');
+>>>>>>> main
 const mongoose = require('mongoose')
 const express = require('express');
 const router = express.Router();
