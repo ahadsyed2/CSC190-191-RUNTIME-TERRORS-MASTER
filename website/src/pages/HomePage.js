@@ -272,8 +272,8 @@ const HomeIndex = () => {
       
       //This is for changing the webpage to a unique one and passing the post.id through url
       setCurrentPostId(id);
-      var href = "/post-details/" + id
-      window.location=href
+      var href = "/CarInfo/" + id;
+      window.location=href;
     }
   
     //Pulling and Showing Posts from Database Section
