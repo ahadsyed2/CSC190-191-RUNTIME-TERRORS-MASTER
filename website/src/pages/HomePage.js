@@ -9,14 +9,6 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { BsFillArrowRightSquareFill } from "react-icons/bs";
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
 import NavbarMenu from '../components/navbarMenu';
-import CarListing from '../components/CarListing';
-import CarMake from '../components/CarMake';
-import CarPrice from '../components/CarPrice';
-import CarYear from '../components/CarYear';
-import CarMileage from '../components/CarMileage';
-import { carConstants } from '../components/carConstants';
-import carComponent from '../components/carComponent';
-import { cars, routeMapping } from '../components/carConstants';
 import './HomePage.css';
 import { usePostContext } from '../hooks/usePostContext';
 
@@ -62,8 +54,37 @@ const HomeIndex = () => {
   const [checkedMileages, setCheckedMileages] = useState([]);
 
   // Car model function
-  
+  const [cars, setCars] = useState([
+    { make: 'Toyota', model: 'Camry' },
+    { make: 'Toyota', model: 'Corolla' },
+    { make: 'Toyota', model: 'Prius' },
+    { make: 'Toyota', model: 'RAV4' },
 
+    { make: 'Honda', model: 'Accord' },
+    { make: 'Honda', model: 'Civic' },
+    { make: 'Honda', model: 'CR-V' },
+    { make: 'Honda', model: 'Odyssey' },
+
+    { make: 'BMW', model: 'X1' },
+    { make: 'BMW', model: 'X3' },
+    { make: 'BMW', model: 'X5' },
+    { make: 'BMW', model: 'M3' },
+
+    { make: 'Tesla', model: 'Model 3' },
+    { make: 'Tesla', model: 'Model Y' },
+    { make: 'Tesla', model: 'Model X' },
+    { make: 'Tesla', model: 'Model S' },
+
+    { make: 'Chevrolet', model: 'Model 3' },
+    { make: 'Chevrolet', model: 'Model Y' },
+    { make: 'Chevrolet', model: 'Model X' },
+    { make: 'Chevrolet', model: 'Model S' },
+
+    { make: 'Ford', model: 'Model 3' },
+    { make: 'Ford', model: 'Model Y' },
+    { make: 'Ford', model: 'Model X' },
+    { make: 'Ford', model: 'Model S' },
+  ]);
   const [filteredResults, setFilteredResults] = useState({});
   const [filteredModelResults, setFilteredModelResults] = useState({});
   const [showModelOptions, setShowModelOptions] = useState(false);
@@ -129,6 +150,7 @@ const HomeIndex = () => {
   };
 
   const modelOptions = ['Toyota', 'Honda', 'BMW', 'Tesla', 'Chevrolet', 'Ford'];
+  //  const modelOptions = ['Camry', 'Corolla', 'Accord', 'Civic', 'X5', 'X3'];
 
   // Car make function
   const [makelOptions, setMakeOptions] = useState([]);
@@ -213,7 +235,6 @@ const HomeIndex = () => {
   };
 
 
-
   // Function to handle keyup event
   const myFunction = () => {
     const searchInput = document.getElementById('mySearch').value.toLowerCase();
@@ -231,20 +252,36 @@ const HomeIndex = () => {
   };
 
 
-    //Saving post document so it can be called in "CarInfo" page
-    //-Nick
-    const handlePostBoxClick = (id) =>{
-      if(id == undefined){
-        id = -1;
+    //2 options:
+    //1- Set post.id in webpage, transfer webpages. Currently, too many renders so it fails
+    //2- Have post details be a pop-up since data is already all here. 
+    const [viewingPost, setViewingPost] = useState(false);
+    const [currentPost, setCurrentPost] = useState(-1);
+    const [currentPostId, setCurrentPostId] = useState(-1);
+
+    const handlePostBoxClick = (post, id) =>{
+
+      if(viewingPost == false){
+        setCurrentPost(post);
+        setViewingPost(true);
       }
-      //Not ideal solution but having trouble with URL method
-      localStorage.setItem("post",id);
+      else if (viewingPost == true){
+        setCurrentPost(-1);
+        setViewingPost(false);
+      }
+      
+      //This is for changing the webpage to a unique one and passing the post.id through url
+      setCurrentPostId(id);
+      var href = "/post-details/" + id
+      //window.location=href
     }
   
     //Pulling and Showing Posts from Database Section
   
     const {posts, dispatch} = usePostContext()
   
+    //Might be efficient if this only occured on refresh instead of always
+    //Need to limit how many get pulled with it getting more when it reaches bottom of screen or by clicking next page
     useEffect(() => {
       const fetchPosts = async () => {
         const response = await fetch('/api/postRoutes')
@@ -257,11 +294,10 @@ const HomeIndex = () => {
       }
       
       fetchPosts()
-    })
+    }, [])
+    //DO NOT REMOVE THE BRACKETS, empty dependancy array as a 2nd arg runs useEffect hook only once when component renders
+    //Will run hook again when page refreshes
   
-  
-  
-
 
   return (
     <section>
@@ -299,6 +335,7 @@ const HomeIndex = () => {
         </nav>
       </IconContext.Provider>
 
+{/*Working on filter part(filter out cars with the dropdown options)--Janeeya Chanta*/}
       <div className="filter-container">
         <div className="filter-box">
           <div className="side-bar">
@@ -311,7 +348,13 @@ const HomeIndex = () => {
               </div>
             </div>
 
-            <CarListing />
+            <input
+              type="text"
+              id="mySearch"
+              onKeyUp={myFunction}
+              placeholder="Search by Make...."
+              title="Type in a category"
+            />
            
             <div className="myMenu">
               <div className="customer-choices">
@@ -333,9 +376,7 @@ const HomeIndex = () => {
                   {modelDropdown && (
                     <div className="dropdown-content">
                       <div>
-                      {modelOptions.map((model) => {
-                        const make = cars.find((car) => car.model === model)?.make || '';
-                        return (
+                        {modelOptions.map((model) => (
                           <div key={model}>
                             <label htmlFor={model} className="model-label">
                               <input
@@ -354,19 +395,21 @@ const HomeIndex = () => {
                                   <ul>
                                     {filteredResults[model].map((car, index) => (
                                       <li key={index}>
-                                        {car.model in routeMapping ? (
-                                          <Link to={routeMapping[car.model]}>{`${car.make} ${car.model}`}</Link>
-                                        ) : null}
+                                        {car.model === 'Camry' ? 
+                                          (<Link to="/Login">{`${car.make} ${car.model}`}</Link>) 
+                                        : 
+                                          (<Link to="/Posting">{`${car.make} ${car.model}`}</Link>)
+                                        
+                                        }
                                       </li>
                                     ))}
                                   </ul>
                                 </div>
                               </div>
                             )}
-                            <carComponent make={make} model={model} />
                           </div>
-                        );
-                      })}
+                        ))}
+
                         <div className='search'>
                           <button onClick={handleSearchClick} style={{ marginLeft: '10px' }}>
                             <p>Search</p>
@@ -380,40 +423,156 @@ const HomeIndex = () => {
                   )}
                 </li>
 
-                <CarMake
-                  makeOptions={makeOptions}
-                  checkedMake={checkedMake}
-                  handleMakeCheckboxClick={handleMakeCheckboxClick}
-                  handleMakeSearchClick={handleMakeSearchClick}
-                  handleMakeClearClick={handleMakeClearClick}
-                  makeDropdown={makeDropdown}
-                  toggleDropdown={toggleDropdown}
 
-                />
+                <li>
+                <div className="arrow-container">
+                    <h3 onClick={() => toggleDropdown('make')}>
+                      <p>Make</p>
+                      {makeDropdown ? <FaAngleUp className="arrow-icon" /> : <FaAngleDown className="arrow-icon" />}
+                    </h3>
+                  </div>
+                  {makeDropdown && (
+                    <div className="dropdown-content">
+                      {makeOptions.map((make) => (
+                        <div key={make}>
+                          <label htmlFor={`make-${make}`} className="make-label">
+                            <input
+                              type="checkbox"
+                              id={`make-${make}`}
+                              value={make}
+                              checked={checkedMake.includes(make)}
+                              onChange={() => handleMakeCheckboxClick(make)}
+                              style={{ marginRight: '5px' }}
+                            />
+                            {make === 'Toyota' && <Link to="/">{make}</Link>}
+                            {make === 'Honda' && <Link to="/">{make}</Link>}
+                            {make === 'BMW' && <Link to="/">{make}</Link>}
+                            {make === 'Tesla' && <Link to="/">{make}</Link>}
+                            {make === 'Chevrolet' && <Link to="/">{make}</Link>}
+                            {make === 'Ford' && <Link to="/">{make}</Link>}
+                          </label>
+                        </div>
+                      ))}
+                      <div className="search">
+                        <button onClick={handleMakeClearClick} style={{ marginLeft: '10px' }}>
+                          <p>Clear</p>
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </li>
 
-                <CarYear
-                  checkedYears={checkedYears}
-                  handleYearCheckboxClick={handleYearCheckboxClick}
-                  handleYearClearClick={handleYearClearClick}
-                  yearsDropdown={yearsDropdown}
-                  toggleDropdown={toggleDropdown}
-                />
 
-                <CarPrice
-                  checkedPrices={checkedPrices}
-                  handlePriceCheckboxClick={handlePriceCheckboxClick}
-                  handlePricesClearClick={handlePricesClearClick}
-                  priceDropdown={priceDropdown}
-                  toggleDropdown={toggleDropdown}
-                />
+                <li>
+                <div className="arrow-container">
+                    <h3 onClick={() => toggleDropdown('years')}>
+                      <p>Years</p>
+                      {yearsDropdown ? <FaAngleUp className="arrow-icon" /> : <FaAngleDown className="arrow-icon" />}
+                    </h3>
+                  </div>
+                  {yearsDropdown && (
+                    <div className="dropdown-content">
+                      {[2023, 2022, 2021, 2020, 2019, 2018].map((year) => (
+                        <div key={year}>
+                          <label htmlFor={`year-${year}`} className="year-label">
+                            <input
+                              type="checkbox"
+                              id={`year-${year}`}
+                              value={year}
+                              checked={checkedYears.includes(year)}
+                              onChange={() => handleYearCheckboxClick(year)}
+                              style={{ marginRight: '5px' }}
+                            />
+                            {year == 2023 && <Link to="/Posting">{year}</Link>}
+                            {year == 2022 && <Link to="/Posting">{year}</Link>}
+                            {year == 2021 && <Link to="/Posting">{year}</Link>}
+                            {year == 2020 && <Link to="/Posting">{year}</Link>}
+                            {year == 2019 && <Link to="/Posting">{year}</Link>}
+                            {year == 2018 && <Link to="/Posting">{year}</Link>}
+                          </label>
+                        </div>
+                      ))}
+                      <div className="search">
+                        <button onClick={handleYearClearClick} style={{ marginLeft: '10px' }}>
+                          <p>Clear</p>
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </li>
 
-                <CarMileage
-                  checkedMileages={checkedMileages}
-                  handleMileageCheckboxClick={handleMileageCheckboxClick}
-                  handleMileageClearClick={handleMileageClearClick}
-                  mileageDropdown={mileageDropdown}
-                  toggleDropdown={toggleDropdown}
-                />
+                <li>
+                <div className="arrow-container">
+                    <h3 onClick={() => toggleDropdown('price')}>
+                      <p>Price</p>
+                      {priceDropdown ? <FaAngleUp className="arrow-icon" /> : <FaAngleDown className="arrow-icon" />}
+                    </h3>
+                  </div>
+                  {priceDropdown && (
+                    <div className="dropdown-content">
+                      {['$5,000 - $10,000', '$10,000 - $30,000', '$30,000 - $50,000', '$50,000 up'].map((price) => (
+                        <div key={price}>
+                          <label htmlFor={`price-${price}`} className="price-label">
+                            <input
+                              type="checkbox"
+                              id={`price-${price}`}
+                              value={price}
+                              checked={checkedPrices.includes(price)}
+                              onChange={() => handlePriceCheckboxClick(price)}
+                              style={{ marginRight: '5px' }}
+                            />
+                            {price === '$5,000 - $10,000' && <Link to="/">{price}</Link>}
+                            {price === '$10,000 - $30,000' && <Link to="/">{price}</Link>}
+                            {price === '$30,000 - $50,000' && <Link to="/">{price}</Link>}
+                            {price === '$50,000 up' && <Link to="/">{price}</Link>}
+                          </label>
+                        </div>
+                      ))}
+                      <div className="search">
+                        <button onClick={handlePricesClearClick} style={{ marginLeft: '10px' }}>
+                          <p>Clear</p>
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </li>
+
+                <li>
+                  <div className="arrow-container">
+                    <h3 onClick={() => toggleDropdown('mileage')}>
+                      <p>Mileage</p>
+                      {mileageDropdown ? <FaAngleUp className="arrow-icon" /> : <FaAngleDown className="arrow-icon" />}
+                    </h3>
+                  </div>
+                  {mileageDropdown && (
+                    <div className="dropdown-content">
+                      {['40,000 - 60,000 miles', '60,000 - 80,000 miles', 
+                      '80,000 - 100,000 miles', '100,000 miles up'].map((mileage) => (
+                        <div key={mileage}>
+                          <label htmlFor={`mileage-${mileage}`} className="mileage-label">
+                            <input
+                              type="checkbox"
+                              id={`mileage-${mileage}`}
+                              value={mileage}
+                              checked={checkedMileages.includes(mileage)}
+                              onChange={() => handleMileageCheckboxClick(mileage)}
+                              style={{ marginRight: '5px' }}
+                            />
+                            {mileage === '40,000 - 60,000 miles' && <Link to="/">{mileage}</Link>}
+                            {mileage === '60,000 - 80,000 miles' && <Link to="/">{mileage}</Link>}
+                            {mileage === '80,000 - 100,000 miles' && <Link to="/">{mileage}</Link>}
+                            {mileage === '100,000 miles up' && <Link to="/">{mileage}</Link>}
+                          </label>
+                        </div>
+                      ))}
+                      <div className="search">
+                        <button onClick={handleMileageClearClick} style={{ marginLeft: '10px' }}>
+                          <p>Clear</p>
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </li>
 
               </div>
             </div>
@@ -424,59 +583,76 @@ const HomeIndex = () => {
           <div className="container">
             <div className="products-con">
 
-              {/*{ posts ? 'Posts' : 'No Posts'}*/}
               {/* Start Posting Box */}
               
               {/* Basically a For each loop */}
-              {posts && posts.map((post) =>(
+              {/* We want to see many posts*/}
+              { !viewingPost && posts && posts.map((post) =>(
+            /*  <span>{ setUrl("/post-details" + post.id)} </span><a href={url} onClick={() => { handlePostBoxClick() }}>  too many rerenders*/
+            /*  <button href="" onClick={() => { handlePostBoxClick() }}> */
+                  <a onClick={() => { handlePostBoxClick(post) }}>
+                    <div className="test2" key={post.id}>
 
-                <a href="/Post" onClick={() => { handlePostBoxClick(post.postID) }}>
-                  <div className="test2" key={post.id}>
-
-                    <div className='products-item'>
-                      <div className='products-img'>
-                      { /* Need to be able to pull image from DB */ }
-                        <img
-                        src="https://images.offerup.com/4uQVF_BU-_3APQkmUNUmGB3xqhE=/1280x960/d3ed/d3ed001efeac469097afcb8638e4ca76.jpg"
-                        alt="Picture Failure"
-                        />
-                      </div>
-                    
-                      <div className='products-detail'>
-                        <h3>{post.year} {post.make} {post.model}</h3>
-                      </div>
-                      <div className='products-price'>
-                        <div className='products-left'>
-                          <h3>${post.price}</h3>
-                        </div> 
-                      </div>
-                      <div className='meleage-city'>
-                        <div className='mileage'>
-                          <div className='mileage-left'>
-                            <div className='mile-image'>
-                              <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
+                      <div className='products-item'>
+                        <div className='products-img'>
+                        { /* Need to be able to pull image from DB */ }
+                          <img
+                          src="https://images.offerup.com/4uQVF_BU-_3APQkmUNUmGB3xqhE=/1280x960/d3ed/d3ed001efeac469097afcb8638e4ca76.jpg"
+                          alt="Picture Failure"
+                          />
+                        </div>
+                      
+                        <div className='products-detail'>
+                          <h3>{post.year} {post.make} {post.model}</h3>
+                        </div>
+                        <div className='products-price'>
+                          <div className='products-left'>
+                            <h3>${post.price}</h3>
+                          </div> 
+                        </div>
+                        <div className='meleage-city'>
+                          <div className='mileage'>
+                            <div className='mileage-left'>
+                              <div className='mile-image'>
+                                <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
+                              </div>
+                              <h4>{/*post.mileage*/} Miles</h4>
                             </div>
-                            <h4>{post.mileage} Miles</h4>
+                          </div>
+                          <div className='city'>
+                            <div className='city-right'>
+                              <h4>{post.location}</h4>
+                            </div>
                           </div>
                         </div>
-                        <div className='city'>
-                          <div className='city-right'>
-                            <h4>{post.location}</h4>
-                          </div>
+                      
+                      </div>
+                    </div> 
+                    
+                  </a>
+                ))}
+
+                {/* We have clicked on a post and want to see 1 post */}
+                { viewingPost && (
+                    <div className='viewPostClickableArea' onClick={() => { handlePostBoxClick() }}>
+                      <div className='viewPostTextDisplay'>
+                        Viewing a Post
+                        <div>
+                          YMM: {currentPost.year} {currentPost.make} {currentPost.model}
+                        </div>
+                        <div>
+                          Price: {currentPost.price}
                         </div>
                       </div>
-                    
                     </div>
-                  </div> 
-                  
-                </a>
-                ))}
+                )}
+                
                 {/* End Posting Box */}
 
-
+ 
                 
 
-              <a href="CarInfo">
+              /*<a href="CarInfo">
               <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -508,9 +684,9 @@ const HomeIndex = () => {
                       </div>
                     </div>
                   </div>
-                </a>
+                </a> */
 
-                <a href="CarInfo">
+                {/*<a href="CarInfo">
                 <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -541,9 +717,9 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>
+                </a>*/}
 
-                <a href="CarInfo">
+                 {/*<a href="CarInfo">
                 <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -574,9 +750,9 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>
+                </a>*/}
 
-                <a href="CarInfo">
+                 {/*<a href="CarInfo">
                 <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -607,9 +783,9 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>
+                </a>*/}
 
-                <a href="CarInfo">
+                 {/*<a href="CarInfo">
                 <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -640,9 +816,9 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>
+                </a>*/}
 
-                <a href="CarInfo">
+                 {/*<a href="CarInfo">
                 <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -673,9 +849,9 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>
+                </a>*/}
 
-                <a href="CarInfo">
+                 {/*<a href="CarInfo">
               <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -707,9 +883,9 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>
+                </a>*/}
 
-                <a href="CarInfo">
+                 {/*<a href="CarInfo">
                 <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -740,9 +916,9 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>
+                </a>*/}
 
-                <a href="CarInfo">
+                 {/*<a href="CarInfo">
               <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -774,9 +950,9 @@ const HomeIndex = () => {
                       </div>
                     </div>
                   </div>
-                </a>
+                </a>*/}
 
-                <a href="CarInfo">
+                 {/*<a href="CarInfo">
                 <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -807,9 +983,9 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>
+                </a>*/}
 
-                <a href="CarInfo">
+                 {/*<a href="CarInfo">
                 <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -840,9 +1016,9 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>
+                </a>*/}
 
-                <a href="CarInfo">
+                 {/*<a href="CarInfo">
                 <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -873,9 +1049,9 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>
+                </a>*/}
 
-                <a href="CarInfo">
+                 {/*<a href="CarInfo">
                 <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -906,9 +1082,9 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>
+                </a>*/}
 
-                <a href="CarInfo">
+                 {/*<a href="CarInfo">
                 <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -939,9 +1115,9 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>
+                </a>*/}
 
-                <a href="CarInfo">
+                 {/*<a href="CarInfo">
               <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -973,9 +1149,9 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>
+                </a>*/}
 
-                <a href="CarInfo">
+                {/*<a href="CarInfo">
                 <div className="products-item">
                   <div className="products-img">
                     <img 
@@ -1006,8 +1182,7 @@ const HomeIndex = () => {
                     </div>
                   </div>
                 </div>
-                </a>
-                
+                </a>*/}
                 
             </div>
           </div>
