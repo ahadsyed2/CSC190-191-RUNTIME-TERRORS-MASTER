@@ -17,7 +17,7 @@ function AboutCarmony() {
   return (
       <>
       <IconContext.Provider value= {{color: '#fff'}}>
-          <div className='navbar'>
+          <div className='navbarMenu'>
             <Link to="#" className='hamburger-bars'>
                 <FaBars onClick={showSidebar} />
             </Link>
