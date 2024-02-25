@@ -5,7 +5,7 @@ const userRoutes = require ('./routes/userRoutes')
 const postingRoutes = require('./routes/postingRoutes')
 const postRoutes = require('./routes/postRoutes');
 const profileRoutes = require('./routes/profileRoutes');
-const vehicleRoutes = require('./routes/vehicleRoutes');
+//const vehicleRoutes = require('./routes/vehicleRoutes');
 
 
 //express app
@@ -34,7 +34,7 @@ app.use('/api/postRoutes', postRoutes)
 app.use('/api/profile', profileRoutes) //Does this need to be profileRoutes?
 
 //recieve and execute requests from profile page
-app.use('/api/vehicleRoutes', vehicleRoutes)
+//app.use('/api/vehicleRoutes', vehicleRoutes)
 
 //app.get('/', (req,res) => {
 

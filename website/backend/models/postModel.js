@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-<<<<<<< HEAD
 const Schema = mongoose.Schema
 
   //Not currently in use
@@ -8,10 +7,6 @@ const Schema = mongoose.Schema
 
 const postSchema = new Schema({
   title: {
-=======
-const postSchema = new mongoose.Schema({
-  vehicleType: {
->>>>>>> main
     type: String,
     required: true,
   },
