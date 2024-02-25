@@ -261,7 +261,7 @@ const HomeIndex = () => {
 
     const handlePostBoxClick = (post, id) =>{
 
-      if(viewingPost == false){
+      if(viewingPost == false){     //This was for a pop-up feature. Still can be useful later
         //setCurrentPost(post);
         //setViewingPost(true);
       }

@@ -4,6 +4,7 @@ import App from './App';
 import { AuthContextProvider } from './context/AuthContext';
 import { ProfileContextProvider } from './context/ProfileContext';
 import { PostContextProvider } from './context/PostContext';
+import { VehicleContextProvider } from './context/VehicleContext';  //Capital V file, but only happy with lowercase v??????
 
 
 
@@ -13,7 +14,9 @@ root.render(
     <AuthContextProvider>
       <ProfileContextProvider>
        <PostContextProvider>
-        <App />
+        <VehicleContextProvider>
+          <App />
+        </VehicleContextProvider>
        </PostContextProvider>
       </ProfileContextProvider>
     </AuthContextProvider>

@@ -6,11 +6,12 @@ import { BsUpload } from 'react-icons/bs';
 import { IconContext } from 'react-icons';
 import './CarInfo.css';
 import { usePostContext } from '../hooks/usePostContext';
+import { useVehicleContext } from '../hooks/useVehicleContext';
 
 function CarInfo() {
     const [sidebar, setSidebar] = useState(false);
-    const [carData, setCarData] = useState(); 
     const {posts, dispatch} = usePostContext();
+    const {vehicle, dispatchVehicle} = useVehicleContext();
     // State to hold fetched car data
 
     const showSidebar = () => setSidebar(!sidebar);
@@ -31,11 +32,10 @@ function CarInfo() {
 
     var url = full_url_4.substring(slash+1);
 
-    console.log("Full id: "+full_url_1);
-    console.log("id: "+ url);
+    //console.log("Full id: "+full_url_1);
+    //console.log("id: "+ url);
     var backend_url = "/api/postRoutes/" + url
-    console.log("backendPath = "+backend_url)
-
+    //console.log("backendPath = "+backend_url)
     
 
     // Function to fetch car data from MongoDB
@@ -49,8 +49,28 @@ function CarInfo() {
             dispatch({type: 'SET_POSTS', payload: json})
           }
         }
+
+        /*const fetchVehicle = async () => {
+
+            var vehicle_id;
+            if(posts){
+                vehicle_id = "/api/vehicleRoutes/" + posts.vehicle_id
+            } else {
+                vehicle_id = "/"
+            }
+            console.log("vehicle api call: " + vehicle_id);
+
+            const response = await fetch(vehicle_id)
+            const json = await response.json()
+      
+            if(response.ok){
+              console.log('response Ok')
+              dispatchVehicle({type: 'SET_VEHICLES', payload: json})
+            }
+          } */
         
         fetchPosts()
+        //fetchVehicle()
       }, []);
 
     return (

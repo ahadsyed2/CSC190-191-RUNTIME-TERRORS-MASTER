@@ -40,6 +40,7 @@ function Posting() {
     year: '',
     price: '',
     location: '',
+    mileage: '',
     description: '',
     image: null, // You might want to store the file or image URL here
     imagePreview: null,
@@ -112,6 +113,7 @@ function Posting() {
           year: '',
           price: '',
           location: '',
+          mileage: '',
           description: '',
           image: null,
         });
@@ -258,6 +260,18 @@ function Posting() {
                     />
                   </div>
 
+                  <div className='mileage-box'>
+                    <h2>Enter Mileage: </h2>
+                    <input
+                      type='text'
+                      name='mileage'
+                      placeholder='Enter Mileage'
+                      value={formData.mileage}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </div>
+
                   <div className='description-box'>
                     <h2>Description: </h2>
                     <input
@@ -321,6 +335,7 @@ function Posting() {
                         <p>Year: {formData.year}</p>
                         <p>Price: {formData.price}</p>
                         <p>Location: {formData.location}</p>
+                        <p>Mileage: {formData.mileage}</p>
                         <p>Description: {formData.description}</p>
                     </div>
                   </div>
