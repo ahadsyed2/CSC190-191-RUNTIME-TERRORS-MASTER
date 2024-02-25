@@ -4,18 +4,14 @@ import { hamburgerMenu } from '../components/hamburgerMenu';
 import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import { IconContext } from 'react-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { BsFillArrowRightSquareFill } from "react-icons/bs";
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
-import NavbarMenu from '../components/navbarMenu';
+import ThirdNavbarMenu from '../components/ThirdNavbarMenu';
 import CarListing from '../components/CarListing';
 import CarMake from '../components/CarMake';
 import CarPrice from '../components/CarPrice';
 import CarYear from '../components/CarYear';
 import CarMileage from '../components/CarMileage';
-import { carConstants } from '../components/carConstants';
-import carComponent from '../components/carComponent';
 import { cars, routeMapping } from '../components/carConstants';
 import './HomePage.css';
 import { usePostContext } from '../hooks/usePostContext';
@@ -266,7 +262,7 @@ const HomeIndex = () => {
   return (
     <section>
       <IconContext.Provider value={{ color: '#fff' }}>
-        <div className='navbar'>
+        <div className='navbarMenu'>
           <Link to="#" className='hamburger-bars'>
             <FaBars onClick={showSidebar} />
           </Link>
@@ -275,7 +271,7 @@ const HomeIndex = () => {
             <img src="CARMONY_ICON2.png" alt="" />
           </div>
 
-          <NavbarMenu />
+          <ThirdNavbarMenu />
         </div>
 
         <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>

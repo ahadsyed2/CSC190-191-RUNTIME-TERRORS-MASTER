@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { hamburgerMenu } from '../components/hamburgerMenu';
+import { hamburgerMenu2 } from '../components/hamburgerMenu2';
 import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import { IconContext } from 'react-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { BsFillArrowRightSquareFill } from "react-icons/bs";
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
-import NavbarMenu from '../components/navbarMenu';
 import CarListing from '../components/CarListing';
 import CarMake from '../components/CarMake';
 import CarPrice from '../components/CarPrice';
@@ -18,7 +15,7 @@ import SecondNavbar from '../components/SecondNavbar';
 import './AfterHome.css'
 
 
-const HomeIndex = () => {
+const AfterHome = () => {
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => {
@@ -242,7 +239,7 @@ const HomeIndex = () => {
   return (
     <section>
       <IconContext.Provider value={{ color: '#fff' }}>
-        <div className='navbar'>
+        <div className='navbarMenu'>
           <Link to="#" className='hamburger-bars'>
             <FaBars onClick={showSidebar} />
           </Link>
@@ -261,7 +258,7 @@ const HomeIndex = () => {
                 <AiOutlineClose />
               </Link>
             </li>
-            {hamburgerMenu.map((item, index) => {
+            {hamburgerMenu2.map((item, index) => {
                 return (
                     <li key={index} className={item.cName}>
                         <Link to={item.path}>
@@ -982,4 +979,4 @@ const HomeIndex = () => {
   );
 };
 
-export default HomeIndex;
+export default AfterHome;
