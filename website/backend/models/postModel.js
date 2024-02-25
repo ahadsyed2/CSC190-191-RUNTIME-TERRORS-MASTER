@@ -2,6 +2,9 @@ const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
 
+  //Not currently in use
+
+
 const postSchema = new Schema({
   title: {
     type: String,

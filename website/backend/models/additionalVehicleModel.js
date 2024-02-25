@@ -2,6 +2,8 @@ const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
 
+//Not Currently in use
+
 const additionalSchema = new Schema({
   transmission: {
     type: String,

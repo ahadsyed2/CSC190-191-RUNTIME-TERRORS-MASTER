@@ -2,6 +2,8 @@ const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
 
+//Not currently in use
+
 const informationSchema = new Schema({
   name: {
     type: String,
