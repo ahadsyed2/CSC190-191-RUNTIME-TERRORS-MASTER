@@ -115,6 +115,10 @@ function Posting() {
           description: '',
           image: null,
         });
+
+
+        //I added this to take you to home page -Nick
+        window.location.href = "/";
       } else {
         // Handle error (e.g., show an error message)
         setSuccessMessage('Posting failed, incorrect syntax please try again' , error);

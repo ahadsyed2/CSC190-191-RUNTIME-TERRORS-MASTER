@@ -10,13 +10,10 @@ import { usePostContext } from '../hooks/usePostContext';
 function CarInfo() {
     const [sidebar, setSidebar] = useState(false);
     const [carData, setCarData] = useState(); 
+    const {posts, dispatch} = usePostContext();
     // State to hold fetched car data
 
     const showSidebar = () => setSidebar(!sidebar);
-
-    useEffect(() => {
-        fetchData(); // Fetch data when component mounts
-    }, []);
 
     //Full path =  https://localhost:3000/CarInfo/ ID
 
@@ -39,18 +36,22 @@ function CarInfo() {
     var backend_url = "/api/postRoutes/" + url
     console.log("backendPath = "+backend_url)
 
-    const {posts, dispatch} = usePostContext()
+    
 
     // Function to fetch car data from MongoDB
-    const fetchData = async () => {
-        try {
-            const response = await fetch(backend_url); // Assuming you have an API endpoint to fetch car data
-            const data = await response.json();
-            dispatch(data); // Update state with fetched data
-        } catch (error) {
-            console.error('Error fetching data:', error);
+    useEffect(() => {
+        const fetchPosts = async () => {
+          const response = await fetch(backend_url)
+          const json = await response.json()
+    
+          if(response.ok){
+            console.log('response Ok')
+            dispatch({type: 'SET_POSTS', payload: json})
+          }
         }
-    };
+        
+        fetchPosts()
+      }, []);
 
     return (
         <>
@@ -79,22 +80,14 @@ function CarInfo() {
             {/* Display car data */}
             <section className="car-info-container">
                 <div className='preview-box'>
+                    <div className='preview-left'>
+                        
+
+                        
+                    </div>
                     <div className='preview-right'>
-
-                        {posts && posts.map((post) =>(
-
-                            <div key={post.id}>
-                                {/* <img src={post.imageUrl} alt="Car" /> */}
-                                <h3>{post.year} {post.make} {post.model}</h3>
-                                <h3>${post.price}</h3>
-
-                            </div>
-
-                         
-                            
-
-                            
-                        ))}
+                        
+                        The Make of the car is {posts && posts.make}!
 
                         {/* {carData && carData.length > 0 && carData[0].imageUrl ? (
                             <img src={carData[0].imageUrl} alt="Car" />
