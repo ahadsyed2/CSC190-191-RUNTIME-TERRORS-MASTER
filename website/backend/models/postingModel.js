@@ -3,12 +3,11 @@ const mongoose = require('mongoose');
 const postingSchema = new mongoose.Schema({
   vehicleType: {
     type: String,
-    //required: true,
+    required: true,
   },
   make: {
     type: String,
-    //required: true,
-
+    required: true,
   },
   model: {
     type: String,
@@ -26,10 +25,6 @@ const postingSchema = new mongoose.Schema({
     type: String,
    //required: true,
   },
-  mileage: {
-    type: Number,
-   //required: true,
-  },
   description: {
     type: String,
     //required: true,
@@ -38,6 +33,34 @@ const postingSchema = new mongoose.Schema({
     type: String, // You might store the URL or file path of the uploaded image
     //required: true,
   },
+  mileage: {
+    type: Number, // You might store the URL or file path of the uploaded image
+    //required: true,
+  },
+  gas: {
+    type: String, // You might store the URL or file path of the uploaded image
+    //required: true,
+  },
+  transmission: {
+    type: String, // You might store the URL or file path of the uploaded image
+    //required: true,
+  },
+  condition: {
+    type: String, // You might store the URL or file path of the uploaded image
+    //required: true,
+  },
+  color: {
+    type: String, // You might store the URL or file path of the uploaded image
+    //required: true,
+  },
+  cylinders: {
+    type: Number, // You might store the URL or file path of the uploaded image
+    //required: true,
+  },
+  features: {
+    type: String, // You might store the URL or file path of the uploaded image
+    //required: true,
+  }
 });
 
 const Posting = mongoose.model('Posting', postingSchema);

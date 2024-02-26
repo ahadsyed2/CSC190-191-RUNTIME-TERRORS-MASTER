@@ -68,8 +68,14 @@ const posting = async (req, res) => {
       year,
       price,
       location,
-      mileage,
       description,
+      mileage,
+      gas,
+      transmission,
+      condition,
+      color,
+      cylinders,
+      features
     } = req.body;
 
     console.log('posting function firing');
@@ -81,8 +87,14 @@ const posting = async (req, res) => {
       year,
       price,
       location,
-      mileage,
       description,
+      mileage,
+      gas,
+      transmission,
+      condition,
+      color,
+      cylinders,
+      features
       
     });
 
@@ -127,7 +139,6 @@ const posting = async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
-
 
 
 module.exports = { posting };
