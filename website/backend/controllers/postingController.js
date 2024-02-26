@@ -1,4 +1,3 @@
-
 const express = require('express');
 const router = express.Router();
 const Posting = require('../models/postingModel');
@@ -69,6 +68,7 @@ const posting = async (req, res) => {
       year,
       price,
       location,
+      mileage,
       description,
     } = req.body;
 
@@ -81,6 +81,7 @@ const posting = async (req, res) => {
       year,
       price,
       location,
+      mileage,
       description,
       
     });
@@ -128,6 +129,5 @@ const posting = async (req, res) => {
 };
 
 
+
 module.exports = { posting };
-
-

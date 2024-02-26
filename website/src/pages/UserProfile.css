@@ -1,591 +1,591 @@
 
 /* UserProfile.css */
 *  {margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lato' sans-serif;
+  list-style: none;
+  }
+  .UserProfile {
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Lato' sans-serif;
     list-style: none;
+      
     }
-    .UserProfile {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Lato' sans-serif;
-      list-style: none;
-        
+  
+  /* Profile page styles*/
+  
+      .user-container{
+      background:#e5e5e5;  
+      height: 2350px; 
+      top:0%; 
       }
-    
-    /* Profile page styles*/
-    
-        .user-container{
-        background:#e5e5e5;  
-        height: 2350px; 
-        top:0%; 
-        }
-        .view-account{
-        /* background:#FFFFFF; */
-        margin-top:20px;
-        }
-        .view-account .pro-label {
-            font-size: 13px;
-            padding: 4px 5px;
-            position: relative;
-            top: -5px;
-            margin-left: 10px;
-            display: inline-block;;
-            }
-        
-        .view-account .side-bar {
-        padding-bottom: 30px;
-        background-color:rgb(146, 252, 247);
-        }
-        
-        .view-account .side-bar .user-info {/*user name*/
-        text-align: center;
-        margin-bottom: 15px;
-        padding: 30px;
-        font-size: 18px;
-        color: #000000;
-        border-bottom: 1px solid #f3f3f3;
-    
-        }
-        .view-account .side-bar .user-info .meta li a{
-        font-size: 16px;
-        }
-        
-        .view-account .side-bar .user-info .img-profile {
-        width: 120px;
-        height: 120px;
-        margin-bottom: 5px;
-        }
-        
-        .view-account .side-bar .user-info .meta li {
-        margin-bottom: 20px;
-        margin-top: 5px;
-    
-        }
-        
-        .view-account .side-bar .user-info .meta li a {
-        color: #000000;
-    
-        }
-        
-        .view-account .side-bar .user-info .meta li.activity {
-        color: #2b56c3;
-        }
-        
-        .view-account .side-bar .side-menu {
-        text-align: center;
-        }
-        
-        .view-account .side-bar .side-menu .nav>li.active a {
-        color: #40babd;
-        background: none;
-        border-right: none;
-        }
-            
-        @media (max-width:767px) {
-        .view-account .content-panel .title {
-            text-align: center;
-        }
-        .view-account .side-bar .user-info {
-            padding: 0;
-        }
-        .view-account .side-bar .user-info .img-profile {
-            width: 60px;
-            height: 60px;
-        }
-        .view-account .side-bar .user-info .meta li {
-            margin-bottom: 5px;
-        }
-        .view-account .content-panel .content-header-wrapper .actions {
-            position: static;
-            margin-bottom: 30px;
-        }
-        .view-account .content-panel {
-            padding: 0;
-        }
-        .view-account .content-panel .content-utilities .page-nav {
-            position: static;
-            margin-bottom: 15px;
-        }
-        .drive-wrapper .drive-item {
-            width: 100px;
-            margin-right: 5px;
-            float: none;
-        }
-        .drive-wrapper .drive-item-thumb {
-            width: auto;
-            height: 54px
-        }
-        .drive-wrapper .drive-item-thumb .fa {
-            font-size: 24px;
-            padding-top: 0;
-        }
-        .view-account .content-panel .avatar .figure img {
-            float: none;
-            margin-bottom: 15px;
-        }
-        .view-account .file-uploader {
-            margin-bottom: 15px;
-        }
-        .view-account .mail-subject {
-            max-width: 100px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        .view-account .content-panel .mails-wrapper .mail-item .time-user-container {
-            position: static;
-        }
-        .view-account .content-panel .mails-wrapper .mail-item .time-user-container .time {
-            width: auto;
-            text-align: left;
-        }
-        }
-        
-        @media (min-width:768px) {
-        .view-account .side-bar .user-info {
-            padding: 0;
-            padding-bottom: 15px;
-        }
-        .view-account .mail-subject .subject {
-            max-width: 200px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        }
-        
-        @media (min-width:992px) {
-        .view-account .content-panel {
-            min-height: 800px;
-            border-left: 1px solid #f3f3f7;
-            margin-left: 200px;
-        }
-        .view-account .mail-subject .subject {
-            max-width: 280px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        .view-account .side-bar {/*side bar size*/
-            position: absolute;
-            width: 250px;
-            min-height: 600px;
-        }
-        .view-account .side-bar .user-info {
-            margin-bottom: 0;
-            border-bottom: none;
-            padding: 30px;
-        }
-        .view-account .side-bar .user-info .img-profile {
-            width: 120px;
-            height: 120px;
-        }
-        .view-account .side-bar .side-menu {
-            text-align: left;
-        }
-        .view-account .side-bar .side-menu .nav {
-            display: block;
-        }
-        .view-account .side-bar .side-menu .nav>li {
-            display: block;
-            float: none;
-            font-size: 14px;
-            border-bottom: 1px solid #727171;
-            margin-right: 0;
-            margin-bottom: 0;
-        }
-        /*side-bar menu, like profile, settings, billing....*/
-        .view-account .side-bar .side-menu .nav>li>a {
-            display: block;
-            color: #000000;
-            padding: 10px 15px;
-            padding-left: 30px;
-            font-size: 20px;
-            text-decoration: none;
-            margin-top: 0.5rem;
-            font-weight: 800;
-        }
-        .view-account .side-bar .side-menu .nav>li>a:hover {
-            background: #f9f9fb;
-    
-            
-        }
-        .view-account .side-bar .side-menu .nav>li.active a {
-            background: #f9f9fb;
-            border-right: 4px solid #40babd;
-            border-bottom: none;
-        }
-       
-        .view-account .side-bar .side-menu .nav>li .icon {
-            font-size: 24px;
-            vertical-align: middle;
-            text-align: center;
-            width: 40px;
-            display: inline-block;
-        }
-        /* Add this CSS to your stylesheet or within a style tag in your component */
-    
-    .form-horizontal {
-        margin-top: 20px;
+      .view-account{
+      /* background:#FFFFFF; */
+      margin-top:20px;
+      }
+      .view-account .pro-label {
+          font-size: 13px;
+          padding: 4px 5px;
+          position: relative;
+          top: -5px;
+          margin-left: 10px;
+          display: inline-block;;
+          }
+      
+      .view-account .side-bar {
+      padding-bottom: 30px;
+      background-color:rgb(146, 252, 247);
       }
       
-      .form-group {
-        margin-bottom: 20px;
+      .view-account .side-bar .user-info {/*user name*/
+      text-align: center;
+      margin-bottom: 15px;
+      padding: 30px;
+      font-size: 18px;
+      color: #000000;
+      border-bottom: 1px solid #f3f3f3;
+  
+      }
+      .view-account .side-bar .user-info .meta li a{
+      font-size: 16px;
       }
       
-      .control-label {
-        text-align: right;
+      .view-account .side-bar .user-info .img-profile {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 5px;
       }
       
-      .btn-primary {
-        background-color: #bec4bd;
-        color: #0a0909;
+      .view-account .side-bar .user-info .meta li {
+      margin-bottom: 20px;
+      margin-top: 5px;
+  
       }
       
-      .btn-primary:hover {
-        background-color: #9b9f9b;
-      }
-      /*top-header: "margin-top:-19px" This setting causes changes to occur on all pages.*/
-      /*color:#000000; used for all color default*/
-      body{margin-top:-18px;
-        background-color:#f2f6fc;
-        color:#000000;
-        }
-        .img-account-profile {
-            height: 10rem;
-        }
-        .rounded-circle {
-            border-radius: 50% !important;
-        }
-        .card {
-            box-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%);
-        }
-        .card .card-header {
-            font-weight: 500;
-        }
-        .card-header:first-child {
-            border-radius: 0.35rem 0.35rem 0 0;
-        }
-        .card-header {
-            padding: 1rem 1.35rem;
-            margin-bottom: 0;
-            background-color: rgba(9, 10, 10, 0.03);
-            border-bottom: 1px solid rgba(33, 40, 50, 0.125);
-        }
-        .form-control, .dataTable-input {
-            display: block;
-            width: 100%;
-            padding: 0.875rem 1.125rem;
-            font-size: 0.875rem;
-            font-weight: 400;
-            line-height: 1;
-            color: #373839;
-            background-color: #ebeaea;
-            background-clip: padding-box;
-            border: 1px solid #c5ccd6;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            border-radius: 0.35rem;
-            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-        }
-        
-        .nav-borders .nav-link.active {
-            color: #0061f2;
-            border-bottom-color: #0061f2;
-        }
-        .nav-borders .nav-link {
-            color: #69707a;
-            border-bottom-width: 0.125rem;
-            border-bottom-style: solid;
-            border-bottom-color: transparent;
-            padding-top: 0.5rem;
-            padding-bottom: 0.5rem;
-            padding-left: 0;
-            padding-right: 0;
-            margin-left: 1rem;
-            margin-right: 1rem;
-        }
-    /*edit setting*/
-    .nav-dropdown {
-        margin-left: 2.5rem;
-        margin-top: 1rem;
-    }
-    .nav-dropdown h4{
-        font-size: 18px;
-        color: #000000;
-        width: 70%;
-        height: 120%;
-        padding: 10px;
-        border-radius: 4px;
-    } 
-    .nav-dropdown h4:hover {
-        background-color: #fafafa;
-        
-    }
-    
-    /*current listings*/
-    }
-    .dashboard-container {
-        display: flex;
-    }
-    
-    .current-righBox {
-        display: flex;
-    }
-    
-    .current-listingBox {
-        width: 100%;
-        height: 100%;
-    
-    }
-    .current-listingBox h1 {
-        margin-left: 20rem;
-        margin-top: 5rem;
-        font-size: 40px;
-        color:#000000;
-    }
-    .inside-currentBox {
-        display: flex;
-        border: 2px solid rgb(8, 156, 156);
-        box-shadow: 0 0 5px rgb(1, 92, 44);
-        border-radius: 25px;
-        width: 55%;
-        height: 200px;
-        grid-gap: 1rem;
-        margin-left: 20rem;
-        margin-top: 3rem;
-        padding: 1rem;
-    }
-    .car-image {
-        position: relative;
-     }
-    .car-image img {
-        width: 19%;
-        height: 19%;
-    }
-    .image-box {
-        position: absolute;
-        top: 0;
-        right: 0;
-    }
-    .more-image {
-        display: flex;
-        margin-left: 15rem;
-      }
-    .more-image img {
-        object-fit: cover;
-        width: 10%;
-        height: 10%;
-        margin-left: 0.5rem; 
-    }
-    .image-box2 {
-        position: absolute;
-        top: 0;
-        right: 0;
-    }
-    .more-image2 {
-        display: flex;
-        margin-left: 15rem;
-      }
-    .more-image2 img {
-        object-fit: cover;
-        width: 10%;
-        height: 10%;
-        margin-left: 0.5rem; 
-        margin-top: 6rem;
-    }
-    .current-carDetail  {
-        display: flex;
-    }
-    
-    .carDetail-box {
-        position: absolute;
-        top: 0;
-        margin-left: 32rem;
-        width: 40%;
-        height: 100%;
-    }
-    .carDetail-rightBox {
-        display: flex;
+      .view-account .side-bar .user-info .meta li a {
+      color: #000000;
+  
       }
       
+      .view-account .side-bar .user-info .meta li.activity {
+      color: #2b56c3;
+      }
       
-    .carName {
-        margin-bottom: 20px;
-    }
-    .carName-left h4 {
-        font-size: 24px;
-        color:#000000
-    }
+      .view-account .side-bar .side-menu {
+      text-align: center;
+      }
       
-    .carName-left {
-        margin-top: 0.3rem;
-        margin-left: 1rem;
-    }
-    .car-price {
-        display: flex;
-    }
-    .carPrice-right {
-        margin-left: 3.5rem;
-        margin-top: 0.3rem;
-    }
-    .carPrice-right h4 {
-        font-size: 24px;
-        color:#000000
-    }
-    .carMileage-city {
-        display: flex;
-    }
-    
-    .carMileage {
-        margin-bottom: 20px;
-    }
+      .view-account .side-bar .side-menu .nav>li.active a {
+      color: #40babd;
+      background: none;
+      border-right: none;
+      }
+          
+      @media (max-width:767px) {
+      .view-account .content-panel .title {
+          text-align: center;
+      }
+      .view-account .side-bar .user-info {
+          padding: 0;
+      }
+      .view-account .side-bar .user-info .img-profile {
+          width: 60px;
+          height: 60px;
+      }
+      .view-account .side-bar .user-info .meta li {
+          margin-bottom: 5px;
+      }
+      .view-account .content-panel .content-header-wrapper .actions {
+          position: static;
+          margin-bottom: 30px;
+      }
+      .view-account .content-panel {
+          padding: 0;
+      }
+      .view-account .content-panel .content-utilities .page-nav {
+          position: static;
+          margin-bottom: 15px;
+      }
+      .drive-wrapper .drive-item {
+          width: 100px;
+          margin-right: 5px;
+          float: none;
+      }
+      .drive-wrapper .drive-item-thumb {
+          width: auto;
+          height: 54px
+      }
+      .drive-wrapper .drive-item-thumb .fa {
+          font-size: 24px;
+          padding-top: 0;
+      }
+      .view-account .content-panel .avatar .figure img {
+          float: none;
+          margin-bottom: 15px;
+      }
+      .view-account .file-uploader {
+          margin-bottom: 15px;
+      }
+      .view-account .mail-subject {
+          max-width: 100px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+      }
+      .view-account .content-panel .mails-wrapper .mail-item .time-user-container {
+          position: static;
+      }
+      .view-account .content-panel .mails-wrapper .mail-item .time-user-container .time {
+          width: auto;
+          text-align: left;
+      }
+      }
       
-    .carMileage-right {
-        display: flex;
-    }
-    .carMileage-right h4 {
-        margin-top: 0.3rem;
-        font-size: 20px;
-        color: #494d55;
-    }
-    .carMileage-image img {
-        display: flex;
-        width: 30px;
-        height: 32px;
-        padding: 4px;
-        margin-left: 1rem;
-        align-content: center;
-        justify-content: center;
-    }
-    .car-city {
-        display: flex;
-    }
-    .carCity-right {
-        margin-left: 5rem;
-        margin-top: 0.3rem;
-    }
-    .carCity-right h4{
-        font-size: 20px;
-        color: #494d55;
-    }
-    .car-condition {
-        margin-left: 1rem;
-    }
-    .car-condition {
-        font-size: 20px;
-        color: #494d55;
-    }
-    .car-button {
-        position: absolute;
-        top: 0;
-        margin-left: 65rem;
-        width: 20%;
-        height: 100%;
-    }
-    .view-button button {
-        padding: 15px 36px; 
-        cursor: pointer;
-        border: 1px solid #ccc;
-        background-color: #03d22d;
-        border-radius: 5px;
-        transition: background-color 0.3s;
-        margin-bottom: 1rem;
-    }
-    .edit-button button {
-        padding: 15px 36px; 
-        cursor: pointer;
-        border: 1px solid #ccc;
-        background-color: #0fc7ec;
-        border-radius: 5px;
-        transition: background-color 0.3s;
-        margin-bottom: 1rem;
-    }
-    .delete-button button {
-        padding: 15px 28px; 
-        cursor: pointer;
-        border: 1px solid #ccc;
-        background-color: #fd362c;
-        border-radius: 5px;
-        transition: background-color 0.3s;
-    }
-    
-    button:hover {
-        background-color: #e0e0e0; 
-    }
-    
-    .car-status {
-        display: flex;
-        border: 2px solid rgb(187, 206, 222);
-        box-shadow: 0 0 20px rgb(69, 69, 69);
-        border-radius: 20%;
-        margin-left: 100rem;
-        width: 20%;
-        height: 45%;
-        margin-top: 10rem;
-        position:absolute;
-    }
-    
-    .status-detail {
-        margin-bottom: 20px;
-        display: flex;
-    }
+      @media (min-width:768px) {
+      .view-account .side-bar .user-info {
+          padding: 0;
+          padding-bottom: 15px;
+      }
+      .view-account .mail-subject .subject {
+          max-width: 200px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+      }
+      }
       
-    .bought-status {
-        display: flex;
-    }
-    .bought-status h4 {
-        margin-top: 2rem;
-        margin-left: 3rem;
-        font-size: 24px;
-        color: #000000;
-    }
-    .bought-status h3 {
-        margin-top: 1.5rem;
-        margin-left: 5.5rem;
-        font-size: 24px;
-        color: #494d55;
+      @media (min-width:992px) {
+      .view-account .content-panel {
+          min-height: 800px;
+          border-left: 1px solid #f3f3f7;
+          margin-left: 200px;
+      }
+      .view-account .mail-subject .subject {
+          max-width: 280px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+      }
+      .view-account .side-bar {/*side bar size*/
+          position: absolute;
+          width: 250px;
+          min-height: 600px;
+      }
+      .view-account .side-bar .user-info {
+          margin-bottom: 0;
+          border-bottom: none;
+          padding: 30px;
+      }
+      .view-account .side-bar .user-info .img-profile {
+          width: 120px;
+          height: 120px;
+      }
+      .view-account .side-bar .side-menu {
+          text-align: left;
+      }
+      .view-account .side-bar .side-menu .nav {
+          display: block;
+      }
+      .view-account .side-bar .side-menu .nav>li {
+          display: block;
+          float: none;
+          font-size: 14px;
+          border-bottom: 1px solid #727171;
+          margin-right: 0;
+          margin-bottom: 0;
+      }
+      /*side-bar menu, like profile, settings, billing....*/
+      .view-account .side-bar .side-menu .nav>li>a {
+          display: block;
+          color: #000000;
+          padding: 10px 15px;
+          padding-left: 30px;
+          font-size: 20px;
+          text-decoration: none;
+          margin-top: 0.5rem;
+          font-weight: 800;
+      }
+      .view-account .side-bar .side-menu .nav>li>a:hover {
+          background: #f9f9fb;
+  
+          
+      }
+      .view-account .side-bar .side-menu .nav>li.active a {
+          background: #f9f9fb;
+          border-right: 4px solid #40babd;
+          border-bottom: none;
+      }
+     
+      .view-account .side-bar .side-menu .nav>li .icon {
+          font-size: 24px;
+          vertical-align: middle;
+          text-align: center;
+          width: 40px;
+          display: inline-block;
+      }
+      /* Add this CSS to your stylesheet or within a style tag in your component */
+  
+  .form-horizontal {
+      margin-top: 20px;
     }
     
-    .sold-detail {
-        margin-top: 2rem;
+    .form-group {
+      margin-bottom: 20px;
     }
-    .sold-detail h4{
-        margin-left: 10rem;
-        font-size: 24px;
-        color: #000000;
+    
+    .control-label {
+      text-align: right;
     }
-    .sold-detail h3{
-        margin-left: 11rem;
-        margin-top: 1.5rem;
-        font-size: 24px;
-        color: #494d55;
+    
+    .btn-primary {
+      background-color: #bec4bd;
+      color: #0a0909;
     }
-    .car-offer {
-        margin-top: 12rem;
-        margin-left: -17rem;
-        font-size: 24px;
-        color: #000000;
+    
+    .btn-primary:hover {
+      background-color: #9b9f9b;
     }
-    .car-offer h3 {
-        margin-left: 2.5rem;
-        margin-top: 1.5rem;
-        font-size: 22px;
-        color: #494d55;
+    /*top-header: "margin-top:-19px" This setting causes changes to occur on all pages.*/
+    /*color:#000000; used for all color default*/
+    body{margin-top:-18px;
+      background-color:#f2f6fc;
+      color:#000000;
+      }
+      .img-account-profile {
+          height: 10rem;
+      }
+      .rounded-circle {
+          border-radius: 50% !important;
+      }
+      .card {
+          box-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%);
+      }
+      .card .card-header {
+          font-weight: 500;
+      }
+      .card-header:first-child {
+          border-radius: 0.35rem 0.35rem 0 0;
+      }
+      .card-header {
+          padding: 1rem 1.35rem;
+          margin-bottom: 0;
+          background-color: rgba(9, 10, 10, 0.03);
+          border-bottom: 1px solid rgba(33, 40, 50, 0.125);
+      }
+      .form-control, .dataTable-input {
+          display: block;
+          width: 100%;
+          padding: 0.875rem 1.125rem;
+          font-size: 0.875rem;
+          font-weight: 400;
+          line-height: 1;
+          color: #373839;
+          background-color: #ebeaea;
+          background-clip: padding-box;
+          border: 1px solid #c5ccd6;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          border-radius: 0.35rem;
+          transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      }
+      
+      .nav-borders .nav-link.active {
+          color: #0061f2;
+          border-bottom-color: #0061f2;
+      }
+      .nav-borders .nav-link {
+          color: #69707a;
+          border-bottom-width: 0.125rem;
+          border-bottom-style: solid;
+          border-bottom-color: transparent;
+          padding-top: 0.5rem;
+          padding-bottom: 0.5rem;
+          padding-left: 0;
+          padding-right: 0;
+          margin-left: 1rem;
+          margin-right: 1rem;
+      }
+  /*edit setting*/
+  .nav-dropdown {
+      margin-left: 2.5rem;
+      margin-top: 1rem;
+  }
+  .nav-dropdown h4{
+      font-size: 18px;
+      color: #000000;
+      width: 70%;
+      height: 120%;
+      padding: 10px;
+      border-radius: 4px;
+  } 
+  .nav-dropdown h4:hover {
+      background-color: #fafafa;
+      
+  }
+  
+  /*current listings*/
+  }
+  .dashboard-container {
+      display: flex;
+  }
+  
+  .current-righBox {
+      display: flex;
+  }
+  
+  .current-listingBox {
+      width: 100%;
+      height: 100%;
+  
+  }
+  .current-listingBox h1 {
+      margin-left: 20rem;
+      margin-top: 5rem;
+      font-size: 40px;
+      color:#000000;
+  }
+  .inside-currentBox {
+      display: flex;
+      border: 2px solid rgb(8, 156, 156);
+      box-shadow: 0 0 5px rgb(1, 92, 44);
+      border-radius: 25px;
+      width: 55%;
+      height: 200px;
+      grid-gap: 1rem;
+      margin-left: 20rem;
+      margin-top: 3rem;
+      padding: 1rem;
+  }
+  .car-image {
+      position: relative;
+   }
+  .car-image img {
+      width: 19%;
+      height: 19%;
+  }
+  .image-box {
+      position: absolute;
+      top: 0;
+      right: 0;
+  }
+  .more-image {
+      display: flex;
+      margin-left: 15rem;
     }
-    .car-listed {
-        margin-top: 22rem;
-        margin-left: -8rem;
-        font-size: 24px;
-        color: #000000;
+  .more-image img {
+      object-fit: cover;
+      width: 10%;
+      height: 10%;
+      margin-left: 0.5rem; 
+  }
+  .image-box2 {
+      position: absolute;
+      top: 0;
+      right: 0;
+  }
+  .more-image2 {
+      display: flex;
+      margin-left: 15rem;
     }
-    .car-listed h3 {
-        margin-left: 2.5rem;
-        margin-top: 1.5rem;
-        font-size: 22px;
-        color: #494d55;
+  .more-image2 img {
+      object-fit: cover;
+      width: 10%;
+      height: 10%;
+      margin-left: 0.5rem; 
+      margin-top: 6rem;
+  }
+  .current-carDetail  {
+      display: flex;
+  }
+  
+  .carDetail-box {
+      position: absolute;
+      top: 0;
+      margin-left: 32rem;
+      width: 40%;
+      height: 100%;
+  }
+  .carDetail-rightBox {
+      display: flex;
     }
+    
+    
+  .carName {
+      margin-bottom: 20px;
+  }
+  .carName-left h4 {
+      font-size: 24px;
+      color:#000000
+  }
+    
+  .carName-left {
+      margin-top: 0.3rem;
+      margin-left: 1rem;
+  }
+  .car-price {
+      display: flex;
+  }
+  .carPrice-right {
+      margin-left: 3.5rem;
+      margin-top: 0.3rem;
+  }
+  .carPrice-right h4 {
+      font-size: 24px;
+      color:#000000
+  }
+  .carMileage-city {
+      display: flex;
+  }
+  
+  .carMileage {
+      margin-bottom: 20px;
+  }
+    
+  .carMileage-right {
+      display: flex;
+  }
+  .carMileage-right h4 {
+      margin-top: 0.3rem;
+      font-size: 20px;
+      color: #494d55;
+  }
+  .carMileage-image img {
+      display: flex;
+      width: 30px;
+      height: 32px;
+      padding: 4px;
+      margin-left: 1rem;
+      align-content: center;
+      justify-content: center;
+  }
+  .car-city {
+      display: flex;
+  }
+  .carCity-right {
+      margin-left: 5rem;
+      margin-top: 0.3rem;
+  }
+  .carCity-right h4{
+      font-size: 20px;
+      color: #494d55;
+  }
+  .car-condition {
+      margin-left: 1rem;
+  }
+  .car-condition {
+      font-size: 20px;
+      color: #494d55;
+  }
+  .car-button {
+      position: absolute;
+      top: 0;
+      margin-left: 65rem;
+      width: 20%;
+      height: 100%;
+  }
+  .view-button button {
+      padding: 15px 36px; 
+      cursor: pointer;
+      border: 1px solid #ccc;
+      background-color: #03d22d;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+      margin-bottom: 1rem;
+  }
+  .edit-button button {
+      padding: 15px 36px; 
+      cursor: pointer;
+      border: 1px solid #ccc;
+      background-color: #0fc7ec;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+      margin-bottom: 1rem;
+  }
+  .delete-button button {
+      padding: 15px 28px; 
+      cursor: pointer;
+      border: 1px solid #ccc;
+      background-color: #fd362c;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+  }
+  
+  button:hover {
+      background-color: #e0e0e0; 
+  }
+  
+  .car-status {
+      display: flex;
+      border: 2px solid rgb(187, 206, 222);
+      box-shadow: 0 0 20px rgb(69, 69, 69);
+      border-radius: 20%;
+      margin-left: 100rem;
+      width: 20%;
+      height: 45%;
+      margin-top: 10rem;
+      position:absolute;
+  }
+  
+  .status-detail {
+      margin-bottom: 20px;
+      display: flex;
+  }
+    
+  .bought-status {
+      display: flex;
+  }
+  .bought-status h4 {
+      margin-top: 2rem;
+      margin-left: 3rem;
+      font-size: 24px;
+      color: #000000;
+  }
+  .bought-status h3 {
+      margin-top: 1.5rem;
+      margin-left: 5.5rem;
+      font-size: 24px;
+      color: #494d55;
+  }
+  
+  .sold-detail {
+      margin-top: 2rem;
+  }
+  .sold-detail h4{
+      margin-left: 10rem;
+      font-size: 24px;
+      color: #000000;
+  }
+  .sold-detail h3{
+      margin-left: 11rem;
+      margin-top: 1.5rem;
+      font-size: 24px;
+      color: #494d55;
+  }
+  .car-offer {
+      margin-top: 12rem;
+      margin-left: -17rem;
+      font-size: 24px;
+      color: #000000;
+  }
+  .car-offer h3 {
+      margin-left: 2.5rem;
+      margin-top: 1.5rem;
+      font-size: 22px;
+      color: #494d55;
+  }
+  .car-listed {
+      margin-top: 22rem;
+      margin-left: -8rem;
+      font-size: 24px;
+      color: #000000;
+  }
+  .car-listed h3 {
+      margin-left: 2.5rem;
+      margin-top: 1.5rem;
+      font-size: 22px;
+      color: #494d55;
+  }

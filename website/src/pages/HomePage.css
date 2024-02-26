@@ -558,3 +558,13 @@ input[type="text"] {
   position: absolute;
    /* flex-grow: 1;make it stay at bottom */
 }
+
+.viewPostClickableArea {
+  background-color: powderblue;
+  margin: 0px;
+  padding: 0px;
+}
+
+.viewPostTextDisplay {
+  background-color: lightcoral;
+}

@@ -107,21 +107,6 @@ const EditListingPage = () => {
     );
   };
   
+
   export default EditListingPage;
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+

@@ -1,14 +1,37 @@
 const mongoose = require('mongoose');
 
-const postingSchema = new mongoose.Schema({
+const VehicleSchema = new mongoose.Schema({
+  color: {
+    type: String,
+    required: true,
+  },
+  condition: {
+    type: String,
+    required: true,
+  },
+  mileage: {
+    type: String,
+    required: true,
+  },
+  fueltype: {
+    type: String,
+    required: true,
+  },
+  transmission: {
+    type: String,
+    required: true,
+  },
+  cylinders: {
+    type: String,
+    required: true,
+  },
   vehicleType: {
     type: String,
-    //required: true,
+    required: true,
   },
   make: {
     type: String,
-    //required: true,
-
+    required: true,
   },
   model: {
     type: String,
@@ -26,10 +49,6 @@ const postingSchema = new mongoose.Schema({
     type: String,
    //required: true,
   },
-  mileage: {
-    type: Number,
-   //required: true,
-  },
   description: {
     type: String,
     //required: true,
@@ -40,6 +59,4 @@ const postingSchema = new mongoose.Schema({
   },
 });
 
-const Posting = mongoose.model('Posting', postingSchema);
-
-module.exports = Posting;
+module.exports = mongoose.model('vehicle', VehicleSchema);

@@ -1,4 +1,4 @@
-const Post = require('../models/postModel');
+const Post = require('../models/postingModel');
 const mongoose = require('mongoose')
 const express = require('express');
 const router = express.Router();

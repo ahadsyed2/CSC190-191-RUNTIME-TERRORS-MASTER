@@ -44,4 +44,6 @@ const CarMake = ({ makeOptions, checkedMake, handleMakeCheckboxClick, handleMake
   );
 };
 
+
 export default CarMake;
+

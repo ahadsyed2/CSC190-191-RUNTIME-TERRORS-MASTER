@@ -1,60 +1,61 @@
-  .editing-setting {
-    margin: 20px auto; /* Center the container and adjust the margin as needed */
-    max-width: 800px; /* Set a maximum width for the container */
-  }
-  
-  .profile-title {
-    margin-bottom: 35px;
-  }
-  .profile-title h2{
-    font-size: 34px;
-    margin-top: 3rem;
-    text-align: center;
-  }
-  
-  .card {
-    border: 1px solid #9f98d4;
-    border-radius: 8px;
-  }
-  
-  .card-header {
-    background-color: #f8f9fa; /* Light gray background for the header */
-    padding: 10px;
-    border-bottom: 1px solid #f1e7e7;
-  }
-  
-  .card-body {
-    padding: 20px;
-  }
-  
-  .form-control {
-    margin-bottom: 15px;
+
+.editing-setting {
+  margin: 20px auto; /* Center the container and adjust the margin as needed */
+  max-width: 800px; /* Set a maximum width for the container */
+}
+
+.profile-title {
+  margin-bottom: 35px;
+}
+.profile-title h2{
+  font-size: 34px;
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.card {
+  border: 1px solid #9f98d4;
+  border-radius: 8px;
+}
+
+.card-header {
+  background-color: #f8f9fa; /* Light gray background for the header */
+  padding: 10px;
+  border-bottom: 1px solid #f1e7e7;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.form-control {
+  margin-bottom: 15px;
+}
+
+.btn-primary {
+  background-color: #00a5fd;
+  color: #ffffff;
+  border: 1px solid rgb(132, 132, 132);
+  box-shadow: 0 0 5px rgb(120, 120, 120);
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.btn-primary:hover {
+  background-color: #03101d; /* Darker shade on hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .col-md-6 {
+    width: 100%; /* Make columns full-width on smaller screens */
+    margin-bottom: 15px; 
   }
 
-  .btn-primary {
-    background-color: #00a5fd;
-    color: #ffffff;
-    border: 1px solid rgb(132, 132, 132);
-    box-shadow: 0 0 5px rgb(120, 120, 120);
-    padding: 10px;
-    font-size: 16px;
-    font-weight: 800;
+  .col-md-offset-2 {
+    margin-left: 0; 
   }
-  
-  .btn-primary:hover {
-    background-color: #03101d; /* Darker shade on hover */
-  }
-  
-  /* Responsive Styles */
-  @media (max-width: 768px) {
-    .col-md-6 {
-      width: 100%; /* Make columns full-width on smaller screens */
-      margin-bottom: 15px; 
-    }
-  
-    .col-md-offset-2 {
-      margin-left: 0; 
-    }
-  }
-  
-  
+}
+
+

@@ -42,4 +42,6 @@ const CarPrice = ({ checkedPrices, handlePriceCheckboxClick, handlePricesClearCl
   );
 };
 
+
 export default CarPrice;
+

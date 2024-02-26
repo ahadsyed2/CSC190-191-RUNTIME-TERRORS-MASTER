@@ -227,20 +227,36 @@ const HomeIndex = () => {
   };
 
 
-    //Saving post document so it can be called in "CarInfo" page
-    //-Nick
-    const handlePostBoxClick = (id) =>{
-      if(id == undefined){
-        id = -1;
+    //2 options:
+    //1- Set post.id in webpage, transfer webpages. Currently, too many renders so it fails
+    //2- Have post details be a pop-up since data is already all here. 
+    const [viewingPost, setViewingPost] = useState(false);
+    const [currentPost, setCurrentPost] = useState(-1);
+    const [currentPostId, setCurrentPostId] = useState(-1);
+
+    const handlePostBoxClick = (post, id) =>{
+
+      if(viewingPost == false){     //This was for a pop-up feature. Still can be useful later
+        //setCurrentPost(post);
+        //setViewingPost(true);
       }
-      //Not ideal solution but having trouble with URL method
-      localStorage.setItem("post",id);
+      else if (viewingPost == true){
+        //setCurrentPost(-1);
+        //setViewingPost(false);
+      }
+      
+      //This is for changing the webpage to a unique one and passing the post.id through url
+      setCurrentPostId(id);
+      var href = "/CarInfo/" + id;
+      window.location=href;
     }
   
     //Pulling and Showing Posts from Database Section
   
     const {posts, dispatch} = usePostContext()
   
+    //Might be efficient if this only occured on refresh instead of always
+    //Need to limit how many get pulled with it getting more when it reaches bottom of screen or by clicking next page
     useEffect(() => {
       const fetchPosts = async () => {
         const response = await fetch('/api/postRoutes')
@@ -253,9 +269,9 @@ const HomeIndex = () => {
       }
       
       fetchPosts()
-    })
-  
-  
+    }, [])
+    //DO NOT REMOVE THE BRACKETS, empty dependancy array as a 2nd arg runs useEffect hook only once when component renders
+    //Will run hook again when page refreshes
   
 
 
@@ -420,589 +436,72 @@ const HomeIndex = () => {
           <div className="container">
             <div className="products-con">
 
-              {/*{ posts ? 'Posts' : 'No Posts'}*/}
               {/* Start Posting Box */}
               
               {/* Basically a For each loop */}
-              {posts && posts.map((post) =>(
-
-                <a href="/Post" onClick={() => { handlePostBoxClick(post.postID) }}>
-                  <div className="test2" key={post.id}>
-
-                    <div className='products-item'>
-                      <div className='products-img'>
-                      { /* Need to be able to pull image from DB */ }
-                        <img
-                        src="https://images.offerup.com/4uQVF_BU-_3APQkmUNUmGB3xqhE=/1280x960/d3ed/d3ed001efeac469097afcb8638e4ca76.jpg"
-                        alt="Picture Failure"
-                        />
-                      </div>
-                    
-                      <div className='products-detail'>
-                        <h3>{post.year} {post.make} {post.model}</h3>
-                      </div>
-                      <div className='products-price'>
-                        <div className='products-left'>
-                          <h3>${post.price}</h3>
-                        </div> 
-                      </div>
-                      <div className='meleage-city'>
-                        <div className='mileage'>
-                          <div className='mileage-left'>
-                            <div className='mile-image'>
-                              <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
+              {/* We want to see many posts*/}
+              { !viewingPost && posts && posts.map((post) =>(
+            /*  <span>{ setUrl("/post-details" + post.id)} </span><a href={url} onClick={() => { handlePostBoxClick() }}>  too many rerenders*/
+            /*  <button href="" onClick={() => { handlePostBoxClick() }}> */
+               <div className="test2" key={post.id}> 
+                  <a onClick={() => { handlePostBoxClick(post, post._id) }}>
+                      <div className='products-item'>
+                        <div className='products-img'>
+                        { /* Need to be able to pull image from DB */ }
+                          <img
+                          src="https://images.offerup.com/4uQVF_BU-_3APQkmUNUmGB3xqhE=/1280x960/d3ed/d3ed001efeac469097afcb8638e4ca76.jpg"
+                          alt="Picture Failure"
+                          />
+                        </div>
+                      
+                        <div className='products-detail'>
+                          <h3>{post.year} {post.make} {post.model}</h3>
+                        </div>
+                        <div className='products-price'>
+                          <div className='products-left'>
+                            <h3>${post.price}</h3>
+                          </div> 
+                        </div>
+                        <div className='meleage-city'>
+                          <div className='mileage'>
+                            <div className='mileage-left'>
+                              <div className='mile-image'>
+                                <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
+                              </div>
+                              <h4>{/*post.mileage*/} Miles</h4>
                             </div>
-                            <h4>{post.mileage} Miles</h4>
                           </div>
-                        </div>
-                        <div className='city'>
-                          <div className='city-right'>
-                            <h4>{post.location}</h4>
+                          <div className='city'>
+                            <div className='city-right'>
+                              <h4>{post.location}</h4>
+                            </div>
                           </div>
                         </div>
                       </div>
                     
-                    </div>
-                  </div> 
-                  
-                </a>
+                  </a>
+                </div>
                 ))}
+
+                {/* We have clicked on a post and want to see 1 post */}
+                { viewingPost && (
+                    <div className='viewPostClickableArea' onClick={() => { handlePostBoxClick() }}>
+                      <div className='viewPostTextDisplay'>
+                        Viewing a Post
+                        <div>
+                          YMM: {currentPost.year} {currentPost.make} {currentPost.model}
+                        </div>
+                        <div>
+                          Price: {currentPost.price}
+                        </div>
+                      </div>
+                    </div>
+                )}
+                
                 {/* End Posting Box */}
 
-
+ 
                 
-
-              <a href="CarInfo">
-              <div className="products-item">
-                  <div className="products-img">
-                    <img 
-                      src="https://images.offerup.com/4uQVF_BU-_3APQkmUNUmGB3xqhE=/1280x960/d3ed/d3ed001efeac469097afcb8638e4ca76.jpg"
-                      alt=""
-                    />
-                  </div>
-                    
-                    <div className="products-detail">
-                      <h3>2014 Ford Fiesta</h3>
-                    </div>
-                    <div className="products-price">
-                      <div className="products-left"><h3>$7,995</h3>
-                      </div>
-                    </div>
-                    
-                    <div className='meleage-city'>
-                      <div className="mileage">
-                        <div className="mileage-left">
-                          <div className='mile-image'>
-                            <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
-                          </div>
-                          <h4>104,639 Miles</h4>
-                        </div>
-                      </div>
-                      <div className="city">
-                        <div className="city-right"><h4>Denver, CO</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-
-                <a href="CarInfo">
-                <div className="products-item">
-                  <div className="products-img">
-                    <img 
-                      src="https://images.offerup.com/gyw91Dcw-tv_40yIYnZaRbXeyoE=/1280x960/effd/effd19594b1840999151aba1aadc103c.jpg"
-                      alt="Product"
-                    />
-                  </div>
-                    <div className="products-detail">
-                    <h3>2016 Jeep Cherokee</h3>
-                  </div>
-                  <div className="products-price">
-                    <div className="products-left"><h3>$13,995</h3>
-                    </div>
-                  </div>
-                  
-                  <div className='meleage-city'>
-                    <div className="mileage">
-                      <div className="mileage-left">
-                        <div className='mile-image'>
-                          <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
-                        </div>
-                        <h4>93,699 Miles</h4>
-                      </div>
-                    </div>
-                    <div className="city">
-                      <div className="city-right"><h4>Denver, CO</h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                </a>
-
-                <a href="CarInfo">
-                <div className="products-item">
-                  <div className="products-img">
-                    <img 
-                      src="https://images.offerup.com/6UDntzf3f2A5XMHXBK2opFz4sjU=/1000x750/eb7f/eb7f2828aa1b4f8dab83e04bb2d0ddb8.jpg"
-                      alt=""
-                    />
-                  </div>
-                    <div className="products-detail">
-                    <h3>2010 Hyundai Santa FE</h3>
-                  </div>
-                  <div className="products-price">
-                    <div className="products-left"><h3>$4,899</h3>
-                    </div>
-                  </div>
-                  
-                  <div className='meleage-city'>
-                    <div className="mileage">
-                      <div className="mileage-left">
-                        <div className='mile-image'>
-                          <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
-                        </div>
-                        <h4>200,000 Miles</h4>
-                      </div>
-                    </div>
-                    <div className="city">
-                      <div className="city-right"><h4>Denver, CO</h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                </a>
-
-                <a href="CarInfo">
-                <div className="products-item">
-                  <div className="products-img">
-                    <img 
-                      src="https://images.offerup.com/NJrez1SM7cFsEx9BJ4Vkj3FgA3U=/1000x750/9cd6/9cd6d6d78efd41dbbc7861956d731ac2.jpg"
-                      alt=""
-                    />
-                  </div>
-                    <div className="products-detail">
-                    <h3>2010 Ford F-150</h3>
-                  </div>
-                  <div className="products-price">
-                    <div className="products-left"><h3>$10,000</h3>
-                    </div>
-                  </div>
-                  
-                  <div className='meleage-city'>
-                    <div className="mileage">
-                      <div className="mileage-left">
-                        <div className='mile-image'>
-                          <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
-                        </div>
-                        <h4>19,451 Miles</h4>
-                      </div>
-                    </div>
-                    <div className="city">
-                      <div className="city-right"><h4>Denver, CO</h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                </a>
-
-                <a href="CarInfo">
-                <div className="products-item">
-                  <div className="products-img">
-                    <img 
-                      src="https://images.offerup.com/WSKMgd1P9DeZOVqwbvL-oHbhVpc=/1000x750/3d62/3d62d9eb30bf414aacda95093ee12e5f.jpg"
-                      alt="Product"
-                    />
-                  </div>
-                    <div className="products-detail">
-                    <h3>1983 Cadillac Eldorado</h3>
-                  </div>
-                  <div className="products-price">
-                    <div className="products-left"><h3>$5,799</h3>
-                    </div>
-                  </div>
-                  
-                  <div className='meleage-city'>
-                    <div className="mileage">
-                      <div className="mileage-left">
-                        <div className='mile-image'>
-                          <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
-                        </div>
-                        <h4>66,000 Miles</h4>
-                      </div>
-                    </div>
-                    <div className="city">
-                      <div className="city-right"><h4>Denver, CO</h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                </a>
-
-                <a href="CarInfo">
-                <div className="products-item">
-                  <div className="products-img">
-                    <img 
-                      src="https://images.offerup.com/RlVjLHMSWQv0yn5PpsQAOMMQnss=/2048x1536/d8ba/d8bafb71d2af4d568eab0bd7a19bec0f.jpg"
-                      alt="Product"
-                    />
-                  </div>
-                    <div className="products-detail">
-                    <h3>2009 Chevrolet Malibu Hybrid</h3>
-                  </div>
-                  <div className="products-price">
-                    <div className="products-left"><h3>$10,000</h3>
-                    </div>
-                  </div>
-                  
-                  <div className='meleage-city'>
-                    <div className="mileage">
-                      <div className="mileage-left">
-                        <div className='mile-image'>
-                          <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
-                        </div>
-                        <h4>57,340 Miles</h4>
-                      </div>
-                    </div>
-                    <div className="city">
-                      <div className="city-right"><h4>Denver, CO</h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                </a>
-
-                <a href="CarInfo">
-              <div className="products-item">
-                  <div className="products-img">
-                    <img 
-                      src="https://images.offerup.com/WckpWTB8OihN7wEKqyq7wwcQkYs=/1152x864/597f/597f8cfe864c483faf1be7b5f3f0cedf.jpg"
-                      alt=""
-                    />
-                  </div>
-                  
-                  <div className="products-detail">
-                    <h3>2010 Chevrolet Malibu</h3>
-                  </div>
-                  <div className="products-price">
-                    <div className="products-left"><h3>$4,600</h3>
-                    </div>
-                  </div>
-                  
-                  <div className='meleage-city'>
-                    <div className="mileage">
-                      <div className="mileage-left">
-                        <div className='mile-image'>
-                          <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
-                        </div>
-                        <h4>164,000 Miles</h4>
-                      </div>
-                    </div>
-                    <div className="city">
-                      <div className="city-right"><h4>Denver, CO</h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                </a>
-
-                <a href="CarInfo">
-                <div className="products-item">
-                  <div className="products-img">
-                    <img 
-                      src="https://images.offerup.com/28n-ueyEb2RRxTyviHBYFHdH_YU=/1922x1442/4940/4940044bf8ef490aa0f1b57730e0e8ae.jpg"
-                      alt="Product"
-                    />
-                  </div>
-                    <div className="products-detail">
-                    <h3>2000 Dodge Ram</h3>
-                  </div>
-                  <div className="products-price">
-                    <div className="products-left"><h3>$15,000</h3>
-                    </div>
-                  </div>
-                  
-                  <div className='meleage-city'>
-                    <div className="mileage">
-                      <div className="mileage-left">
-                        <div className='mile-image'>
-                          <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
-                        </div>
-                        <h4>299,393 Miles</h4>
-                      </div>
-                    </div>
-                    <div className="city">
-                      <div className="city-right"><h4>Denver, CO</h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                </a>
-
-                <a href="CarInfo">
-              <div className="products-item">
-                  <div className="products-img">
-                    <img 
-                      src="https://images.offerup.com/4uQVF_BU-_3APQkmUNUmGB3xqhE=/1280x960/d3ed/d3ed001efeac469097afcb8638e4ca76.jpg"
-                      alt=""
-                    />
-                  </div>
-                    
-                    <div className="products-detail">
-                      <h3>2014 Ford Fiesta</h3>
-                    </div>
-                    <div className="products-price">
-                      <div className="products-left"><h3>$7,995</h3>
-                      </div>
-                    </div>
-                    
-                    <div className='meleage-city'>
-                      <div className="mileage">
-                        <div className="mileage-left">
-                          <div className='mile-image'>
-                            <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
-                          </div>
-                          <h4>104,639 Miles</h4>
-                        </div>
-                      </div>
-                      <div className="city">
-                        <div className="city-right"><h4>Denver, CO</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-
-                <a href="CarInfo">
-                <div className="products-item">
-                  <div className="products-img">
-                    <img 
-                      src="https://images.offerup.com/gyw91Dcw-tv_40yIYnZaRbXeyoE=/1280x960/effd/effd19594b1840999151aba1aadc103c.jpg"
-                      alt="Product"
-                    />
-                  </div>
-                    <div className="products-detail">
-                    <h3>2016 Jeep Cherokee</h3>
-                  </div>
-                  <div className="products-price">
-                    <div className="products-left"><h3>$13,995</h3>
-                    </div>
-                  </div>
-                  
-                  <div className='meleage-city'>
-                    <div className="mileage">
-                      <div className="mileage-left">
-                        <div className='mile-image'>
-                          <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
-                        </div>
-                        <h4>93,699 Miles</h4>
-                      </div>
-                    </div>
-                    <div className="city">
-                      <div className="city-right"><h4>Denver, CO</h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                </a>
-
-                <a href="CarInfo">
-                <div className="products-item">
-                  <div className="products-img">
-                    <img 
-                      src="https://images.offerup.com/6UDntzf3f2A5XMHXBK2opFz4sjU=/1000x750/eb7f/eb7f2828aa1b4f8dab83e04bb2d0ddb8.jpg"
-                      alt=""
-                    />
-                  </div>
-                    <div className="products-detail">
-                    <h3>2010 Hyundai Santa FE</h3>
-                  </div>
-                  <div className="products-price">
-                    <div className="products-left"><h3>$4,899</h3>
-                    </div>
-                  </div>
-                  
-                  <div className='meleage-city'>
-                    <div className="mileage">
-                      <div className="mileage-left">
-                        <div className='mile-image'>
-                          <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
-                        </div>
-                        <h4>200,000 Miles</h4>
-                      </div>
-                    </div>
-                    <div className="city">
-                      <div className="city-right"><h4>Denver, CO</h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                </a>
-
-                <a href="CarInfo">
-                <div className="products-item">
-                  <div className="products-img">
-                    <img 
-                      src="https://images.offerup.com/NJrez1SM7cFsEx9BJ4Vkj3FgA3U=/1000x750/9cd6/9cd6d6d78efd41dbbc7861956d731ac2.jpg"
-                      alt=""
-                    />
-                  </div>
-                    <div className="products-detail">
-                    <h3>2010 Ford F-150</h3>
-                  </div>
-                  <div className="products-price">
-                    <div className="products-left"><h3>$10,000</h3>
-                    </div>
-                  </div>
-                  
-                  <div className='meleage-city'>
-                    <div className="mileage">
-                      <div className="mileage-left">
-                        <div className='mile-image'>
-                          <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
-                        </div>
-                        <h4>19,451 Miles</h4>
-                      </div>
-                    </div>
-                    <div className="city">
-                      <div className="city-right"><h4>Denver, CO</h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                </a>
-
-                <a href="CarInfo">
-                <div className="products-item">
-                  <div className="products-img">
-                    <img 
-                      src="https://images.offerup.com/WSKMgd1P9DeZOVqwbvL-oHbhVpc=/1000x750/3d62/3d62d9eb30bf414aacda95093ee12e5f.jpg"
-                      alt="Product"
-                    />
-                  </div>
-                    <div className="products-detail">
-                    <h3>1983 Cadillac Eldorado</h3>
-                  </div>
-                  <div className="products-price">
-                    <div className="products-left"><h3>$5,799</h3>
-                    </div>
-                  </div>
-                  
-                  <div className='meleage-city'>
-                    <div className="mileage">
-                      <div className="mileage-left">
-                        <div className='mile-image'>
-                          <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
-                        </div>
-                        <h4>66,000 Miles</h4>
-                      </div>
-                    </div>
-                    <div className="city">
-                      <div className="city-right"><h4>Denver, CO</h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                </a>
-
-                <a href="CarInfo">
-                <div className="products-item">
-                  <div className="products-img">
-                    <img 
-                      src="https://images.offerup.com/RlVjLHMSWQv0yn5PpsQAOMMQnss=/2048x1536/d8ba/d8bafb71d2af4d568eab0bd7a19bec0f.jpg"
-                      alt="Product"
-                    />
-                  </div>
-                    <div className="products-detail">
-                    <h3>2009 Chevrolet Malibu Hybrid</h3>
-                  </div>
-                  <div className="products-price">
-                    <div className="products-left"><h3>$10,000</h3>
-                    </div>
-                  </div>
-                  
-                  <div className='meleage-city'>
-                    <div className="mileage">
-                      <div className="mileage-left">
-                        <div className='mile-image'>
-                          <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
-                        </div>
-                        <h4>57,340 Miles</h4>
-                      </div>
-                    </div>
-                    <div className="city">
-                      <div className="city-right"><h4>Denver, CO</h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                </a>
-
-                <a href="CarInfo">
-              <div className="products-item">
-                  <div className="products-img">
-                    <img 
-                      src="https://images.offerup.com/WckpWTB8OihN7wEKqyq7wwcQkYs=/1152x864/597f/597f8cfe864c483faf1be7b5f3f0cedf.jpg"
-                      alt=""
-                    />
-                  </div>
-                  
-                  <div className="products-detail">
-                    <h3>2010 Chevrolet Malibu</h3>
-                  </div>
-                  <div className="products-price">
-                    <div className="products-left"><h3>$4,600</h3>
-                    </div>
-                  </div>
-                  
-                  <div className='meleage-city'>
-                    <div className="mileage">
-                      <div className="mileage-left">
-                        <div className='mile-image'>
-                          <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
-                        </div>
-                        <h4>164,000 Miles</h4>
-                      </div>
-                    </div>
-                    <div className="city">
-                      <div className="city-right"><h4>Denver, CO</h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                </a>
-
-                <a href="CarInfo">
-                <div className="products-item">
-                  <div className="products-img">
-                    <img 
-                      src="https://images.offerup.com/28n-ueyEb2RRxTyviHBYFHdH_YU=/1922x1442/4940/4940044bf8ef490aa0f1b57730e0e8ae.jpg"
-                      alt="Product"
-                    />
-                  </div>
-                    <div className="products-detail">
-                    <h3>2000 Dodge Ram</h3>
-                  </div>
-                  <div className="products-price">
-                    <div className="products-left"><h3>$15,000</h3>
-                    </div>
-                  </div>
-                  
-                  <div className='meleage-city'>
-                    <div className="mileage">
-                      <div className="mileage-left">
-                        <div className='mile-image'>
-                          <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
-                        </div>
-                        <h4>299,393 Miles</h4>
-                      </div>
-                    </div>
-                    <div className="city">
-                      <div className="city-right"><h4>Denver, CO</h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                </a>
                 
                 
             </div>
