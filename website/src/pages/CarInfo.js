@@ -5,78 +5,32 @@ import { AiOutlineClose } from 'react-icons/ai';
 import { BsUpload } from 'react-icons/bs';
 import { IconContext } from 'react-icons';
 import './CarInfo.css';
-import { usePostContext } from '../hooks/usePostContext';
-import { useVehicleContext } from '../hooks/useVehicleContext';
 
 function CarInfo() {
     const [sidebar, setSidebar] = useState(false);
-    const {posts, dispatch} = usePostContext();
-    const {vehicle, dispatchVehicle} = useVehicleContext();
-    // State to hold fetched car data
+    const [carData, setCarData] = useState(null); // State to hold fetched car data
 
     const showSidebar = () => setSidebar(!sidebar);
 
-    //Full path =  https://localhost:3000/CarInfo/ ID
-
-    var full_url_1 = window.location.href
-    var slash = full_url_1.indexOf("/");
-
-    var full_url_2 = full_url_1.substring(slash+1); 
-    slash = full_url_2.indexOf("/");
-
-    var full_url_3 = full_url_2.substring(slash+1); 
-    slash = full_url_3.indexOf("/");
-
-    var full_url_4 = full_url_3.substring(slash+1); 
-    slash = full_url_4.indexOf("/");
-
-    var url = full_url_4.substring(slash+1);
-
-    //console.log("Full id: "+full_url_1);
-    //console.log("id: "+ url);
-    var backend_url = "/api/postRoutes/" + url
-    //console.log("backendPath = "+backend_url)
-    
+    useEffect(() => {
+        fetchData(); // Fetch data when component mounts
+    }, []);
 
     // Function to fetch car data from MongoDB
-    useEffect(() => {
-        const fetchPosts = async () => {
-          const response = await fetch(backend_url)
-          const json = await response.json()
-    
-          if(response.ok){
-            console.log('response Ok')
-            dispatch({type: 'SET_POSTS', payload: json})
-          }
+    const fetchData = async () => {
+        try {
+            const response = await fetch('/api/cars'); // Assuming you have an API endpoint to fetch car data
+            const data = await response.json();
+            setCarData(data); // Update state with fetched data
+        } catch (error) {
+            console.error('Error fetching data:', error);
         }
-
-        /*const fetchVehicle = async () => {
-
-            var vehicle_id;
-            if(posts){
-                vehicle_id = "/api/vehicleRoutes/" + posts.vehicle_id
-            } else {
-                vehicle_id = "/"
-            }
-            console.log("vehicle api call: " + vehicle_id);
-
-            const response = await fetch(vehicle_id)
-            const json = await response.json()
-      
-            if(response.ok){
-              console.log('response Ok')
-              dispatchVehicle({type: 'SET_VEHICLES', payload: json})
-            }
-          } */
-        
-        fetchPosts()
-        //fetchVehicle()
-      }, []);
+    };
 
     return (
         <>
             <IconContext.Provider value={{ color: '#fff' }}>
-                <div className='navbar'>
+                <div className='navbarMenu'>
                     <Link to='#' className='hamburger-bars'>
                         <FaBars onClick={showSidebar} />
                     </Link>
@@ -101,15 +55,7 @@ function CarInfo() {
             <section className="car-info-container">
                 <div className='preview-box'>
                     <div className='preview-left'>
-                        
-
-                        
-                    </div>
-                    <div className='preview-right'>
-                        
-                        The Make of the car is {posts && posts.make}!
-
-                        {/* {carData && carData.length > 0 && carData[0].imageUrl ? (
+                        {carData && carData.length > 0 && carData[0].imageUrl ? (
                             <img src={carData[0].imageUrl} alt="Car" />
                         ) : (
                             <p>No image available</p>
@@ -130,7 +76,7 @@ function CarInfo() {
                                     </ul>
                                             ) : (
                                             <p>Loading...</p>
-                                            )} */}
+                                            )}
                         </div>
                     </div>
             </section>

@@ -11,9 +11,11 @@ import Signup from './pages/Signup';
 import Posting from './pages/Posting'; 
 import ForgotPassword from './pages/ForgotPassword'
 import ResetPassword from './pages/ResetPassword'
-import ProfilePage from './pages/ProfilePage'
+import UserProfile from './pages/UserProfile'
 import ViewPost from './pages/ViewPost';
-import CarInfo from './pages/CarInfo'
+import CarInfo from './pages/CarInfo';
+import AfterHome from './pages/AfterHome'
+import ProfilePage from './pages/ProfilePage'
 
 
 
@@ -33,7 +35,10 @@ function App() {
           <Route path='ResetPassword' Component={ResetPassword} />
           <Route path='/Posting' Component={Posting} />
           <Route path='/Profile' Component={ProfilePage} />
-          <Route path='/CarInfo/:id' Component={CarInfo} />
+          <Route path='/Post' Component={ViewPost} />
+          <Route path='/CarInfo' Component={CarInfo} />
+          <Route path='/AfterHome' Component={AfterHome} />
+          <Route path='/UserProfile' Component={UserProfile} />
         </Routes>
       </Router>
     
@@ -41,4 +46,3 @@ function App() {
 }
 
 export default App;
-
