@@ -13,4 +13,6 @@ const carComponent = () => {
   );
 };
 
+
 export default carComponent;
+

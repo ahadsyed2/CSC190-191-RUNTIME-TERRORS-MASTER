@@ -42,4 +42,6 @@ const CarMileage = ({ checkedMileages, handleMileageCheckboxClick, handleMileage
   );
 };
 
+
 export default CarMileage;
+

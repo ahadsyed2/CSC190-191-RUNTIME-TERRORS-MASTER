@@ -130,4 +130,6 @@ const styles = {
   },
 };
 
+
 export default CarSearchBar;
+

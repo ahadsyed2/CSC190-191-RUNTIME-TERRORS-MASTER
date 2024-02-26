@@ -1,4 +1,6 @@
+
 /*import React from 'react';
+
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
@@ -26,6 +28,7 @@ const SecondNavbar = () => {
   );
 }
 
+
 export default SecondNavbar; */
 
 import { useLogout } from '../hooks/useLogout';
@@ -39,7 +42,7 @@ import { Link } from 'react-router-dom';
 import { IconContext } from 'react-icons';
 
 
-const NavbarMenu = () => {
+const SecondNavbar = () => {
 
   const { logout } = useLogout()
   const { user } = useAuthContext()
@@ -95,4 +98,5 @@ const NavbarMenu = () => {
   );
 }
 
-export default NavbarMenu;
+export default SecondNavbar;
+

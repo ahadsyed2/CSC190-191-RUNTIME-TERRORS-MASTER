@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaBars, FaCaretDown, FaCaretUp } from 'react-icons/fa';
 import { AiOutlineClose } from 'react-icons/ai';
-import { hamburgerMenu } from './hamburgerMenu';
+import { hamburgerMenu2 } from '../components/hamburgerMenu2';
 import { BsUpload } from 'react-icons/bs';
 import { IconContext } from 'react-icons';
 import  usePosting  from '../hooks/usePosting';
@@ -113,6 +113,7 @@ function Posting() {
           year: '',
           price: '',
           location: '',
+
           mileage: '',
           description: '',
           image: null,
@@ -139,7 +140,7 @@ function Posting() {
   return (
     <>
       <IconContext.Provider value={{ color: '#fff' }}>
-        <div className='navbar'>
+        <div className='navbarMenu'>
           <Link to='#' className='hamburger-bars'>
             <FaBars onClick={showSidebar} />
           </Link>
@@ -156,7 +157,7 @@ function Posting() {
                 <AiOutlineClose />
               </Link>
             </li>
-            {hamburgerMenu.map((item, index) => (
+            {hamburgerMenu2.map((item, index) => (
               <li key={index} className={item.cName}>
                 <Link to={item.path}>
                   {item.icon}
@@ -260,6 +261,7 @@ function Posting() {
                     />
                   </div>
 
+
                   <div className='mileage-box'>
                     <h2>Enter Mileage: </h2>
                     <input
@@ -271,6 +273,7 @@ function Posting() {
                       required
                     />
                   </div>
+
 
                   <div className='description-box'>
                     <h2>Description: </h2>

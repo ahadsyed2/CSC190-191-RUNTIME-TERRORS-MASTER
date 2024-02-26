@@ -32,6 +32,7 @@ const ThirdNavbarMenu = () => {
   );
 }
 
+
 export default ThirdNavbarMenu;*/
 
 import { useLogout } from '../hooks/useLogout';
@@ -45,7 +46,7 @@ import { Link } from 'react-router-dom';
 import { IconContext } from 'react-icons';
 
 
-const NavbarMenu = () => {
+const ThirdNavbarMenu = () => {
 
   const { logout } = useLogout()
   const { user } = useAuthContext()
@@ -101,4 +102,4 @@ const NavbarMenu = () => {
   );
 }
 
-export default NavbarMenu;
+export default ThirdNavbarMenu;

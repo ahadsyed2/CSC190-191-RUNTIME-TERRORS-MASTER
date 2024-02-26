@@ -129,4 +129,5 @@ const posting = async (req, res) => {
 };
 
 
+
 module.exports = { posting };
