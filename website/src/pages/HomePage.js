@@ -58,37 +58,8 @@ const HomeIndex = () => {
   const [checkedMileages, setCheckedMileages] = useState([]);
 
   // Car model function
-  const [cars, setCars] = useState([
-    { make: 'Toyota', model: 'Camry' },
-    { make: 'Toyota', model: 'Corolla' },
-    { make: 'Toyota', model: 'Prius' },
-    { make: 'Toyota', model: 'RAV4' },
+  
 
-    { make: 'Honda', model: 'Accord' },
-    { make: 'Honda', model: 'Civic' },
-    { make: 'Honda', model: 'CR-V' },
-    { make: 'Honda', model: 'Odyssey' },
-
-    { make: 'BMW', model: 'X1' },
-    { make: 'BMW', model: 'X3' },
-    { make: 'BMW', model: 'X5' },
-    { make: 'BMW', model: 'M3' },
-
-    { make: 'Tesla', model: 'Model 3' },
-    { make: 'Tesla', model: 'Model Y' },
-    { make: 'Tesla', model: 'Model X' },
-    { make: 'Tesla', model: 'Model S' },
-
-    { make: 'Chevrolet', model: 'Model 3' },
-    { make: 'Chevrolet', model: 'Model Y' },
-    { make: 'Chevrolet', model: 'Model X' },
-    { make: 'Chevrolet', model: 'Model S' },
-
-    { make: 'Ford', model: 'Model 3' },
-    { make: 'Ford', model: 'Model Y' },
-    { make: 'Ford', model: 'Model X' },
-    { make: 'Ford', model: 'Model S' },
-  ]);
   const [filteredResults, setFilteredResults] = useState({});
   const [filteredModelResults, setFilteredModelResults] = useState({});
   const [showModelOptions, setShowModelOptions] = useState(false);
@@ -154,7 +125,6 @@ const HomeIndex = () => {
   };
 
   const modelOptions = ['Toyota', 'Honda', 'BMW', 'Tesla', 'Chevrolet', 'Ford'];
-  //  const modelOptions = ['Camry', 'Corolla', 'Accord', 'Civic', 'X5', 'X3'];
 
   // Car make function
   const [makelOptions, setMakeOptions] = useState([]);
@@ -239,6 +209,7 @@ const HomeIndex = () => {
   };
 
 
+
   // Function to handle keyup event
   const myFunction = () => {
     const searchInput = document.getElementById('mySearch').value.toLowerCase();
@@ -302,6 +273,7 @@ const HomeIndex = () => {
     //DO NOT REMOVE THE BRACKETS, empty dependancy array as a 2nd arg runs useEffect hook only once when component renders
     //Will run hook again when page refreshes
   
+
 
   return (
     <section>
@@ -529,6 +501,7 @@ const HomeIndex = () => {
                 {/* End Posting Box */}
 
  
+                
                 
             </div>
           </div>

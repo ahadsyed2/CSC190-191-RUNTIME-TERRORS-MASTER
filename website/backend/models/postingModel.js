@@ -3,11 +3,12 @@ const mongoose = require('mongoose');
 const postingSchema = new mongoose.Schema({
   vehicleType: {
     type: String,
-    required: true,
+    //required: true,
   },
   make: {
     type: String,
-    required: true,
+    //required: true,
+
   },
   model: {
     type: String,

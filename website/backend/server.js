@@ -11,10 +11,7 @@ const vehicleRoutes = require('./routes/vehicleRoutes');
 //express app
 const app = express()
 
-//middleware, parse json body for post request
-app.use(express.json())
-
-
+// Middleware to log path and request type
 app.use((req, res, next) => {
     //LOG PATH AND REQUEST TYPE
     console.log(req.path, req.method)
