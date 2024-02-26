@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaBars, FaCaretDown, FaCaretUp } from 'react-icons/fa';
 import { AiOutlineClose } from 'react-icons/ai';
-import { hamburgerMenu2 } from '../components/hamburgerMenu2';
+import { hamburgerMenu } from './hamburgerMenu';
 import { BsUpload } from 'react-icons/bs';
 import { IconContext } from 'react-icons';
 import  usePosting  from '../hooks/usePosting';
@@ -40,10 +40,16 @@ function Posting() {
     year: '',
     price: '',
     location: '',
-    mileage: '',
     description: '',
     image: null, // You might want to store the file or image URL here
     imagePreview: null,
+    mileage: '',
+    gas: '',
+    transmission: '',
+    condition: '',
+    color: '',
+    cylinders: '',
+    features: ''
   });
 
   //update the selected state and hide dropdown list after selection
@@ -113,10 +119,15 @@ function Posting() {
           year: '',
           price: '',
           location: '',
-
-          mileage: '',
           description: '',
           image: null,
+          mileage: '',
+          gas: '',
+          transmission: '',
+          condition: '',
+          color: '',
+          cylinders: '',
+          features: ''
         });
 
 
@@ -140,7 +151,7 @@ function Posting() {
   return (
     <>
       <IconContext.Provider value={{ color: '#fff' }}>
-        <div className='navbarMenu'>
+        <div className='navbar'>
           <Link to='#' className='hamburger-bars'>
             <FaBars onClick={showSidebar} />
           </Link>
@@ -157,7 +168,7 @@ function Posting() {
                 <AiOutlineClose />
               </Link>
             </li>
-            {hamburgerMenu2.map((item, index) => (
+            {hamburgerMenu.map((item, index) => (
               <li key={index} className={item.cName}>
                 <Link to={item.path}>
                   {item.icon}
@@ -261,20 +272,6 @@ function Posting() {
                     />
                   </div>
 
-
-                  <div className='mileage-box'>
-                    <h2>Enter Mileage: </h2>
-                    <input
-                      type='text'
-                      name='mileage'
-                      placeholder='Enter Mileage'
-                      value={formData.mileage}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </div>
-
-
                   <div className='description-box'>
                     <h2>Description: </h2>
                     <input
@@ -338,7 +335,6 @@ function Posting() {
                         <p>Year: {formData.year}</p>
                         <p>Price: {formData.price}</p>
                         <p>Location: {formData.location}</p>
-                        <p>Mileage: {formData.mileage}</p>
                         <p>Description: {formData.description}</p>
                     </div>
                   </div>
