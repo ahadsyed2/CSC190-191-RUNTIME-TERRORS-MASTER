@@ -6,10 +6,30 @@ import { hamburgerMenu } from './hamburgerMenu';
 import { IconContext } from 'react-icons';
 import './Login.css'
 import { useLogin } from '../hooks/useLogin';
+import LoginButon from '../components/GoogleLogin'
+import { useEffect } from 'react';
+import { gapi } from 'gapi-script';
 
+//google api client id
+const clientId = "635523668157-tse46i7rquk3rcll133s95gh34d86qda.apps.googleusercontent.com";
+ 
 function Login() {
 
     //TESTING, 
+
+    useEffect(() => {
+        function start() {
+            gapi.client.init({
+                clientId: clientId,
+                scope: ""
+            })
+        };
+        gapi.load('client:auth2', start);
+    });
+
+
+
+
 
     
 
@@ -107,7 +127,9 @@ function Login() {
                         <label><input type="checkbox" />Remember me</label>
                         <Link to="/ForgotPassword">Forgot password?</Link>
                     </div>
+                
 
+                <LoginButon />
             </div>
         </section>
 
