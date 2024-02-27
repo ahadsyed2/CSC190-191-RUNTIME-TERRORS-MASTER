@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+//Not being used bc postController now uses postingModel
+
 const postSchema = new mongoose.Schema({
   vehicleType: {
     type: String,

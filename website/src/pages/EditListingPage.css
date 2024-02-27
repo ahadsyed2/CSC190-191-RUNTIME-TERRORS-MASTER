@@ -1,0 +1,75 @@
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lato' sans-serif;
+  list-style: none;
+}
+
+.edit-listing-container {
+  background-color: #fff;
+  height: 100vh;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.edit-listing-container h2 {
+  color: #000000;
+  font-size: 40px;
+  text-align: center;
+  margin-top: 3rem;
+}
+.listing-container {
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 10%;
+  width: 30%;
+  padding: 50px;
+  justify-content: center;
+  margin-top: 3rem;
+  margin-left: 48rem;
+}
+
+.edit-listing-container form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.edit-listing-container label {
+  display: block;
+  width: 100%;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+
+.edit-listing-container input, textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+  border: 1px solid #000000;
+  border-radius: 4px;
+}
+
+.edit-listing-container button {
+  background-color: #3498db;
+  font-size: 18px;
+  color: #fff;
+  padding: 12px; /* Increase padding for better appearance */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Add transition for smoother hover effect */
+}
+
+.edit-listing button:hover {
+  background-color: #2980b9;
+}
+
+
+.edit-listing-container button:hover {
+  background-color: #2980b9;
+}

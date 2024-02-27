@@ -69,6 +69,12 @@ const posting = async (req, res) => {
       price,
       location,
       mileage,
+      fuel,
+      transmission,
+      condition,
+      color,
+      cylinders,
+      features,
       description,
     } = req.body;
 
@@ -82,6 +88,12 @@ const posting = async (req, res) => {
       price,
       location,
       mileage,
+      fuel,
+      transmission,
+      condition,
+      color,
+      cylinders,
+      features,
       description,
       
     });

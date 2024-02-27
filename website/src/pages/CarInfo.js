@@ -7,6 +7,18 @@ import { IconContext } from 'react-icons';
 import './CarInfo.css';
 import { usePostContext } from '../hooks/usePostContext';
 import { useVehicleContext } from '../hooks/useVehicleContext';
+import { hamburgerMenu } from './hamburgerMenu';
+import NavbarMenu from '../components/navbarMenu';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { BsFillArrowRightSquareFill } from "react-icons/bs";
+import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
+import speedometer from '../images/speedometer.png';
+
+
+
+
+
 
 function CarInfo() {
     const [sidebar, setSidebar] = useState(false);
@@ -74,41 +86,94 @@ function CarInfo() {
       }, []);
 
     return (
-        <>
-            <IconContext.Provider value={{ color: '#fff' }}>
-                <div className='navbar'>
-                    <Link to='#' className='hamburger-bars'>
-                        <FaBars onClick={showSidebar} />
-                    </Link>
+        <section>
+      <IconContext.Provider value={{ color: '#fff' }}>
+        <div className='navbar'>
+          <Link to="#" className='hamburger-bars'>
+            <FaBars onClick={showSidebar} />
+          </Link>
 
-                    <div className="carmony-logo">
-                        <img src="CARMONY_ICON2.png" alt="" />
-                    </div>
-                </div>
+          <div className="carmony-logo">
+            <img src="CARMONY_ICON2.png" alt="" />
+          </div>
 
-                <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-                    <ul className='nav-menu-items' onClick={showSidebar}>
-                        <li className='navbar-toggle'>
-                            <Link to='#' className='hamburger-bars'>
-                                <AiOutlineClose />
-                            </Link>
-                        </li>
-                    </ul>
-                </nav>
-            </IconContext.Provider>
+          <NavbarMenu />
+        </div>
+
+        <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+          <ul className='nav-menu-items' onClick={showSidebar}>
+            <li className="navbar-toggle">
+              <Link to="#" className='hamburger-bars'>
+                <AiOutlineClose />
+              </Link>
+            </li>
+            {hamburgerMenu.map((item, index) => {
+                return (
+                    <li key={index} className={item.cName}>
+                        <Link to={item.path}>
+                            {item.icon}
+                            <span>{item.title}</span>
+                        </Link>
+                    </li>
+                );
+            })}
+          </ul>
+        </nav>
+      </IconContext.Provider>
 
             {/* Display car data */}
-            <section className="car-info-container">
-                <div className='preview-box'>
-                    <div className='preview-left'>
+        <div className='full-con'>
+            <div className='left-car-info'>
+            <div className='car-info-img'>
+                <img
+                src="https://images.offerup.com/4uQVF_BU-_3APQkmUNUmGB3xqhE=/1280x960/d3ed/d3ed001efeac469097afcb8638e4ca76.jpg"
+                alt="Picture Failure"
+                />
+                </div>
+            </div>
+                
+            <div className="right-car-info">
+               
+                        <h1 className="khula-text-heading">
+                            {posts && posts.year} &nbsp;
+                            {posts && posts.make} &nbsp;
+                            {posts && posts.model}
+                        </h1>
+                        <h1 className='khula-text-heading1'>
+                            ${posts && posts.price}
+                        </h1>
                         
+                        <p className='khula-text-paragraph'>
+                            <section className='speedometer-img'>
+                            <img src={speedometer} alt="Car Image" /> &nbsp;
+                            {posts && posts.mileage} Miles
+                            </section>
+                            
+                        </p>
 
+                        <p className='khula-text-paragraph'>
+                            {posts && posts.gas} 
+                        </p>
+                        <p className='khula-text-paragraph'>
+                            Transmission: {posts && posts.transmission} 
+                        </p>
+                        <p className='khula-text-paragraph'>
+                            Condition: {posts && posts.condition} 
+                        </p>
+                        <p className='khula-text-paragraph'>
+                            Color: {posts && posts.color} 
+                        </p>
+                        <p className='khula-text-paragraph'>
+                            Cylinders: {posts && posts.cylinders} 
+                        </p>
+                        <p className='khula-text-paragraph'>
+                            Vehicle Type: {posts && posts.vehicleType} 
+                        </p>
+                        <p className='khula-text-paragraph'>
+                            Location: {posts && posts.location} 
+                        </p>
+                        <button class="contact-button">Contact Details</button>
                         
-                    </div>
-                    <div className='preview-right'>
-                        
-                        The Make of the car is {posts && posts.make}!
-
                         {/* {carData && carData.length > 0 && carData[0].imageUrl ? (
                             <img src={carData[0].imageUrl} alt="Car" />
                         ) : (
@@ -131,10 +196,21 @@ function CarInfo() {
                                             ) : (
                                             <p>Loading...</p>
                                             )} */}
-                        </div>
-                    </div>
-            </section>
-        </>
+                        
+                    
+            </div>
+        </div>
+        <div className="car-features">
+        <h2>Typical Features:</h2>
+        {posts && posts.features} 
+        
+        </div>
+        <div className="car-description">
+        <h2>Description:</h2>
+        {posts && posts.description} 
+        
+        </div>
+        </section>
     );
 }
 

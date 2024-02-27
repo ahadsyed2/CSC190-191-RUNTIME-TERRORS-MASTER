@@ -29,6 +29,30 @@ const postingSchema = new mongoose.Schema({
     type: Number,
    //required: true,
   },
+  fuel: {
+    type: String,
+   //required: true,
+  },
+  transmission: {
+    type: String,
+   //required: true,
+  },
+  condition: {
+    type: String,
+   //required: true,
+  },
+  color: {
+    type: String,
+   //required: true,
+  },
+  cylinders: {
+    type: String,
+   //required: true,
+  },
+  features: {
+    type: String,
+   //required: true,
+  },
   description: {
     type: String,
     //required: true,

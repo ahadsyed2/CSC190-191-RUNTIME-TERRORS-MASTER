@@ -266,6 +266,116 @@ span {
     border-radius: 20px;
 }
 
+.fuel-box {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.fuel-box h2 {
+    font-size: 26px;
+    margin-top: 2rem;
+}
+
+.fuel-box input[type="text"] {
+    font-size: 16px;
+    width: 50%;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    border-radius: 20px;
+}
+
+.transmission-box {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.transmission-box h2 {
+    font-size: 26px;
+    margin-top: 2rem;
+}
+
+.transmission-box input[type="text"] {
+    font-size: 16px;
+    width: 50%;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    border-radius: 20px;
+}
+
+.condition-box {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.condition-box h2 {
+    font-size: 26px;
+    margin-top: 5.5rem;
+}
+
+.condition-box input[type="text"] {
+    font-size: 16px;
+    width: 100%;
+    height: 100px;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    border-radius: 20px;
+}
+
+.color-box {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.color-box h2 {
+    font-size: 26px;
+    margin-top: 2rem;
+}
+
+.color-box input[type="text"] {
+    font-size: 16px;
+    width: 50%;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    border-radius: 20px;
+}
+
+.cylidners-box {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.cylinders-box h2 {
+    font-size: 26px;
+    margin-top: 2rem;
+}
+
+.cylinders-box input[type="text"] {
+    font-size: 16px;
+    width: 50%;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    border-radius: 20px;
+}
+
+.features-box {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.features-box h2 {
+    font-size: 26px;
+    margin-top: 5.5rem;
+}
+
+.features-box input[type="text"] {
+    font-size: 16px;
+    width: 100%;
+    height: 100px;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    border-radius: 20px;
+}
+
 .description-box {
     display: flex;
     margin-bottom: 1rem;
