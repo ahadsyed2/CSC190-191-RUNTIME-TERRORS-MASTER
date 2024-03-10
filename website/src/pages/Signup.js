@@ -6,18 +6,22 @@ import { hamburgerMenu } from './hamburgerMenu';
 import { IconContext } from 'react-icons';
 import './Signup.css'
 import { useSignup } from '../hooks/useSignup'
+import ReCAPTCHA from "react-google-recaptcha"
 
 
 const Signup = () => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [firstname, setFirstName] = useState('')
+    const [lastname, setLastName] = useState('')
+    const [userlocation, setUserLocation] = useState('')
     const {signup, error, isLoading} = useSignup()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         //console.log(email,password)
-        await signup(email,password)
+        await signup(email,password,firstname,lastname,userlocation )
 
     }
 
@@ -28,17 +32,25 @@ const Signup = () => {
   /* utilize set side bar and this is going to update the value to whatever the opposite of it is currently*/
   /*(!sidebar) it's reversing the value true/false*/
 
+  const [show, setShow] = useState(false);
+  const handleShow = () => {
+    setShow(!show);
+  }
+
+  const [capVal, setCapVal] = useState(null)
+  
+
   return (
       <>
       <IconContext.Provider value= {{color: '#fff'}}>
-          <div className='navbar'>
+          <div className='navbarMenu'>
               <Link to="#" className='hamburger-bars'>
                   <FaBars onClick={showSidebar} />
               </Link>
 
-              <div className="logo">
-                  <img src="https://www.clker.com/cliparts/u/O/L/Q/c/m/car-icon-hi.png" alt="Logo" />
-              </div>
+              <div className="carmony-logo w-1/10 flex justify-center items-center p-0 1rem" style={{ width: "15rem", marginLeft: "2rem" }}>
+            <img src="CARMONY_ICON2.png" alt="Logo" className="w-500 mt-3" />
+          </div>
           </div>
       
       <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
@@ -65,27 +77,87 @@ const Signup = () => {
       </IconContext.Provider>
 
       
+      <div className="container">
+        <form className = "signup-box" onSubmit = {handleSubmit}>
+            <h1>Welcome!</h1>
+            <h3>Create an account to access Carmony account.</h3>
+                <div className="name">
+                    <h3>First Name</h3>
+                    <input
+                            type = "text"
+                            onChange={(e) => setFirstName(e.target.value)}
+                            value = {firstname}
+                        />
+                </div>
 
-        <form className = "login-box" onSubmit = {handleSubmit}>
-            <h3>Sign Up</h3>
+                <div className="name">
+                    <h3>Last Name</h3>
+                    <input
+                            type = "text"
+                            onChange={(e) => setLastName(e.target.value)}
+                            value = {lastname}
+                        />
+                </div>
+                <div className="email-address">
+                    <h3>Email Address</h3>
+                        <input
+                            type = "email"
+                            onChange={(e) => setEmail(e.target.value)}
+                            value = {email}
+                        />
+                </div>
+                <div className="signup-location">
+                    <h3>Location</h3>
+                        <input
+                            type = "text"
+                            onChange={(e) => setUserLocation(e.target.value)}
+                            value = {userlocation}
+                        />
+                </div>
 
-            <label>Email</label>
-            <input
-                type = "email"
-                onChange={(e) => setEmail(e.target.value)}
-                value = {email}
-                />
+                <div className="newPassword">
+                    <h3>New Password</h3>
+                        <input
+                            type = "password"
+                            onChange={(e) => setPassword(e.target.value)}
+                            value = {password}
+                        />
+                </div>
 
-            <label>Password</label>
-            <input
-                type = "password"
-                onChange={(e) => setPassword(e.target.value)}
-                value = {password}
-                />
+                <div className="confirmPassword">
+                    <h3>Confirm New Password</h3>
+                         <input type={show ? "text" : 'password'} placeholder="" required />
+                </div>
 
-            <button disabled = {isLoading}>Sign Up</button>
-            {error && <div className="error">{error}</div>}
+                <div className="show-password-toggle">
+                    <label>
+                        <input type="checkbox" checked={show} onChange={handleShow} />
+                        <h5>Show Password</h5>
+                    </label>
+                </div>
+                
+
+                <div className='reCaptcha'>
+                        <ReCAPTCHA
+                        sitekey='6LdiCg0pAAAAAGD_KJyjVmJlY1MgaA1TzDlYI7uP'
+                        onChange={(val) => setCapVal(val)}
+                        />
+                    </div>
+
+                    <div className='account'>
+                        <p>Already have an account? <Link to="/Login">Sign in</Link></p>
+                    </div>
+
+                <button disabled = {isLoading} className="btn">Sign Up</button>
+                {error && <div className="error">{error}</div>}
+
+                <div className='policy'>
+                    <p>By signing up, you agree to Carmony Privacy policy
+                        and Terms and Conditions.
+                    </p>
+                </div>
         </form>
+    </div>
 
       </>
   )
