@@ -5,7 +5,7 @@ import { AuthContextProvider } from './context/AuthContext';
 import { ProfileContextProvider } from './context/ProfileContext';
 import { PostContextProvider } from './context/PostContext';
 import { VehicleContextProvider } from './context/VehicleContext';  //Capital V file, but only happy with lowercase v??????
-
+import './index.css'
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
