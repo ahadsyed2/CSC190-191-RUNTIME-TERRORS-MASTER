@@ -59,30 +59,39 @@ const ThirdNavbarMenu = () => {
 
 
   return (
-    <div className="top-rightbox">
-      <div className='Post'>
-        <ul>
+    <div className="top-rightbox flex items-center space-x-4">
+      <div className="Post mr-3 rounded-3xl hover:rounded-xl">
+        <ul className="m-1">
           <li>
-            <Link to="/Posting">+ Create a listing</Link>
+            <Link
+              to="/Posting"
+              className="flex items-center text-black text-2xl font-bold hover:text-blue-800 px-4 py-1.5"
+            > + Create a listing
+            </Link>
           </li>
         </ul>
       </div>
 
       {!user && (
       <div className="Login">
-        <ul>
+        <ul className="bg-white p-2 rounded-2xl hover:rounded-xl mr-1">
           <li>
-            <Link to="/Login"><FontAwesomeIcon icon={faUser} className="user-icon" /> Login</Link>
+            <Link to="/Login" 
+            className="flex items-center text-black text-2xl m-0.5 font-bold ">
+              <FontAwesomeIcon icon={faUser} className="user-icon" /> Login
+            </Link>
           </li>
         </ul>
       </div> )}
 
       {!user && (
-
       <div className="SignUp">
-        <ul>
+         <ul className="bg-white p-2.5 rounded-2xl hover:rounded-xl mr-3.5" >
           <li>
-            <Link to="/Signup"><FontAwesomeIcon icon={faUser} className="user-icon" /> Sign Up</Link>
+            <Link to="/Signup" 
+            className="flex items-center text-black text-2xl m-0.5 font-bold">
+              <FontAwesomeIcon icon={faUser} className="user-icon" /> Sign Up
+            </Link>
           </li>
         </ul>
       </div> )}
@@ -93,12 +102,8 @@ const ThirdNavbarMenu = () => {
               <button  onClick = {handleClick}>Logout</button>
             </div> )}
 
-  
-
     </div>
   
-
- 
   );
 }
 
