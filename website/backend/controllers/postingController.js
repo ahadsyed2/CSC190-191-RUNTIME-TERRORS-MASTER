@@ -75,7 +75,8 @@ const posting = async (req, res) => {
       condition,
       color,
       cylinders,
-      features
+      features,
+      timestamp
     } = req.body;
 
     console.log('posting function firing');
@@ -94,7 +95,8 @@ const posting = async (req, res) => {
       condition,
       color,
       cylinders,
-      features
+      features,
+      timestamp
       
     });
 

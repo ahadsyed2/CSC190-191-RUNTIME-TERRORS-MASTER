@@ -13,7 +13,7 @@ const CarPrice = ({ checkedPrices, handlePriceCheckboxClick, handlePricesClearCl
       </div>
       {priceDropdown && (
         <div className="dropdown-content">
-          {['$5,000 - $10,000', '$10,000 - $30,000', '$30,000 - $50,000', '$50,000 up'].map((price) => (
+          {['$0,000 - $10,000', '$10,000 - $25,000', '$25,000 - $50,000', '$50,000 & up'].map((price) => (
             <div key={price}>
               <label htmlFor={`price-${price}`} className="price-label">
                 <input
@@ -24,10 +24,10 @@ const CarPrice = ({ checkedPrices, handlePriceCheckboxClick, handlePricesClearCl
                   onChange={() => handlePriceCheckboxClick(price)}
                   style={{ marginRight: '5px' }}
                 />
-                {price === '$5,000 - $10,000' && <Link to="/">{price}</Link>}
-                {price === '$10,000 - $30,000' && <Link to="/">{price}</Link>}
-                {price === '$30,000 - $50,000' && <Link to="/">{price}</Link>}
-                {price === '$50,000 up' && <Link to="/">{price}</Link>}
+                {price === '$0,000 - $10,000' && <Link to="/">{price}</Link>}
+                {price === '$10,000 - $25,000' && <Link to="/">{price}</Link>}
+                {price === '$25,000 - $50,000' && <Link to="/">{price}</Link>}
+                {price === '$50,000 & up' && <Link to="/">{price}</Link>}
               </label>
             </div>
           ))}

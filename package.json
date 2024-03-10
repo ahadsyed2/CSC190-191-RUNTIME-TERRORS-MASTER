@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "gapi-script": "^1.2.0"
+  },
+  "devDependencies": {
+    "postcss-flexbugs-fixes": "^5.0.2"
+  }
+}
