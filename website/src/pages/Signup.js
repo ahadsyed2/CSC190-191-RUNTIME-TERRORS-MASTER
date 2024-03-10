@@ -13,12 +13,15 @@ const Signup = () => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [firstname, setFirstName] = useState('')
+    const [lastname, setLastName] = useState('')
+    const [userlocation, setUserLocation] = useState('')
     const {signup, error, isLoading} = useSignup()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         //console.log(email,password)
-        await signup(email,password)
+        await signup(email,password,firstname,lastname,userlocation )
 
     }
 
@@ -35,6 +38,7 @@ const Signup = () => {
   }
 
   const [capVal, setCapVal] = useState(null)
+  
 
   return (
       <>
@@ -79,20 +83,35 @@ const Signup = () => {
             <h3>Create an account to access Carmony account.</h3>
                 <div className="name">
                     <h3>First Name</h3>
-                    <input type="text" placeholder="" required />
+                    <input
+                            type = "text"
+                            onChange={(e) => setFirstName(e.target.value)}
+                            value = {firstname}
+                        />
                 </div>
 
                 <div className="name">
                     <h3>Last Name</h3>
-                    <input type="text" placeholder="" required />
+                    <input
+                            type = "text"
+                            onChange={(e) => setLastName(e.target.value)}
+                            value = {lastname}
+                        />
                 </div>
-
                 <div className="email-address">
                     <h3>Email Address</h3>
                         <input
                             type = "email"
                             onChange={(e) => setEmail(e.target.value)}
                             value = {email}
+                        />
+                </div>
+                <div className="signup-location">
+                    <h3>Location</h3>
+                        <input
+                            type = "text"
+                            onChange={(e) => setUserLocation(e.target.value)}
+                            value = {userlocation}
                         />
                 </div>
 
@@ -116,6 +135,7 @@ const Signup = () => {
                         <h5>Show Password</h5>
                     </label>
                 </div>
+                
 
                 <div className='reCaptcha'>
                         <ReCAPTCHA

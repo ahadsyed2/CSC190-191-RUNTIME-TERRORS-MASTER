@@ -141,7 +141,30 @@ span {
     margin-top: 15px;
 }
 
+.signup-box .signup-location h3 {
+    font-size: 16px;
+    margin-right: 278px;
+    margin-bottom: 4px;
+    margin-top: 15px;
+}
+
 .signup-box .name input {
+    width: 70%;
+    height: 100%;
+    border: none;
+    border-radius: 10px;
+}
+
+.signup-box .signup-location input {
+    width: 70%;
+    height: 100%;
+    border: none;
+    border-radius: 10px;
+}
+
+
+
+.signup-box input {
     width: 70%;
     height: 100%;
     border: none;
@@ -212,6 +235,11 @@ input[type="password"] {
     padding: 12px 12px;
 }
 
+input[type="u-location"] {
+    font-size: 16px;
+    padding: 12px 12px;
+}
+
 .signup-box input::placeholder{
     color:#000;  
 }
@@ -262,7 +290,7 @@ input[type="password"] {
     color: #fff;
     font-size: 18px;
     text-align: center;
-}  
+}
 
 .reCaptcha {
     margin-left: 5rem;
@@ -336,6 +364,7 @@ input[type="password"] {
     margin-top: 2rem;
     padding-bottom: 6rem;
 }
+
 
 
 /*                        

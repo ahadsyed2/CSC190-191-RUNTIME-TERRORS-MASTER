@@ -8,13 +8,13 @@ const profileRoutes = require('./routes/profileRoutes');
 const vehicleRoutes = require('./routes/vehicleRoutes');
 
 
-const userRoutes = require('./routes/userRoutes');
-const postingRoutes = require('./routes/postingRoutes');
-
 //express app
 const app = express()
 
-// Middleware to log path and request type
+///middleware, parse json body for post request
+app.use(express.json())
+
+
 app.use((req, res, next) => {
     //LOG PATH AND REQUEST TYPE
     console.log(req.path, req.method)
@@ -57,13 +57,12 @@ app.use('/api/postRoutes', postRoutes); //I used this for home page -Nick
 
 
 // Connect to MongoDB and start the server
-mongoose
-  .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     app.listen(process.env.PORT, () => {
-      console.log('CONNECTED. Listening on port 4k');
-    });
+      console.log('CONNECTED. Listening on port 4k')
+    })
   })
   .catch((error) => {
     console.log(error);
-  });
+  })
