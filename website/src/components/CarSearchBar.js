@@ -64,70 +64,32 @@ const CarSearchBar = ({ carList }) => {
   };
 
   return (
-    <div style={styles.container}>
-      <input
-        type="text"
-        placeholder="Search for cars ..."
-        value={searchTerm}
-        onChange={handleSearch}
-        style={styles.input}
-      />
-      {searchTerm && (
-        <ul style={styles.list}>
-          {searchResults.map((car, index) => (
-            <li key={index} style={styles.listItem}>
-              <Link to={generateCarLink(car.name)} style={styles.link}>
-                {car.make} - {car.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
+<div className="relative" >
+  <input
+    type="text"
+    placeholder="Search for cars ..."
+    value={searchTerm}
+    onChange={handleSearch}
+    className="py-2 px-4 mb-4 mt-8 block w-full leading-5 border-2 border-gray-300 rounded-2xl shadow-lg transition duration-150 ease-in-out text-xl sm:leading-7" 
+  />
+  {searchTerm && (
+    <ul className="absolute mt-2 bg-white rounded-md shadow-lg w-full" >
+      {searchResults.map((car, index) => (
+        <li
+          key={index}
+          className="py-2 px-4 text-lg cursor-pointer hover:bg-gray-200"
+        >
+          <Link to={generateCarLink(car.name)} className="no-underline text-gray-800">
+            {car.make} - {car.name}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  )}
+</div>
 
-    </div>
+
   );
-};
-
-
-const styles = {
-  container: {
-    margin: '1px',
-    width: '100%',
-    position: 'sticky',
-    top: 0, 
-    zIndex: 1, /* Set a z-index value */
-    marginBottom: '1rem',
-
-  },
-  input: {
-    padding: '12px',
-    fontSize: '20px',
-  },
-  list: {
-    listStyleType: 'none',
-    padding: 0,
-    marginTop: '10px',
-    position: 'absolute',
-    left: 0,
-    top: '100%',
-    width: '100%',
-    backgroundColor: '#fff', 
-    boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
-    borderRadius: '5px',
-    zIndex: 1,
-  },
-  listItem: {
-    padding: '12px',
-    margin: '5px 0',
-    borderRadius: '5px',
-    fontSize: '20px',
-    cursor: 'pointer',
-
-  },
-  link: {
-    textDecoration: 'none',
-    color: 'inherit', // Inherit the color from the parent
-  },
 };
 
 

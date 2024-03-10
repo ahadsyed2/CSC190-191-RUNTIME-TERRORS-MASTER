@@ -14,6 +14,7 @@ import CarYear from '../components/CarYear';
 import CarMileage from '../components/CarMileage';
 import { cars, routeMapping } from '../components/carConstants';
 import './HomePage.css';
+
 import { usePostContext } from '../hooks/usePostContext';
 
 
@@ -278,13 +279,13 @@ const HomeIndex = () => {
   return (
     <section>
       <IconContext.Provider value={{ color: '#fff' }}>
-        <div className='navbarMenu'>
+        <div className='navbarMenu flex items-center'>
           <Link to="#" className='hamburger-bars'>
             <FaBars onClick={showSidebar} />
           </Link>
 
-          <div className="carmony-logo">
-            <img src="CARMONY_ICON2.png" alt="" />
+          <div className="carmony-logo w-1/10 flex justify-center items-center p-0 1rem" style={{ width: "15rem", marginLeft: "2rem" }}>
+            <img src="CARMONY_ICON2.png" alt="Logo" className="w-500 mt-3" />
           </div>
 
           <ThirdNavbarMenu />
@@ -314,25 +315,33 @@ const HomeIndex = () => {
       <div className="filter-container">
         <div className="filter-box">
           <div className="side-bar">
-            <div className="filter-search">
-              <div className="filter-header">
-                <h1>Filter by</h1>
+            <div className="filter-search flex flex-col mb-4">
+              <div className="filter-header flex justify-between items-center">
+                <h1 className="text-3xl font-bold text-black" style={{ textShadow: '0px 2px 4px rgba(139, 139, 139)' }}> Filter by</h1>
                 <a href="#">
-                  <h3>clear filter</h3>
+                  <h3 className="text-lg text-blue-800 font-semibold" style={{ textShadow: '0px 2px 2px rgba(52, 124, 248)' }}>Clear filter</h3>
                 </a>
               </div>
             </div>
 
+
             <CarListing />
            
             <div className="myMenu">
-              <div className="customer-choices">
-                <div className="choices">
-                  <Link to="#"><h3>All</h3></Link>
-                  <Link to="#"><h3>Dealers</h3></Link>
-                  <Link to="#"><h3>Owners</h3></Link>
+              <div className="customer-choices flex flex-col">
+                <div className="choices flex justify-between items-center mt-2 mb-8">
+                  <Link to="#" className="choices-link" style={{  margin: '0 2px', textDecoration: 'none !important'}}>
+                    <h3 className="text-white bg-gray-700 rounded-3xl hover:rounded-xl text-lg font-bold w-28 text-center py-4 hover:text-yellow-300 hover:bg-black transition duration-300">All</h3>
+                  </Link>
+                  <Link to="#" className="choices-link" style={{ margin: '0 2px' }}>
+                    <h3 className="text-white bg-gray-700 text-lg rounded-3xl hover:rounded-xl font-bold w-28 text-center py-4 hover:text-yellow-300 hover:bg-black transition duration-300">Dealers</h3>
+                  </Link>
+                  <Link to="#" className="choices-link">
+                    <h3 className="text-white bg-gray-700 text-lg rounded-3xl hover:rounded-xl font-bold w-28 text-center py-4 hover:text-yellow-300 hover:bg-black transition duration-300">Owners</h3>
+                  </Link>
                 </div>
               </div>
+
 
               <div className="dropdown-section">
                 <li>
