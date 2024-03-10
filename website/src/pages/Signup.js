@@ -13,12 +13,15 @@ const Signup = () => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [firstname, setFirstName] = useState('')
+    const [lastname, setLastName] = useState('')
+    const [userlocation, setUserLocation] = useState('')
     const {signup, error, isLoading} = useSignup()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         //console.log(email,password)
-        await signup(email,password)
+        await signup(email,password,firstname,lastname,userlocation )
 
     }
 
@@ -35,6 +38,7 @@ const Signup = () => {
   }
 
   const [capVal, setCapVal] = useState(null)
+  
 
   return (
       <>
@@ -74,27 +78,47 @@ const Signup = () => {
 
       
       <div className="container">
-        <form className = "signup-box" onSubmit = {handleSubmit}>
-            <h1>Welcome!</h1>
-            <h3>Create an account to access Carmony account.</h3>
-                <div className="name">
-                    <h3>First Name</h3>
-                    <input type="text" placeholder="" required />
-                </div>
+      <form class="bg-gray-200 p-6 md:p-12 w-96 md:w-750 h-96 md:h-1000 absolute top-3/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center rounded-lg" onSubmit={handleSubmit}>
+    <h1 class="text-3xl md:text-4xl font-bold mb-4">Welcome!</h1>
+    <h3 class="text-lg md:text-xl mb-6">Create an account to access Carmony account.</h3>
+    <div class="mb-4">
+        <h3 class="text-lg mb-2">First Name</h3>
+        <input
+            type="text"
+            class="w-full border border-gray-300 rounded-md py-2 px-3"
+            onChange={(e) => setFirstName(e.target.value)}
+            value={firstname}
+        />
+    </div>
+    <div class="mb-4">
+        <h3 class="text-lg mb-2">Last Name</h3>
+        <input
+            type="text"
+            class="w-full border border-gray-300 rounded-md py-2 px-3"
+            onChange={(e) => setLastName(e.target.value)}
+            value={lastname}
+        />
+    </div>
+    <div class="mb-4">
+        <h3 class="text-lg mb-2">Email Address</h3>
+        <input
+            type="email"
+            class="w-full border border-gray-300 rounded-md py-2 px-3"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+        />
+    </div>
+    <div class="mb-4">
+        <h3 class="text-lg mb-2">Location</h3>
+        <input
+            type="text"
+            class="w-full border border-gray-300 rounded-md py-2 px-3"
+            onChange={(e) => setUserLocation(e.target.value)}
+            value={userlocation}
+        />
+    </div>
+</form>
 
-                <div className="name">
-                    <h3>Last Name</h3>
-                    <input type="text" placeholder="" required />
-                </div>
-
-                <div className="email-address">
-                    <h3>Email Address</h3>
-                        <input
-                            type = "email"
-                            onChange={(e) => setEmail(e.target.value)}
-                            value = {email}
-                        />
-                </div>
 
                 <div className="newPassword">
                     <h3>New Password</h3>
@@ -116,6 +140,7 @@ const Signup = () => {
                         <h5>Show Password</h5>
                     </label>
                 </div>
+                
 
                 <div className='reCaptcha'>
                         <ReCAPTCHA
