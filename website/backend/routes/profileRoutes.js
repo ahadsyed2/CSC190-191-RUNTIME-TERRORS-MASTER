@@ -1,4 +1,4 @@
-const express = require ('express')
+import express from 'express';
 
 //controller functions
 const { getProfile, createProfile, updateProfile, deleteProfile, getAllProfiles } = require ('../controllers/profileController')
@@ -18,4 +18,4 @@ router.patch('/:id', updateProfile)
 
 router.delete('/:id', deleteProfile)
 
-module.exports = router
+export default router;
