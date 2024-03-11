@@ -4,12 +4,17 @@ import { hamburgerMenu } from '../components/hamburgerMenu';
 import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import { IconContext } from 'react-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { BsFillArrowRightSquareFill } from "react-icons/bs";
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
-import NavbarMenu from '../components/navbarMenu';
+import ThirdNavbarMenu from '../components/ThirdNavbarMenu';
+import CarListing from '../components/CarListing';
+import CarMake from '../components/CarMake';
+import CarPrice from '../components/CarPrice';
+import CarYear from '../components/CarYear';
+import CarMileage from '../components/CarMileage';
+import { cars, routeMapping } from '../components/carConstants';
 import './HomePage.css';
+
 import { usePostContext } from '../hooks/usePostContext';
 
 
@@ -54,37 +59,8 @@ const HomeIndex = () => {
   const [checkedMileages, setCheckedMileages] = useState([]);
 
   // Car model function
-  const [cars, setCars] = useState([
-    { make: 'Toyota', model: 'Camry' },
-    { make: 'Toyota', model: 'Corolla' },
-    { make: 'Toyota', model: 'Prius' },
-    { make: 'Toyota', model: 'RAV4' },
+  
 
-    { make: 'Honda', model: 'Accord' },
-    { make: 'Honda', model: 'Civic' },
-    { make: 'Honda', model: 'CR-V' },
-    { make: 'Honda', model: 'Odyssey' },
-
-    { make: 'BMW', model: 'X1' },
-    { make: 'BMW', model: 'X3' },
-    { make: 'BMW', model: 'X5' },
-    { make: 'BMW', model: 'M3' },
-
-    { make: 'Tesla', model: 'Model 3' },
-    { make: 'Tesla', model: 'Model Y' },
-    { make: 'Tesla', model: 'Model X' },
-    { make: 'Tesla', model: 'Model S' },
-
-    { make: 'Chevrolet', model: 'Model 3' },
-    { make: 'Chevrolet', model: 'Model Y' },
-    { make: 'Chevrolet', model: 'Model X' },
-    { make: 'Chevrolet', model: 'Model S' },
-
-    { make: 'Ford', model: 'Model 3' },
-    { make: 'Ford', model: 'Model Y' },
-    { make: 'Ford', model: 'Model X' },
-    { make: 'Ford', model: 'Model S' },
-  ]);
   const [filteredResults, setFilteredResults] = useState({});
   const [filteredModelResults, setFilteredModelResults] = useState({});
   const [showModelOptions, setShowModelOptions] = useState(false);
@@ -149,8 +125,26 @@ const HomeIndex = () => {
     setFilteredModelResults({});
   };
 
-  const modelOptions = ['Toyota', 'Honda', 'BMW', 'Tesla', 'Chevrolet', 'Ford'];
-  //  const modelOptions = ['Camry', 'Corolla', 'Accord', 'Civic', 'X5', 'X3'];
+  const modelOptions = ['Camry', 'Civic', 'CV-R', 'Model Y', 'Silverado', 'F-150', 'Accord', 'Model 3'];  //Common Ones
+  //For a better product, the text should change depending on which make you select
+  const [modelOptionsVar, setModelOptionsVar] = useState(modelOptions);
+  const [isModelOptionsSet, setIsModelOptionsSet] = useState(false);
+  const toyotaOption = ['Tacoma', 'Crown', 'Prius', 'Corolla', 'Highlander', 'Sequoia', 'Tundra', 'RAV4'];
+  const hondaOption = ['CR-V', 'Accord', 'Odyssey', 'Pilot', 'Civic', 'HRV', 'S2000', 'Ridgeline'];
+  const mercedesOption = ['EQB', 'CLA', 'GLC', 'E-Class', 'C-Class', 'SL', 'GLA', 'GLB'];
+  const teslaOption = ['Model S', 'Model 3', 'Model X', 'Model Y', 'Cybertruck', 'Roadster', 'Semi', 'Model 2'];
+  const chevroletOption = ['Camaro', 'Corvette', 'Suburban', 'Silverado', 'Tahoe', 'Impala', 'Colorado', 'Bolt'];
+  const fordOption = ['Mustang', 'F150', 'Escape', 'Transit', 'Explorer', 'Fiesta', 'Focus', 'F250'];
+  const dodgeOption = ['Charger', 'Dart', 'Challenger', 'Dart', 'Durango', 'Ram 1500', 'Ram 2500', 'Ram 3500'];
+  const hyundaiOption = ['Santa Fe', 'Sonata', 'Tucson', 'Palisade', 'Kona', 'Accent', 'Elantra', 'Venue'];
+  const mazdaOption = ['2', '3', '6', 'speed3', 'MPV', 'Miata', 'RX-7', 'CX-5'];
+  const kiaOption = ['Soul', 'Sorento', 'Forte', 'Stinger', 'Rio', 'Optima', 'Niro', 'Sportage'];
+  const buickOption = ['Enclave', 'Encore', 'LaCrosse', 'Riviera', 'Regal', 'Sportback', 'LeSabre', 'Cascada'];
+  const jeepOption = ['Compass', 'Gladiator', 'Renegade', 'Wagoneer', 'Cherokee', 'Wrangler', 'Grand Cherokee', 'Avenger'];
+  const bmwOption = ['M5', 'M2', 'Z4', 'X1', 'XM', '2 Series', '5 Series', '7 Series'];
+  const nissanOption = ['Altima', 'Rogue', 'Maxima', 'Leaf', 'Sentra', 'Murano', 'GTR', 'Pathfinder'];
+  const volkswagenOption = ['Golf GTI', 'Gold R', 'Taos', 'Jetta', 'Atlas', 'Arteon', 'Tiguan', 'Beetle'];
+  const cadillacOption = ['CT4', 'Escalade', 'XT5', 'CTS', 'XLR', 'XT6', 'XT5', 'Seville'];
 
   // Car make function
   const [makelOptions, setMakeOptions] = useState([]);
@@ -186,7 +180,8 @@ const HomeIndex = () => {
     setFilteredMakeResults({});
   };
   
-  const makeOptions = ['Toyota', 'Honda', 'BMW', 'Tesla', 'Chevrolet', 'Ford'];
+  const makeOptions = ['Toyota', 'Honda', 'Mercedes', 'Tesla', 'Chevrolet', 'Ford', 'Dodge', 'Hyundai', 'Mazda',
+                       'Kia', 'Buick', 'Jeep', 'BMW', 'Nissan', 'Volkswagen', 'Cadillac']; 
   
 
   // Years function
@@ -235,6 +230,7 @@ const HomeIndex = () => {
   };
 
 
+
   // Function to handle keyup event
   const myFunction = () => {
     const searchInput = document.getElementById('mySearch').value.toLowerCase();
@@ -252,66 +248,159 @@ const HomeIndex = () => {
   };
 
 
-    //2 options:
-    //1- Set post.id in webpage, transfer webpages. Currently, too many renders so it fails
-    //2- Have post details be a pop-up since data is already all here. 
-    const [viewingPost, setViewingPost] = useState(false);
-    const [currentPost, setCurrentPost] = useState(-1);
-    const [currentPostId, setCurrentPostId] = useState(-1);
+  const [viewingPost, setViewingPost] = useState(false);
+  const [currentPost, setCurrentPost] = useState(-1);
+  const [currentPostId, setCurrentPostId] = useState(-1);
 
-    const handlePostBoxClick = (post, id) =>{
+  const handlePostBoxClick = (post, id) =>{
 
-      if(viewingPost == false){
-        //setCurrentPost(post);
-        //setViewingPost(true);
-      }
-      else if (viewingPost == true){
-        //setCurrentPost(-1);
-        //setViewingPost(false);
-      }
-      
-      //This is for changing the webpage to a unique one and passing the post.id through url
-      setCurrentPostId(id);
-      var href = "/post-details/" + id
-      window.location=href
+    if(viewingPost == false){     //This was for a pop-up feature. Still can be useful later
+      //setCurrentPost(post);
+      //setViewingPost(true);
     }
-  
-    //Pulling and Showing Posts from Database Section
-  
-    const {posts, dispatch} = usePostContext()
-  
-    //Might be efficient if this only occured on refresh instead of always
-    //Need to limit how many get pulled with it getting more when it reaches bottom of screen or by clicking next page
-    useEffect(() => {
-      const fetchPosts = async () => {
-        const response = await fetch('/api/postRoutes')
-        const json = await response.json()
-  
-        if(response.ok){
-          console.log('response Ok')
-          dispatch({type: 'SET_POSTS', payload: json})
-        }
+    else if (viewingPost == true){
+      //setCurrentPost(-1);
+      //setViewingPost(false);
+    }
+    
+    //This is for changing the webpage to a unique one and passing the post.id through url
+    setCurrentPostId(id);
+    var href = "/CarInfo/" + id;
+    window.location=href;
+  }   
+
+  //Pulling and Showing Posts from Database Section
+
+  const {posts, dispatch} = usePostContext()
+
+  //Might be efficient if this only occured on refresh instead of always
+  //Need to limit how many get pulled with it getting more when it reaches bottom of screen or by clicking next page
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const response = await fetch('/api/postRoutes')
+      const json = await response.json()
+
+      if(response.ok){
+        console.log('response Ok')
+        dispatch({type: 'SET_POSTS', payload: json})
       }
-      
-      fetchPosts()
-    }, [])
-    //DO NOT REMOVE THE BRACKETS, empty dependancy array as a 2nd arg runs useEffect hook only once when component renders
-    //Will run hook again when page refreshes
-  
+    }
+    
+    fetchPosts()
+  }, [])
+  //DO NOT REMOVE THE BRACKETS, empty dependancy array as a 2nd arg runs useEffect hook only once when component renders
+  //Will run hook again when page refreshes
+  //Could be useful for real-time refreshes, if that was desirable
+
+  var postCounter = 0;
+  const filter = (post) => {  
+    if(postCounter > 19){   //Limit posts to 20 (4x5) so it fits on screen)
+      return false;
+    }
+    postCounter++;
+    console.log("checkedModels = " + filteredModelResults.length);
+    console.log("checkedMake = " + checkedMake.length);
+
+    //Not Filtering so show all results                                       //This is just the name for models
+    if(checkedMake.length == 0 && checkedMileages == 0 && checkedYears == 0 && checkedMakes == 0 && checkedPrices == 0){
+      return true;
+    }
+
+    //Assume at this point we are filtering
+    var passAllFilters = true;
+    if(checkedMake.length != 0){
+      if(checkedMake.includes(post.make)){
+      } else {
+        passAllFilters = false;
+      }
+    }
+    if(checkedMileages.length != 0){
+      if(checkedMileages.includes(getMileageString(post.mileage))){
+      } else {
+        passAllFilters = false;
+      }
+    }
+    if(checkedYears.length != 0){
+      if(checkedYears.includes(getYearString(post.year))){
+      } else {
+        passAllFilters = false;
+      }
+    }
+    if(checkedMakes.length != 0){ //Name for models array
+      if(checkedMakes.includes(post.model)){
+      } else {
+        passAllFilters = false;
+      }
+    }
+    if(checkedPrices.length != 0){
+      if(checkedPrices.includes(getPriceString(post.price))){
+      } else {
+        passAllFilters = false;
+      }
+    }
+
+    return passAllFilters;
+  }
+
+  const mileageStrings = ['0 - 25,000 miles', '25,000 - 75,000 miles', 
+  '75,000 - 125,000 miles', '125,000 miles & up'];
+  const priceStrings = ['$0,000 - $10,000', '$10,000 - $25,000', '$25,000 - $50,000', '$50,000 & up'];
+  const yearStrings = ['2020-Today', '2010-2020', '2000-2010', '1990-2000', '1980-1990', '< 1980'];
+
+  const getMileageString = (mileage) =>{
+    if(mileage > 125000){
+      return mileageStrings[3];
+    } else if (mileage > 75000){
+      return mileageStrings[2];
+    } else if (mileage > 25000){
+      return mileageStrings[1];
+    } else {
+      return mileageStrings[0];
+    }
+  }
+
+  const getYearString = (year) =>{
+    if(year > 2020){
+      return yearStrings[0];
+    } else if (year > 2010){
+      return yearStrings[1];
+    } else if (year > 2000){
+      return yearStrings[2];
+    } else if (year > 1990){
+      return yearStrings[3];
+    } else if (year > 1980){
+      return yearStrings[4];
+    } else {
+      return yearStrings[5];
+    }
+  }
+
+  const getPriceString = (price) =>{
+    if(price > 50000){
+      return priceStrings[3];
+    } else if (price > 25000){
+      return priceStrings[2];
+    } else if (price > 10000){
+      return priceStrings[1];
+    } else {
+      return priceStrings[0];
+    }
+  }
+
 
   return (
     <section>
       <IconContext.Provider value={{ color: '#fff' }}>
-        <div className='navbar'>
+        <div className='navbarMenu flex items-center'>
           <Link to="#" className='hamburger-bars'>
             <FaBars onClick={showSidebar} />
           </Link>
 
-          <div className="carmony-logo">
-            <img src="CARMONY_ICON2.png" alt="" />
+          <div className="carmony-logo w-1/10 flex justify-center items-center p-0 1rem" style={{ width: "15rem", marginLeft: "2rem" }}>
+            <img src="CARMONY_ICON2.png" alt="Logo" className="w-500 mt-3" />
           </div>
 
-          <NavbarMenu />
+          <ThirdNavbarMenu />
         </div>
 
         <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
@@ -335,35 +424,36 @@ const HomeIndex = () => {
         </nav>
       </IconContext.Provider>
 
-{/*Working on filter part(filter out cars with the dropdown options)--Janeeya Chanta*/}
       <div className="filter-container">
         <div className="filter-box">
           <div className="side-bar">
-            <div className="filter-search">
-              <div className="filter-header">
-                <h1>Filter by</h1>
+            <div className="filter-search flex flex-col mb-4">
+              <div className="filter-header flex justify-between items-center">
+                <h1 className="text-3xl font-bold text-black" style={{ textShadow: '0px 2px 4px rgba(139, 139, 139)' }}> Filter by</h1>
                 <a href="#">
-                  <h3>clear filter</h3>
+                  <h3 className="text-lg text-blue-800 font-semibold" style={{ textShadow: '0px 2px 2px rgba(52, 124, 248)' }}>Clear filter</h3>
                 </a>
               </div>
             </div>
 
-            <input
-              type="text"
-              id="mySearch"
-              onKeyUp={myFunction}
-              placeholder="Search by Make...."
-              title="Type in a category"
-            />
+
+            <CarListing />
            
             <div className="myMenu">
-              <div className="customer-choices">
-                <div className="choices">
-                  <Link to="#"><h3>All</h3></Link>
-                  <Link to="#"><h3>Dealers</h3></Link>
-                  <Link to="#"><h3>Owners</h3></Link>
+              <div className="customer-choices flex flex-col">
+                <div className="choices flex justify-between items-center mt-2 mb-8">
+                  <Link to="#" className="choices-link" style={{  margin: '0 2px', textDecoration: 'none !important'}}>
+                    <h3 className="text-white bg-gray-700 rounded-3xl hover:rounded-xl text-lg font-bold w-28 text-center py-4 hover:text-yellow-300 hover:bg-black transition duration-300">All</h3>
+                  </Link>
+                  <Link to="#" className="choices-link" style={{ margin: '0 2px' }}>
+                    <h3 className="text-white bg-gray-700 text-lg rounded-3xl hover:rounded-xl font-bold w-28 text-center py-4 hover:text-yellow-300 hover:bg-black transition duration-300">Dealers</h3>
+                  </Link>
+                  <Link to="#" className="choices-link">
+                    <h3 className="text-white bg-gray-700 text-lg rounded-3xl hover:rounded-xl font-bold w-28 text-center py-4 hover:text-yellow-300 hover:bg-black transition duration-300">Owners</h3>
+                  </Link>
                 </div>
               </div>
+
 
               <div className="dropdown-section">
                 <li>
@@ -376,7 +466,9 @@ const HomeIndex = () => {
                   {modelDropdown && (
                     <div className="dropdown-content">
                       <div>
-                        {modelOptions.map((model) => (
+                      {modelOptions.map((model) => {
+                        const make = cars.find((car) => car.model === model)?.make || '';
+                        return (
                           <div key={model}>
                             <label htmlFor={model} className="model-label">
                               <input
@@ -395,21 +487,19 @@ const HomeIndex = () => {
                                   <ul>
                                     {filteredResults[model].map((car, index) => (
                                       <li key={index}>
-                                        {car.model === 'Camry' ? 
-                                          (<Link to="/Login">{`${car.make} ${car.model}`}</Link>) 
-                                        : 
-                                          (<Link to="/Posting">{`${car.make} ${car.model}`}</Link>)
-                                        
-                                        }
+                                        {car.model in routeMapping ? (
+                                          <Link to={routeMapping[car.model]}>{`${car.make} ${car.model}`}</Link>
+                                        ) : null}
                                       </li>
                                     ))}
                                   </ul>
                                 </div>
                               </div>
                             )}
+                            <carComponent make={make} model={model} />
                           </div>
-                        ))}
-
+                        );
+                      })}
                         <div className='search'>
                           <button onClick={handleSearchClick} style={{ marginLeft: '10px' }}>
                             <p>Search</p>
@@ -423,764 +513,105 @@ const HomeIndex = () => {
                   )}
                 </li>
 
+                <CarMake
+                  makeOptions={makeOptions}
+                  checkedMake={checkedMake}
+                  handleMakeCheckboxClick={handleMakeCheckboxClick}
+                  handleMakeSearchClick={handleMakeSearchClick}
+                  handleMakeClearClick={handleMakeClearClick}
+                  makeDropdown={makeDropdown}
+                  toggleDropdown={toggleDropdown}
 
-                <li>
-                <div className="arrow-container">
-                    <h3 onClick={() => toggleDropdown('make')}>
-                      <p>Make</p>
-                      {makeDropdown ? <FaAngleUp className="arrow-icon" /> : <FaAngleDown className="arrow-icon" />}
-                    </h3>
-                  </div>
-                  {makeDropdown && (
-                    <div className="dropdown-content">
-                      {makeOptions.map((make) => (
-                        <div key={make}>
-                          <label htmlFor={`make-${make}`} className="make-label">
-                            <input
-                              type="checkbox"
-                              id={`make-${make}`}
-                              value={make}
-                              checked={checkedMake.includes(make)}
-                              onChange={() => handleMakeCheckboxClick(make)}
-                              style={{ marginRight: '5px' }}
-                            />
-                            {make === 'Toyota' && <Link to="/">{make}</Link>}
-                            {make === 'Honda' && <Link to="/">{make}</Link>}
-                            {make === 'BMW' && <Link to="/">{make}</Link>}
-                            {make === 'Tesla' && <Link to="/">{make}</Link>}
-                            {make === 'Chevrolet' && <Link to="/">{make}</Link>}
-                            {make === 'Ford' && <Link to="/">{make}</Link>}
-                          </label>
-                        </div>
-                      ))}
-                      <div className="search">
-                        <button onClick={handleMakeClearClick} style={{ marginLeft: '10px' }}>
-                          <p>Clear</p>
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                </li>
+                />
 
+                <CarYear
+                  checkedYears={checkedYears}
+                  handleYearCheckboxClick={handleYearCheckboxClick}
+                  handleYearClearClick={handleYearClearClick}
+                  yearsDropdown={yearsDropdown}
+                  toggleDropdown={toggleDropdown}
+                />
 
-                <li>
-                <div className="arrow-container">
-                    <h3 onClick={() => toggleDropdown('years')}>
-                      <p>Years</p>
-                      {yearsDropdown ? <FaAngleUp className="arrow-icon" /> : <FaAngleDown className="arrow-icon" />}
-                    </h3>
-                  </div>
-                  {yearsDropdown && (
-                    <div className="dropdown-content">
-                      {[2023, 2022, 2021, 2020, 2019, 2018].map((year) => (
-                        <div key={year}>
-                          <label htmlFor={`year-${year}`} className="year-label">
-                            <input
-                              type="checkbox"
-                              id={`year-${year}`}
-                              value={year}
-                              checked={checkedYears.includes(year)}
-                              onChange={() => handleYearCheckboxClick(year)}
-                              style={{ marginRight: '5px' }}
-                            />
-                            {year == 2023 && <Link to="/Posting">{year}</Link>}
-                            {year == 2022 && <Link to="/Posting">{year}</Link>}
-                            {year == 2021 && <Link to="/Posting">{year}</Link>}
-                            {year == 2020 && <Link to="/Posting">{year}</Link>}
-                            {year == 2019 && <Link to="/Posting">{year}</Link>}
-                            {year == 2018 && <Link to="/Posting">{year}</Link>}
-                          </label>
-                        </div>
-                      ))}
-                      <div className="search">
-                        <button onClick={handleYearClearClick} style={{ marginLeft: '10px' }}>
-                          <p>Clear</p>
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                </li>
+                <CarPrice
+                  checkedPrices={checkedPrices}
+                  handlePriceCheckboxClick={handlePriceCheckboxClick}
+                  handlePricesClearClick={handlePricesClearClick}
+                  priceDropdown={priceDropdown}
+                  toggleDropdown={toggleDropdown}
+                />
 
-                <li>
-                <div className="arrow-container">
-                    <h3 onClick={() => toggleDropdown('price')}>
-                      <p>Price</p>
-                      {priceDropdown ? <FaAngleUp className="arrow-icon" /> : <FaAngleDown className="arrow-icon" />}
-                    </h3>
-                  </div>
-                  {priceDropdown && (
-                    <div className="dropdown-content">
-                      {['$5,000 - $10,000', '$10,000 - $30,000', '$30,000 - $50,000', '$50,000 up'].map((price) => (
-                        <div key={price}>
-                          <label htmlFor={`price-${price}`} className="price-label">
-                            <input
-                              type="checkbox"
-                              id={`price-${price}`}
-                              value={price}
-                              checked={checkedPrices.includes(price)}
-                              onChange={() => handlePriceCheckboxClick(price)}
-                              style={{ marginRight: '5px' }}
-                            />
-                            {price === '$5,000 - $10,000' && <Link to="/">{price}</Link>}
-                            {price === '$10,000 - $30,000' && <Link to="/">{price}</Link>}
-                            {price === '$30,000 - $50,000' && <Link to="/">{price}</Link>}
-                            {price === '$50,000 up' && <Link to="/">{price}</Link>}
-                          </label>
-                        </div>
-                      ))}
-                      <div className="search">
-                        <button onClick={handlePricesClearClick} style={{ marginLeft: '10px' }}>
-                          <p>Clear</p>
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                </li>
-
-                <li>
-                  <div className="arrow-container">
-                    <h3 onClick={() => toggleDropdown('mileage')}>
-                      <p>Mileage</p>
-                      {mileageDropdown ? <FaAngleUp className="arrow-icon" /> : <FaAngleDown className="arrow-icon" />}
-                    </h3>
-                  </div>
-                  {mileageDropdown && (
-                    <div className="dropdown-content">
-                      {['40,000 - 60,000 miles', '60,000 - 80,000 miles', 
-                      '80,000 - 100,000 miles', '100,000 miles up'].map((mileage) => (
-                        <div key={mileage}>
-                          <label htmlFor={`mileage-${mileage}`} className="mileage-label">
-                            <input
-                              type="checkbox"
-                              id={`mileage-${mileage}`}
-                              value={mileage}
-                              checked={checkedMileages.includes(mileage)}
-                              onChange={() => handleMileageCheckboxClick(mileage)}
-                              style={{ marginRight: '5px' }}
-                            />
-                            {mileage === '40,000 - 60,000 miles' && <Link to="/">{mileage}</Link>}
-                            {mileage === '60,000 - 80,000 miles' && <Link to="/">{mileage}</Link>}
-                            {mileage === '80,000 - 100,000 miles' && <Link to="/">{mileage}</Link>}
-                            {mileage === '100,000 miles up' && <Link to="/">{mileage}</Link>}
-                          </label>
-                        </div>
-                      ))}
-                      <div className="search">
-                        <button onClick={handleMileageClearClick} style={{ marginLeft: '10px' }}>
-                          <p>Clear</p>
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                </li>
+                <CarMileage
+                  checkedMileages={checkedMileages}
+                  handleMileageCheckboxClick={handleMileageCheckboxClick}
+                  handleMileageClearClick={handleMileageClearClick}
+                  mileageDropdown={mileageDropdown}
+                  toggleDropdown={toggleDropdown}
+                />
 
               </div>
             </div>
           </div>
 
 
-           {/* Infinite Get Requests, whoops, probably bc of fetch() or backend server.js*/}
+          {/* This code is what populates the home screen with posts */}
           <div className="container">
             <div className="products-con">
 
               {/* Start Posting Box */}
-              
+
               {/* Basically a For each loop */}
               {/* We want to see many posts*/}
-              { !viewingPost && posts && posts.map((post) =>(
-            /*  <span>{ setUrl("/post-details" + post.id)} </span><a href={url} onClick={() => { handlePostBoxClick() }}>  too many rerenders*/
-            /*  <button href="" onClick={() => { handlePostBoxClick() }}> */
-               <div className="test2" key={post.id}> 
-                  <a onClick={() => { handlePostBoxClick(post, post._id) }}>
-                      <div className='products-item'>
-                        <div className='products-img'>
-                        { /* Need to be able to pull image from DB */ }
-                          <img
-                          src="https://images.offerup.com/4uQVF_BU-_3APQkmUNUmGB3xqhE=/1280x960/d3ed/d3ed001efeac469097afcb8638e4ca76.jpg"
-                          alt="Picture Failure"
-                          />
+              {posts && posts.map((post) =>(
+               
+                filter(post) && 
+                <div className="test2" key={post.id}> 
+                  
+                    <a onClick={() => { handlePostBoxClick(post, post._id) }}>
+                        <div className='products-item'>
+                          <div className='products-img'>
+                          { /* Need to be able to pull image from DB */ }
+                            <img
+                            src="https://images.offerup.com/4uQVF_BU-_3APQkmUNUmGB3xqhE=/1280x960/d3ed/d3ed001efeac469097afcb8638e4ca76.jpg"
+                            alt="Picture Failure"
+                            />
+                          </div>
+                        
+                          <div className='products-detail'>
+                            <h3>{post.year} {post.make} {post.model}</h3>
+                          </div>
+                          <div className='products-price'>
+                            <div className='products-left'>
+                              <h3>${post.price}</h3>
+                            </div> 
+                          </div>
+                          <div className='meleage-city'>
+                            <div className='mileage'>
+                              <div className='mileage-left'>
+                                <div className='mile-image'>
+                                  <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
+                                </div>
+                                <h4>{post.mileage} Miles</h4>
+                              </div>
+                            </div>
+                            <div className='city'>
+                              <div className='city-right'>
+                                <h4>{post.location}</h4>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       
-                        <div className='products-detail'>
-                          <h3>{post.year} {post.make} {post.model}</h3>
-                        </div>
-                        <div className='products-price'>
-                          <div className='products-left'>
-                            <h3>${post.price}</h3>
-                          </div> 
-                        </div>
-                        <div className='meleage-city'>
-                          <div className='mileage'>
-                            <div className='mileage-left'>
-                              <div className='mile-image'>
-                                <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
-                              </div>
-                              <h4>{/*post.mileage*/} Miles</h4>
-                            </div>
-                          </div>
-                          <div className='city'>
-                            <div className='city-right'>
-                              <h4>{post.location}</h4>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    
-                  </a>
-                </div>
-                ))}
-
-                {/* We have clicked on a post and want to see 1 post */}
-                { viewingPost && (
-                    <div className='viewPostClickableArea' onClick={() => { handlePostBoxClick() }}>
-                      <div className='viewPostTextDisplay'>
-                        Viewing a Post
-                        <div>
-                          YMM: {currentPost.year} {currentPost.make} {currentPost.model}
-                        </div>
-                        <div>
-                          Price: {currentPost.price}
-                        </div>
-                      </div>
-                    </div>
-                )}
-                
-                {/* End Posting Box */}
+                    </a>
+                 </div>
+              
+                  
+                  ))}
+                  
+                  {/* End Posting Box */}
 
  
                 
-
-              {/*<a href="CarInfo">
-              <div className="products-item">
-                  <div className="products-img">
-                    <img 
-                      src="https://images.offerup.com/4uQVF_BU-_3APQkmUNUmGB3xqhE=/1280x960/d3ed/d3ed001efeac469097afcb8638e4ca76.jpg"
-                      alt=""
-                    />
-                  </div>
-                    
-                    <div className="products-detail">
-                      <h3>2014 Ford Fiesta</h3>
-                    </div>
-                    <div className="products-price">
-                      <div className="products-left"><h3>$7,995</h3>
-                      </div>
-                    </div>
-                    
-                    <div className='meleage-city'>
-                      <div className="mileage">
-                        <div className="mileage-left">
-                          <div className='mile-image'>
-                            <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
-                          </div>
-                          <h4>104,639 Miles</h4>
-                        </div>
-                      </div>
-                      <div className="city">
-                        <div className="city-right"><h4>Denver, CO</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </a> */}
-
-                {/*<a href="CarInfo">
-                <div className="products-item">
-                  <div className="products-img">
-                    <img 
-                      src="https://images.offerup.com/gyw91Dcw-tv_40yIYnZaRbXeyoE=/1280x960/effd/effd19594b1840999151aba1aadc103c.jpg"
-                      alt="Product"
-                    />
-                  </div>
-                    <div className="products-detail">
-                    <h3>2016 Jeep Cherokee</h3>
-                  </div>
-                  <div className="products-price">
-                    <div className="products-left"><h3>$13,995</h3>
-                    </div>
-                  </div>
-                  
-                  <div className='meleage-city'>
-                    <div className="mileage">
-                      <div className="mileage-left">
-                        <div className='mile-image'>
-                          <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
-                        </div>
-                        <h4>93,699 Miles</h4>
-                      </div>
-                    </div>
-                    <div className="city">
-                      <div className="city-right"><h4>Denver, CO</h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                </a>*/}
-
-                 {/*<a href="CarInfo">
-                <div className="products-item">
-                  <div className="products-img">
-                    <img 
-                      src="https://images.offerup.com/6UDntzf3f2A5XMHXBK2opFz4sjU=/1000x750/eb7f/eb7f2828aa1b4f8dab83e04bb2d0ddb8.jpg"
-                      alt=""
-                    />
-                  </div>
-                    <div className="products-detail">
-                    <h3>2010 Hyundai Santa FE</h3>
-                  </div>
-                  <div className="products-price">
-                    <div className="products-left"><h3>$4,899</h3>
-                    </div>
-                  </div>
-                  
-                  <div className='meleage-city'>
-                    <div className="mileage">
-                      <div className="mileage-left">
-                        <div className='mile-image'>
-                          <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
-                        </div>
-                        <h4>200,000 Miles</h4>
-                      </div>
-                    </div>
-                    <div className="city">
-                      <div className="city-right"><h4>Denver, CO</h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                </a>*/}
-
-                 {/*<a href="CarInfo">
-                <div className="products-item">
-                  <div className="products-img">
-                    <img 
-                      src="https://images.offerup.com/NJrez1SM7cFsEx9BJ4Vkj3FgA3U=/1000x750/9cd6/9cd6d6d78efd41dbbc7861956d731ac2.jpg"
-                      alt=""
-                    />
-                  </div>
-                    <div className="products-detail">
-                    <h3>2010 Ford F-150</h3>
-                  </div>
-                  <div className="products-price">
-                    <div className="products-left"><h3>$10,000</h3>
-                    </div>
-                  </div>
-                  
-                  <div className='meleage-city'>
-                    <div className="mileage">
-                      <div className="mileage-left">
-                        <div className='mile-image'>
-                          <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
-                        </div>
-                        <h4>19,451 Miles</h4>
-                      </div>
-                    </div>
-                    <div className="city">
-                      <div className="city-right"><h4>Denver, CO</h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                </a>*/}
-
-                 {/*<a href="CarInfo">
-                <div className="products-item">
-                  <div className="products-img">
-                    <img 
-                      src="https://images.offerup.com/WSKMgd1P9DeZOVqwbvL-oHbhVpc=/1000x750/3d62/3d62d9eb30bf414aacda95093ee12e5f.jpg"
-                      alt="Product"
-                    />
-                  </div>
-                    <div className="products-detail">
-                    <h3>1983 Cadillac Eldorado</h3>
-                  </div>
-                  <div className="products-price">
-                    <div className="products-left"><h3>$5,799</h3>
-                    </div>
-                  </div>
-                  
-                  <div className='meleage-city'>
-                    <div className="mileage">
-                      <div className="mileage-left">
-                        <div className='mile-image'>
-                          <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
-                        </div>
-                        <h4>66,000 Miles</h4>
-                      </div>
-                    </div>
-                    <div className="city">
-                      <div className="city-right"><h4>Denver, CO</h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                </a>*/}
-
-                 {/*<a href="CarInfo">
-                <div className="products-item">
-                  <div className="products-img">
-                    <img 
-                      src="https://images.offerup.com/RlVjLHMSWQv0yn5PpsQAOMMQnss=/2048x1536/d8ba/d8bafb71d2af4d568eab0bd7a19bec0f.jpg"
-                      alt="Product"
-                    />
-                  </div>
-                    <div className="products-detail">
-                    <h3>2009 Chevrolet Malibu Hybrid</h3>
-                  </div>
-                  <div className="products-price">
-                    <div className="products-left"><h3>$10,000</h3>
-                    </div>
-                  </div>
-                  
-                  <div className='meleage-city'>
-                    <div className="mileage">
-                      <div className="mileage-left">
-                        <div className='mile-image'>
-                          <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
-                        </div>
-                        <h4>57,340 Miles</h4>
-                      </div>
-                    </div>
-                    <div className="city">
-                      <div className="city-right"><h4>Denver, CO</h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                </a>*/}
-
-                 {/*<a href="CarInfo">
-              <div className="products-item">
-                  <div className="products-img">
-                    <img 
-                      src="https://images.offerup.com/WckpWTB8OihN7wEKqyq7wwcQkYs=/1152x864/597f/597f8cfe864c483faf1be7b5f3f0cedf.jpg"
-                      alt=""
-                    />
-                  </div>
-                  
-                  <div className="products-detail">
-                    <h3>2010 Chevrolet Malibu</h3>
-                  </div>
-                  <div className="products-price">
-                    <div className="products-left"><h3>$4,600</h3>
-                    </div>
-                  </div>
-                  
-                  <div className='meleage-city'>
-                    <div className="mileage">
-                      <div className="mileage-left">
-                        <div className='mile-image'>
-                          <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
-                        </div>
-                        <h4>164,000 Miles</h4>
-                      </div>
-                    </div>
-                    <div className="city">
-                      <div className="city-right"><h4>Denver, CO</h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                </a>*/}
-
-                 {/*<a href="CarInfo">
-                <div className="products-item">
-                  <div className="products-img">
-                    <img 
-                      src="https://images.offerup.com/28n-ueyEb2RRxTyviHBYFHdH_YU=/1922x1442/4940/4940044bf8ef490aa0f1b57730e0e8ae.jpg"
-                      alt="Product"
-                    />
-                  </div>
-                    <div className="products-detail">
-                    <h3>2000 Dodge Ram</h3>
-                  </div>
-                  <div className="products-price">
-                    <div className="products-left"><h3>$15,000</h3>
-                    </div>
-                  </div>
-                  
-                  <div className='meleage-city'>
-                    <div className="mileage">
-                      <div className="mileage-left">
-                        <div className='mile-image'>
-                          <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
-                        </div>
-                        <h4>299,393 Miles</h4>
-                      </div>
-                    </div>
-                    <div className="city">
-                      <div className="city-right"><h4>Denver, CO</h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                </a>*/}
-
-                 {/*<a href="CarInfo">
-              <div className="products-item">
-                  <div className="products-img">
-                    <img 
-                      src="https://images.offerup.com/4uQVF_BU-_3APQkmUNUmGB3xqhE=/1280x960/d3ed/d3ed001efeac469097afcb8638e4ca76.jpg"
-                      alt=""
-                    />
-                  </div>
-                    
-                    <div className="products-detail">
-                      <h3>2014 Ford Fiesta</h3>
-                    </div>
-                    <div className="products-price">
-                      <div className="products-left"><h3>$7,995</h3>
-                      </div>
-                    </div>
-                    
-                    <div className='meleage-city'>
-                      <div className="mileage">
-                        <div className="mileage-left">
-                          <div className='mile-image'>
-                            <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
-                          </div>
-                          <h4>104,639 Miles</h4>
-                        </div>
-                      </div>
-                      <div className="city">
-                        <div className="city-right"><h4>Denver, CO</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </a>*/}
-
-                 {/*<a href="CarInfo">
-                <div className="products-item">
-                  <div className="products-img">
-                    <img 
-                      src="https://images.offerup.com/gyw91Dcw-tv_40yIYnZaRbXeyoE=/1280x960/effd/effd19594b1840999151aba1aadc103c.jpg"
-                      alt="Product"
-                    />
-                  </div>
-                    <div className="products-detail">
-                    <h3>2016 Jeep Cherokee</h3>
-                  </div>
-                  <div className="products-price">
-                    <div className="products-left"><h3>$13,995</h3>
-                    </div>
-                  </div>
-                  
-                  <div className='meleage-city'>
-                    <div className="mileage">
-                      <div className="mileage-left">
-                        <div className='mile-image'>
-                          <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
-                        </div>
-                        <h4>93,699 Miles</h4>
-                      </div>
-                    </div>
-                    <div className="city">
-                      <div className="city-right"><h4>Denver, CO</h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                </a>*/}
-
-                 {/*<a href="CarInfo">
-                <div className="products-item">
-                  <div className="products-img">
-                    <img 
-                      src="https://images.offerup.com/6UDntzf3f2A5XMHXBK2opFz4sjU=/1000x750/eb7f/eb7f2828aa1b4f8dab83e04bb2d0ddb8.jpg"
-                      alt=""
-                    />
-                  </div>
-                    <div className="products-detail">
-                    <h3>2010 Hyundai Santa FE</h3>
-                  </div>
-                  <div className="products-price">
-                    <div className="products-left"><h3>$4,899</h3>
-                    </div>
-                  </div>
-                  
-                  <div className='meleage-city'>
-                    <div className="mileage">
-                      <div className="mileage-left">
-                        <div className='mile-image'>
-                          <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
-                        </div>
-                        <h4>200,000 Miles</h4>
-                      </div>
-                    </div>
-                    <div className="city">
-                      <div className="city-right"><h4>Denver, CO</h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                </a>*/}
-
-                 {/*<a href="CarInfo">
-                <div className="products-item">
-                  <div className="products-img">
-                    <img 
-                      src="https://images.offerup.com/NJrez1SM7cFsEx9BJ4Vkj3FgA3U=/1000x750/9cd6/9cd6d6d78efd41dbbc7861956d731ac2.jpg"
-                      alt=""
-                    />
-                  </div>
-                    <div className="products-detail">
-                    <h3>2010 Ford F-150</h3>
-                  </div>
-                  <div className="products-price">
-                    <div className="products-left"><h3>$10,000</h3>
-                    </div>
-                  </div>
-                  
-                  <div className='meleage-city'>
-                    <div className="mileage">
-                      <div className="mileage-left">
-                        <div className='mile-image'>
-                          <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
-                        </div>
-                        <h4>19,451 Miles</h4>
-                      </div>
-                    </div>
-                    <div className="city">
-                      <div className="city-right"><h4>Denver, CO</h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                </a>*/}
-
-                 {/*<a href="CarInfo">
-                <div className="products-item">
-                  <div className="products-img">
-                    <img 
-                      src="https://images.offerup.com/WSKMgd1P9DeZOVqwbvL-oHbhVpc=/1000x750/3d62/3d62d9eb30bf414aacda95093ee12e5f.jpg"
-                      alt="Product"
-                    />
-                  </div>
-                    <div className="products-detail">
-                    <h3>1983 Cadillac Eldorado</h3>
-                  </div>
-                  <div className="products-price">
-                    <div className="products-left"><h3>$5,799</h3>
-                    </div>
-                  </div>
-                  
-                  <div className='meleage-city'>
-                    <div className="mileage">
-                      <div className="mileage-left">
-                        <div className='mile-image'>
-                          <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
-                        </div>
-                        <h4>66,000 Miles</h4>
-                      </div>
-                    </div>
-                    <div className="city">
-                      <div className="city-right"><h4>Denver, CO</h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                </a>*/}
-
-                 {/*<a href="CarInfo">
-                <div className="products-item">
-                  <div className="products-img">
-                    <img 
-                      src="https://images.offerup.com/RlVjLHMSWQv0yn5PpsQAOMMQnss=/2048x1536/d8ba/d8bafb71d2af4d568eab0bd7a19bec0f.jpg"
-                      alt="Product"
-                    />
-                  </div>
-                    <div className="products-detail">
-                    <h3>2009 Chevrolet Malibu Hybrid</h3>
-                  </div>
-                  <div className="products-price">
-                    <div className="products-left"><h3>$10,000</h3>
-                    </div>
-                  </div>
-                  
-                  <div className='meleage-city'>
-                    <div className="mileage">
-                      <div className="mileage-left">
-                        <div className='mile-image'>
-                          <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
-                        </div>
-                        <h4>57,340 Miles</h4>
-                      </div>
-                    </div>
-                    <div className="city">
-                      <div className="city-right"><h4>Denver, CO</h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                </a>*/}
-
-                 {/*<a href="CarInfo">
-              <div className="products-item">
-                  <div className="products-img">
-                    <img 
-                      src="https://images.offerup.com/WckpWTB8OihN7wEKqyq7wwcQkYs=/1152x864/597f/597f8cfe864c483faf1be7b5f3f0cedf.jpg"
-                      alt=""
-                    />
-                  </div>
-                  
-                  <div className="products-detail">
-                    <h3>2010 Chevrolet Malibu</h3>
-                  </div>
-                  <div className="products-price">
-                    <div className="products-left"><h3>$4,600</h3>
-                    </div>
-                  </div>
-                  
-                  <div className='meleage-city'>
-                    <div className="mileage">
-                      <div className="mileage-left">
-                        <div className='mile-image'>
-                          <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
-                        </div>
-                        <h4>164,000 Miles</h4>
-                      </div>
-                    </div>
-                    <div className="city">
-                      <div className="city-right"><h4>Denver, CO</h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                </a>*/}
-
-                {/*<a href="CarInfo">
-                <div className="products-item">
-                  <div className="products-img">
-                    <img 
-                      src="https://images.offerup.com/28n-ueyEb2RRxTyviHBYFHdH_YU=/1922x1442/4940/4940044bf8ef490aa0f1b57730e0e8ae.jpg"
-                      alt="Product"
-                    />
-                  </div>
-                    <div className="products-detail">
-                    <h3>2000 Dodge Ram</h3>
-                  </div>
-                  <div className="products-price">
-                    <div className="products-left"><h3>$15,000</h3>
-                    </div>
-                  </div>
-                  
-                  <div className='meleage-city'>
-                    <div className="mileage">
-                      <div className="mileage-left">
-                        <div className='mile-image'>
-                          <img src="https://icons.veryicon.com/png/o/business/menu-icon-of-sanitation-industry/operating-mileage.png" alt="Car Image" />
-                        </div>
-                        <h4>299,393 Miles</h4>
-                      </div>
-                    </div>
-                    <div className="city">
-                      <div className="city-right"><h4>Denver, CO</h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                </a>*/}
+                
                 
             </div>
           </div>

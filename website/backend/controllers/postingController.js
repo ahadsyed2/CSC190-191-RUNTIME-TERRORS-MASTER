@@ -24,6 +24,15 @@ const posting = async (req, res) => {
       location,
       description,
       image,
+      mileage,
+      gas,
+      transmission,
+      condition,
+      color,
+      cylinders,
+      features,
+      timestamp
+
     } = req.body;
   
 
@@ -38,6 +47,14 @@ const posting = async (req, res) => {
       location,
       description,
       image,
+      mileage,
+      gas,
+      transmission,
+      condition,
+      color,
+      cylinders,
+      features,
+      timestamp
       
     });
 

@@ -40,7 +40,15 @@ function Posting() {
     year: '',
     price: '',
     location: '',
+    mileage: '',
+    fuel: '',
+    transmission: '',
+    condition: '',
+    color: '',
+    cylinders: '',
+    features: '',
     description: '',
+    timestamp: '',
     image: null, // You might want to store the file or image URL here
     imagePreview: null,
   });
@@ -89,8 +97,17 @@ function Posting() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+
         //TESTING
        
+
+
+      //Timestamp
+      var date = new Date();
+      setFormData({
+        ...formData,
+        timestamp: date.toString(),
+      });
 
 
       // Call the createPosting function from usePosting hook
@@ -127,9 +144,21 @@ function Posting() {
           year: '',
           price: '',
           location: '',
+          mileage: '',
+          fuel: '',
+          transmission: '',
+          condition: '',
+          color: '',
+          cylinders: '',
+          features: '',
           description: '',
           image: null,
+          timestamp: '',
         });
+
+
+        //I added this to take you to home page -Nick
+        window.location.href = "/";
       } else {
         // Handle error (e.g., show an error message)
         setSuccessMessage('Posting failed, incorrect syntax please try again' , error);
@@ -271,6 +300,90 @@ function Posting() {
                     />
                   </div>
 
+                  <div className='mileage-box'>
+                    <h2>Enter Mileage: </h2>
+                    <input
+                      type='text'
+                      name='mileage'
+                      placeholder='Enter Mileage'
+                      value={formData.mileage}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </div>
+
+                  <div className='fuel-box'>
+                    <h2>Enter Fuel Type: </h2>
+                    <input
+                      type='text'
+                      name='fuel'
+                      placeholder='Enter Fuel Type'
+                      value={formData.fuel}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </div>
+
+                  <div className='transmission-box'>
+                    <h2>Enter Transmission Type: </h2>
+                    <input
+                      type='text'
+                      name='transmission'
+                      placeholder='Enter Transmission Type'
+                      value={formData.transmission}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </div>
+
+                  <div className='condition-box'>
+                    <h2>Enter Condition Description: </h2>
+                    <input
+                      type='text'
+                      name='condition'
+                      placeholder='Enter Condition'
+                      value={formData.condition}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </div>
+
+                  <div className='color-box'>
+                    <h2>Enter Color: </h2>
+                    <input
+                      type='text'
+                      name='color'
+                      placeholder='Enter Color'
+                      value={formData.color}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </div>
+
+                  <div className='cylinders-box'>
+                    <h2>Enter number of Cylidners: </h2>
+                    <input
+                      type='text'
+                      name='cylinders'
+                      placeholder='Enter Cylinder Count'
+                      value={formData.cylinders}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </div>
+
+                  <div className='features-box'>
+                    <h2>Enter Notable Features: </h2>
+                    <input
+                      type='text'
+                      name='features'
+                      placeholder='Enter Features'
+                      value={formData.features}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </div>
+
                   <div className='description-box'>
                     <h2>Description: </h2>
                     <input
@@ -337,6 +450,13 @@ function Posting() {
                         <p>Year: {formData.year}</p>
                         <p>Price: {formData.price}</p>
                         <p>Location: {formData.location}</p>
+                        <p>Mileage: {formData.mileage}</p>
+                        <p>Fuel Type: {formData.fuel}</p>
+                        <p>Transmission Style: {formData.transmission}</p>
+                        <p>Condition: {formData.condition}</p>
+                        <p>Color: {formData.color}</p>
+                        <p>Cylinder Count: {formData.cylinders}</p>
+                        <p>Included Features: {formData.features}</p>
                         <p>Description: {formData.description}</p>
                     </div>
                   </div>

@@ -1,4 +1,4 @@
-.navbar {
+.navbarMenu {
     background-color: #000000;
     height: 100px;
     display: flex;
@@ -241,6 +241,24 @@ span {
 }
 
 .location-box input[type="text"] {
+    font-size: 16px;
+    width: 50%;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    border-radius: 20px;
+}
+
+.mileage-box {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.mileage-box h2 {
+    font-size: 26px;
+    margin-top: 2rem;
+}
+
+.mileage-box input[type="text"] {
     font-size: 16px;
     width: 50%;
     margin-top: 1rem;

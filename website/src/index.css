@@ -1,7 +1,11 @@
 /* google font */
 /*@import url();*/
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/*
 :root {
   --primary: #1aac83;
   --error: #e7195a;
@@ -97,4 +101,4 @@ div.error {
 }
 input.error {
   border: 1px solid var(--error);
-}
+}*/

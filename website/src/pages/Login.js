@@ -6,12 +6,26 @@ import { hamburgerMenu } from './hamburgerMenu';
 import { IconContext } from 'react-icons';
 import './Login.css'
 import { useLogin } from '../hooks/useLogin';
+import LoginButon from '../components/GoogleLogin'
+import { useEffect } from 'react';
+import { gapi } from 'gapi-script';
 
+//google api client id
+const clientId = "635523668157-tse46i7rquk3rcll133s95gh34d86qda.apps.googleusercontent.com";
+ 
 function Login() {
 
     //TESTING, 
 
-    
+    useEffect(() => {
+        function start() {
+            gapi.client.init({
+                clientId: clientId,
+                scope: ""
+            })
+        };
+        gapi.load('client:auth2', start);
+    });
 
 
     const [email, setEmail] = useState('')
@@ -38,13 +52,13 @@ function Login() {
     return (
         <>
         <IconContext.Provider value= {{color: '#fff'}}>
-            <div className='navbar'>
+            <div className='navbarMenu'>
                 <Link to="#" className='hamburger-bars'>
                     <FaBars onClick={showSidebar} />
                 </Link>
 
-                <div className="logo">
-                    <img src="https://www.clker.com/cliparts/u/O/L/Q/c/m/car-icon-hi.png" alt="Logo" />
+                <div className="carmony-logo w-1/10 flex justify-center items-center p-0 1rem" style={{ width: "15rem", marginLeft: "2rem" }}>
+                    <img src="CARMONY_ICON2.png" alt="Logo" className="w-500 mt-3" />
                 </div>
             </div>
         
@@ -69,47 +83,64 @@ function Login() {
         </nav>
         </IconContext.Provider>
 
-        <section className="container">
-            <div className="login-box">
-                    <h1>Welcome!</h1>
-                    <h3>Log in to access your Carmony account.</h3>
-                    <div className="register-link">
-                        <p>New to Carmony? <Link to="/Signup">Create an account</Link></p>
+        <section className="container h-screen flex items-center justify-center" >
+            <div className="login-box bg-gray-200" >
+                <h1 className="text-5xl mb-6" style={{ textShadow: '2px 4px 4px rgba(139, 139, 139)' }} >Welcome!</h1>
+                <h3 className="text-xl mb-4">Log in to access your Carmony account.</h3>
+                    <div className="create-link">
+                        <h3>New to Carmony?</h3>
+                        <h4><Link to="/Signup">Create an account</Link></h4>
                     </div>
-                    
-                    <form className = "input-box" onSubmit = {handleSubmit}>
-                     
 
+                <form className="input-box" onSubmit={handleSubmit}>
+                    <div className="flex flex-col text-lg items-start max-w-md w-full md:w-64 lg:w-96 mt-5">
                         <label>Email</label>
-                         <input
-                            type = "email"
-                            
-                            onChange={(e) => setEmail(e.target.value)}
-                            value = {email}
+                        <input
+                        type="email"
+                        onChange={(e) => setEmail(e.target.value)}
+                        value={email}
+                        className="h-full bg-transparent border border-black outline-none rounded-full mt-1 px-3 py-2 w-full"
                         />
+                    </div>
 
+                    <div className="flex flex-col text-lg items-start max-w-md w-full md:w-64 lg:w-96 mt-7">
                         <label>Password</label>
                         <input
-                            type = "password"
-                            onChange={(e) => setPassword(e.target.value)}
-                            value = {password}
-                            />
-
-                        <button disabled = {isLoading}>Login</button>
-                        {error && <div className  = "error">{error} </div>}
-                    </form>
-
-
-
+                        type="password"
+                        onChange={(e) => setPassword(e.target.value)}
+                        value={password}
+                        className="h-full bg-transparent border border-black outline-none rounded-full mt-1 px-3 py-2 w-full"
+                        />
+                    </div>
 
 
                     <div className="remember-forgot">
-                        <label><input type="checkbox" />Remember me</label>
-                        <Link to="/ForgotPassword">Forgot password?</Link>
+                        <label className="flex items-center">
+                            <input type="checkbox" className="accent-color-white mr-1" /> Remember me
+                        </label>
+                        <h4><Link to="/ForgotPassword">Forgot password?</Link></h4>
                     </div>
+
+
+                    <button
+                        type="submit"
+                        disabled={isLoading}
+                        className="w-1/2 h-45% bg-gray-300 border-2 border-black outline-none rounded-3xl py-2 px-4 text-lg mt-10 mb-12 cursor-pointer font-semibold
+                        hover:bg-green-300 transition duration-300"
+                    >
+                        Login
+                    </button>
+
+                    {error && <div className="error text-red-600 mb-4">{error}</div>}
+                </form>
+
+                <div className="">
+                    <LoginButon className="w-1/2 h-12 bg-gray-300 border border-black rounded-lg text-lg font-semibold" />
+                </div>
 
             </div>
         </section>
+
 
      </>
   );

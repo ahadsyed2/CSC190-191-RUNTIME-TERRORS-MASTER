@@ -1,10 +1,4 @@
-//require('dotenv').config()
-//const express = require('express')
-//const mongoose = require('mongoose')
-//const userRoutes = require ('./routes/userRoutes')
-//const postingRoutes = require('./routes/postingRoutes')
-//const postRoutes = require('./routes/postRoutes');
-//const profileRoutes = require('./routes/profileRoutes');
+
 
 //NEW 3/8
 import { config as dotenvConfig } from 'dotenv';
@@ -17,13 +11,11 @@ import profileRoutes from './routes/profileRoutes.js'; // Assuming profileRoutes
 
 dotenvConfig();
 
-//
-
 
 //express app
 const app = express()
 
-//middleware, parse json body for post request
+///middleware, parse json body for post request
 app.use(express.json())
 
 
@@ -48,27 +40,33 @@ app.use('/api/postingRoutes', postingRoutes)
 app.use('/api/postRoutes', postRoutes)
  
 //recieve and execute requests from profile page
-app.use('/api/profile', profileRoutes)
+app.use('/api/profile', profileRoutes) //Does this need to be profileRoutes?
+
+//recieve and execute requests from profile page
+app.use('/api/vehicleRoutes', vehicleRoutes)
 
 //app.get('/', (req,res) => {
 
-    //res.json({mssg:"welcome to the website"})
 
-//})
+// Middleware to parse JSON body for POST requests
+app.use(express.json());
 
-//connect to db
+// Routes
+app.use('/api/userRoutes', userRoutes);
+app.use('/api/postingRoutes', postingRoutes);
+app.use('/api/profile', profileRoutes);
+app.use('/api/postRoutes', postRoutes); //I used this for home page -Nick
+
+
+
+
+// Connect to MongoDB and start the server
 mongoose.connect(process.env.MONGO_URI)
-    //  once connected, listen for requests
-    .then(() => {
-        app.listen(process.env.PORT, () => {
-            console.log('CONNECTED. listening on port 4k')
-        })
+  .then(() => {
+    app.listen(process.env.PORT, () => {
+      console.log('CONNECTED. Listening on port 4k')
     })
-
-
-    //if any error example wrong mongo uri
-    .catch((error) =>{
-        console.log(error)
-    }
-    )
-
+  })
+  .catch((error) => {
+    console.log(error);
+  })
