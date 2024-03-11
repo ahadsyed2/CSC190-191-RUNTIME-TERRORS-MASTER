@@ -23,6 +23,17 @@ const NavbarMenu = () => {
 
 
   return (
+
+
+    
+    <div className="top-rightbox">
+
+      {user && (
+      <div className='Post'>
+        <ul>
+          <li>
+            <Link to="/Posting">+ Create a car listing</Link>
+
     <div className="top-rightbox flex items-center space-x-4">
       <div className="Post mr-3 rounded-3xl hover:rounded-xl">
         <ul className="m-1">
@@ -32,9 +43,11 @@ const NavbarMenu = () => {
               className="flex items-center text-black text-2xl font-bold hover:text-blue-800 px-4 py-1.5"
             > + Create a listing
             </Link>
+
           </li>
         </ul>
       </div>
+      )}
 
       {!user && (
       <div className="Login">
