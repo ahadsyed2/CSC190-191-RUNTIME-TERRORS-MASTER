@@ -1,6 +1,7 @@
 import express from 'express';
 //controller functions
-const { getPost, createPost, updatePost, deletePost, getAllPosts } = require ('../controllers/postController')
+//const { getPost, createPost, updatePost, deletePost, getAllPosts } = require ('../controllers/postController')
+import { getPost, createPost, updatePost, deletePost, getAllPosts } from '../controllers/postController.js';
 
 const router = express.Router()
 
