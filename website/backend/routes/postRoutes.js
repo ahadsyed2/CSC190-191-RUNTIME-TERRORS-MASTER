@@ -1,5 +1,4 @@
-const express = require ('express')
-
+import express from 'express';
 //controller functions
 const { getPost, createPost, updatePost, deletePost, getAllPosts } = require ('../controllers/postController')
 
@@ -15,4 +14,4 @@ router.patch('/:id', updatePost)
 
 router.delete('/:id', deletePost)
 
-module.exports = router
+export default router;
