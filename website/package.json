@@ -4,12 +4,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.1",
+    "gapi-script": "^1.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-google-login": "^5.2.2",
@@ -24,7 +26,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build": "tailwindcss build -o src/tailwind.css && your-build-command"
   },
   "eslintConfig": {
     "extends": [
@@ -45,6 +48,10 @@
     ]
   },
   "devDependencies": {
-    "react-scripts": "^5.0.1"
+    "autoprefixer": "^10.4.18",
+    "postcss": "^8.4.35",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "react-scripts": "^5.0.1",
+    "tailwindcss": "^3.4.1"
   }
 }
