@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const VehicleSchema = new mongoose.Schema({
   color: {
@@ -59,4 +59,6 @@ const VehicleSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('vehicle', VehicleSchema);
+const vehicle = mongoose.model('vehicle', VehicleSchema);
+
+export default vehicle; 
