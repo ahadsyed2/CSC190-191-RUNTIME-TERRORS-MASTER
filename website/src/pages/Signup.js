@@ -13,12 +13,15 @@ const Signup = () => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [firstname, setFirstName] = useState('')
+    const [lastname, setLastName] = useState('')
+    const [userlocation, setUserLocation] = useState('')
     const {signup, error, isLoading} = useSignup()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         //console.log(email,password)
-        await signup(email,password)
+        await signup(email,password,firstname,lastname,userlocation )
 
     }
 
@@ -35,6 +38,7 @@ const Signup = () => {
   }
 
   const [capVal, setCapVal] = useState(null)
+  
 
   return (
       <>
@@ -44,9 +48,9 @@ const Signup = () => {
                   <FaBars onClick={showSidebar} />
               </Link>
 
-              <div className="carmony-logo w-1/10 flex justify-center items-center p-0 1rem" style={{ width: "15rem", marginLeft: "2rem" }}>
-            <img src="CARMONY_ICON2.png" alt="Logo" className="w-500 mt-3" />
-          </div>
+                <div className="carmony-logo w-1/10 flex justify-center items-center p-0 1rem" style={{ width: "15rem", marginLeft: "2rem" }}>
+                    <img src="CARMONY_ICON2.png" alt="Logo" className="w-500 mt-3" />
+                </div>
           </div>
       
       <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
@@ -75,27 +79,45 @@ const Signup = () => {
       
       <div className="container">
         <form className = "signup-box" onSubmit = {handleSubmit}>
-            <h1>Welcome!</h1>
-            <h3>Create an account to access Carmony account.</h3>
-                <div className="name">
-                    <h3>First Name</h3>
-                    <input type="text" placeholder="" required />
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Welcome!</h1>
+            <h3 class="text-lg md:text-xl mb-6">Create an account to access Carmony account.</h3>
+                <div class="signup-name">
+                    <h3 class="flex flex-col text-md items-start max-w-md w-full md:w-64 lg:w-96 mt-5">First Name</h3>
+                    <input
+                        type="text"
+                        class="w-full border border-gray-300 rounded-md py-2 px-3"
+                        onChange={(e) => setFirstName(e.target.value)}
+                        value={firstname}
+                    />
                 </div>
 
-                <div className="name">
-                    <h3>Last Name</h3>
-                    <input type="text" placeholder="" required />
+                <div class="signup-name">
+                    <h3 class="flex flex-col text-md items-start max-w-md w-full md:w-64 lg:w-96 mt-5">Last Name</h3>
+                    <input
+                        type="text"
+                        class="w-full border border-gray-300 rounded-md py-2 px-3"
+                        onChange={(e) => setLastName(e.target.value)}
+                        value={lastname}
+                    />
                 </div>
-
-                <div className="email-address">
-                    <h3>Email Address</h3>
-                        <input
-                            type = "email"
-                            onChange={(e) => setEmail(e.target.value)}
-                            value = {email}
-                        />
+                <div class="signup-email">
+                    <h3 class="flex flex-col text-md items-start max-w-md w-full md:w-64 lg:w-96 mt-5">Email Address</h3>
+                    <input
+                        type="email"
+                        class="w-full border border-gray-300 rounded-md py-2 px-3"
+                        onChange={(e) => setEmail(e.target.value)}
+                        value={email}
+                    />
                 </div>
-
+                <div class="signup-location">
+                    <h3 class="flex flex-col text-md items-start max-w-md w-full md:w-64 lg:w-96 mt-5">Location</h3>
+                    <input
+                        type="text"
+                        class="w-full border border-gray-300 rounded-md py-2 px-3"
+                        onChange={(e) => setUserLocation(e.target.value)}
+                        value={userlocation}
+                    />
+                </div>
                 <div className="newPassword">
                     <h3>New Password</h3>
                         <input
@@ -116,6 +138,7 @@ const Signup = () => {
                         <h5>Show Password</h5>
                     </label>
                 </div>
+                
 
                 <div className='reCaptcha'>
                         <ReCAPTCHA
