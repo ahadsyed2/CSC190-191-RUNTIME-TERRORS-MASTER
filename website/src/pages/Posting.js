@@ -31,7 +31,7 @@ function Posting() {
   const [selected, setSelected] = useState('Vehicle Type');
 
   //NEW FUNCTIONS FOR BACKEND- Ahad
-  const { createPosting, isLoading, error } = usePosting();
+  const { createPosting, AWSImageUpload, isLoading, error } = usePosting();
 
   const [formData, setFormData] = useState({
     vehicleType: '',
@@ -65,10 +65,10 @@ function Posting() {
     });
   };
 
-  //image file capturing
+  //image file capturing and logging to console
   const handleFileChange = (e) => {
   const file = e.target.files[0];
-  console.log('Selected File:', file);
+  console.log('Selected File!:', file);
 
   
     // Display image preview
@@ -76,7 +76,7 @@ function Posting() {
     reader.onloadend = () => {
       setFormData({
         ...formData,
-        image: file ? URL.createObjectURL(file) : null,
+        image: file,
         imagePreview: reader.result, // Add this to your state
       });
     };
@@ -89,8 +89,16 @@ function Posting() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+        //TESTING
+       
+
+
       // Call the createPosting function from usePosting hook
       const result = await createPosting(formData);
+
+      const imageResult = await AWSImageUpload(formData);
+
+
 
       if (result) {
         // Handle success (e.g., redirect or show a success message)
@@ -101,6 +109,13 @@ function Posting() {
         setTimeout(() => {
         setSuccessMessage(null);
         }, 5000); 
+
+        if (imageResult) {
+          // Handle success (e.g., redirect or show a success message)
+          console.log('image created:', result);
+        }
+
+        
 
 
 
@@ -125,6 +140,8 @@ function Posting() {
     } catch (error) {
       console.error('An unexpected error occurred:', error);
     }
+
+  
   };
 
   
@@ -286,6 +303,9 @@ function Posting() {
                         style={{ maxWidth: '100%', maxHeight: '200px', marginTop: '10px' }}
                       />
                     )}
+
+                  
+
 
                   </div>
 

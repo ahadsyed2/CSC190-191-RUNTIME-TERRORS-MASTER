@@ -22,14 +22,19 @@ const NavbarMenu = () => {
 
 
   return (
+
+    
     <div className="top-rightbox">
+
+      {user && (
       <div className='Post'>
         <ul>
           <li>
-            <Link to="/Posting">+ Create a listing</Link>
+            <Link to="/Posting">+ Create a car listing</Link>
           </li>
         </ul>
       </div>
+      )}
 
       {!user && (
       <div className="Login">
