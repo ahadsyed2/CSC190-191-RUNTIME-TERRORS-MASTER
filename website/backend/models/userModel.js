@@ -113,6 +113,6 @@ userSchema.statics.login = async function (email,password,firstname,lastname,use
 
 
 
-
+const User = mongoose.model('User', userSchema);
 
 export default User;
