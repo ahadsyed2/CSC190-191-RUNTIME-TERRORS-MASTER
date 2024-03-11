@@ -1,7 +1,13 @@
-const Post = require('../models/postingModel');
-const mongoose = require('mongoose')
-const express = require('express');
+//const Post = require('../models/postingModel');
+//const mongoose = require('mongoose')
+//const express = require('express');
+//const router = express.Router();
+
+import Post from '../models/postingModel.js';
+import mongoose from 'mongoose';
+import express from 'express';
 const router = express.Router();
+
 
 const getPost = async (req, res) => {
   const { id } = req.params;
@@ -40,10 +46,12 @@ const deletePost = async (req, res) => {
   res.status(200)
 }
 
-module.exports = {
-  getPost,
-  getAllPosts,
-  createPost,
-  updatePost,
-  deletePost
-}
+//module.exports = {
+ // getPost,
+ // getAllPosts,
+ // createPost,
+  //updatePost,
+ // deletePost
+//}
+
+export { getPost, getAllPosts, createPost, updatePost, deletePost };
