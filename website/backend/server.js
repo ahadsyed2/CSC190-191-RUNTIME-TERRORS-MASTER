@@ -8,6 +8,7 @@ import userrouter from './routes/userRoutes.js';
 import postingRoutes from './routes/postingRoutes.js';
 import postRoutes from './routes/postRoutes.js'; // Assuming postRoutes is CommonJS
 import profileRoutes from './routes/profileRoutes.js'; // Assuming profileRoutes is CommonJS
+import vehicleRoutes from './routes/vehicleRoutes.js'
 
 dotenvConfig();
 
@@ -52,7 +53,7 @@ app.use('/api/vehicleRoutes', vehicleRoutes)
 app.use(express.json());
 
 // Routes
-app.use('/api/userRoutes', userRoutes);
+app.use('/api/userRoutes', userrouter);
 app.use('/api/postingRoutes', postingRoutes);
 app.use('/api/profile', profileRoutes);
 app.use('/api/postRoutes', postRoutes); //I used this for home page -Nick

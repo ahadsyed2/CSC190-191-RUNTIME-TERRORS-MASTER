@@ -1,7 +1,8 @@
 import express from 'express';
 
 //controller functions
-const { getVehicle, createVehicle, updateVehicle, deleteVehicle, getAllVehicles } = require ('../controllers/vehicleController')
+//const { getVehicle, createVehicle, updateVehicle, deleteVehicle, getAllVehicles } = require ('../controllers/vehicleController')
+import { getVehicle, createVehicle, updateVehicle, deleteVehicle, getAllVehicles } from '../controllers/vehicleController.js';
 
 const router = express.Router()
 
