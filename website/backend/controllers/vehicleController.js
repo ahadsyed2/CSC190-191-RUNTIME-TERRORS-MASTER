@@ -1,4 +1,4 @@
-import Vehicle from '../models/vehicleModel.mjs';
+import Vehicle from '../models/vehicleModel.js';
 import mongoose from 'mongoose';
 import express from 'express';
 
