@@ -33,9 +33,9 @@ router.post('/UploadImage', upload.single('image'), async (req, res) =>  {
     //image file pulled from request body, parsed by multer ^
     const { file } = req;
     //folder name inside S3 bucket WITH UNIQUE ID ATTACKED UUID
-    const userId = 'testing2fuckyea'
+    //const userId = 'testing2fuckyea'
 
-    const key = `${userId}/${uuid()}`;
+    const key = req.body.formID;
     //const key = postId; 
 
     //console.log("testing id:", postId)
