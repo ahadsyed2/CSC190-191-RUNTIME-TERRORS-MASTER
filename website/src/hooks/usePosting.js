@@ -63,18 +63,20 @@ const usePosting = () => {
 
 
 
-  const AWSImageUpload = async (postData) => {
+  const AWSImageUpload = async (postData, id) => {
 
     setIsLoading(true);
     setError(null);
 
  try {
     //extract image file
+    const formID = id; 
     const imageFile = postData.image
-    console.log("AWS extracted image: ", imageFile)
+    console.log("AWS extracted image: ", imageFile, "formID:", formID)
     
     const formDataWithImage = new FormData();
     formDataWithImage.append('image', imageFile);
+    formDataWithImage.append('formID', formID);
     
     const imageResponse = await fetch('/api/postingRoutes/UploadImage', {
       method: 'POST',
@@ -85,6 +87,7 @@ const usePosting = () => {
 
     // Check if the image upload was successful
   if (!imageResponse.ok) {
+    
     throw new Error(imagedata.error);
   }
 

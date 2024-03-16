@@ -113,7 +113,7 @@ function Posting() {
       // Call the createPosting function from usePosting hook
       const result = await createPosting(formData);
 
-      const imageResult = await AWSImageUpload(formData);
+      //const imageResult = await AWSImageUpload(formData);
 
 
 
@@ -121,16 +121,32 @@ function Posting() {
         // Handle success (e.g., redirect or show a success message)
         console.log('Posting created:', result);
         // Update success message if the form is submitted successfully
-         setSuccessMessage('Posting created successfully!');
+         setSuccessMessage('Posting created successfully!/n', result);
         // Reset success message after a few seconds
-        setTimeout(() => {
+        setTimeout(async () => {
         setSuccessMessage(null);
+
+
+
+          //TESTING
+
+          const imageResult = await AWSImageUpload(formData, result._id);
+
+
+
+          if (imageResult) {
+            // Handle success (e.g., redirect or show a success message)
+            console.log('image created:', result);
+          }
+
+
+          //TESTING
         }, 5000); 
 
-        if (imageResult) {
+        //if (imageResult) {
           // Handle success (e.g., redirect or show a success message)
-          console.log('image created:', result);
-        }
+          //console.log('image created:', result);
+        //}
 
         
 
@@ -158,7 +174,7 @@ function Posting() {
 
 
         //I added this to take you to home page -Nick
-        window.location.href = "/";
+        //window.location.href = "/";
       } else {
         // Handle error (e.g., show an error message)
         setSuccessMessage('Posting failed, incorrect syntax please try again' , error);
