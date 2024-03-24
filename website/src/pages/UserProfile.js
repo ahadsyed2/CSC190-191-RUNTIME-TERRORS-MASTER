@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom';
 import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
@@ -8,11 +8,46 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import './UserProfile.css'
 import SecondNavbar from '../components/SecondNavbar';
+import { useProfileContext } from '../hooks/useProfileContext';
 
 
 const UserProfile = () => {
 
   const [sidebar, setSidebar] = useState(false);
+  const {profile, ProfileDispatch} = useProfileContext();
+  // State to hold fetched car data
+
+  //Full path =  https://localhost:3000/CarInfo/ ID
+
+  var full_url_1 = window.location.href
+  var slash = full_url_1.indexOf("/");
+
+  var full_url_2 = full_url_1.substring(slash+1); 
+  slash = full_url_2.indexOf("/");
+
+  var full_url_3 = full_url_2.substring(slash+1); 
+  slash = full_url_3.indexOf("/");
+
+  var full_url_4 = full_url_3.substring(slash+1); 
+  slash = full_url_4.indexOf("/");
+
+  var url = full_url_4.substring(slash+1);
+
+  var backend_url = "/api/userRoutes/" + url
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      const response = await fetch(backend_url)
+      const json = await response.json()
+
+      if(response.ok){
+        console.log('response Ok')
+        ProfileDispatch({type: 'SET_PROFILES', payload: json})
+      }
+    }
+    fetchProfile()
+    
+  }, []);
 
   const showSidebar = () => {
     setSidebar(!sidebar);
@@ -70,6 +105,8 @@ const UserProfile = () => {
     }
   };
 
+  
+
   return (
     <>
       <IconContext.Provider value={{ color: '#fff' }}>
@@ -124,14 +161,15 @@ const UserProfile = () => {
 
                   <ul className="meta list list-unstyled">
                     <li className="name">
-                      John Doe
+                    {profile && profile.firstname}
+                    {profile && profile.lastname}
                       <br />
                       <label className="label label-info">Developer</label>
                     </li>
                     <li className="email">
-                      <a href="#">John.Doe@gmail.com</a>
+                    {profile && profile.email}
                     </li>
-                    <li className="activity">Last logged in: Today at 6:00pm</li>
+                    
                   </ul>
                 </div>
                 <nav className="side-menu">
