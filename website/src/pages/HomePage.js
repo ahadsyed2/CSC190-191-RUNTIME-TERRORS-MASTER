@@ -297,7 +297,7 @@ const HomeIndex = () => {
     if(postCounter > 19){   //Limit posts to 20 (4x5) so it fits on screen)
       return false;
     }
-    postCounter++;
+    
     console.log("checkedModels = " + filteredModelResults.length);
     console.log("checkedMake = " + checkedMake.length);
 
@@ -338,7 +338,9 @@ const HomeIndex = () => {
         passAllFilters = false;
       }
     }
-
+    if(passAllFilters){
+      postCounter++;
+    }
     return passAllFilters;
   }
 
@@ -386,7 +388,6 @@ const HomeIndex = () => {
       return priceStrings[0];
     }
   }
-
 
   return (
     <section>
@@ -566,14 +567,17 @@ const HomeIndex = () => {
                 filter(post) && 
                 <div className="test2" key={post.id}> 
                   
+
                     <a onClick={() => { handlePostBoxClick(post, post._id) }}>
                         <div className='products-item'>
                           <div className='products-img'>
                           { /* Need to be able to pull image from DB */ }
                             <img
-                            src="https://images.offerup.com/4uQVF_BU-_3APQkmUNUmGB3xqhE=/1280x960/d3ed/d3ed001efeac469097afcb8638e4ca76.jpg"
+                            src={"https://ahadsyed1.s3.us-west-1.amazonaws.com/" + post._id}
                             alt="Picture Failure"
                             />
+                            {console.log("Image URL: https://ahadsyed1.s3.us-west-1.amazonaws.com/" + post._id)}
+                            
                           </div>
                         
                           <div className='products-detail'>
