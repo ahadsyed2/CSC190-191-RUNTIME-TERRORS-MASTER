@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import './UserProfile.css'
 import SecondNavbar from '../components/SecondNavbar';
+import UserProfileComponent from '../components/UserProfileComponent';
 
 
 const UserProfile = () => {
@@ -122,9 +123,10 @@ const UserProfile = () => {
                     alt=""
                   />
 
+                    
                   <ul className="meta list list-unstyled">
                     <li className="name">
-                      John Doe
+                    <UserProfileComponent />
                       <br />
                       <label className="label label-info">Developer</label>
                     </li>
