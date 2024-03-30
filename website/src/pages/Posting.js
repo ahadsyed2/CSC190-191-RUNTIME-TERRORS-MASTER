@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaBars, FaCaretDown, FaCaretUp } from 'react-icons/fa';
 import { AiOutlineClose } from 'react-icons/ai';
-import { hamburgerMenu } from './hamburgerMenu';
+import { hamburgerMenu } from '../components/hamburgerMenu';
 import { BsUpload } from 'react-icons/bs';
 import { IconContext } from 'react-icons';
 import  usePosting  from '../hooks/usePosting';
@@ -165,26 +165,28 @@ function Posting() {
             <FaBars onClick={showSidebar} />
           </Link>
 
-          <div className="carmony-logo">
-            <img src="CARMONY_ICON2.png" alt="" />
+          <div className="carmony-logo w-1/10 flex justify-center items-center p-0 1rem" style={{ width: "15rem", marginLeft: "2rem" }}>
+            <img src="CARMONY_ICON2.png" alt="Logo" className="w-500 mt-3" />
           </div>
         </div>
 
-        <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-          <ul className='nav-menu-items' onClick={showSidebar}>
-            <li className='navbar-toggle'>
-              <Link to='#' className='hamburger-bars'>
+        <nav className={sidebar ? 'nav-bar-menu active' : 'nav-bar-menu'}>
+          <ul className='nav-bar-menu-items' onClick={showSidebar}>
+            <li className="nav-bar-toggle">
+              <Link to="#" className='hamburger-bars'>
                 <AiOutlineClose />
               </Link>
             </li>
-            {hamburgerMenu.map((item, index) => (
-              <li key={index} className={item.cName}>
-                <Link to={item.path}>
-                  {item.icon}
-                  <span>{item.title}</span>
-                </Link>
-              </li>
-            ))}
+            {hamburgerMenu.map((item, index) => {
+                return (
+                    <li key={index} className={item.cName}>
+                        <Link to={item.path}>
+                            {item.icon}
+                            <span>{item.title}</span>
+                        </Link>
+                    </li>
+                );
+            })}
           </ul>
         </nav>
       </IconContext.Provider>
@@ -198,7 +200,7 @@ function Posting() {
               <form onSubmit={handleSubmit} encType='multipart/form-data'>
                 <h1>About the Vehicle</h1>
 
-                <div className='vehicle-dropdown'>
+                <div className='vehicles-dropdown'>
                   <div className='dropdown-box' onClick={() => setIsActive(!isActive)}>
                     {selected}
                     <span className='caret-icon'>{isActive ? <FaCaretUp /> : <FaCaretDown />}</span>
@@ -221,7 +223,7 @@ function Posting() {
                 <div className="listing-box">
                   <div className='listing-details'>
 
-                    <div className='make-box'>
+                    <div className='make-Box'>
                       <h2>Enter Make: </h2>
                       <input
                         type='text'
@@ -233,211 +235,212 @@ function Posting() {
                       />
                     </div>
 
-                    <div className='model-box'>
-                    <h2>Enter Model: </h2>
-                    <input
-                      type='text'
-                      name='model'
-                      placeholder='Enter model'
-                      value={formData.model}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </div>
-
-                  <div className='year-box'>
-                    <h2>Enter Year: </h2>
-                    <input
-                      type='text'
-                      name='year'
-                      placeholder='Enter year'
-                      value={formData.year}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </div>
-
-                  <div className='price-box'>
-                    <h2>Enter Price: $ </h2>
-                    <input
-                      type='text'
-                      name='price'
-                      placeholder='Enter price...'
-                      value={formData.price}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </div>
-
-                  <div className='location-box'>
-                    <h2>Enter Location: </h2>
-                    <input
-                      type='text'
-                      name='location'
-                      placeholder='Enter Location'
-                      value={formData.location}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </div>
-
-                  <div className='mileage-box'>
-                    <h2>Enter Mileage: </h2>
-                    <input
-                      type='text'
-                      name='mileage'
-                      placeholder='Enter Mileage'
-                      value={formData.mileage}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </div>
-
-                  <div className='fuel-box'>
-                    <h2>Enter Fuel Type: </h2>
-                    <input
-                      type='text'
-                      name='fuel'
-                      placeholder='Enter Fuel Type'
-                      value={formData.fuel}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </div>
-
-                  <div className='transmission-box'>
-                    <h2>Enter Transmission Type: </h2>
-                    <input
-                      type='text'
-                      name='transmission'
-                      placeholder='Enter Transmission Type'
-                      value={formData.transmission}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </div>
-
-                  <div className='condition-box'>
-                    <h2>Enter Condition Description: </h2>
-                    <input
-                      type='text'
-                      name='condition'
-                      placeholder='Enter Condition'
-                      value={formData.condition}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </div>
-
-                  <div className='color-box'>
-                    <h2>Enter Color: </h2>
-                    <input
-                      type='text'
-                      name='color'
-                      placeholder='Enter Color'
-                      value={formData.color}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </div>
-
-                  <div className='cylinders-box'>
-                    <h2>Enter number of Cylidners: </h2>
-                    <input
-                      type='text'
-                      name='cylinders'
-                      placeholder='Enter Cylinder Count'
-                      value={formData.cylinders}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </div>
-
-                  <div className='features-box'>
-                    <h2>Enter Notable Features: </h2>
-                    <input
-                      type='text'
-                      name='features'
-                      placeholder='Enter Features'
-                      value={formData.features}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </div>
-
-                  <div className='description-box'>
-                    <h2>Description: </h2>
-                    <input
-                      type='text'
-                      name='description'
-                      placeholder='Enter description'
-                      value={formData.description}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </div>
-
-
-                    <div className='photo-upload'>
-                    <h2>Upload image</h2>
-                    <BsUpload />
-                    <input
-                      type='file'
-                      id='image'
-                      name='image'
-                      accept='image/*'
-                      onChange={handleFileChange}
-                      maxLength={"50mb"}
-                    />
-                    {/* Display image preview if available */}
-                    {formData.imagePreview && (
-                      <img
-                        src={formData.imagePreview}
-                        alt='Preview'
-                        style={{ maxWidth: '100%', maxHeight: '200px', marginTop: '10px' }}
+                    <div className='model-Box'>
+                      <h2>Enter Model: </h2>
+                      <input
+                        type='text'
+                        name='model'
+                        placeholder='Enter model'
+                        value={formData.model}
+                        onChange={handleInputChange}
+                        required
                       />
-                    )}
+                    </div>
+
+                    <div className='year-Box'>
+                      <h2>Enter Year: </h2>
+                      <input
+                        type='text'
+                        name='year'
+                        placeholder='Enter year'
+                        value={formData.year}
+                        onChange={handleInputChange}
+                        required
+                      />
+                    </div>
+
+                    <div className='price-Box'>
+                      <h2>Enter Price: $ </h2>
+                      <input
+                        type='text'
+                        name='price'
+                        placeholder='Enter price...'
+                        value={formData.price}
+                        onChange={handleInputChange}
+                        required
+                      />
+                    </div>
+
+                    <div className='location-Box'>
+                      <h2>Enter Location: </h2>
+                      <input
+                        type='text'
+                        name='location'
+                        placeholder='Enter Location'
+                        value={formData.location}
+                        onChange={handleInputChange}
+                        required
+                      />
+                    </div>
+
+                    <div className='mileage-box'>
+                      <h2>Enter Mileage: </h2>
+                      <input
+                        type='text'
+                        name='mileage'
+                        placeholder='Enter Mileage'
+                        value={formData.mileage}
+                        onChange={handleInputChange}
+                        required
+                      />
+                    </div>
+
+                    <div className='fuel-box'>
+                      <h2>Enter Fuel Type: </h2>
+                      <input
+                        type='text'
+                        name='fuel'
+                        placeholder='Enter Fuel Type'
+                        value={formData.fuel}
+                        onChange={handleInputChange}
+                        required
+                      />
+                    </div>
+
+                    <div className='transmission-box'>
+                      <h2>Enter Transmission Type: </h2>
+                      <input
+                        type='text'
+                        name='transmission'
+                        placeholder='Enter Transmission Type'
+                        value={formData.transmission}
+                        onChange={handleInputChange}
+                        required
+                      />
+                    </div>
+
+                    <div className='condition-box'>
+                      <h2>Enter Condition Description: </h2>
+                      <input
+                        type='text'
+                        name='condition'
+                        placeholder='Enter Condition'
+                        value={formData.condition}
+                        onChange={handleInputChange}
+                        required
+                      />
+                    </div>
+
+                    <div className='color-box'>
+                      <h2>Enter Color: </h2>
+                      <input
+                        type='text'
+                        name='color'
+                        placeholder='Enter Color'
+                        value={formData.color}
+                        onChange={handleInputChange}
+                        required
+                      />
+                    </div>
+
+                    <div className='cylinders-box'>
+                      <h2>Enter number of Cylidners: </h2>
+                      <input
+                        type='text'
+                        name='cylinders'
+                        placeholder='Enter Cylinder Count'
+                        value={formData.cylinders}
+                        onChange={handleInputChange}
+                        required
+                      />
+                    </div>
+
+                    <div className='features-box'>
+                      <h2>Enter Notable Features: </h2>
+                      <input
+                        type='text'
+                        name='features'
+                        placeholder='Enter Features'
+                        value={formData.features}
+                        onChange={handleInputChange}
+                        required
+                      />
+                    </div>
+
+                    <div className='description-Box'>
+                      <h2>Description: </h2>
+                      <input
+                        type='text'
+                        name='description'
+                        placeholder='Enter description'
+                        value={formData.description}
+                        onChange={handleInputChange}
+                        required
+                      />
+                    </div>
 
                   </div>
-
-                  <button type='submit' className='btn' disabled={isLoading}>
-                    {isLoading ? 'Submitting...' : 'Submit'}
-                  </button>
-
-                  {successMessage && (
-                    <div className='success-message'>
-                      {successMessage}
-                    </div>
-                  )}
-
                 </div>
-              </div>
-            </form>
-          </div>
+              </form>
+            </div>
 
             <div className='righside-box'>
               <h1>Preview</h1>
 
                   <div className='preview-box'>
           
-                    <div className='preview-right'>
+                    <div className='preview-right-box'>
                        {/* Display the preview based on the entered data */}
-                        <h2>{formData.vehicleType}</h2>
-                        <p>Make: {formData.make}</p>
-                        <p>Model: {formData.model}</p>
-                        <p>Year: {formData.year}</p>
-                        <p>Price: {formData.price}</p>
-                        <p>Location: {formData.location}</p>
-                        <p>Mileage: {formData.mileage}</p>
-                        <p>Fuel Type: {formData.fuel}</p>
-                        <p>Transmission Style: {formData.transmission}</p>
-                        <p>Condition: {formData.condition}</p>
-                        <p>Color: {formData.color}</p>
-                        <p>Cylinder Count: {formData.cylinders}</p>
-                        <p>Included Features: {formData.features}</p>
-                        <p>Description: {formData.description}</p>
+                        <h2>Vehicle Type: <span>{formData.vehicleType}</span></h2>
+                          <p>Make: <span>{formData.make}</span></p>
+                          <p>Model: <span>{formData.model}</span></p>
+                          <p>Year: <span>{formData.year}</span></p>
+                          <p>Price: <span>{formData.price}</span></p>
+                          <p>Location: <span>{formData.location}</span></p>
+                          <p>Mileage: <span>{formData.mileage}</span></p>
+                          <p>Fuel Type: <span>{formData.fuel}</span></p>
+                          <p>Transmission Style: <span>{formData.transmission}</span></p>
+                          <p>Condition: <span>{formData.condition}</span></p>
+                          <p>Color: <span>{formData.color}</span></p>
+                          <p>Cylinder Count: <span>{formData.cylinders}</span></p>
+                          <p>Included Features: <span>{formData.features}</span></p>
+                          <p>Description: <span>{formData.description}</span></p>
                     </div>
                   </div>
+
+                  <div className='photo-upload'>
+                    <h2>Upload image</h2>
+                      <BsUpload />
+                      <input
+                        type='file'
+                        id='image'
+                        name='image'
+                        accept='image/*'
+                        onChange={handleFileChange}
+                        maxLength={"50mb"}
+                      />
+                      {/* Display image preview if available */}
+                      {formData.imagePreview && (
+                        <img
+                          src={formData.imagePreview}
+                          alt='Preview'
+                          style={{ maxWidth: '100%', maxHeight: '200px', marginTop: '10px' }}
+                        />
+                      )}
+                  </div>
+                  <form onSubmit={handleSubmit} encType='multipart/form-data'>
+                    <div className="post-submit-button">
+                      <button type='submit' className='post-button' disabled={isLoading}>
+                        {isLoading ? 'Submitting...' : 'Submit'}
+                      </button>
+
+                      {successMessage && (
+                        <div className='success-message'>
+                          {successMessage}
+                        </div>
+                      )}
+                    </div>
+                  </form>
             </div>
           </div>
 
