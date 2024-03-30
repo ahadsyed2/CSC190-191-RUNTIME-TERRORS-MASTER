@@ -8,7 +8,7 @@ const carComponent = () => {
 
   return (
     <div>
-      {}
+      
     </div>
   );
 };
