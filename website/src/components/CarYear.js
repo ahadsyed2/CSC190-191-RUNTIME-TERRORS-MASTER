@@ -22,14 +22,9 @@ const carYear = ({ checkedYears, handleYearCheckboxClick, handleYearClearClick, 
                   value={year}
                   checked={checkedYears.includes(year)}
                   onChange={() => handleYearCheckboxClick(year)}
-                  style={{ marginRight: '5px' }}
+                  style={{ marginRight: '15px' }}
                 />
-                {year == '2020-Today' && <Link to="/">{year}</Link>}
-                {year == '2010-2020' && <Link to="/">{year}</Link>}
-                {year == '2000-2010' && <Link to="/">{year}</Link>}
-                {year == '1990-2000' && <Link to="/">{year}</Link>}
-                {year == '1980-1990' && <Link to="/">{year}</Link>}
-                {year == '< 1980' && <Link to="/">{year}</Link>}
+                <span>{year}</span>
               </label>
             </div>
           ))}

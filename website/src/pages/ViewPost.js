@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaBars, FaCaretDown, FaCaretUp } from 'react-icons/fa';
 import { AiOutlineClose } from 'react-icons/ai';
-import { hamburgerMenu } from './hamburgerMenu';
+import { hamburgerMenu } from '../components/hamburgerMenu';
 import { BsUpload } from 'react-icons/bs';
 import { IconContext } from 'react-icons';
 import './Posting.css';
@@ -39,8 +39,8 @@ function Posting() {
             <FaBars onClick={showSidebar} />
           </Link>
 
-          <div className="carmony-logo">
-            <img src="CARMONY_ICON2.png" alt="" />
+          <div className="carmony-logo w-1/10 flex justify-center items-center p-0 1rem" style={{ width: "15rem", marginLeft: "2rem" }}>
+            <img src="CARMONY_ICON2.png" alt="Logo" className="w-500 mt-3" />
           </div>
         </div>
 
