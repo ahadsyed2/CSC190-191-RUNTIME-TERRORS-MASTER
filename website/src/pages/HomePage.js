@@ -346,8 +346,7 @@ const HomeIndex = () => {
   //Will run hook again when page refreshes
   //Could be useful for real-time refreshes, if that was desirable
 
-  const [filterCriteria, setFilterCriteria] = useState('');
-  const [filteredPosts, setFilteredPosts] = useState([]);
+
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 20;
   const [indexOfLastPost, setIndexOfLastPost] = useState(currentPage * postsPerPage);
