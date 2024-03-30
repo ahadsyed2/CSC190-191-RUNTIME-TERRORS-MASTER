@@ -14,16 +14,17 @@ function GLogin() {
 
     return(
         <div id="signInButton">
-            <GoogleLogin
-                clientId={clientId}
-                buttonText="Login"
-                onSuccess={onSuccess}
-                onFailure={onFailure}
-                cookiePolicy={'single_host_origin'}
-                isSignedIn={true}
-            />
-        </div>
+        <GoogleLogin
+          clientId={clientId}
+          buttonText="Login With Google Account"
+          onSuccess={onSuccess}
+          onFailure={onFailure}
+          cookiePolicy={'single_host_origin'}
+          isSignedIn={true}
+        />
+      </div>
     )
-}
+};
+
 
 export default GLogin;

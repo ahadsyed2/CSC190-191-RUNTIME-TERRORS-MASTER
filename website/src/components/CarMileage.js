@@ -23,12 +23,9 @@ const CarMileage = ({ checkedMileages, handleMileageCheckboxClick, handleMileage
                   value={mileage}
                   checked={checkedMileages.includes(mileage)}
                   onChange={() => handleMileageCheckboxClick(mileage)}
-                  style={{ marginRight: '5px' }}
+                  style={{ marginRight: '15px' }}
                 />
-                {mileage === '0 - 25,000 miles' && <Link to="/">{mileage}</Link>}
-                {mileage === '25,000 - 75,000 miles' && <Link to="/">{mileage}</Link>}
-                {mileage === '75,000 - 125,000 miles' && <Link to="/">{mileage}</Link>}
-                {mileage === '125,000 miles & up' && <Link to="/">{mileage}</Link>}
+                <span>{mileage}</span>
               </label>
             </div>
           ))}

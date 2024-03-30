@@ -14,7 +14,6 @@ import ResetPassword from './pages/ResetPassword'
 import UserProfile from './pages/UserProfile'
 import ViewPost from './pages/ViewPost';
 import CarInfo from './pages/CarInfo';
-import AfterHome from './pages/AfterHome'
 import ProfilePage from './pages/ProfilePage'
 
 
@@ -37,7 +36,6 @@ function App() {
           <Route path='/Profile' Component={ProfilePage} />
           <Route path='/Post' Component={ViewPost} />
           <Route path='/CarInfo/:id' Component={CarInfo} />
-          <Route path='/AfterHome' Component={AfterHome} />
           <Route path='/UserProfile' Component={UserProfile} />
         </Routes>
       </Router>
