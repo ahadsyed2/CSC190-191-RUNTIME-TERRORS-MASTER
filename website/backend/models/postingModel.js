@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const postingSchema = new mongoose.Schema({
   vehicleType: {
@@ -68,4 +68,4 @@ const postingSchema = new mongoose.Schema({
 
 const Posting = mongoose.model('Posting', postingSchema);
 
-module.exports = Posting;
+export default Posting  ; 

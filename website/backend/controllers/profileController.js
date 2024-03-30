@@ -1,6 +1,7 @@
-const Profile = require('../models/profileModel');
-const mongoose = require('mongoose')
-const express = require('express');
+import Profile from '../models/profileModel.js';
+import mongoose from 'mongoose';
+import express from 'express';
+
 const router = express.Router();
 
 const getProfile = async (req, res) => {
@@ -40,10 +41,4 @@ const deleteProfile = async (req, res) => {
   res.status(200)
 }
 
-module.exports = {
-  getProfile,
-  getAllProfiles,
-  createProfile,
-  updateProfile,
-  deleteProfile
-}
+export { getProfile, getAllProfiles, createProfile, updateProfile, deleteProfile };

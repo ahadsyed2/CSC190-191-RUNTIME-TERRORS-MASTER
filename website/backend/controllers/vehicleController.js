@@ -1,7 +1,9 @@
-const Vehicle = require('../models/vehicleModel');
-const mongoose = require('mongoose')
-const express = require('express');
+import Vehicle from '../models/vehicleModel.js';
+import mongoose from 'mongoose';
+import express from 'express';
+
 const router = express.Router();
+
 
 const getVehicle = async (req, res) => {
   const { id } = req.params;
@@ -40,10 +42,10 @@ const deleteVehicle = async (req, res) => {
   res.status(200)
 }
 
-module.exports = {
+export {
   getVehicle,
   getAllVehicles,
   createVehicle,
   updateVehicle,
   deleteVehicle
-}
+};

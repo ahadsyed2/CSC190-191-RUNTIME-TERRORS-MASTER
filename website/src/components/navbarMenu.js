@@ -9,7 +9,6 @@ import { Link } from 'react-router-dom';
 import { IconContext } from 'react-icons';
 
 
-
 const NavbarMenu = () => {
 
   const { logout } = useLogout()
@@ -19,52 +18,80 @@ const NavbarMenu = () => {
   }
 
 
-
-
-
   return (
     <div className="top-rightbox flex items-center space-x-4">
-      <div className="Post mr-3 rounded-3xl hover:rounded-xl">
+      <div className="Posting-btn">
+        {user && (
         <ul className="m-1">
           <li>
             <Link
               to="/Posting"
-              className="flex items-center text-black text-2xl font-bold hover:text-blue-800 px-4 py-1.5"
+              className="flex items-center text-black text-2xl font-bold px-4 py-1.5"
             > + Create a listing
             </Link>
           </li>
         </ul>
+        )}
       </div>
-
-      {!user && (
-      <div className="Login">
-        <ul className="bg-white p-2 rounded-2xl hover:rounded-xl mr-1">
+      <div className="Posting-btn">
+        {!user && (
+        <ul className="m-1">
           <li>
-            <Link to="/Login" 
-            className="flex items-center text-black text-2xl m-0.5 font-bold ">
-              <FontAwesomeIcon icon={faUser} className="user-icon" /> Login
+            <Link
+              to="/Login"
+              className="flex items-center text-black text-2xl font-bold px-4 py-1.5"
+            > + Create a listing
             </Link>
           </li>
         </ul>
-      </div> )}
+        )}
+      </div>
+        
+      {user ? (
+        <div className="UserProfile-btn">
+          <ul className="bg-white p-2.5 rounded-2xl hover:rounded-xl">
+            <li>
+              <Link to="/UserProfile" className="flex items-center text-black text-xl m-0.5 font-bold">
+                <FontAwesomeIcon icon={faUser} className="user-icon" /> Profile
+              </Link>
+            </li>
+          </ul>
+        </div>
+      ) : (
+        <>
+          <div className="Login-btn">
+            <ul className="bg-white p-2 rounded-2xl hover:rounded-xl">
+              <li>
+                <Link to="/Login" className="flex items-center text-black text-2xl m-0.5 font-bold">
+                  <FontAwesomeIcon icon={faUser} className="user-icon" /> Login
+                </Link>
+              </li>
+            </ul>
+          </div>
 
-      {!user && (
-      <div className="SignUp">
-         <ul className="bg-white p-2.5 rounded-2xl hover:rounded-xl mr-3.5" >
-          <li>
-            <Link to="/Signup" 
-            className="flex items-center text-black text-2xl m-0.5 font-bold">
-              <FontAwesomeIcon icon={faUser} className="user-icon" /> Sign Up
-            </Link>
-          </li>
-        </ul>
-      </div> )}
+          <div className="SignUp-btn">
+            <ul className="bg-white p-2 rounded-2xl hover:rounded-xl mr-3.5">
+              <li>
+                <Link to="/Signup" className="flex items-center text-black text-2xl m-0.5 font-bold">
+                  <FontAwesomeIcon icon={faUser} className="user-icon" /> Sign Up
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </>
+      )}
 
       {user && (
-            <div>
-              <span>{user.email}</span>
-              <button  onClick = {handleClick}>Logout</button>
-            </div> )}
+        <div className="Logout-btn">
+          <ul className="bg-white rounded-2xl" >
+              <div>
+                <span>{user.email}</span>
+                <ul className="Logged-out" >
+                  <button  onClick = {handleClick}>Logout</button>
+                </ul>
+              </div> 
+          </ul>
+        </div> )}
 
     </div>
   
