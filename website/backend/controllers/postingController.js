@@ -31,7 +31,8 @@ const posting = async (req, res) => {
       color,
       cylinders,
       features,
-      timestamp
+      timestamp,
+      user
 
     } = req.body;
   
@@ -54,7 +55,8 @@ const posting = async (req, res) => {
       color,
       cylinders,
       features,
-      timestamp
+      timestamp,
+      user
       
     });
 

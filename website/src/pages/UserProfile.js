@@ -19,6 +19,9 @@ const UserProfile = () => {
   const [sidebar, setSidebar] = useState(false);
   const {posts, dispatch} = usePostContext(); //Pulling posts
   const { user } = useAuthContext(); //Getting User object 
+  const [firstname, setFirstName] = useState('');
+  const [lastname, setLastName] = useState('');
+  const [location, setLocation] = useState('');
 
   //Pulling All Posts
   useEffect(() => {
@@ -30,6 +33,11 @@ const UserProfile = () => {
         dispatch({type: 'SET_POSTS', payload: json})
       }
     
+      user && setFirstName(user.firstname);
+      user && setLastName(user.lastname);
+      user && setLocation(user.location);
+      user && console.log("firstname: "+user.firstname)
+
     fetchPosts();
   }, []);
 
@@ -111,6 +119,10 @@ const UserProfile = () => {
 
   var postCounter = 0;
   const filter = (post) => {
+    if(user.email != post.user){
+      return false;
+    }
+
     //Handle Pages
     if(posts.indexOf(post) < ((currentPage * postsPerPage) - 5) || posts.indexOf(post) > ((currentPage * postsPerPage))){
       return false;
@@ -173,12 +185,20 @@ const UserProfile = () => {
 
                   <ul className="meta list list-unstyled">
                     <li className="name">
-                      <UserProfileComponent />
+                    <div>
+                        <h1>User Profile</h1>
+                        {user && (
+                          <div>
+                            <p>Welcome, {firstname} {lastname}!</p>
+                            {/* Other user profile information */}
+                          </div>
+                        )}
+                      </div>
                       <br />
                       <label className="label label-info">Developer</label>
                     </li>
                     <li className="email">
-                      <a href="#">John.Doe@gmail.com</a>
+                      {user && ( <a href="#">{user.email}</a>)}
                     </li>
                     <li className="activity">Last logged in: Today at 6:00pm</li>
                   </ul>

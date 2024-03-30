@@ -7,6 +7,7 @@ import { BsUpload } from 'react-icons/bs';
 import { IconContext } from 'react-icons';
 import  usePosting  from '../hooks/usePosting';
 import './Posting.css';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const options = [
   'Sedan',
@@ -26,6 +27,7 @@ function Posting() {
   //message if form is submitted successfully
   const [successMessage, setSuccessMessage] = useState('');
 
+  const { user } = useAuthContext()
 
   const [isActive, setIsActive] = useState(false);
   const [selected, setSelected] = useState('Vehicle Type');
@@ -49,6 +51,7 @@ function Posting() {
     features: '',
     description: '',
     timestamp: '',
+    user: '',
     image: null, // You might want to store the file or image URL here
     imagePreview: null,
   });
@@ -67,10 +70,14 @@ function Posting() {
   //set the current formData attribute(name) to the new value
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+    var date = new Date();
     setFormData({
       ...formData,
       [name]: value,
+      timestamp: date.toString(),
+      user: user.email,
     });
+    //Timestamp
   };
 
   //image file capturing
@@ -91,18 +98,13 @@ function Posting() {
     reader.readAsDataURL(file);
   };
 
-
+  user && console.log("email : " + user.email)
   //HANDLE SUBMISSION
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      //Timestamp
-      var date = new Date();
-      setFormData({
-        ...formData,
-        timestamp: date.toString(),
-      });
+      
 
       // Call the createPosting function from usePosting hook
       const result = await createPosting(formData);
@@ -137,6 +139,7 @@ function Posting() {
           description: '',
           image: null,
           timestamp: '',
+          user: user.email,
         });
 
 

@@ -25,17 +25,22 @@ function Login() {
             })
         };
         gapi.load('client:auth2', start);
+
+        
     });
 
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [firstname, setFirstname] = useState('')
+    const [lastname, setLastname] = useState('')
+    const [location, setLocation] = useState('')
     const{login, error, isLoading} = useLogin()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         //fires login function in useLogin after email and password have been entered
-        await login(email,password)
+        await login(email,password, firstname, lastname, location)
         //console.log(email,password)
     }
 

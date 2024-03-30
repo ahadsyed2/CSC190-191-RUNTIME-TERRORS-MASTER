@@ -63,6 +63,9 @@ const postingSchema = new mongoose.Schema({
   },
   timestamp: {
     type: String,
+  },
+  user: {
+    type: String,
   }
 });
 
