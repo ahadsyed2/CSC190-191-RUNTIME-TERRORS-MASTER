@@ -22,12 +22,9 @@ const CarPrice = ({ checkedPrices, handlePriceCheckboxClick, handlePricesClearCl
                   value={price}
                   checked={checkedPrices.includes(price)}
                   onChange={() => handlePriceCheckboxClick(price)}
-                  style={{ marginRight: '5px' }}
+                  style={{ marginRight: '15px' }}
                 />
-                {price === '$0,000 - $10,000' && <Link to="/">{price}</Link>}
-                {price === '$10,000 - $25,000' && <Link to="/">{price}</Link>}
-                {price === '$25,000 - $50,000' && <Link to="/">{price}</Link>}
-                {price === '$50,000 & up' && <Link to="/">{price}</Link>}
+                <span>{price}</span>
               </label>
             </div>
           ))}
