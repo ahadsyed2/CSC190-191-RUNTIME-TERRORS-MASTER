@@ -6,7 +6,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { IconContext } from 'react-icons';
 import { BsFillArrowRightSquareFill } from "react-icons/bs";
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
-import ThirdNavbarMenu from '../components/ThirdNavbarMenu';
+import NavbarMenu from '../components/navbarMenu';
 import CarListing from '../components/CarListing';
 import CarMake from '../components/CarMake';
 import CarPrice from '../components/CarPrice';
@@ -125,6 +125,7 @@ const HomeIndex = () => {
     setFilteredModelResults({});
   };
 
+
   const modelOptions = ['Camry', 'Civic', 'CV-R', 'Model Y', 'Silverado', 'F-150', 'Accord', 'Model 3'];  //Common Ones
   //For a better product, the text should change depending on which make you select
   const [modelOptionsVar, setModelOptionsVar] = useState(modelOptions);
@@ -146,6 +147,12 @@ const HomeIndex = () => {
   const volkswagenOption = ['Golf GTI', 'Gold R', 'Taos', 'Jetta', 'Atlas', 'Arteon', 'Tiguan', 'Beetle'];
   const cadillacOption = ['CT4', 'Escalade', 'XT5', 'CTS', 'XLR', 'XT6', 'XT5', 'Seville'];
 
+
+  const allOptions = [toyotaOption, hondaOption, mercedesOption, teslaOption, chevroletOption, fordOption, dodgeOption, hyundaiOption,
+                      mazdaOption, kiaOption, buickOption, jeepOption, bmwOption, nissanOption, volkswagenOption, cadillacOption];
+
+
+
   // Car make function
   const [makelOptions, setMakeOptions] = useState([]);
   const [checkedMake, setCheckedMake] = useState([]);
@@ -160,6 +167,68 @@ const HomeIndex = () => {
       }
     });
   };
+   //Change Model Options when Selecting a Make so it makes sense
+   if (checkedMake.includes(value)) {
+    setIsModelOptionsSet(true);
+    switch (value) {
+      case 'Toyota':
+        setModelOptionsVar(toyotaOption);
+        break;
+      case 'Honda':
+        setModelOptionsVar(hondaOption);
+        break;
+      case 'Mercedes':
+        setModelOptionsVar(mercedesOption);
+        break;
+      case 'Tesla':
+        setModelOptionsVar(teslaOption);
+        break;
+      case 'Chevrolet':
+        setModelOptionsVar(chevroletOption);
+        break;
+      case 'Ford':
+        setModelOptionsVar(fordOption);
+        break;
+      case 'Dodge':
+        setModelOptionsVar(dodgeOption);
+        break;
+      case 'Hyundai':
+        setModelOptionsVar(hyundaiOption);
+        break;
+      case 'Mazda':
+        setModelOptionsVar(mazdaOption);
+        break;
+      case 'Kia':
+        setModelOptionsVar(kiaOption);
+        break;
+      case 'Buick':
+        setModelOptionsVar(buickOption);
+        break;
+      case 'Jeep':
+        setModelOptionsVar(jeepOption);
+        break;
+      case 'BMW':
+        setModelOptionsVar(bmwOption);
+        break;
+      case 'Nissan':
+        setModelOptionsVar(nissanOption);
+        break;
+      case 'Volkswagen':
+        setModelOptionsVar(volkswagenOption);
+        break;
+      case 'Cadillac':
+        setModelOptionsVar(cadillacOption);
+        break;
+      default:
+        setModelOptionsVar(modelOptions);
+        break;
+    }
+  } else {
+    // If a make is unchecked, revert model options to default
+    setIsModelOptionsSet(false);
+    setModelOptionsVar(modelOptions);
+  }
+};
   
   const handleMakeSearchClick = () => {
     const newFilteredMakeResults = {};
@@ -292,17 +361,13 @@ const HomeIndex = () => {
   //Will run hook again when page refreshes
   //Could be useful for real-time refreshes, if that was desirable
 
-  var postCounter = 0;
+  var postCounter = 0;  //Number of posts being displayed
   const filter = (post) => {  
-    if(postCounter > 19){   //Limit posts to 20 (4x5) so it fits on screen)
-      return false;
-    }
-    postCounter++;
-    console.log("checkedModels = " + filteredModelResults.length);
-    console.log("checkedMake = " + checkedMake.length);
+    
 
     //Not Filtering so show all results                                       //This is just the name for models
-    if(checkedMake.length == 0 && checkedMileages == 0 && checkedYears == 0 && checkedMakes == 0 && checkedPrices == 0){
+    if(checkedMake.length == 0 && checkedMileages == 0 && checkedYears == 0 && checkedMakes == 0 && checkedPrices == 0 && searchTerm.length == 0){
+      postCounter++;
       return true;
     }
 
@@ -338,10 +403,12 @@ const HomeIndex = () => {
         passAllFilters = false;
       }
     }
-
+    if(passAllFilters == true){
+      postCounter++;
+    }
     return passAllFilters;
   }
-
+  
   const mileageStrings = ['0 - 25,000 miles', '25,000 - 75,000 miles', 
   '75,000 - 125,000 miles', '125,000 miles & up'];
   const priceStrings = ['$0,000 - $10,000', '$10,000 - $25,000', '$25,000 - $50,000', '$50,000 & up'];
@@ -387,6 +454,49 @@ const HomeIndex = () => {
     }
   }
 
+  //Change Model Options when Selecting a Make so it makes sense
+  useEffect(() => {
+    if (checkedMake.length !== 0) {
+      if (checkedMake.includes("Toyota")) {
+        setModelOptionsVar(toyotaOption);
+      } else if (checkedMake.includes("Honda")) {
+        setModelOptionsVar(hondaOption);
+      } else if (checkedMake.includes("Mercedes")) {
+        setModelOptionsVar(mercedesOption);
+      } else if (checkedMake.includes("Tesla")) {
+        setModelOptionsVar(teslaOption);
+      } else if (checkedMake.includes("Chevrolet")) {
+        setModelOptionsVar(chevroletOption);
+      } else if (checkedMake.includes("Ford")) {
+        setModelOptionsVar(fordOption);
+      } else if (checkedMake.includes("Dodge")) {
+        setModelOptionsVar(dodgeOption);
+      } else if (checkedMake.includes("Hyundai")) {
+        setModelOptionsVar(hyundaiOption);
+      } else if (checkedMake.includes("Mazda")) {
+        setModelOptionsVar(mazdaOption);
+      } else if (checkedMake.includes("Kia")) {
+        setModelOptionsVar(kiaOption);
+      } else if (checkedMake.includes("Buick")) {
+        setModelOptionsVar(buickOption);
+      } else if (checkedMake.includes("Jeep")) {
+        setModelOptionsVar(jeepOption);
+      } else if (checkedMake.includes("BMW")) {
+        setModelOptionsVar(bmwOption);
+      } else if (checkedMake.includes("Nissan")) {
+        setModelOptionsVar(nissanOption);
+      } else if (checkedMake.includes("Volkswagen")) {
+        setModelOptionsVar(volkswagenOption);
+      } else if (checkedMake.includes("Cadillac")) {
+        setModelOptionsVar(cadillacOption);
+      }
+      setIsModelOptionsSet(true);
+    } else {
+      setIsModelOptionsSet(false);
+      setModelOptionsVar(modelOptions);
+    }
+  }, [checkedMake]);
+
 
   return (
     <section>
@@ -400,12 +510,12 @@ const HomeIndex = () => {
             <img src="CARMONY_ICON2.png" alt="Logo" className="w-500 mt-3" />
           </div>
 
-          <ThirdNavbarMenu />
+          <NavbarMenu />
         </div>
 
-        <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-          <ul className='nav-menu-items' onClick={showSidebar}>
-            <li className="navbar-toggle">
+        <nav className={sidebar ? 'nav-bar-menu active' : 'nav-bar-menu'}>
+          <ul className='nav-bar-menu-items' onClick={showSidebar}>
+            <li className="nav-bar-toggle">
               <Link to="#" className='hamburger-bars'>
                 <AiOutlineClose />
               </Link>
@@ -426,12 +536,12 @@ const HomeIndex = () => {
 
       <div className="filter-container">
         <div className="filter-box">
-          <div className="side-bar">
+          <div className="filter-side-bar">
             <div className="filter-search flex flex-col mb-4">
               <div className="filter-header flex justify-between items-center">
                 <h1 className="text-3xl font-bold text-black" style={{ textShadow: '0px 2px 4px rgba(139, 139, 139)' }}> Filter by</h1>
                 <a href="#">
-                  <h3 className="text-lg text-blue-800 font-semibold" style={{ textShadow: '0px 2px 2px rgba(52, 124, 248)' }}>Clear filter</h3>
+                  <h3 className="clear-filter text-xl text-blue-600 font-semibold font-bold">Clear filter</h3>
                 </a>
               </div>
             </div>
@@ -554,7 +664,7 @@ const HomeIndex = () => {
 
 
           {/* This code is what populates the home screen with posts */}
-          <div className="container">
+          <div className="car-container">
             <div className="products-con">
 
               {/* Start Posting Box */}
@@ -580,7 +690,7 @@ const HomeIndex = () => {
                             <h3>{post.year} {post.make} {post.model}</h3>
                           </div>
                           <div className='products-price'>
-                            <div className='products-left'>
+                            <div className='price-left'>
                               <h3>${post.price}</h3>
                             </div> 
                           </div>
@@ -619,14 +729,14 @@ const HomeIndex = () => {
       </div>
 
 
-      <div className="arrows">
+      <div className="next-page">
         <span>Go to Next Page</span>
-          <Link to="/HomeIndex" className="link-with-arrow">
+          <Link to="/HomeIndex" className="arrow">
             <BsFillArrowRightSquareFill />
           </Link>
         </div>
 
-      <div className='footer'>
+      <div className="home-footer">
         <p>2023</p>
       </div>
 

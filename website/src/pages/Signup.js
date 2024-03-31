@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import React, {useState} from 'react'
 import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
-import { hamburgerMenu } from './hamburgerMenu';
+import { hamburgerMenu } from '../components/hamburgerMenu';
 import { IconContext } from 'react-icons';
 import './Signup.css'
 import { useSignup } from '../hooks/useSignup'
@@ -48,73 +48,74 @@ const Signup = () => {
                   <FaBars onClick={showSidebar} />
               </Link>
 
-              <div className="carmony-logo w-1/10 flex justify-center items-center p-0 1rem" style={{ width: "15rem", marginLeft: "2rem" }}>
-            <img src="CARMONY_ICON2.png" alt="Logo" className="w-500 mt-3" />
-          </div>
+                <div className="carmony-logo w-1/10 flex justify-center items-center p-0 1rem" style={{ width: "15rem", marginLeft: "2rem" }}>
+                    <img src="CARMONY_ICON2.png" alt="Logo" className="w-500 mt-3" />
+                </div>
           </div>
       
-      <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-          <ul className='nav-menu-items' onClick={showSidebar}>
-              <li className="navbar-toggle">
-                  <Link to="#" className='hamburger-bars'>
-                      <AiOutlineClose />
-                  </Link>
-              </li>
-              {hamburgerMenu.map((item, index) => {
-                  return (
-                      <li key={index} className={item.cName}>
-                          <Link to={item.path}>
-                              {item.icon}
-                              <span>{item.title}</span>
-                          </Link>
-                      </li>
-                  );
-              })}
+          <nav className={sidebar ? 'nav-bar-menu active' : 'nav-bar-menu'}>
+          <ul className='nav-bar-menu-items' onClick={showSidebar}>
+            <li className="nav-bar-toggle">
+              <Link to="#" className='hamburger-bars'>
+                <AiOutlineClose />
+              </Link>
+            </li>
+            {hamburgerMenu.map((item, index) => {
+                return (
+                    <li key={index} className={item.cName}>
+                        <Link to={item.path}>
+                            {item.icon}
+                            <span>{item.title}</span>
+                        </Link>
+                    </li>
+                );
+            })}
           </ul>
-          
-              
-      </nav>
+        </nav>
       </IconContext.Provider>
 
       
       <div className="container">
         <form className = "signup-box" onSubmit = {handleSubmit}>
-            <h1>Welcome!</h1>
-            <h3>Create an account to access Carmony account.</h3>
-                <div className="name">
-                    <h3>First Name</h3>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4">Welcome!</h1>
+            <h3 class="text-lg md:text-xl mb-6">Create an account to access Carmony account.</h3>
+                <div class="signup-name">
+                    <h3 class="flex flex-col text-md items-start max-w-md w-full md:w-64 lg:w-96 mt-5">First Name</h3>
                     <input
-                            type = "text"
-                            onChange={(e) => setFirstName(e.target.value)}
-                            value = {firstname}
-                        />
+                        type="text"
+                        class="w-full border border-gray-300 rounded-md py-2 px-3"
+                        onChange={(e) => setFirstName(e.target.value)}
+                        value={firstname}
+                    />
                 </div>
 
-                <div className="name">
-                    <h3>Last Name</h3>
+                <div class="signup-name">
+                    <h3 class="flex flex-col text-md items-start max-w-md w-full md:w-64 lg:w-96 mt-5">Last Name</h3>
                     <input
-                            type = "text"
-                            onChange={(e) => setLastName(e.target.value)}
-                            value = {lastname}
-                        />
+                        type="text"
+                        class="w-full border border-gray-300 rounded-md py-2 px-3"
+                        onChange={(e) => setLastName(e.target.value)}
+                        value={lastname}
+                    />
                 </div>
-                <div className="email-address">
-                    <h3>Email Address</h3>
-                        <input
-                            type = "email"
-                            onChange={(e) => setEmail(e.target.value)}
-                            value = {email}
-                        />
+                <div class="signup-email">
+                    <h3 class="flex flex-col text-md items-start max-w-md w-full md:w-64 lg:w-96 mt-5">Email Address</h3>
+                    <input
+                        type="email"
+                        class="w-full border border-gray-300 rounded-md py-2 px-3"
+                        onChange={(e) => setEmail(e.target.value)}
+                        value={email}
+                    />
                 </div>
-                <div className="signup-location">
-                    <h3>Location</h3>
-                        <input
-                            type = "text"
-                            onChange={(e) => setUserLocation(e.target.value)}
-                            value = {userlocation}
-                        />
+                <div class="signup-location">
+                    <h3 class="flex flex-col text-md items-start max-w-md w-full md:w-64 lg:w-96 mt-5">Location</h3>
+                    <input
+                        type="text"
+                        class="w-full border border-gray-300 rounded-md py-2 px-3"
+                        onChange={(e) => setUserLocation(e.target.value)}
+                        value={userlocation}
+                    />
                 </div>
-
                 <div className="newPassword">
                     <h3>New Password</h3>
                         <input

@@ -22,32 +22,32 @@ function AboutCarmony() {
                 <FaBars onClick={showSidebar} />
             </Link>
 
-            <div className="carmony-logo">
-                <img src="CARMONY_ICON2.png" alt="" />
-            </div>
+            <div className="carmony-logo w-1/10 flex justify-center items-center p-0 1rem" style={{ width: "15rem", marginLeft: "2rem" }}>
+            <img src="CARMONY_ICON2.png" alt="Logo" className="w-500 mt-3" />
+          </div>
 
             <NavbarMenu />
           </div>
           
-          <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-            <ul className='nav-menu-items' onClick={showSidebar}>
-                <li className="navbar-toggle">
-                    <Link to="#" className='hamburger-bars'>
-                        <AiOutlineClose />
-                    </Link>
-                </li>
-                {hamburgerMenu.map((item, index) => {
-                    return (
-                        <li key={index} className={item.cName}>
-                            <Link to={item.path}>
-                                {item.icon}
-                                <span>{item.title}</span>
-                            </Link>
-                        </li>
-                    );
-                })}
-            </ul>
-          </nav>
+          <nav className={sidebar ? 'nav-bar-menu active' : 'nav-bar-menu'}>
+          <ul className='nav-bar-menu-items' onClick={showSidebar}>
+            <li className="nav-bar-toggle">
+              <Link to="#" className='hamburger-bars'>
+                <AiOutlineClose />
+              </Link>
+            </li>
+            {hamburgerMenu.map((item, index) => {
+                return (
+                    <li key={index} className={item.cName}>
+                        <Link to={item.path}>
+                            {item.icon}
+                            <span>{item.title}</span>
+                        </Link>
+                    </li>
+                );
+            })}
+          </ul>
+        </nav>
           </IconContext.Provider>
 
         <div className='aboutCarmony'>

@@ -7,7 +7,7 @@ import { IconContext } from 'react-icons';
 import './CarInfo.css';
 import { usePostContext } from '../hooks/usePostContext';
 import { useVehicleContext } from '../hooks/useVehicleContext';
-import { hamburgerMenu } from './hamburgerMenu';
+import { hamburgerMenu } from '../components/hamburgerMenu';
 import NavbarMenu from '../components/navbarMenu';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
@@ -93,16 +93,16 @@ function CarInfo() {
             <FaBars onClick={showSidebar} />
           </Link>
 
-          <div className="carmony-logo">
-            <img src="CARMONY_ICON2.png" alt="" />
+          <div className="carmony-logo w-1/10 flex justify-center items-center p-0 1rem" style={{ width: "15rem", marginLeft: "2rem" }}>
+            <img src="CARMONY_ICON2.png" alt="Logo" className="w-500 mt-3" />
           </div>
 
           <NavbarMenu />
         </div>
 
-        <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-          <ul className='nav-menu-items' onClick={showSidebar}>
-            <li className="navbar-toggle">
+        <nav className={sidebar ? 'nav-bar-menu active' : 'nav-bar-menu'}>
+          <ul className='nav-bar-menu-items' onClick={showSidebar}>
+            <li className="nav-bar-toggle">
               <Link to="#" className='hamburger-bars'>
                 <AiOutlineClose />
               </Link>
