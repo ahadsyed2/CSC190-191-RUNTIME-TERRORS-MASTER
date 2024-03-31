@@ -6,7 +6,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { IconContext } from 'react-icons';
 import { BsFillArrowRightSquareFill } from "react-icons/bs";
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
-import NavbarMenu from '../components/navbarMenu';
+import ThirdNavbarMenu from '../components/ThirdNavbarMenu';
 import CarListing from '../components/CarListing';
 import CarMake from '../components/CarMake';
 import CarPrice from '../components/CarPrice';
@@ -102,6 +102,8 @@ const HomeIndex = () => {
 
   const handleClearClick = () => {
     setCheckedMakes([]);
+    setModelOptionsVar(modelOptions);
+    setIsModelOptionsSet(false);
     setFilteredResults({});
     setShowModelOptions(false); // Hide model options on clear
   };
@@ -125,7 +127,6 @@ const HomeIndex = () => {
     setFilteredModelResults({});
   };
 
-
   const modelOptions = ['Camry', 'Civic', 'CV-R', 'Model Y', 'Silverado', 'F-150', 'Accord', 'Model 3'];  //Common Ones
   //For a better product, the text should change depending on which make you select
   const [modelOptionsVar, setModelOptionsVar] = useState(modelOptions);
@@ -147,11 +148,8 @@ const HomeIndex = () => {
   const volkswagenOption = ['Golf GTI', 'Gold R', 'Taos', 'Jetta', 'Atlas', 'Arteon', 'Tiguan', 'Beetle'];
   const cadillacOption = ['CT4', 'Escalade', 'XT5', 'CTS', 'XLR', 'XT6', 'XT5', 'Seville'];
 
-
   const allOptions = [toyotaOption, hondaOption, mercedesOption, teslaOption, chevroletOption, fordOption, dodgeOption, hyundaiOption,
                       mazdaOption, kiaOption, buickOption, jeepOption, bmwOption, nissanOption, volkswagenOption, cadillacOption];
-
-
 
   // Car make function
   const [makelOptions, setMakeOptions] = useState([]);
@@ -160,75 +158,77 @@ const HomeIndex = () => {
 
   const handleMakeCheckboxClick = (value) => {
     setCheckedMake((prevCheckedMake) => {
+      // If the clicked make is already checked, uncheck it
       if (prevCheckedMake.includes(value)) {
         return prevCheckedMake.filter((make) => make !== value);
       } else {
+        // If the clicked make is not checked, add it to the checked makes
         return [...prevCheckedMake, value];
       }
     });
-  };
-   //Change Model Options when Selecting a Make so it makes sense
-   if (checkedMake.includes(value)) {
-    setIsModelOptionsSet(true);
-    switch (value) {
-      case 'Toyota':
-        setModelOptionsVar(toyotaOption);
-        break;
-      case 'Honda':
-        setModelOptionsVar(hondaOption);
-        break;
-      case 'Mercedes':
-        setModelOptionsVar(mercedesOption);
-        break;
-      case 'Tesla':
-        setModelOptionsVar(teslaOption);
-        break;
-      case 'Chevrolet':
-        setModelOptionsVar(chevroletOption);
-        break;
-      case 'Ford':
-        setModelOptionsVar(fordOption);
-        break;
-      case 'Dodge':
-        setModelOptionsVar(dodgeOption);
-        break;
-      case 'Hyundai':
-        setModelOptionsVar(hyundaiOption);
-        break;
-      case 'Mazda':
-        setModelOptionsVar(mazdaOption);
-        break;
-      case 'Kia':
-        setModelOptionsVar(kiaOption);
-        break;
-      case 'Buick':
-        setModelOptionsVar(buickOption);
-        break;
-      case 'Jeep':
-        setModelOptionsVar(jeepOption);
-        break;
-      case 'BMW':
-        setModelOptionsVar(bmwOption);
-        break;
-      case 'Nissan':
-        setModelOptionsVar(nissanOption);
-        break;
-      case 'Volkswagen':
-        setModelOptionsVar(volkswagenOption);
-        break;
-      case 'Cadillac':
-        setModelOptionsVar(cadillacOption);
-        break;
-      default:
-        setModelOptionsVar(modelOptions);
-        break;
+  
+    //Change Model Options when Selecting a Make so it makes sense
+    if (checkedMake.includes(value)) {
+      setIsModelOptionsSet(true);
+      switch (value) {
+        case 'Toyota':
+          setModelOptionsVar(toyotaOption);
+          break;
+        case 'Honda':
+          setModelOptionsVar(hondaOption);
+          break;
+        case 'Mercedes':
+          setModelOptionsVar(mercedesOption);
+          break;
+        case 'Tesla':
+          setModelOptionsVar(teslaOption);
+          break;
+        case 'Chevrolet':
+          setModelOptionsVar(chevroletOption);
+          break;
+        case 'Ford':
+          setModelOptionsVar(fordOption);
+          break;
+        case 'Dodge':
+          setModelOptionsVar(dodgeOption);
+          break;
+        case 'Hyundai':
+          setModelOptionsVar(hyundaiOption);
+          break;
+        case 'Mazda':
+          setModelOptionsVar(mazdaOption);
+          break;
+        case 'Kia':
+          setModelOptionsVar(kiaOption);
+          break;
+        case 'Buick':
+          setModelOptionsVar(buickOption);
+          break;
+        case 'Jeep':
+          setModelOptionsVar(jeepOption);
+          break;
+        case 'BMW':
+          setModelOptionsVar(bmwOption);
+          break;
+        case 'Nissan':
+          setModelOptionsVar(nissanOption);
+          break;
+        case 'Volkswagen':
+          setModelOptionsVar(volkswagenOption);
+          break;
+        case 'Cadillac':
+          setModelOptionsVar(cadillacOption);
+          break;
+        default:
+          setModelOptionsVar(modelOptions);
+          break;
+      }
+    } else {
+      // If a make is unchecked, revert model options to default
+      setIsModelOptionsSet(false);
+      setModelOptionsVar(modelOptions);
     }
-  } else {
-    // If a make is unchecked, revert model options to default
-    setIsModelOptionsSet(false);
-    setModelOptionsVar(modelOptions);
-  }
-};
+  };
   
   const handleMakeSearchClick = () => {
     const newFilteredMakeResults = {};
@@ -251,7 +251,7 @@ const HomeIndex = () => {
   
   const makeOptions = ['Toyota', 'Honda', 'Mercedes', 'Tesla', 'Chevrolet', 'Ford', 'Dodge', 'Hyundai', 'Mazda',
                        'Kia', 'Buick', 'Jeep', 'BMW', 'Nissan', 'Volkswagen', 'Cadillac']; 
-  
+
 
   // Years function
   const handleYearCheckboxClick = (year) => {
@@ -316,24 +316,9 @@ const HomeIndex = () => {
     });
   };
 
-
-  const [viewingPost, setViewingPost] = useState(false);
-  const [currentPost, setCurrentPost] = useState(-1);
-  const [currentPostId, setCurrentPostId] = useState(-1);
-
   const handlePostBoxClick = (post, id) =>{
-
-    if(viewingPost == false){     //This was for a pop-up feature. Still can be useful later
-      //setCurrentPost(post);
-      //setViewingPost(true);
-    }
-    else if (viewingPost == true){
-      //setCurrentPost(-1);
-      //setViewingPost(false);
-    }
     
     //This is for changing the webpage to a unique one and passing the post.id through url
-    setCurrentPostId(id);
     var href = "/CarInfo/" + id;
     window.location=href;
   }   
@@ -346,7 +331,7 @@ const HomeIndex = () => {
   //Need to limit how many get pulled with it getting more when it reaches bottom of screen or by clicking next page
   useEffect(() => {
     const fetchPosts = async () => {
-      const response = await fetch('/api/postRoutes')
+      const response = await fetch('/api/postRoutes?sort=-createdAt')
       const json = await response.json()
 
       if(response.ok){
@@ -361,8 +346,39 @@ const HomeIndex = () => {
   //Will run hook again when page refreshes
   //Could be useful for real-time refreshes, if that was desirable
 
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 20;
+  const [indexOfLastPost, setIndexOfLastPost] = useState(currentPage * postsPerPage);
+  const [indexOfFirstPost, setIndexOfFirstPost] = useState(indexOfLastPost - postsPerPage);
+  const [numberOfPosts, setNumberOfPosts] = useState(0);
+  if(posts && numberOfPosts == 0){
+    setNumberOfPosts(posts.length);
+  }
+
+  const nextPage = () => {
+    setCurrentPage(currentPage + 1);
+    setIndexOfLastPost(currentPage * postsPerPage);
+    setIndexOfFirstPost(indexOfLastPost - postsPerPage);
+  };
+  
+  const prevPage = () => {
+    setCurrentPage(currentPage - 1);
+    setIndexOfLastPost(currentPage * postsPerPage);
+    setIndexOfFirstPost(indexOfLastPost - postsPerPage);
+  };
+
   var postCounter = 0;  //Number of posts being displayed
   const filter = (post) => {  
+
+    //Handle Pages
+    if(posts.indexOf(post) < ((currentPage * postsPerPage) - 20) || posts.indexOf(post) > ((currentPage * postsPerPage))){
+      return false;
+    }
+
+    if(postCounter > 19){   //Limit posts to 20 (4x5) so it fits on screen)
+      return false;
+    }
     
 
     //Not Filtering so show all results                                       //This is just the name for models
@@ -403,12 +419,24 @@ const HomeIndex = () => {
         passAllFilters = false;
       }
     }
+    if(searchTerm.length != 0){
+      if(post.description.includes(searchTerm) ||
+         post.make.includes(searchTerm) || 
+         post.model.includes(searchTerm) ||
+         post.features.includes(searchTerm) ||
+         post.location.includes(searchTerm) ) {
+          
+         } else {
+          passAllFilters = false;
+         }
+    }
+
     if(passAllFilters == true){
       postCounter++;
     }
     return passAllFilters;
   }
-  
+
   const mileageStrings = ['0 - 25,000 miles', '25,000 - 75,000 miles', 
   '75,000 - 125,000 miles', '125,000 miles & up'];
   const priceStrings = ['$0,000 - $10,000', '$10,000 - $25,000', '$25,000 - $50,000', '$50,000 & up'];
@@ -497,6 +525,60 @@ const HomeIndex = () => {
     }
   }, [checkedMake]);
 
+  //Search Bar Stuff
+  const [searchTerm, setSearchTerm] = useState('');
+  const handleSearch = (event) => {
+    const term = event.target.value;
+    setSearchTerm(term);
+    //console.log("search term = " + searchTerm);
+  };
+
+  useEffect(() => {
+    console.log("search term = " + searchTerm);
+  }, [searchTerm]);
+
+  //SAVING FILTERS
+  // Function to save filter settings to localStorage
+  const saveFilterSettings = () => {
+    const filterSettings = {
+      checkedMakes,
+      checkedMileages,
+      checkedPrices,
+      checkedYears,
+      checkedMake,
+      searchTerm
+    };
+    localStorage.setItem('filterSettings', JSON.stringify(filterSettings));
+  };
+
+  // Function to load filter settings from localStorage
+  const loadFilterSettings = () => {
+    const savedSettings = localStorage.getItem('filterSettings');
+    if (savedSettings) {
+      const parsedSettings = JSON.parse(savedSettings);
+      setCheckedMakes(parsedSettings.checkedMakes);
+      setCheckedMileages(parsedSettings.checkedMileages);
+      setCheckedPrices(parsedSettings.checkedPrices);
+      setCheckedYears(parsedSettings.checkedYears);
+      setCheckedMake(parsedSettings.checkedMake);
+      setSearchTerm(parsedSettings.searchTerm);
+    }
+  };
+
+  // Save filter settings when leaving the webpage
+  useEffect(() => {
+    window.addEventListener('beforeunload', saveFilterSettings);
+    return () => {
+      window.removeEventListener('beforeunload', saveFilterSettings);
+    };
+  }, [checkedMakes, checkedMake, checkedYears, checkedMileages, checkedPrices, searchTerm]); 
+
+  // Load filter settings when returning to the webpage
+  useEffect(() => {
+    loadFilterSettings();
+  }, []); // Load only once when component mounts
+
+
 
   return (
     <section>
@@ -510,12 +592,12 @@ const HomeIndex = () => {
             <img src="CARMONY_ICON2.png" alt="Logo" className="w-500 mt-3" />
           </div>
 
-          <NavbarMenu />
+          <ThirdNavbarMenu />
         </div>
 
-        <nav className={sidebar ? 'nav-bar-menu active' : 'nav-bar-menu'}>
-          <ul className='nav-bar-menu-items' onClick={showSidebar}>
-            <li className="nav-bar-toggle">
+        <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+          <ul className='nav-menu-items' onClick={showSidebar}>
+            <li className="navbar-toggle">
               <Link to="#" className='hamburger-bars'>
                 <AiOutlineClose />
               </Link>
@@ -536,18 +618,26 @@ const HomeIndex = () => {
 
       <div className="filter-container">
         <div className="filter-box">
-          <div className="filter-side-bar">
+          <div className="side-bar">
             <div className="filter-search flex flex-col mb-4">
               <div className="filter-header flex justify-between items-center">
                 <h1 className="text-3xl font-bold text-black" style={{ textShadow: '0px 2px 4px rgba(139, 139, 139)' }}> Filter by</h1>
                 <a href="#">
-                  <h3 className="clear-filter text-xl text-blue-600 font-semibold font-bold">Clear filter</h3>
+                  <h3 className="text-lg text-blue-800 font-semibold" style={{ textShadow: '0px 2px 2px rgba(52, 124, 248)' }}>Clear filter</h3>
                 </a>
               </div>
             </div>
 
-
-            <CarListing />
+            {/*<CarListing setFilterCriteria={setFilterCriteria} /> I may have messed up these files -Nick*/}
+            <div className="relative" >
+            <input
+              type="text"
+              placeholder="Search for tags ..."
+              value={searchTerm}
+              onChange={handleSearch}
+              className="py-2 px-4 mb-4 mt-8 block w-full leading-5 border-2 border-gray-300 rounded-2xl shadow-lg transition duration-150 ease-in-out text-xl sm:leading-7" 
+            />
+            </div>
            
             <div className="myMenu">
               <div className="customer-choices flex flex-col">
@@ -576,7 +666,7 @@ const HomeIndex = () => {
                   {modelDropdown && (
                     <div className="dropdown-content">
                       <div>
-                      {modelOptions.map((model) => {
+                      {modelOptionsVar.map((model) => {
                         const make = cars.find((car) => car.model === model)?.make || '';
                         return (
                           <div key={model}>
@@ -664,7 +754,7 @@ const HomeIndex = () => {
 
 
           {/* This code is what populates the home screen with posts */}
-          <div className="car-container">
+          <div className="container">
             <div className="products-con">
 
               {/* Start Posting Box */}
@@ -675,13 +765,14 @@ const HomeIndex = () => {
                
                 filter(post) && 
                 <div className="test2" key={post.id}> 
-                  
+                    {posts && console.log("index 0: "+ posts.at(0).make)}
                     <a onClick={() => { handlePostBoxClick(post, post._id) }}>
                         <div className='products-item'>
                           <div className='products-img'>
                           { /* Need to be able to pull image from DB */ }
+                          {console.log("Image URL: https://ahadsyed1.s3.us-west-1.amazonaws.com/" + post._id)}
                             <img
-                            src="https://images.offerup.com/4uQVF_BU-_3APQkmUNUmGB3xqhE=/1280x960/d3ed/d3ed001efeac469097afcb8638e4ca76.jpg"
+                            src={"https://ahadsyed1.s3.us-west-1.amazonaws.com/" + post._id}
                             alt="Picture Failure"
                             />
                           </div>
@@ -690,7 +781,7 @@ const HomeIndex = () => {
                             <h3>{post.year} {post.make} {post.model}</h3>
                           </div>
                           <div className='products-price'>
-                            <div className='price-left'>
+                            <div className='products-left'>
                               <h3>${post.price}</h3>
                             </div> 
                           </div>
@@ -729,14 +820,18 @@ const HomeIndex = () => {
       </div>
 
 
-      <div className="next-page">
-        <span>Go to Next Page</span>
-          <Link to="/HomeIndex" className="arrow">
-            <BsFillArrowRightSquareFill />
-          </Link>
-        </div>
 
-      <div className="home-footer">
+      <div className="arrows">
+        {currentPage > 1 && (
+          <span onClick={prevPage}>Go to Previous Page</span>
+        )}
+        {posts && posts.length > (currentPage * postsPerPage) && (
+          <span onClick={nextPage}>Go to Next Page</span>
+        )}
+      </div>
+
+
+      <div className='footer'>
         <p>2023</p>
       </div>
 
