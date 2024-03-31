@@ -14,7 +14,9 @@ import './UserProfile.css'
 const UserProfile = () => {
 
   const [sidebar, setSidebar] = useState(false);
-
+  const [firstname, setFirstName] = useState('');
+  const [lastname, setLastName] = useState('');
+  const [location, setLocation] = useState('');
   const showSidebar = () => {
     setSidebar(!sidebar);
   };
@@ -35,19 +37,15 @@ const UserProfile = () => {
     setCarbutton(!carbutton);
   };
 
-  const [isBoxVisible, setBoxVisibility] = useState(true);
+  const deleteButton = (id) => {
 
-  const deleteButton = () => {
-    const userConfirmed = window.confirm("Are you sure you want to delete?");
-
-    if (userConfirmed) {
-      // User clicked "OK"
-      setBoxVisibility(false);
-    } else {
-      // User clicked "Cancel"
-      console.log("Delete canceled");
-    }
+    deletePost(id);
+   
+    
   };
+
+
+  
 
   const [isBoxVisible2, setBoxVisibility2] = useState(true);
   const deleteButton2 = () => {
@@ -69,6 +67,90 @@ const UserProfile = () => {
     } else {
       console.log("Delete canceled");
     }
+  };
+  //New added for delete 
+  const deletePost = async (id) => {
+    //Deletes on MongoDB
+    const response = await fetch('/api/postRoutes/' + id, {
+      method: 'DELETE'
+    })
+    
+    //This is the body of the reponses, aka the array of documents
+    const json = await response.json()
+
+    //Deletes on Local Machine to keep syncronized
+    if(response.ok){
+      dispatch({type: 'DELETE_POST', payload: json})
+
+    const newNumberOfPosts = numberOfPosts - 1;
+    
+    setNumberOfPosts(newNumberOfPosts);
+    calculatePages();
+    }
+  }
+  const [currentPage, setCurrentPage] = useState(0);
+  const postsPerPage = 5;
+  const [numberOfPosts, setNumberOfPosts] = useState(0);
+  const [index, setIndex] = useState(0);
+  const [array, setArray] = useState([]);
+
+  if(posts && numberOfPosts == 0){
+    setNumberOfPosts(posts.length);
+  }
+
+  const nextPage = () => {
+    setCurrentPage(currentPage + 2);
+    console.log("Next Page");
+  };
+
+  const prevPage = () => {
+    setCurrentPage(currentPage - 2);
+    console.log("Prev Page");
+  };
+
+  const filter = (post) => {
+
+    //Check if posted by this user
+    if(user.email != post.user){
+      return false;
+    }
+
+    console.log("index A = "+ array[currentPage]);
+    console.log("index B = "+ array[currentPage + 1]);
+    //if(posts.indexOf(post) < array[currentPage] || posts.indexOf(post) > array[currentPage+1]){
+    //  return false;
+    //}
+    //Show all at once I can't get pages to work
+    console.log("Index of true: " + posts.indexOf(post));
+    return true;
+  }
+
+  const calculatePages = () => {
+    var start = 0;
+    var end = 0;
+    var count = 0;
+    var newArray = []; // Create a new array to hold the calculated values
+    posts && posts.forEach((post, index) => { // Use forEach instead of map
+
+      if (post.user === user.email) {
+        console.log("In calc: index = " + posts.indexOf(post)+ " count: "+count);
+        if(count == 0){
+          start = index;
+        }
+        count++;
+      }
+      if (count > 5) {
+        count = 0;
+        newArray.push(start); // Use push to add values to the array
+        end = index;
+        newArray.push(end);
+        start = end + 1;
+      }
+    });
+    for(var i =0; i < newArray.length; i++){
+      console.log("new array: "+newArray[i]);
+    }
+    setArray(newArray); // Update the state with the new array
   };
 
   return (
