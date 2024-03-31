@@ -26,7 +26,7 @@ const getPost = async (req, res) => {
 }
 
 const getAllPosts = async (req, res) => {
-  const posts = await Post.find({}).sort({createdAt: -1})
+  const posts = await Post.find({}).sort({createdAt: 1})
 
   res.status(200).json(posts)
 }
@@ -37,13 +37,37 @@ const createPost = async (req, res) => {
 }
 
 const updatePost = async (req, res) => {
+  const { id } = req.params
 
-  res.status(200)
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json({error: 'No such post'})
+  }
+
+  const post = await Post.findOneAndUpdate({_id: id}, {
+    ...req.body
+  })
+
+  if (!post) {
+    return res.status(400).json({error: 'No such post'})
+  }
+
+  res.status(200).json(post)
 }
 
 const deletePost = async (req, res) => {
+  const { id } = req.params
 
-  res.status(200)
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json({error: 'No such post'})
+  }
+
+  const post = await Post.findOneAndDelete({_id: id})
+
+  if(!post) {
+    return res.status(400).json({error: 'No such post'})
+  }
+
+  res.status(200).json(post)
 }
 
 //module.exports = {
