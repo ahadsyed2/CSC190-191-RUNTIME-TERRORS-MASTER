@@ -124,7 +124,31 @@ const HomeIndex = () => {
     setFilteredModelResults({});
   };
 
-  const modelOptions = ['Toyota', 'Honda', 'BMW', 'Tesla', 'Chevrolet', 'Ford'];
+  
+  const modelOptions = ['Camry', 'Civic', 'CV-R', 'Model Y', 'Silverado', 'F-150', 'Accord', 'Model 3'];  //Common Ones
+  //For a better product, the text should change depending on which make you select
+  const [modelOptionsVar, setModelOptionsVar] = useState(modelOptions);
+  const [isModelOptionsSet, setIsModelOptionsSet] = useState(false);
+  const toyotaOption = ['Tacoma', 'Crown', 'Prius', 'Corolla', 'Highlander', 'Sequoia', 'Tundra', 'RAV4'];
+  const hondaOption = ['CR-V', 'Accord', 'Odyssey', 'Pilot', 'Civic', 'HRV', 'S2000', 'Ridgeline'];
+  const mercedesOption = ['EQB', 'CLA', 'GLC', 'E-Class', 'C-Class', 'SL', 'GLA', 'GLB'];
+  const teslaOption = ['Model S', 'Model 3', 'Model X', 'Model Y', 'Cybertruck', 'Roadster', 'Semi', 'Model 2'];
+  const chevroletOption = ['Camaro', 'Corvette', 'Suburban', 'Silverado', 'Tahoe', 'Impala', 'Colorado', 'Bolt'];
+  const fordOption = ['Mustang', 'F150', 'Escape', 'Transit', 'Explorer', 'Fiesta', 'Focus', 'F250'];
+  const dodgeOption = ['Charger', 'Dart', 'Challenger', 'Dart', 'Durango', 'Ram 1500', 'Ram 2500', 'Ram 3500'];
+  const hyundaiOption = ['Santa Fe', 'Sonata', 'Tucson', 'Palisade', 'Kona', 'Accent', 'Elantra', 'Venue'];
+  const mazdaOption = ['2', '3', '6', 'speed3', 'MPV', 'Miata', 'RX-7', 'CX-5'];
+  const kiaOption = ['Soul', 'Sorento', 'Forte', 'Stinger', 'Rio', 'Optima', 'Niro', 'Sportage'];
+  const buickOption = ['Enclave', 'Encore', 'LaCrosse', 'Riviera', 'Regal', 'Sportback', 'LeSabre', 'Cascada'];
+  const jeepOption = ['Compass', 'Gladiator', 'Renegade', 'Wagoneer', 'Cherokee', 'Wrangler', 'Grand Cherokee', 'Avenger'];
+  const bmwOption = ['M5', 'M2', 'Z4', 'X1', 'XM', '2 Series', '5 Series', '7 Series'];
+  const nissanOption = ['Altima', 'Rogue', 'Maxima', 'Leaf', 'Sentra', 'Murano', 'GTR', 'Pathfinder'];
+  const volkswagenOption = ['Golf GTI', 'Gold R', 'Taos', 'Jetta', 'Atlas', 'Arteon', 'Tiguan', 'Beetle'];
+  const cadillacOption = ['CT4', 'Escalade', 'XT5', 'CTS', 'XLR', 'XT6', 'XT5', 'Seville'];
+
+  const allOptions = [toyotaOption, hondaOption, mercedesOption, teslaOption, chevroletOption, fordOption, dodgeOption, hyundaiOption,
+                      mazdaOption, kiaOption, buickOption, jeepOption, bmwOption, nissanOption, volkswagenOption, cadillacOption];
+
 
   // Car make function
   const [makelOptions, setMakeOptions] = useState([]);
@@ -140,6 +164,68 @@ const HomeIndex = () => {
       }
     });
   };
+   //Change Model Options when Selecting a Make so it makes sense
+   if (checkedMake.includes(value)) {
+    setIsModelOptionsSet(true);
+    switch (value) {
+      case 'Toyota':
+        setModelOptionsVar(toyotaOption);
+        break;
+      case 'Honda':
+        setModelOptionsVar(hondaOption);
+        break;
+      case 'Mercedes':
+        setModelOptionsVar(mercedesOption);
+        break;
+      case 'Tesla':
+        setModelOptionsVar(teslaOption);
+        break;
+      case 'Chevrolet':
+        setModelOptionsVar(chevroletOption);
+        break;
+      case 'Ford':
+        setModelOptionsVar(fordOption);
+        break;
+      case 'Dodge':
+        setModelOptionsVar(dodgeOption);
+        break;
+      case 'Hyundai':
+        setModelOptionsVar(hyundaiOption);
+        break;
+      case 'Mazda':
+        setModelOptionsVar(mazdaOption);
+        break;
+      case 'Kia':
+        setModelOptionsVar(kiaOption);
+        break;
+      case 'Buick':
+        setModelOptionsVar(buickOption);
+        break;
+      case 'Jeep':
+        setModelOptionsVar(jeepOption);
+        break;
+      case 'BMW':
+        setModelOptionsVar(bmwOption);
+        break;
+      case 'Nissan':
+        setModelOptionsVar(nissanOption);
+        break;
+      case 'Volkswagen':
+        setModelOptionsVar(volkswagenOption);
+        break;
+      case 'Cadillac':
+        setModelOptionsVar(cadillacOption);
+        break;
+      default:
+        setModelOptionsVar(modelOptions);
+        break;
+    }
+  } else {
+    // If a make is unchecked, revert model options to default
+    setIsModelOptionsSet(false);
+    setModelOptionsVar(modelOptions);
+  }
+};
   
   const handleMakeSearchClick = () => {
     const newFilteredMakeResults = {};
@@ -273,6 +359,48 @@ const HomeIndex = () => {
     //DO NOT REMOVE THE BRACKETS, empty dependancy array as a 2nd arg runs useEffect hook only once when component renders
     //Will run hook again when page refreshes
   
+    //Change Model Options when Selecting a Make so it makes sense
+  useEffect(() => {
+    if (checkedMake.length !== 0) {
+      if (checkedMake.includes("Toyota")) {
+        setModelOptionsVar(toyotaOption);
+      } else if (checkedMake.includes("Honda")) {
+        setModelOptionsVar(hondaOption);
+      } else if (checkedMake.includes("Mercedes")) {
+        setModelOptionsVar(mercedesOption);
+      } else if (checkedMake.includes("Tesla")) {
+        setModelOptionsVar(teslaOption);
+      } else if (checkedMake.includes("Chevrolet")) {
+        setModelOptionsVar(chevroletOption);
+      } else if (checkedMake.includes("Ford")) {
+        setModelOptionsVar(fordOption);
+      } else if (checkedMake.includes("Dodge")) {
+        setModelOptionsVar(dodgeOption);
+      } else if (checkedMake.includes("Hyundai")) {
+        setModelOptionsVar(hyundaiOption);
+      } else if (checkedMake.includes("Mazda")) {
+        setModelOptionsVar(mazdaOption);
+      } else if (checkedMake.includes("Kia")) {
+        setModelOptionsVar(kiaOption);
+      } else if (checkedMake.includes("Buick")) {
+        setModelOptionsVar(buickOption);
+      } else if (checkedMake.includes("Jeep")) {
+        setModelOptionsVar(jeepOption);
+      } else if (checkedMake.includes("BMW")) {
+        setModelOptionsVar(bmwOption);
+      } else if (checkedMake.includes("Nissan")) {
+        setModelOptionsVar(nissanOption);
+      } else if (checkedMake.includes("Volkswagen")) {
+        setModelOptionsVar(volkswagenOption);
+      } else if (checkedMake.includes("Cadillac")) {
+        setModelOptionsVar(cadillacOption);
+      }
+      setIsModelOptionsSet(true);
+    } else {
+      setIsModelOptionsSet(false);
+      setModelOptionsVar(modelOptions);
+    }
+  }, [checkedMake]);
 
 
   return (
