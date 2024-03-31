@@ -1,6 +1,6 @@
-const mongoose = require ('mongoose')
-const bcrypt = require ('bcrypt')
-const validator = require ('validator')
+import mongoose from 'mongoose';
+import bcrypt from 'bcrypt';
+import validator from 'validator';
 
 const Schema = mongoose.Schema
 
@@ -19,14 +19,33 @@ const userSchema = new Schema({
             type: String,
             required: true
 
+        },
+
+        firstname:{
+            type: String,
+            required: false
+
+        },
+
+        lastname:{
+            type: String,
+            required: false
+
+        },
+
+        userlocation:{
+            type: String,
+            required: false
+
         }
+
 
 
 })
 
 //STATIC SIGN UP 
 //function fires from userController
-userSchema.statics.signup = async function(email,password)  {
+userSchema.statics.signup = async function(email,password,firstname,lastname,userlocation)  {
 
     //validation
     //if no email or password
@@ -39,7 +58,7 @@ userSchema.statics.signup = async function(email,password)  {
     }
 
     if(!validator.isStrongPassword(password)){
-        throw Error("password not strong enough")
+        throw Error("Password not strong enough. A password needs 1 capital, 1 special character and at least 8 letters")
     }
 
      //check if email exists in db
@@ -55,7 +74,7 @@ userSchema.statics.signup = async function(email,password)  {
      const hash = await bcrypt.hash(password,salt)
 
      //create user w email and hashed password
-     const user = await this.create({email, password: hash})
+     const user = await this.create({email, password: hash,firstname,lastname,userlocation})
 
      //return user back to controller signupUser
      return user 
@@ -63,7 +82,7 @@ userSchema.statics.signup = async function(email,password)  {
 }
 
 //STATIC LOGIN METHOD
-userSchema.statics.login = async function (email,password) {
+userSchema.statics.login = async function (email,password,firstname,lastname,userlocation) {
 
     //validation
     if (!email || !password) {
@@ -94,6 +113,6 @@ userSchema.statics.login = async function (email,password) {
 
 
 
+const User = mongoose.model('User', userSchema);
 
-
-module.exports = mongoose.model('User', userSchema)
+export default User;

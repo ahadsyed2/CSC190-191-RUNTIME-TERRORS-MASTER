@@ -13,7 +13,8 @@ const CarMileage = ({ checkedMileages, handleMileageCheckboxClick, handleMileage
       </div>
       {mileageDropdown && (
         <div className="dropdown-content">
-          {['40,000 - 60,000 miles', '60,000 - 80,000 miles', '80,000 - 100,000 miles', '100,000 miles up'].map((mileage) => (
+          {['0 - 25,000 miles', '25,000 - 75,000 miles', 
+                      '75,000 - 125,000 miles', '125,000 miles & up'].map((mileage) => (
             <div key={mileage}>
               <label htmlFor={`mileage-${mileage}`} className="mileage-label">
                 <input
@@ -22,12 +23,9 @@ const CarMileage = ({ checkedMileages, handleMileageCheckboxClick, handleMileage
                   value={mileage}
                   checked={checkedMileages.includes(mileage)}
                   onChange={() => handleMileageCheckboxClick(mileage)}
-                  style={{ marginRight: '5px' }}
+                  style={{ marginRight: '15px' }}
                 />
-                {mileage === '40,000 - 60,000 miles' && <Link to="/">{mileage}</Link>}
-                {mileage === '60,000 - 80,000 miles' && <Link to="/">{mileage}</Link>}
-                {mileage === '80,000 - 100,000 miles' && <Link to="/">{mileage}</Link>}
-                {mileage === '100,000 miles up' && <Link to="/">{mileage}</Link>}
+                <span>{mileage}</span>
               </label>
             </div>
           ))}

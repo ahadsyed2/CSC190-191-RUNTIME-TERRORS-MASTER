@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const postingSchema = new mongoose.Schema({
   vehicleType: {
@@ -37,7 +37,7 @@ const postingSchema = new mongoose.Schema({
     type: Number, // You might store the URL or file path of the uploaded image
     //required: true,
   },
-  gas: {
+  fuel: {
     type: String, // You might store the URL or file path of the uploaded image
     //required: true,
   },
@@ -54,15 +54,18 @@ const postingSchema = new mongoose.Schema({
     //required: true,
   },
   cylinders: {
-    type: Number, // You might store the URL or file path of the uploaded image
+    type: String, // You might store the URL or file path of the uploaded image
     //required: true,
   },
   features: {
     type: String, // You might store the URL or file path of the uploaded image
     //required: true,
+  },
+  timestamp: {
+    type: String,
   }
 });
 
 const Posting = mongoose.model('Posting', postingSchema);
 
-module.exports = Posting;
+export default Posting  ; 

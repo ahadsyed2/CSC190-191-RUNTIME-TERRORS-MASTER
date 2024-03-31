@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import { Link } from 'react-router-dom';
-import { hamburgerMenu } from './hamburgerMenu';
+import { hamburgerMenu } from '../components/hamburgerMenu';
 import { IconContext } from 'react-icons';
 import NavbarMenu from '../components/navbarMenu';
 import './ProfilePage.css'
@@ -61,12 +61,12 @@ const ProfilePage = () => {
             <img src="CARMONY_ICON2.png" alt="" />
           </div>
 
-          <NavbarMenu />
+          <navbarMenu />
         </div>
 
-        <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-          <ul className='nav-menu-items' onClick={showSidebar}>
-            <li className="navbar-toggle">
+        <nav className={sidebar ? 'nav-bar-menu active' : 'nav-bar-menu'}>
+          <ul className='nav-bar-menu-items' onClick={showSidebar}>
+            <li className="nav-bar-toggle">
               <Link to="#" className='hamburger-bars'>
                 <AiOutlineClose />
               </Link>

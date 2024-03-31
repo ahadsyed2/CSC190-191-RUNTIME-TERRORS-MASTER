@@ -9,30 +9,30 @@ export const hamburgerMenu = [
         title: 'Home',
         path: '/',
         icon: <AiFillHome />,
-        cName: 'nav-text'
+        cName: 'nav-bar-text'
     },
     {
         title: 'Sell a Car',
         path: '/SellCar',
         icon: <MdSell />,
-        cName: 'nav-text'
+        cName: 'nav-bar-text'
     },
     {
         title: 'About Carmony',
         path: '/AboutCarmony',
         icon: <RiContactsFill />,
-        cName: 'nav-text'
+        cName: 'nav-bar-text'
     },
     {
         title: 'About Dealers',
         path: '/AboutDealers',
         icon: <RiContactsFill />,
-        cName: 'nav-text'
+        cName: 'nav-bar-text'
     },
     {
         title: 'Contact Us',
         path: '/Contact',
         icon: <MdContactPhone />,
-        cName: 'nav-text'
+        cName: 'nav-bar-text'
     }
 ]

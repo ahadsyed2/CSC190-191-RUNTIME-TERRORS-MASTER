@@ -13,7 +13,7 @@ const carYear = ({ checkedYears, handleYearCheckboxClick, handleYearClearClick, 
       </div>
       {yearsDropdown && (
         <div className="dropdown-content">
-          {[2023, 2022, 2021, 2020, 2019, 2018].map((year) => (
+          {['2020-Today', '2010-2020', '2000-2010', '1990-2000', '1980-1990', '< 1980'].map((year) => (
             <div key={year}>
               <label htmlFor={`year-${year}`} className="year-label">
                 <input
@@ -22,14 +22,9 @@ const carYear = ({ checkedYears, handleYearCheckboxClick, handleYearClearClick, 
                   value={year}
                   checked={checkedYears.includes(year)}
                   onChange={() => handleYearCheckboxClick(year)}
-                  style={{ marginRight: '5px' }}
+                  style={{ marginRight: '15px' }}
                 />
-                {year == 2023 && <Link to="/Posting">{year}</Link>}
-                {year == 2022 && <Link to="/Posting">{year}</Link>}
-                {year == 2021 && <Link to="/Posting">{year}</Link>}
-                {year == 2020 && <Link to="/Posting">{year}</Link>}
-                {year == 2019 && <Link to="/Posting">{year}</Link>}
-                {year == 2018 && <Link to="/Posting">{year}</Link>}
+                <span>{year}</span>
               </label>
             </div>
           ))}

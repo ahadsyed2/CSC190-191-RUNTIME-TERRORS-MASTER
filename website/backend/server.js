@@ -1,20 +1,25 @@
-require('dotenv').config()
-const express = require('express')
-const mongoose = require('mongoose')
-const userRoutes = require ('./routes/userRoutes')
-const postingRoutes = require('./routes/postingRoutes')
-const postRoutes = require('./routes/postRoutes');
-const profileRoutes = require('./routes/profileRoutes');
-const vehicleRoutes = require('./routes/vehicleRoutes');
 
 
-const userRoutes = require('./routes/userRoutes');
-const postingRoutes = require('./routes/postingRoutes');
+//NEW 3/8
+import { config as dotenvConfig } from 'dotenv';
+import express from 'express';
+import mongoose from 'mongoose';
+import userrouter from './routes/userRoutes.js';
+import postingRoutes from './routes/postingRoutes.js';
+import postRoutes from './routes/postRoutes.js'; // Assuming postRoutes is CommonJS
+import profileRoutes from './routes/profileRoutes.js'; // Assuming profileRoutes is CommonJS
+import vehicleRoutes from './routes/vehicleRoutes.js'
+
+dotenvConfig();
+
 
 //express app
 const app = express()
 
-// Middleware to log path and request type
+///middleware, parse json body for post request
+app.use(express.json())
+
+
 app.use((req, res, next) => {
     //LOG PATH AND REQUEST TYPE
     console.log(req.path, req.method)
@@ -27,7 +32,7 @@ app.use((req, res, next) => {
 //WHY DOESN"T THIS WORK. Git Push destroyed my thing
 
 //recieve and execute requests
-app.use('/api/userRoutes', userRoutes)
+app.use('/api/userRoutes', userrouter)
 
 //recieve and execute requests from posting page
 app.use('/api/postingRoutes', postingRoutes)
@@ -48,7 +53,7 @@ app.use('/api/vehicleRoutes', vehicleRoutes)
 app.use(express.json());
 
 // Routes
-app.use('/api/userRoutes', userRoutes);
+app.use('/api/userRoutes', userrouter);
 app.use('/api/postingRoutes', postingRoutes);
 app.use('/api/profile', profileRoutes);
 app.use('/api/postRoutes', postRoutes); //I used this for home page -Nick
@@ -57,13 +62,12 @@ app.use('/api/postRoutes', postRoutes); //I used this for home page -Nick
 
 
 // Connect to MongoDB and start the server
-mongoose
-  .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     app.listen(process.env.PORT, () => {
-      console.log('CONNECTED. Listening on port 4k');
-    });
+      console.log('CONNECTED. Listening on port 4k')
+    })
   })
   .catch((error) => {
     console.log(error);
-  });
+  })

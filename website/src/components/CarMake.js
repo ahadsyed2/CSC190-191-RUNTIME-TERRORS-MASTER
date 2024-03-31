@@ -15,7 +15,7 @@ const CarMake = ({ makeOptions, checkedMake, handleMakeCheckboxClick, handleMake
         <div className="dropdown-content">
           {makeOptions.map((make) => (
             <div key={make}>
-              <label htmlFor={`make-${make}`} className="make-label">
+              <label htmlFor={`make-${make}`} className="model-label">
                 <input
                   type="checkbox"
                   id={`make-${make}`}
@@ -24,12 +24,7 @@ const CarMake = ({ makeOptions, checkedMake, handleMakeCheckboxClick, handleMake
                   onChange={() => handleMakeCheckboxClick(make)}
                   style={{ marginRight: '5px' }}
                 />
-                 {make === 'Toyota' && <Link to="/Login">{make}</Link>}
-                 {make === 'Honda' && <Link to="/">{make}</Link>}
-                 {make === 'BMW' && <Link to="/">{make}</Link>}
-                 {make === 'Tesla' && <Link to="/">{make}</Link>}
-                 {make === 'Chevrolet' && <Link to="/">{make}</Link>}
-                 {make === 'Ford' && <Link to="/">{make}</Link>}
+                 <span>{make}</span>
               </label>
             </div>
           ))}

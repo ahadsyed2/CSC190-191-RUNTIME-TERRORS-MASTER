@@ -2,12 +2,13 @@ import React, {useState} from 'react'
 import { Link } from 'react-router-dom';
 import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
-import { hamburgerMenu2 } from '../components/hamburgerMenu2';
+import { hamburgerMenu } from '../components/hamburgerMenu';
 import { IconContext } from 'react-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
+import NavbarMenu from '../components/navbarMenu';
 import './UserProfile.css'
-import SecondNavbar from '../components/SecondNavbar';
+
 
 
 const UserProfile = () => {
@@ -78,21 +79,21 @@ const UserProfile = () => {
             <FaBars onClick={showSidebar} />
           </Link>
 
-          <div className="carmony-logo">
-            <img src="CARMONY_ICON2.png" alt="" />
+          <div className="carmony-logo w-1/10 flex justify-center items-center p-0 1rem" style={{ width: "15rem", marginLeft: "2rem" }}>
+            <img src="CARMONY_ICON2.png" alt="Logo" className="w-500 mt-3" />
           </div>
 
-          <SecondNavbar />
+          <NavbarMenu />
         </div>
 
-        <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-          <ul className='nav-menu-items' onClick={showSidebar}>
-            <li className="navbar-toggle">
+        <nav className={sidebar ? 'nav-bar-menu active' : 'nav-bar-menu'}>
+          <ul className='nav-bar-menu-items' onClick={showSidebar}>
+            <li className="nav-bar-toggle">
               <Link to="#" className='hamburger-bars'>
                 <AiOutlineClose />
               </Link>
             </li>
-            {hamburgerMenu2.map((item, index) => {
+            {hamburgerMenu.map((item, index) => {
                 return (
                     <li key={index} className={item.cName}>
                         <Link to={item.path}>
@@ -471,32 +472,38 @@ const UserProfile = () => {
                 </div>
               </div>
 
-              <div className="car-status">
-                <div className="status-detail">
-                  <div className="bought-status">
-                    <div className="bought-detail">
-                      <h4>Bought</h4> 
-                      <h3>0</h3> 
-                    </div>
-                  </div>
-                  <div className="sold-staus">
-                    <div className="sold-detail">
-                      <h4>Sold</h4> 
-                      <h3>0</h3> 
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="car-offer">
-                  <h4>Offers Made</h4> 
-                  <h3>4</h3> 
-                </div>
-                <div className="car-listed">
-                  <h4>Car Listed</h4> 
-                  <h3>3</h3> 
-                </div>
+              <div class="border p-4">
+  <div class="car-status">
+    <div class="status-detail">
+      <div class="bought-status border-b mb-4 pb-4">
+        <div class="bought-detail">
+          <h4 class="text-xl font-semibold mb-1">Bought</h4>
+          <h3 class="text-3xl font-bold">0</h3>
+        </div>
+      </div>
+      <div class="sold-status">
+        <div class="sold-detail">
+          <h4 class="text-xl font-semibold mb-1">Sold</h4>
+          <h3 class="text-3xl font-bold">0</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="car-offer mt-4 border-b pb-4">
+    <h4 class="text-xl font-semibold mb-1">Offers Made</h4>
+    <h3 class="text-3xl font-bold">4</h3>
+  </div>
+
+  <div class="car-listed mt-8">
+    <h4 class="text-xl font-semibold mb-1">Car Listed</h4>
+    <h3 class="text-3xl font-bold">3</h3>
+  </div>
+
+
+
               </div>
-            </div>
+            </div> 
 
           </div>
         </div>
