@@ -31,6 +31,7 @@ const UserProfile = () => {
 
         console.log('response Ok')
         dispatch({type: 'SET_POSTS', payload: json})
+        calculatePages();
       }
     
       user && setFirstName(user.firstname);
@@ -39,12 +40,13 @@ const UserProfile = () => {
       user && console.log("firstname: "+user.firstname)
 
     fetchPosts();
+    
   }, []);
 
   //New added for delete 
   const deletePost = async (id) => {
     //Deletes on MongoDB
-    const response = await fetch('/api/postRoutes' + id, {
+    const response = await fetch('/api/postRoutes/' + id, {
       method: 'DELETE'
     })
     
@@ -54,6 +56,11 @@ const UserProfile = () => {
     //Deletes on Local Machine to keep syncronized
     if(response.ok){
       dispatch({type: 'DELETE_POST', payload: json})
+
+    const newNumberOfPosts = numberOfPosts - 1;
+    
+    setNumberOfPosts(newNumberOfPosts);
+    calculatePages();
     }
   }
 
@@ -67,11 +74,6 @@ const UserProfile = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleDropdownItemClick = (option) => {
-    // Add your logic here for handling the click on dropdown items
-    console.log(`Clicked on ${option}`);
-  };
-
   const [carbutton, setCarbutton] = useState(false);
   const showCarButton = () => {
     setCarbutton(!carbutton);
@@ -80,15 +82,7 @@ const UserProfile = () => {
   const deleteButton = (id) => {
 
     deletePost(id);
-    /*
-    const userConfirmed = window.confirm("Are you sure you want to delete?");
-
-    if (userConfirmed) {
-      // User clicked "OK"
-      setBoxVisibility(false);
-    } else {
-      // User clicked "Cancel"
-      console.log("Delete canceled"); */
+   
     
   };
 
@@ -96,45 +90,70 @@ const UserProfile = () => {
 
   } 
 
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(0);
   const postsPerPage = 5;
-  const [indexOfLastPost, setIndexOfLastPost] = useState(currentPage * postsPerPage);
-  const [indexOfFirstPost, setIndexOfFirstPost] = useState(indexOfLastPost - postsPerPage);
   const [numberOfPosts, setNumberOfPosts] = useState(0);
+  const [index, setIndex] = useState(0);
+  const [array, setArray] = useState([]);
+
   if(posts && numberOfPosts == 0){
     setNumberOfPosts(posts.length);
   }
 
   const nextPage = () => {
-    setCurrentPage(currentPage + 1);
-    setIndexOfLastPost(currentPage * postsPerPage);
-    setIndexOfFirstPost(indexOfLastPost - postsPerPage);
-  };
-  
-  const prevPage = () => {
-    setCurrentPage(currentPage - 1);
-    setIndexOfLastPost(currentPage * postsPerPage);
-    setIndexOfFirstPost(indexOfLastPost - postsPerPage);
+    setCurrentPage(currentPage + 2);
+    console.log("Next Page");
   };
 
-  var postCounter = 0;
+  const prevPage = () => {
+    setCurrentPage(currentPage - 2);
+    console.log("Prev Page");
+  };
+
   const filter = (post) => {
+
+    //Check if posted by this user
     if(user.email != post.user){
       return false;
     }
 
-    //Handle Pages
-    if(posts.indexOf(post) < ((currentPage * postsPerPage) - 5) || posts.indexOf(post) > ((currentPage * postsPerPage))){
-      return false;
-    }
-
-    if(postCounter > 5){
-      return false;
-    }
-
-    postCounter++;
+    console.log("index A = "+ array[currentPage]);
+    console.log("index B = "+ array[currentPage + 1]);
+    //if(posts.indexOf(post) < array[currentPage] || posts.indexOf(post) > array[currentPage+1]){
+    //  return false;
+    //}
+    //Show all at once I can't get pages to work
+    console.log("Index of true: " + posts.indexOf(post));
     return true;
   }
+
+  const calculatePages = () => {
+    var start = 0;
+    var end = 0;
+    var count = 0;
+    var newArray = []; // Create a new array to hold the calculated values
+    posts && posts.forEach((post, index) => { // Use forEach instead of map
+
+      if (post.user === user.email) {
+        console.log("In calc: index = " + posts.indexOf(post)+ " count: "+count);
+        if(count == 0){
+          start = index;
+        }
+        count++;
+      }
+      if (count > 5) {
+        count = 0;
+        newArray.push(start); // Use push to add values to the array
+        end = index;
+        newArray.push(end);
+        start = end + 1;
+      }
+    });
+    for(var i =0; i < newArray.length; i++){
+      console.log("new array: "+newArray[i]);
+    }
+    setArray(newArray); // Update the state with the new array
+  };
 
 
   return (
@@ -187,7 +206,7 @@ const UserProfile = () => {
                     <li className="name">
                     <div>
                         <h1>User Profile</h1>
-                        {user && (
+                        {!user && (
                           <div>
                             <p>Welcome, {firstname} {lastname}!</p>
                             {/* Other user profile information */}
@@ -222,7 +241,6 @@ const UserProfile = () => {
                         />
                         {console.log("https://ahadsyed1.s3.us-west-1.amazonaws.com/" + post._id)}
                           <div className="image-box">
-                            {/* Additional image rendering logic if needed */}
                           </div>
                           <div className="current-carDetail">
                             <div className="carDetail-box">
@@ -234,7 +252,6 @@ const UserProfile = () => {
                                   <div className="carPrice-right"><h4>${post.price}</h4></div>
                                 </div>
                               </div>
-                              {/* Additional detail rendering logic */}
                             </div>
                             <div className="car-button">
                               <div className="view-button">
@@ -264,7 +281,7 @@ const UserProfile = () => {
         {currentPage > 1 && (
           <span onClick={prevPage} style={{ backgroundColor: 'red' }}>Go to Previous Page</span>
         )}
-        {posts && posts.length > (currentPage * postsPerPage) && (
+        {(currentPage * 2)+ 1 < array.length && (
           <span onClick={nextPage} style={{ backgroundColor: 'green' }}>Go to Next Page</span>
         )}
       </div>
@@ -273,5 +290,6 @@ const UserProfile = () => {
     </>
   );
 }
+
 
 export default UserProfile;
