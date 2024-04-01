@@ -22,40 +22,43 @@ function AboutCarmony() {
                 <FaBars onClick={showSidebar} />
             </Link>
 
-            <div className="carmony-logo w-1/10 flex justify-center items-center p-0 1rem" style={{ width: "15rem", marginLeft: "2rem" }}>
-            <img src="CARMONY_ICON2.png" alt="Logo" className="w-500 mt-3" />
-          </div>
+            <div className="carmony-logo">
+                <img src="CARMONY_ICON2.png" alt="" />
+            </div>
 
             <NavbarMenu />
           </div>
           
-          <nav className={sidebar ? 'nav-bar-menu active' : 'nav-bar-menu'}>
-          <ul className='nav-bar-menu-items' onClick={showSidebar}>
-            <li className="nav-bar-toggle">
-              <Link to="#" className='hamburger-bars'>
-                <AiOutlineClose />
-              </Link>
-            </li>
-            {hamburgerMenu.map((item, index) => {
-                return (
-                    <li key={index} className={item.cName}>
-                        <Link to={item.path}>
-                            {item.icon}
-                            <span>{item.title}</span>
-                        </Link>
-                    </li>
-                );
-            })}
-          </ul>
-        </nav>
+          <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+            <ul className='nav-menu-items' onClick={showSidebar}>
+                <li className="navbar-toggle">
+                    <Link to="#" className='hamburger-bars'>
+                        <AiOutlineClose />
+                    </Link>
+                </li>
+                {hamburgerMenu.map((item, index) => {
+                    return (
+                        <li key={index} className={item.cName}>
+                            <Link to={item.path}>
+                                {item.icon}
+                                <span>{item.title}</span>
+                            </Link>
+                        </li>
+                    );
+                })}
+            </ul>
+          </nav>
           </IconContext.Provider>
 
         <div className='aboutCarmony'>
             <div className='carmony-detail'>
-                <h1>About Carmony</h1>
+                <h1>Background</h1>
                 <p>Carmony is an online open-source marketplace that gets rid of the fees and hassles.</p>
                 <p>Instead of paying an upfront fee to list your car, Carmony lets you list your vehicle for free</p>
-                <p>more money going back into your pocket.</p>
+                <p>More money going back into your pocket.</p>
+                <p></p>
+                <h2>Our Mission Statement</h2>
+                <p>We save your money, help selling your car, make you worry free.</p>
             </div>
         </div>
 
