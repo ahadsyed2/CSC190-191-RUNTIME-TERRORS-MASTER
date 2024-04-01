@@ -2,12 +2,12 @@ import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom';
 import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
-import { hamburgerMenu2 } from '../components/hamburgerMenu2';
+import { hamburgerMenu } from '../components/hamburgerMenu';
 import { IconContext } from 'react-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import './UserProfile.css'
-import SecondNavbar from '../components/SecondNavbar';
+import SecondNavbar from '../components/navbarMenu';
 import UserProfileComponent from '../components/UserProfileComponent';
 //New imports
 import { usePostContext } from '../hooks/usePostContext';
@@ -178,7 +178,7 @@ const UserProfile = () => {
                 <AiOutlineClose />
               </Link>
             </li>
-            {hamburgerMenu2.map((item, index) => (
+            {hamburgerMenu.map((item, index) => (
               <li key={index} className={item.cName}>
                 <Link to={item.path}>
                   {item.icon}
