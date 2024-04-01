@@ -421,3 +421,45 @@ span {
     background-color: #0056b3; /* Change background color on hover */
   }
 
+
+  .contact-details-box {
+    background-color: rgb(192, 191, 209);
+    width: 20rem;
+    margin-top: 2rem;
+    margin-left: 4.75rem;
+    height: 20rem;
+    border: 2px solid #000; 
+    border-radius: 20px;
+    font-family: 'Lato' sans-serif;
+}
+
+.close-button-cdb {
+    margin-left: 18rem;
+    margin-top: 0.5rem;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+}
+
+.my-button:hover {
+    background-color: red; /* New background color on hover */
+}
+
+.main-content-cdb{
+    margin-left: 2rem;
+    height: 15rem;
+    margin-right: 2rem;
+    font-family: 'Khula', sans-serif;
+    font-weight: lighter;
+}
+
+.cdb-phone-number{
+    margin-top: 0.5rem;
+}
+.cdb-name{
+    margin-top: 0.5rem;
+}
+.cdb-email{
+    margin-top: 1rem;
+}
