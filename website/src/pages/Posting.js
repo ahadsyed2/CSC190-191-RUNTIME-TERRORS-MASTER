@@ -7,6 +7,7 @@ import { BsUpload } from 'react-icons/bs';
 import { IconContext } from 'react-icons';
 import  usePosting  from '../hooks/usePosting';
 import './Posting.css';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const options = [
   'Sedan',
@@ -26,12 +27,13 @@ function Posting() {
   //message if form is submitted successfully
   const [successMessage, setSuccessMessage] = useState('');
 
+  const { user } = useAuthContext()
 
   const [isActive, setIsActive] = useState(false);
   const [selected, setSelected] = useState('Vehicle Type');
 
   //NEW FUNCTIONS FOR BACKEND- Ahad
-  const { createPosting, AWSImageUpload, isLoading, error } = usePosting();
+  const { createPosting, isLoading, error } = usePosting();
 
   const [formData, setFormData] = useState({
     vehicleType: '',
@@ -49,6 +51,7 @@ function Posting() {
     features: '',
     description: '',
     timestamp: '',
+    user: '',
     image: null, // You might want to store the file or image URL here
     imagePreview: null,
   });
@@ -67,16 +70,20 @@ function Posting() {
   //set the current formData attribute(name) to the new value
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+    var date = new Date();
     setFormData({
       ...formData,
       [name]: value,
+      timestamp: date.toString(),
+      user: user.email,
     });
+    //Timestamp
   };
 
-  //image file capturing and logging to console
+  //image file capturing
   const handleFileChange = (e) => {
   const file = e.target.files[0];
-  console.log('Selected File!:', file);
+  console.log('Selected File:', file);
 
   
     // Display image preview
@@ -84,71 +91,33 @@ function Posting() {
     reader.onloadend = () => {
       setFormData({
         ...formData,
-        image: file,
+        image: file ? URL.createObjectURL(file) : null,
         imagePreview: reader.result, // Add this to your state
       });
     };
     reader.readAsDataURL(file);
   };
 
-
+  user && console.log("email : " + user.email)
   //HANDLE SUBMISSION
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-
-        //TESTING
-       
-
-
-      //Timestamp
-      var date = new Date();
-      setFormData({
-        ...formData,
-        timestamp: date.toString(),
-      });
-
+      
 
       // Call the createPosting function from usePosting hook
       const result = await createPosting(formData);
-
-      //const imageResult = await AWSImageUpload(formData);
-
-
 
       if (result) {
         // Handle success (e.g., redirect or show a success message)
         console.log('Posting created:', result);
         // Update success message if the form is submitted successfully
-         setSuccessMessage('Posting created successfully!/n', result);
+         setSuccessMessage('Posting created successfully!');
         // Reset success message after a few seconds
-        setTimeout(async () => {
+        setTimeout(() => {
         setSuccessMessage(null);
-
-
-
-          //TESTING
-
-          const imageResult = await AWSImageUpload(formData, result._id);
-
-
-
-          if (imageResult) {
-            // Handle success (e.g., redirect or show a success message)
-            console.log('image created:', result);
-          }
-
-
-          //TESTING
         }, 5000); 
-
-        //if (imageResult) {
-          // Handle success (e.g., redirect or show a success message)
-          //console.log('image created:', result);
-        //}
-
-        
 
 
 
@@ -170,11 +139,12 @@ function Posting() {
           description: '',
           image: null,
           timestamp: '',
+          user: user.email,
         });
 
 
         //I added this to take you to home page -Nick
-        //window.location.href = "/";
+        window.location.href = "/";
       } else {
         // Handle error (e.g., show an error message)
         setSuccessMessage('Posting failed, incorrect syntax please try again' , error);
@@ -185,8 +155,6 @@ function Posting() {
     } catch (error) {
       console.error('An unexpected error occurred:', error);
     }
-
-  
   };
 
   
@@ -413,9 +381,6 @@ function Posting() {
                         required
                       />
                     </div>
-
-                  
-
 
                   </div>
                 </div>

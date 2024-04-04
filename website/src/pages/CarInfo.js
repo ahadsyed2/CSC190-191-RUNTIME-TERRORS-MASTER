@@ -127,10 +127,10 @@ function CarInfo() {
         <div className='full-con'>
             <div className='left-car-info'>
             <div className='car-info-img'>
-                <img
-                src="https://images.offerup.com/4uQVF_BU-_3APQkmUNUmGB3xqhE=/1280x960/d3ed/d3ed001efeac469097afcb8638e4ca76.jpg"
-                alt="Picture Failure"
-                />
+                { posts && <img
+                 src={"https://ahadsyed1.s3.us-west-1.amazonaws.com/" + posts._id}
+                 alt="Picture Failure"
+                /> }
                 </div>
             </div>
                 
