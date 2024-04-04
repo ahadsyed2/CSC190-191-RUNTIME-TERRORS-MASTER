@@ -7,7 +7,7 @@ import { IconContext } from 'react-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import './UserProfile.css'
-import SecondNavbar from '../components/navbarMenu';
+import NavbarMenu from '../components/navbarMenu';
 import UserProfileComponent from '../components/UserProfileComponent';
 //New imports
 import { usePostContext } from '../hooks/usePostContext';
@@ -163,7 +163,7 @@ const UserProfile = () => {
   return (
     <>
       <IconContext.Provider value={{ color: '#fff' }}>
-        <div className='navbar'>
+        <div className='navbarMenu flex items-center'>
           <Link to="#" className='hamburger-bars'>
             <FaBars onClick={showSidebar} />
           </Link>
@@ -172,24 +172,26 @@ const UserProfile = () => {
             <img src="CARMONY_ICON2.png" alt="Logo" className="w-500 mt-3" />
           </div>
 
-          <SecondNavbar />
+          <NavbarMenu />
         </div>
 
-        <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-          <ul className='nav-menu-items' onClick={showSidebar}>
-            <li className="navbar-toggle">
+        <nav className={sidebar ? 'nav-bar-menu active' : 'nav-bar-menu'}>
+          <ul className='nav-bar-menu-items' onClick={showSidebar}>
+            <li className="nav-bar-toggle">
               <Link to="#" className='hamburger-bars'>
                 <AiOutlineClose />
               </Link>
             </li>
-            {hamburgerMenu.map((item, index) => (
-              <li key={index} className={item.cName}>
-                <Link to={item.path}>
-                  {item.icon}
-                  <span>{item.title}</span>
-                </Link>
-              </li>
-            ))}
+            {hamburgerMenu.map((item, index) => {
+                return (
+                    <li key={index} className={item.cName}>
+                        <Link to={item.path}>
+                            {item.icon}
+                            <span>{item.title}</span>
+                        </Link>
+                    </li>
+                );
+            })}
           </ul>
         </nav>
       </IconContext.Provider>
@@ -200,26 +202,17 @@ const UserProfile = () => {
             <div className="module-inner">
               <div className="side-bar">
                 <div className="user-info">
-                
+                <img
+                    className="img-profile img-circle img-responsive center-block"
+                    src="https://t3.ftcdn.net/jpg/05/53/79/60/360_F_553796090_XHrE6R9jwmBJUMo9HKl41hyHJ5gqt9oz.jpg"
+                    alt=""
+                  />
+
                   <ul className="meta list list-unstyled">
-                    <li className="name">
-                    <div>
-                        <h1>User Profile</h1>
-                        <li className="email">
-                          {user && ( <a href="#">{user.email}</a>)}
-                        </li>
-                        {!user && (
-                          <div>
-                            <p>Welcome, {firstname} {lastname}!</p>
-                            {/* Other user profile information */}
-                          </div>
-                        )}
-                      </div>
-                      <br />
-                      
+                    <li className="email">
+                      {user && ( <a href="#">{user.email}</a>)}
                     </li>
-                   
-                    
+                    <li className="activity">Last logged in: Today at 6:00pm</li>
                   </ul>
                 </div>
               </div>

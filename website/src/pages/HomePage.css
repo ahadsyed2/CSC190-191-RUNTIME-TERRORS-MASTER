@@ -160,8 +160,8 @@ span {
 }
 
 .filter-side-bar {
-  flex: 25%;
-  background-color: #FFCE44;
+  flex: 20%;
+  background-color: #ffffff;
   padding: 1rem;
   height: 2800px;
   box-shadow: 4px 4px 6px #000000;
@@ -492,6 +492,11 @@ span {
   justify-content: center;
 }
 
+.arrow-holding-box {
+  display: flex;
+  justify-content: center;
+}
+
 .arrow {
   display: flex; 
   align-items: center; 
@@ -504,11 +509,6 @@ span {
   background-color: black;
   color: white;
   padding: 20px;
-}
-
-.arrow-holding-box {
-  display: flex;
-  justify-content: center;
 }
 
 .next-page span {

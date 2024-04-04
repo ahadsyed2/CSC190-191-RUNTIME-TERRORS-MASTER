@@ -6,7 +6,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { IconContext } from 'react-icons';
 import { BsFillArrowRightSquareFill } from "react-icons/bs";
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
-import ThirdNavbarMenu from '../components/navbarMenu';
+import NavbarMenu from '../components/navbarMenu';
 import CarListing from '../components/CarListing';
 import CarMake from '../components/CarMake';
 import CarPrice from '../components/CarPrice';
@@ -592,12 +592,12 @@ const HomeIndex = () => {
             <img src="CARMONY_ICON2.png" alt="Logo" className="w-500 mt-3" />
           </div>
 
-          <ThirdNavbarMenu />
+          <NavbarMenu />
         </div>
 
-        <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-          <ul className='nav-menu-items' onClick={showSidebar}>
-            <li className="navbar-toggle">
+        <nav className={sidebar ? 'nav-bar-menu active' : 'nav-bar-menu'}>
+          <ul className='nav-bar-menu-items' onClick={showSidebar}>
+            <li className="nav-bar-toggle">
               <Link to="#" className='hamburger-bars'>
                 <AiOutlineClose />
               </Link>
@@ -618,12 +618,12 @@ const HomeIndex = () => {
 
       <div className="filter-container">
         <div className="filter-box">
-          <div className="side-bar">
+          <div className="filter-side-bar">
             <div className="filter-search flex flex-col mb-4">
               <div className="filter-header flex justify-between items-center">
                 <h1 className="text-3xl font-bold text-black" style={{ textShadow: '0px 2px 4px rgba(139, 139, 139)' }}> Filter by</h1>
                 <a href="#">
-                  <h3 className="text-lg text-blue-800 font-semibold" style={{ textShadow: '0px 2px 2px rgba(52, 124, 248)' }}>Clear filter</h3>
+                  <h3 className="clear-filter text-xl text-blue-600 font-semibold font-bold">Clear filter</h3>
                 </a>
               </div>
             </div>
@@ -754,7 +754,7 @@ const HomeIndex = () => {
 
 
           {/* This code is what populates the home screen with posts */}
-          <div className="container">
+          <div className="car-container">
             <div className="products-con">
 
               {/* Start Posting Box */}
@@ -781,7 +781,7 @@ const HomeIndex = () => {
                             <h3>{post.year} {post.make} {post.model}</h3>
                           </div>
                           <div className='products-price'>
-                            <div className='products-left'>
+                            <div className='price-left'>
                               <h3>${post.price}</h3>
                             </div> 
                           </div>
