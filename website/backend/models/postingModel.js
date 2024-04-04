@@ -14,11 +14,11 @@ const postingSchema = new mongoose.Schema({
     //required: true,
   },
   year: {
-    type: Number,
+    type: String,
     //required: true,
   },
   price: {
-    type: Number,
+    type: String,
     //required: true,
   },
   location: {
@@ -34,7 +34,7 @@ const postingSchema = new mongoose.Schema({
     //required: true,
   },
   mileage: {
-    type: Number, // You might store the URL or file path of the uploaded image
+    type: String, // You might store the URL or file path of the uploaded image
     //required: true,
   },
   fuel: {
@@ -62,6 +62,9 @@ const postingSchema = new mongoose.Schema({
     //required: true,
   },
   timestamp: {
+    type: String,
+  },
+  user: {
     type: String,
   }
 });
