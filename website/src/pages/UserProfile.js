@@ -112,6 +112,10 @@ const UserProfile = () => {
 
   const filter = (post) => {
 
+    if(post.user == undefined && posts){
+      return false;
+    }
+
     //Check if posted by this user
     if(user.email != post.user){
       return false;
