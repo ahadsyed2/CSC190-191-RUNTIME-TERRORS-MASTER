@@ -200,16 +200,14 @@ const UserProfile = () => {
             <div className="module-inner">
               <div className="side-bar">
                 <div className="user-info">
-                  <img
-                    className="img-profile img-circle img-responsive center-block"
-                    src="https://randomuser.me/api/portraits/men/1.jpg"
-                    alt=""
-                  />
-
+                
                   <ul className="meta list list-unstyled">
                     <li className="name">
                     <div>
                         <h1>User Profile</h1>
+                        <li className="email">
+                          {user && ( <a href="#">{user.email}</a>)}
+                        </li>
                         {!user && (
                           <div>
                             <p>Welcome, {firstname} {lastname}!</p>
@@ -218,12 +216,10 @@ const UserProfile = () => {
                         )}
                       </div>
                       <br />
-                      <label className="label label-info">Developer</label>
+                      
                     </li>
-                    <li className="email">
-                      {user && ( <a href="#">{user.email}</a>)}
-                    </li>
-                    <li className="activity">Last logged in: Today at 6:00pm</li>
+                   
+                    
                   </ul>
                 </div>
               </div>
