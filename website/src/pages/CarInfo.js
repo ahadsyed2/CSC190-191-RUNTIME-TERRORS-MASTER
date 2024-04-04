@@ -88,9 +88,9 @@ function CarInfo() {
 
 
     return (
-        <section>
+    <section>
       <IconContext.Provider value={{ color: '#fff' }}>
-        <div className='navbar'>
+        <div className='navbarMenu flex items-center'>
           <Link to="#" className='hamburger-bars'>
             <FaBars onClick={showSidebar} />
           </Link>

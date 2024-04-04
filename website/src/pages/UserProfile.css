@@ -37,8 +37,9 @@
       
       .view-account .side-bar {
       padding-bottom: 30px;
-      background-color:#FFCE44;
+      background-color:#ffffff;
       height: 1000px;
+      position: absolute;
       }
       
       .view-account .side-bar .user-info {/*user name*/
