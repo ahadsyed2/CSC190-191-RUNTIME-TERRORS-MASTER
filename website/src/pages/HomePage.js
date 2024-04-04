@@ -820,20 +820,21 @@ const HomeIndex = () => {
       </div>
 
 
-
-      <div className="arrows">
-        {currentPage > 1 && (
-          <span onClick={prevPage}>Go to Previous Page</span>
-        )}
-        {posts && posts.length > (currentPage * postsPerPage) && (
-          <span onClick={nextPage}>Go to Next Page</span>
-        )}
+    <div className="arrow-holding-box">
+        <div className="arrow">
+          {currentPage > 1 && (
+            <span onClick={prevPage}>Go to Previous Page</span>
+          )}
+          {posts && posts.length > (currentPage * postsPerPage) && (
+            <span onClick={nextPage}>Go to Next Page</span>
+          )}
+        </div>
       </div>
 
-
-      <div className='footer'>
-        <p>2023</p>
-      </div>
+        <div className='home-footer'>
+          <p>2023</p>
+        </div>
+    
 
     </section>
   );

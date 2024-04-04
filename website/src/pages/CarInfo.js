@@ -14,6 +14,7 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { BsFillArrowRightSquareFill } from "react-icons/bs";
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
 import speedometer from './speedometer.png';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 
 
@@ -61,29 +62,30 @@ function CarInfo() {
             dispatch({type: 'SET_POSTS', payload: json})
           }
         }
-
-        /*const fetchVehicle = async () => {
-
-            var vehicle_id;
-            if(posts){
-                vehicle_id = "/api/vehicleRoutes/" + posts.vehicle_id
-            } else {
-                vehicle_id = "/"
-            }
-            console.log("vehicle api call: " + vehicle_id);
-
-            const response = await fetch(vehicle_id)
-            const json = await response.json()
-      
-            if(response.ok){
-              console.log('response Ok')
-              dispatchVehicle({type: 'SET_VEHICLES', payload: json})
-            }
-          } */
         
         fetchPosts()
         //fetchVehicle()
       }, []);
+
+      const { user } = useAuthContext();
+      const [showingDetail, setShowingDetail] = useState(false);
+
+      const detailShow = () => {
+        if(!securityCheck()){
+            return;
+        }
+
+        setShowingDetail(!showingDetail);
+      }
+
+      const securityCheck = () => {
+
+        return true;
+
+      }
+
+
+
 
     return (
         <section>
@@ -125,10 +127,10 @@ function CarInfo() {
         <div className='full-con'>
             <div className='left-car-info'>
             <div className='car-info-img'>
-                <img
-                src="https://images.offerup.com/4uQVF_BU-_3APQkmUNUmGB3xqhE=/1280x960/d3ed/d3ed001efeac469097afcb8638e4ca76.jpg"
-                alt="Picture Failure"
-                />
+                { posts && <img
+                 src={"https://ahadsyed1.s3.us-west-1.amazonaws.com/" + posts._id}
+                 alt="Picture Failure"
+                /> }
                 </div>
             </div>
                 
@@ -172,7 +174,40 @@ function CarInfo() {
                         <p className='khula-text-paragraph'>
                             Location: {posts && posts.location} 
                         </p>
-                        <button class="contact-button">Contact Details</button>
+                        {!showingDetail && (
+                            <button onClick={() => detailShow()} class="contact-button">Contact Details</button>
+                        )}
+                        {showingDetail && (
+                            
+                            <div className="contact-details-box">
+                                <button onClick={() => detailShow()} className="close-button-cdb">
+                                     X
+                                </button>
+                                <div className="main-content-cdb">
+                                    <div className="cdb-title">
+                                        Seller's Information
+                                    </div>
+                                    <div className="cdb-content">
+                                        <div className="cdb-email">
+                                            email: {posts.user}
+                                        </div>
+                                        <div className="cdb-name">
+                                            name: N/A{/*posts.firstname*/}
+                                        </div>
+                                        <div className="cdb-phone-number">
+                                            phone number: N/A{/*posts.firstname*/}
+                                        </div>
+                                        <div className="cdb-phone-number">
+                                           Additional Fields:
+                                        </div>
+                                        { /* other fields needed? also, Need to adjust post model*/}
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                        )}
+                        
                         
                         {/* {carData && carData.length > 0 && carData[0].imageUrl ? (
                             <img src={carData[0].imageUrl} alt="Car" />

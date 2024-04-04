@@ -493,14 +493,22 @@ span {
 }
 
 .arrow {
-  text-decoration: none; 
   display: flex; 
   align-items: center; 
+  justify-content: center;
   color: #000; 
   cursor: pointer;
   font-size: 30px;
   margin-left: 1rem;
   margin-top: 25rem;
+  background-color: black;
+  color: white;
+  padding: 20px;
+}
+
+.arrow-holding-box {
+  display: flex;
+  justify-content: center;
 }
 
 .next-page span {

@@ -18,7 +18,7 @@ export const hamburgerMenu = [
         cName: 'nav-bar-text'
     },
     {
-        title: 'About Carmony',
+        title: 'About Us',
         path: '/AboutCarmony',
         icon: <RiContactsFill />,
         cName: 'nav-bar-text'
