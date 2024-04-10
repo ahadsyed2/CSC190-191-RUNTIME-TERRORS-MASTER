@@ -17,7 +17,17 @@ dotenvConfig();
 const app = express()
 
 ///middleware, parse json body for post request
-app.use(express.json())
+//app.use(express.json())
+
+// Middleware to parse JSON body for POST requests with a limit of 20MB
+app.use(express.json({ limit: '20mb' }));
+
+// Middleware to parse URL-encoded bodies for POST requests with a limit of 20MB
+app.use(express.urlencoded({ limit: '20mb', extended: true }));
+
+
+
+
 
 
 app.use((req, res, next) => {
