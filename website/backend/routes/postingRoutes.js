@@ -7,7 +7,14 @@ import AWS from 'aws-sdk'; // Import the AWS SDK
 import express from 'express';
 import multer from 'multer';
 
-const storage = multer.memoryStorage();
+//const storage = multer.memoryStorage();
+
+const storage = multer.memoryStorage({
+  // Set maximum file size to 10MB
+  limits: { fileSize: 10 * 1024 * 1024 }, // 10MB limit
+});
+
+
 const upload = multer({ storage });
 
 //AWS
