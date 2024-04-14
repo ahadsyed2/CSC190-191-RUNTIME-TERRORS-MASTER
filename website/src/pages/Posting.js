@@ -103,6 +103,15 @@ function Posting() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!formData.image) {
+      // Display an error message indicating that image upload is required
+      setSuccessMessage('Please upload an image before submitting.');
+      setTimeout(() => {
+        setSuccessMessage(null);
+      }, 5000);
+      return; // Prevent further execution
+    }
     try {
       
 
@@ -411,7 +420,7 @@ function Posting() {
                     </div>
                   </div>
 
-                  <div className='photo-upload'>
+                  <div className='photo-upload' data-cy="photo uploaded successfully">
                     <h2>Upload image</h2>
                       <BsUpload />
                       <input
