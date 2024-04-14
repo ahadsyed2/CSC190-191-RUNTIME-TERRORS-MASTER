@@ -1,5 +1,5 @@
 {
-  "proxy": "https://carmony.onrender.com",
+  "proxy": "http://localhost:4000",
   "name": "website",
   "version": "0.1.0",
   "private": true,
@@ -14,7 +14,6 @@
     "gapi-script": "^1.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-google-login": "^5.2.2",
     "react-google-recaptcha": "^3.1.0",
     "react-icons": "^4.12.0",
     "react-router-dom": "^6.20.0",
@@ -24,7 +23,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "tailwindcss build -o src/tailwind.css && your-build-command",
+    "build": "tailwindcss build -o src/tailwind.css && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "cypress": "cypress open",

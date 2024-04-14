@@ -55,4 +55,14 @@ context('tests', () => {
     expect(description).to.contain('drive')
   })
   })
+
+  it('saves search term on refresh', () => {
+    cy.get('.relative').type('drive');
+  
+    cy.reload();
+  
+    cy.wait(1000);
+  
+    cy.get('.relative input[type="text"]').should('have.attr', 'value', 'drive');
+  });
 })
