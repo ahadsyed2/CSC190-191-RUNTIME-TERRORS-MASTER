@@ -6,7 +6,6 @@ import { hamburgerMenu } from '../components/hamburgerMenu';
 import { IconContext } from 'react-icons';
 import './Login.css'
 import { useLogin } from '../hooks/useLogin';
-import LoginButon from '../components/GoogleLogin'
 import { useEffect } from 'react';
 import { gapi } from 'gapi-script';
 
@@ -135,7 +134,7 @@ function Login() {
                 </form>
 
                 <div className="">
-                    <LoginButon className="w-1/2 h-12 bg-gray-300 border border-black rounded-lg text-lg font-semibold" />
+                
                 </div>
 
             </div>
