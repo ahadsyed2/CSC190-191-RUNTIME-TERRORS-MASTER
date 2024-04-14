@@ -15,10 +15,10 @@ root.render(
       <ProfileContextProvider>
        <PostContextProvider>
         <VehicleContextProvider>
-          <App />
+            <App />
         </VehicleContextProvider>
        </PostContextProvider>
       </ProfileContextProvider>
-    </AuthContextProvider>
+      </AuthContextProvider>
   </React.StrictMode>
 );
