@@ -6,7 +6,6 @@ import { hamburgerMenu } from '../components/hamburgerMenu';
 import { IconContext } from 'react-icons';
 import './Signup.css'
 import { useSignup } from '../hooks/useSignup'
-import ReCAPTCHA from "react-google-recaptcha"
 
 
 const Signup = () => {
@@ -139,10 +138,7 @@ const Signup = () => {
                 
 
                 <div className='reCaptcha'>
-                        <ReCAPTCHA
-                        sitekey='6LdiCg0pAAAAAGD_KJyjVmJlY1MgaA1TzDlYI7uP'
-                        onChange={(val) => setCapVal(val)}
-                        />
+                        
                     </div>
 
                     <div className='account'>

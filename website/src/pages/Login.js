@@ -6,26 +6,12 @@ import { hamburgerMenu } from '../components/hamburgerMenu';
 import { IconContext } from 'react-icons';
 import './Login.css'
 import { useLogin } from '../hooks/useLogin';
-import LoginButon from '../components/GoogleLogin'
 import { useEffect } from 'react';
-import { gapi } from 'gapi-script';
 
-//google api client id
-const clientId = "635523668157-tse46i7rquk3rcll133s95gh34d86qda.apps.googleusercontent.com";
  
 function Login() {
 
     //TESTING, 
-
-    useEffect(() => {
-        function start() {
-            gapi.client.init({
-                clientId: clientId,
-                scope: ""
-            })
-        };
-        gapi.load('client:auth2', start);
-    });
 
 
     const [email, setEmail] = useState('')
@@ -135,7 +121,7 @@ function Login() {
                 </form>
 
                 <div className="">
-                    <LoginButon className="w-1/2 h-12 bg-gray-300 border border-black rounded-lg text-lg font-semibold" />
+                    
                 </div>
 
             </div>
