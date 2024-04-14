@@ -424,6 +424,9 @@ const HomeIndex = () => {
          post.make.includes(searchTerm) || 
          post.model.includes(searchTerm) ||
          post.features.includes(searchTerm) ||
+         post.year.includes(searchTerm) ||
+         post.price.includes(searchTerm) ||
+         post.vehicleType.includes(searchTerm) ||
          post.location.includes(searchTerm) ) {
           
          } else {
@@ -764,7 +767,7 @@ const HomeIndex = () => {
               {posts && posts.map((post) =>(
                
                 filter(post) && 
-                <div className="test2" key={post.id}> 
+                <div className="postbox" key={post.id}> 
                     {posts && console.log("index 0: "+ posts.at(0).make)}
                     <a onClick={() => { handlePostBoxClick(post, post._id) }}>
                         <div className='products-item'>
@@ -824,6 +827,9 @@ const HomeIndex = () => {
         <div className="arrow">
           {currentPage > 1 && (
             <span onClick={prevPage}>Go to Previous Page</span>
+          )}
+          {currentPage > 1 && (
+            <div className="arrow-buffer">  </div>
           )}
           {posts && posts.length > (currentPage * postsPerPage) && (
             <span onClick={nextPage}>Go to Next Page</span>

@@ -242,7 +242,7 @@ function CarInfo() {
         </div>
         <div className="car-description">
         <h2>Description:</h2>
-        {posts && posts.description} 
+        <div className="car-description-text">{posts && posts.description} </div>
         
         </div>
         </section>
