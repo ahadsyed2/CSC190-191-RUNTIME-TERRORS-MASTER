@@ -23,7 +23,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "tailwindcss build -o src/tailwind.css && your-build-command",
+    "build": "tailwindcss build -o src/tailwind.css && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
