@@ -29,7 +29,7 @@ const carYear = ({ checkedYears, handleYearCheckboxClick, handleYearClearClick, 
             </div>
           ))}
           <div className="search">
-            <button onClick={handleYearClearClick} style={{ marginLeft: '10px' }}>
+            <button className="year-clear-button" onClick={handleYearClearClick} style={{ marginLeft: '10px' }}>
               <p>Clear</p>
             </button>
           </div>

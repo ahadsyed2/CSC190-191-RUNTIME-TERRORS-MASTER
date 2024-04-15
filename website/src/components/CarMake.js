@@ -29,7 +29,7 @@ const CarMake = ({ makeOptions, checkedMake, handleMakeCheckboxClick, handleMake
             </div>
           ))}
           <div className="search">
-            <button onClick={handleMakeClearClick} style={{ marginLeft: '10px' }}>
+            <button className="make-clear-button" onClick={handleMakeClearClick} style={{ marginLeft: '10px' }}>
               <p>Clear</p>
             </button>
           </div>
