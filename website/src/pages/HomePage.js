@@ -764,7 +764,7 @@ const HomeIndex = () => {
               {posts && posts.map((post) =>(
                
                 filter(post) && 
-                <div className="test2" key={post.id}> 
+                <div className="postbox" key={post.id}> 
                     {posts && console.log("index 0: "+ posts.at(0).make)}
                     <a onClick={() => { handlePostBoxClick(post, post._id) }}>
                         <div className='products-item'>
