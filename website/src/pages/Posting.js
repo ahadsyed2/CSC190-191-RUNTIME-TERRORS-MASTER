@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaBars, FaCaretDown, FaCaretUp } from 'react-icons/fa';
 import { AiOutlineClose } from 'react-icons/ai';
-import { hamburgerMenu } from './hamburgerMenu';
+import { hamburgerMenu } from '../components/hamburgerMenu';
 import { BsUpload } from 'react-icons/bs';
 import { IconContext } from 'react-icons';
 import  usePosting  from '../hooks/usePosting';
+import { useAuthContext } from '../hooks/useAuthContext';
 import './Posting.css';
 
 const options = [
@@ -26,6 +27,7 @@ function Posting() {
   //message if form is submitted successfully
   const [successMessage, setSuccessMessage] = useState('');
 
+  const { user } = useAuthContext()
 
   const [isActive, setIsActive] = useState(false);
   const [selected, setSelected] = useState('Vehicle Type');
@@ -49,6 +51,7 @@ function Posting() {
     features: '',
     description: '',
     timestamp: '',
+    user: '',
     image: null, // You might want to store the file or image URL here
     imagePreview: null,
   });
@@ -66,10 +69,13 @@ function Posting() {
 
   //set the current formData attribute(name) to the new value
   const handleInputChange = (e) => {
+    var date = new Date();
     const { name, value } = e.target;
     setFormData({
       ...formData,
       [name]: value,
+      timestamp: date.toString(),
+      user: user.email,
     });
   };
 
@@ -77,7 +83,7 @@ function Posting() {
   const handleFileChange = (e) => {
   const file = e.target.files[0];
   console.log('Selected File!:', file);
-
+    
   
     // Display image preview
     const reader = new FileReader();
@@ -96,6 +102,16 @@ function Posting() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!formData.image) {
+      // Display an error message indicating that image upload is required
+      setSuccessMessage('Please upload an image before submitting.');
+      setTimeout(() => {
+        setSuccessMessage(null);
+      }, 5000);
+      return; // Prevent further execution
+    }
+
     try {
 
         //TESTING
@@ -170,6 +186,7 @@ function Posting() {
           description: '',
           image: null,
           timestamp: '',
+          user: user.email,
         });
 
 

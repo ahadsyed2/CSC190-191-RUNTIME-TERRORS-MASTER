@@ -30,7 +30,7 @@ const CarMileage = ({ checkedMileages, handleMileageCheckboxClick, handleMileage
             </div>
           ))}
           <div className="search">
-            <button onClick={handleMileageClearClick} style={{ marginLeft: '10px' }}>
+            <button className="mileage-clear-button" onClick={handleMileageClearClick} style={{ marginLeft: '10px' }}>
               <p>Clear</p>
             </button>
           </div>
