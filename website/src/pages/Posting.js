@@ -98,7 +98,7 @@ function Posting() {
     reader.readAsDataURL(file);
   };
 
-  user && console.log("email : " + user.email)
+  //user && console.log("email : " + user.email)
   //HANDLE SUBMISSION
 
   const handleSubmit = async (e) => {
@@ -123,6 +123,7 @@ function Posting() {
         console.log('Posting created:', result);
         // Update success message if the form is submitted successfully
          setSuccessMessage('Posting created successfully!');
+         console.log("Success:" + successMessage);
         // Reset success message after a few seconds
         setTimeout(() => {
         setSuccessMessage(null);
@@ -153,7 +154,7 @@ function Posting() {
 
 
         //I added this to take you to home page -Nick
-        window.location.href = "/";
+        //window.location.href = "/";
       } else {
         // Handle error (e.g., show an error message)
         setSuccessMessage('Posting failed, incorrect syntax please try again' , error);

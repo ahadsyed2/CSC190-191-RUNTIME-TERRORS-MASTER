@@ -97,6 +97,7 @@ const usePosting = () => {
 } catch (error) {
   setIsLoading(false);
   setError(error.message || 'An unexpected error occurred');
+  console.log(error);
   return null;
 }
   
