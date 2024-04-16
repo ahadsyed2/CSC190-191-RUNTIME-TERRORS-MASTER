@@ -1,48 +1,46 @@
-import { useState } from 'react'
-import { useAuthContext} from './useAuthContext'
+import { useState } from 'react';
+import { useAuthContext } from './useAuthContext';
 
 export const useLogin = () => {
+    const [error, setError] = useState(null);
+    const [isLoading, setIsLoading] = useState(null);
+    const { dispatch } = useAuthContext();
 
-    const[error,setError] = useState(null)
-    const [isLoading, setIsLoading] = useState(null)
-    const { dispatch } = useAuthContext()
+    const login = async (email, password) => {
+        setIsLoading(true);
+        setError(null);
 
-    const login = async (email,password) => {
-        setIsLoading(true)
-        setError(null)
+        try {
+            const response = await fetch('https://api-carmony-onrender-com.onrender.com/api/userRoutes/login', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ email, password })
+            });
 
-        const response = await fetch('/api/userRoutes/login', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({email,password})
+            const json = await response.json();
 
-        })
+            if (!response.ok) {
+                setIsLoading(false);
+                setError(json.error);
+            }
 
+            if (response.ok) {
+                setIsLoading(false);
 
-        const json = await response.json()
+                // Save user to local storage with jwebtoken and email
+                localStorage.setItem('user', JSON.stringify(json));
 
-        if (!response.ok){
-            setIsLoading(false)
-            setError(json.error)
+                // Update auth context
+                dispatch({ type: 'LOGIN', payload: json });
+
+                // Redirect to home page
+                window.location.href = "https://yourfrontenddomain.com/"; // Replace with your actual frontend domain
+            }
+        } catch (error) {
+            setIsLoading(false);
+            setError(error.message || 'An unexpected error occurred');
         }
+    };
 
-        if (response.ok){
-            //not loading anymore
-            setIsLoading(false)
-
-            //save user to local storage with jwebtoken and email
-            localStorage.setItem('user', JSON.stringify(json))
-
-            //update auth context
-            dispatch({type: 'LOGIN', payload: json})
-
-            //redirect to home page
-            window.location.href = "http://localhost:3000/"
-        }
-
-
-    }
-
-    return{ login, isLoading, error}
-
-}
+    return { login, isLoading, error };
+};
