@@ -11,17 +11,17 @@
     font-size: 2.7rem;
     background: none;
 }
-.logo {
+.car-logo {
     width: 10%;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 0 1rem;
 }
-.logo img {
+.car-logo img {
     width: 200px;
-    margin-left: 3rem;
-    padding-bottom: 80px;
+    margin-left: -1.22rem;
+    margin-top: 1rem;
 }
 
 .nav-bar-menu {
@@ -96,6 +96,7 @@ span {
     font-size: 36px;
     margin-bottom: 2rem;
     font-weight: 600;
+    margin-top: 2rem;
 }
 
 .leftside-box {
@@ -125,7 +126,7 @@ span {
     border: 1px solid #9f9f9f;
 }
 
-.vehicles-dropdown {
+.vehicle-type-dropdown {
     width: 450px;
     margin-top: 3rem;
     margin-left: 10rem;
@@ -134,7 +135,7 @@ span {
     user-select: none;
 }
 
-.vehicles-dropdown .dropdown-box {
+.vehicle-type-dropdown .dropdown-box {
     padding: 15px 20px;
     background-color: #fff;
     box-shadow: 3px 3px 10px 6px rgba(0,0,0,0.06);
@@ -148,7 +149,7 @@ span {
     width: 100%;
 }
 
-.vehicles-dropdown .dropdown-listings {
+.vehicle-type-dropdown .dropdown-listings {
     position: absolute;
     top: 110%;
     left: 0;
@@ -162,46 +163,44 @@ span {
     margin-left: 2rem;
 }
 
-.vehicles-dropdown .dropdown-listings .dropdown-item {
+.vehicle-type-dropdown .dropdown-listings .dropdown-item {
     padding: 10px;
     cursor: pointer;
     transition: all 0.2s;
 }
 
-.vehicles-dropdown .dropdown-listings .dropdown-item:hover {
+.vehicle-type-dropdown .dropdown-listings .dropdown-item:hover {
     background: #f4f4f4;
 }
 
-.description-Box {
+.descrip-box {
     display: flex;
-    margin-bottom: 1rem;
+    margin-bottom: 8rem;
 }
 
-.description-Box h2 {
-    font-size: 20px;
-    margin-top: 5.5rem;
+.descrip-box h2 {
+    font-size: 22px;
+    margin-top: 5.3rem;
 }
 
-.description-Box input[type="text"] {
+.descrip-box input[type="text"] {
     font-size: 20px;
     width: 450px;
-    height: 100px;
+    height: 150px;
     margin-top: 1rem;
     margin-left: 0.5rem;
     border-radius: 20px;
 }
-
 .photo-upload {
     display: flex;
     margin-top: 3rem;   
     align-items: center;
 }
-
 .photo-upload h2 {
     margin-right: 1.5rem;
     font-size: 24px;
     text-align: center;
-    margin-left: 27rem;
+    margin-left: 24rem;
 }
 
 .photo-upload input {
@@ -209,19 +208,15 @@ span {
     font-size: 18px;
     text-align: center;
 }
-
-
 .container-box {
     display: flex;
 
 }
-
 .righside-box {
     width: 60%;
     background-color: #ffffff;
     box-shadow: 3px 3px 10px 6px rgba(0,0,0,0.06);
 }
-
 .preview-box {
     display: flex;
     height: 80%;
@@ -236,18 +231,15 @@ span {
     margin-left: 2rem;
     margin-right: 2rem;
 }
-
 .preview-left h2 {
     text-align: center;
     margin-top: 12rem;
 }
-
 .preview-left p {
     text-align: center;
     margin-top: 2rem;
     font-size: 20px;
 }
-
 .preview-right-box {
     width: 50%;
     border: 3px solid rgb(0, 127, 93);
@@ -255,6 +247,7 @@ span {
     box-shadow: 8px 4px 24px rgb(49, 114, 92);
     border-radius: 30px;
     margin-right: 2rem; 
+    margin-bottom: 5rem;
 }
 .preview-right-box h2 {
     font-size: 24px;
@@ -263,7 +256,6 @@ span {
     font-weight: 600;
     white-space: nowrap;
 }
-
 .preview-right-box p {
     font-size: 20px;
     margin-left: 3rem;
@@ -271,23 +263,18 @@ span {
     font-weight: 600;
     white-space: nowrap;
 }
-
 .preview-right-box h2 span {
     margin-left: 1.5rem;
     color: #1400f2;
 }
-
 .preview-right-box p span {
     margin-left: 1.5rem;
     color: #1400f2;
 }
-
 .post-submit-button {
     text-align: center;
-    
 }
-
-.post-button {
+.post-btn {
     border: solid 2px #000;
     background-color: #9f9f9f;
     border-radius: 20px;
@@ -296,8 +283,8 @@ span {
     font-size: 24px;
     text-align: center;
     padding: 0.5rem;
+    margin-top: 3rem;
 }
-
-.post-button:hover {
+.post-btn:hover {
     background-color: #8cf2f0;
 }

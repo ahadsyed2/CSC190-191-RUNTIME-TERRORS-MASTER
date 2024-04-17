@@ -137,7 +137,7 @@ function Posting() {
         // Handle success (e.g., redirect or show a success message)
         console.log('Posting created:', result);
         // Update success message if the form is submitted successfully
-         setSuccessMessage('Posting created successfully!/n', result);
+         setSuccessMessage('Posting created successfully!', result);
         // Reset success message after a few seconds
         setTimeout(async () => {
         setSuccessMessage(null);
@@ -217,14 +217,14 @@ function Posting() {
             <FaBars onClick={showSidebar} />
           </Link>
 
-          <div className="carmony-logo">
-            <img src="CARMONY_ICON2.png" alt="" />
+          <div className="car-logo w-1/10 flex justify-center items-center p-0 1rem" style={{ width: "15rem", marginLeft: "2rem" }}>
+            <img src="CARMONY_ICON2.png" alt="Logo" className="w-500 mt-3" />
           </div>
         </div>
 
-        <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-          <ul className='nav-menu-items' onClick={showSidebar}>
-            <li className='navbar-toggle'>
+        <nav className={sidebar ? 'nav-bar-menu active' : 'nav-bar-menu'}>
+          <ul className='nav-bar-menu-items' onClick={showSidebar}>
+            <li className='nav-bar-toggle'>
               <Link to='#' className='hamburger-bars'>
                 <AiOutlineClose />
               </Link>
@@ -250,7 +250,7 @@ function Posting() {
               <form onSubmit={handleSubmit} encType='multipart/form-data'>
                 <h1>About the Vehicle</h1>
 
-                <div className='vehicle-dropdown'>
+                <div className='vehicle-type-dropdown'>
                   <div className='dropdown-box' onClick={() => setIsActive(!isActive)}>
                     {selected}
                     <span className='caret-icon'>{isActive ? <FaCaretUp /> : <FaCaretDown />}</span>
@@ -273,7 +273,7 @@ function Posting() {
                 <div className="listing-box">
                   <div className='listing-details'>
 
-                    <div className='make-box'>
+                    <div className='make'>
                       <h2>Enter Make: </h2>
                       <input
                         type='text'
@@ -285,7 +285,7 @@ function Posting() {
                       />
                     </div>
 
-                    <div className='model-box'>
+                    <div className='model'>
                     <h2>Enter Model: </h2>
                     <input
                       type='text'
@@ -297,7 +297,7 @@ function Posting() {
                     />
                   </div>
 
-                  <div className='year-box'>
+                  <div className='year'>
                     <h2>Enter Year: </h2>
                     <input
                       type='text'
@@ -309,7 +309,7 @@ function Posting() {
                     />
                   </div>
 
-                  <div className='price-box'>
+                  <div className='price'>
                     <h2>Enter Price: $ </h2>
                     <input
                       type='text'
@@ -321,7 +321,7 @@ function Posting() {
                     />
                   </div>
 
-                  <div className='location-box'>
+                  <div className='location'>
                     <h2>Enter Location: </h2>
                     <input
                       type='text'
@@ -417,7 +417,7 @@ function Posting() {
                     />
                   </div>
 
-                  <div className='description-box'>
+                  <div className='descrip-box'>
                     <h2>Description: </h2>
                     <input
                       type='text'
@@ -429,8 +429,36 @@ function Posting() {
                     />
                   </div>
 
+                </div>
+              </div>
+            </form>
+          </div>
 
-                    <div className='photo-upload'>
+            <div className='righside-box'>
+              <h1>Preview</h1>
+
+                  <div className='preview-box'>
+          
+                    <div className='preview-right-box'>
+                       {/* Display the preview based on the entered data */}
+                       <h2>Vehicle Type: <span>{formData.vehicleType}</span></h2>
+                          <p>Make: <span>{formData.make}</span></p>
+                          <p>Model: <span>{formData.model}</span></p>
+                          <p>Year: <span>{formData.year}</span></p>
+                          <p>Price: <span>{formData.price}</span></p>
+                          <p>Location: <span>{formData.location}</span></p>
+                          <p>Mileage: <span>{formData.mileage}</span></p>
+                          <p>Fuel Type: <span>{formData.fuel}</span></p>
+                          <p>Transmission Style: <span>{formData.transmission}</span></p>
+                          <p>Condition: <span>{formData.condition}</span></p>
+                          <p>Color: <span>{formData.color}</span></p>
+                          <p>Cylinder Count: <span>{formData.cylinders}</span></p>
+                          <p>Included Features: <span>{formData.features}</span></p>
+                          <p>Description: <span>{formData.description}</span></p>
+                    </div>
+                  </div>
+
+                  <div className='photo-upload'>
                     <h2>Upload image</h2>
                     <BsUpload />
                     <input
@@ -449,50 +477,21 @@ function Posting() {
                         style={{ maxWidth: '100%', maxHeight: '200px', marginTop: '10px' }}
                       />
                     )}
-
-                  
-
-
                   </div>
 
-                  <button type='submit' className='btn' disabled={isLoading}>
-                    {isLoading ? 'Submitting...' : 'Submit'}
-                  </button>
+                  <form onSubmit={handleSubmit} encType='multipart/form-data'>
+                    <div className="post-submit-button">
+                      <button type='submit' className='post-btn' disabled={isLoading}>
+                        {isLoading ? 'Submitting...' : 'Submit'}
+                      </button>
 
-                  {successMessage && (
-                    <div className='success-message'>
-                      {successMessage}
+                      {successMessage && (
+                        <div className='success-message'>
+                          {successMessage}
+                        </div>
+                      )}
                     </div>
-                  )}
-
-                </div>
-              </div>
-            </form>
-          </div>
-
-            <div className='righside-box'>
-              <h1>Preview</h1>
-
-                  <div className='preview-box'>
-          
-                    <div className='preview-right'>
-                       {/* Display the preview based on the entered data */}
-                        <h2>{formData.vehicleType}</h2>
-                        <p>Make: {formData.make}</p>
-                        <p>Model: {formData.model}</p>
-                        <p>Year: {formData.year}</p>
-                        <p>Price: {formData.price}</p>
-                        <p>Location: {formData.location}</p>
-                        <p>Mileage: {formData.mileage}</p>
-                        <p>Fuel Type: {formData.fuel}</p>
-                        <p>Transmission Style: {formData.transmission}</p>
-                        <p>Condition: {formData.condition}</p>
-                        <p>Color: {formData.color}</p>
-                        <p>Cylinder Count: {formData.cylinders}</p>
-                        <p>Included Features: {formData.features}</p>
-                        <p>Description: {formData.description}</p>
-                    </div>
-                  </div>
+                  </form>
             </div>
           </div>
 
