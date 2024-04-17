@@ -179,6 +179,7 @@ span {
     display: flex;
     justify-content: center;
     align-content: center;
+    margin-top: -4rem;
 }
 
 .carmony-detail h1 {
@@ -190,14 +191,14 @@ span {
 
 .carmony-detail h2 {
     font-size: 50px;
-    margin-top: 1.5rem;
+    margin-top: 6rem;
     margin-bottom: 2rem;
     text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.6);
 }
 
 .carmony-detail {
     margin-top: 6rem;
-    width: 1100px;
+    width: 1150px;
     justify-content: center;
     align-content: center;
     text-align: center;
@@ -211,6 +212,9 @@ span {
 footer {
     background:#000;
     padding: 1.5rem;
+    margin-top: 6.3rem;
     text-align:center;
     color: #fff;
+    flex-grow: 1;
+    
 }
