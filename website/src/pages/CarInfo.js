@@ -21,7 +21,7 @@ import { useAuthContext } from '../hooks/useAuthContext';
 
 
 
-function CarInfo() {
+const CarInfo = () => {
     const [sidebar, setSidebar] = useState(false);
     const {posts, dispatch} = usePostContext();
     const {vehicle, dispatchVehicle} = useVehicleContext();
