@@ -331,7 +331,7 @@ const HomeIndex = () => {
   //Need to limit how many get pulled with it getting more when it reaches bottom of screen or by clicking next page
   useEffect(() => {
     const fetchPosts = async () => {
-      const response = await fetch('/api/postRoutes?sort=-createdAt')
+      const response = await fetch("https://api-carmony-onrender-com.onrender.com/api/postRoutes?sort=-createdAt")
       const json = await response.json()
 
       if(response.ok){
