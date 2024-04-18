@@ -34,7 +34,7 @@ export const useLogin = () => {
                 dispatch({ type: 'LOGIN', payload: json });
 
                 // Redirect to home page
-                window.location.href = "https://yourfrontenddomain.com/"; // Replace with your actual frontend domain
+                window.location.href = "https://carmony.onrender.com/"; // Replace with your actual frontend domain
             }
         } catch (error) {
             setIsLoading(false);
