@@ -46,7 +46,7 @@ function CarInfo() {
     var url = full_url_4.substring(slash+1);
 
     //console.log("Full id: "+full_url_1);
-    //console.log("id: "+ url);
+    console.log("id: "+ url);
     var backend_url = "https://api-carmony-onrender-com.onrender.com/api/postRoutes" + url
     //console.log("backendPath = "+backend_url)
     
