@@ -26,7 +26,7 @@ const UserProfile = () => {
   //Pulling All Posts
   useEffect(() => {
     const fetchPosts = async () => {
-      const response = await fetch("/api/postRoutes");
+      const response = await fetch("https://api-carmony-onrender-com.onrender.com/api/postRoutes");
       const json = await response.json();
 
         console.log('response Ok')
