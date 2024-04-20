@@ -47,7 +47,7 @@ const CarInfo = () => {
 
     console.log("Full id: "+full_url_1);
     console.log("id: "+ url);
-    var backend_url = "https://api-carmony-onrender-com.onrender.com/api/postRoutes" + url
+    var backend_url = "https://api-carmony-onrender-com.onrender.com/api/postRoutes/" + url
     //console.log("backendPath = "+backend_url)
     
 
