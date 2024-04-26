@@ -36,6 +36,7 @@ function App() {
           <Route path='/Profile' Component={ProfilePage} />
           <Route path='/Post' Component={ViewPost} />
           <Route path='/CarInfo/:id' Component={CarInfo} />
+          <Route path='/CarInfo' Component={CarInfo} />
           <Route path='/UserProfile' Component={UserProfile} />
         </Routes>
       </Router>

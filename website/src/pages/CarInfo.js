@@ -22,7 +22,7 @@ import { useAuthContext } from '../hooks/useAuthContext';
 
 
 
-function CarInfo() {
+const CarInfo = () => {
     const [sidebar, setSidebar] = useState(false);
     const {posts, dispatch} = usePostContext();
     const {vehicle, dispatchVehicle} = useVehicleContext();
@@ -48,7 +48,7 @@ function CarInfo() {
 
     console.log("Full id: "+full_url_1);
     console.log("id: "+ url);
-    var backend_url = "https://api-carmony-onrender-com.onrender.com/api/postRoutes" + url
+    var backend_url = "https://api-carmony-onrender-com.onrender.com/api/postRoutes/" + url
     //console.log("backendPath = "+backend_url)
     
 
