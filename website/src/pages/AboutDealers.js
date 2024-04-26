@@ -3,11 +3,13 @@ import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import { hamburgerMenu } from '../components/hamburgerMenu';
+import { hamburgerMenu2 } from '../components/hamburgerMenu2';
 import { IconContext } from 'react-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import NavbarMenu from '../components/navbarMenu';
 import './AboutDealers.css'
+import { useAuthContext } from '../hooks/useAuthContext';
 
 function AboutDealers() {
   const [sidebar, setSidebar] = useState(false) 
@@ -15,6 +17,7 @@ function AboutDealers() {
   const showSidebar = () =>  setSidebar(!sidebar)
   /* utilize set side bar and this is going to update the value to whatever the opposite of it is currently*/
   /*(!sidebar) it's reversing the value true/false*/
+  const { user } = useAuthContext()
 
   return (
       <>
@@ -38,7 +41,17 @@ function AboutDealers() {
                         <AiOutlineClose />
                     </Link>
                 </li>
-                {hamburgerMenu.map((item, index) => {
+                {!user && hamburgerMenu.map((item, index) => {
+                    return (
+                        <li key={index} className={item.cName}>
+                            <Link to={item.path}>
+                                {item.icon}
+                                <span>{item.title}</span>
+                            </Link>
+                        </li>
+                    );
+                })}
+                {user && hamburgerMenu2.map((item, index) => {
                     return (
                         <li key={index} className={item.cName}>
                             <Link to={item.path}>

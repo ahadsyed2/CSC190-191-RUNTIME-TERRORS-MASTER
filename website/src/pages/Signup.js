@@ -3,9 +3,11 @@ import React, {useState} from 'react'
 import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import { hamburgerMenu } from '../components/hamburgerMenu';
+import { hamburgerMenu2 } from '../components/hamburgerMenu2';
 import { IconContext } from 'react-icons';
 import './Signup.css'
 import { useSignup } from '../hooks/useSignup'
+import { useAuthContext } from '../hooks/useAuthContext';
 import ReCAPTCHA from "react-google-recaptcha"
 
 
@@ -17,6 +19,7 @@ const Signup = () => {
     const [lastname, setLastName] = useState('')
     const [userlocation, setUserLocation] = useState('')
     const {signup, error, isLoading} = useSignup()
+    const { user } = useAuthContext()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -60,7 +63,17 @@ const Signup = () => {
                 <AiOutlineClose />
               </Link>
             </li>
-            {hamburgerMenu.map((item, index) => {
+            {!user && hamburgerMenu.map((item, index) => {
+                    return (
+                        <li key={index} className={item.cName}>
+                            <Link to={item.path}>
+                                {item.icon}
+                                <span>{item.title}</span>
+                            </Link>
+                        </li>
+                    );
+                })}
+            {user && hamburgerMenu2.map((item, index) => {
                 return (
                     <li key={index} className={item.cName}>
                         <Link to={item.path}>

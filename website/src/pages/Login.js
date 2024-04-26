@@ -3,9 +3,11 @@ import React, {useState} from 'react'
 import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import { hamburgerMenu } from '../components/hamburgerMenu';
+import { hamburgerMenu2 } from '../components/hamburgerMenu2';
 import { IconContext } from 'react-icons';
 import './Login.css'
 import { useLogin } from '../hooks/useLogin';
+import { useAuthContext } from '../hooks/useAuthContext';
 import { useEffect } from 'react';
 import { gapi } from 'gapi-script';
 
@@ -13,6 +15,7 @@ import { gapi } from 'gapi-script';
 const clientId = "635523668157-tse46i7rquk3rcll133s95gh34d86qda.apps.googleusercontent.com";
  
 function Login() {
+    const { user } = useAuthContext()
 
     //TESTING, 
 
@@ -68,16 +71,26 @@ function Login() {
                 <AiOutlineClose />
               </Link>
             </li>
-            {hamburgerMenu.map((item, index) => {
-                return (
-                    <li key={index} className={item.cName}>
-                        <Link to={item.path}>
-                            {item.icon}
-                            <span>{item.title}</span>
-                        </Link>
-                    </li>
-                );
-            })}
+            {!user && hamburgerMenu.map((item, index) => {
+                    return (
+                        <li key={index} className={item.cName}>
+                            <Link to={item.path}>
+                                {item.icon}
+                                <span>{item.title}</span>
+                            </Link>
+                        </li>
+                    );
+                })}
+                {user && hamburgerMenu2.map((item, index) => {
+                    return (
+                        <li key={index} className={item.cName}>
+                            <Link to={item.path}>
+                                {item.icon}
+                                <span>{item.title}</span>
+                            </Link>
+                        </li>
+                    );
+                })}
           </ul>
         </nav>
         </IconContext.Provider>

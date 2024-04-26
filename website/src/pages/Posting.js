@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaBars, FaCaretDown, FaCaretUp } from 'react-icons/fa';
 import { AiOutlineClose } from 'react-icons/ai';
 import { hamburgerMenu } from '../components/hamburgerMenu';
+import { hamburgerMenu2 } from '../components/hamburgerMenu2';
 import { BsUpload } from 'react-icons/bs';
 import { IconContext } from 'react-icons';
 import  usePosting  from '../hooks/usePosting';
@@ -229,14 +230,26 @@ function Posting() {
                 <AiOutlineClose />
               </Link>
             </li>
-            {hamburgerMenu.map((item, index) => (
-              <li key={index} className={item.cName}>
-                <Link to={item.path}>
-                  {item.icon}
-                  <span>{item.title}</span>
-                </Link>
-              </li>
-            ))}
+            {!user && hamburgerMenu.map((item, index) => {
+                    return (
+                        <li key={index} className={item.cName}>
+                            <Link to={item.path}>
+                                {item.icon}
+                                <span>{item.title}</span>
+                            </Link>
+                        </li>
+                    );
+                })}
+                {user && hamburgerMenu2.map((item, index) => {
+                    return (
+                        <li key={index} className={item.cName}>
+                            <Link to={item.path}>
+                                {item.icon}
+                                <span>{item.title}</span>
+                            </Link>
+                        </li>
+                    );
+                })}
           </ul>
         </nav>
       </IconContext.Provider>

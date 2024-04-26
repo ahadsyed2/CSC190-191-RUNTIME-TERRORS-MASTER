@@ -4,7 +4,7 @@ import { MdSell } from "react-icons/md"; /*sell*/
 import { RiContactsFill } from "react-icons/ri"; /*about*/
 import { MdContactPhone } from "react-icons/md"; /*contact*/
 
-export const hamburgerMenu = [
+export const hamburgerMenu2 = [
     {
         title: 'Home',
         path: '/',
@@ -13,7 +13,7 @@ export const hamburgerMenu = [
     },
     {
         title: 'Sell a Car',
-        path: '/Login',
+        path: '/Posting',
         icon: <MdSell />,
         cName: 'nav-bar-text'
     },

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { hamburgerMenu } from '../components/hamburgerMenu';
+import { hamburgerMenu2 } from '../components/hamburgerMenu2';
 import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import { IconContext } from 'react-icons';
@@ -14,12 +15,14 @@ import CarYear from '../components/CarYear';
 import CarMileage from '../components/CarMileage';
 import { cars, routeMapping } from '../components/carConstants';
 import './HomePage.css';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 import { usePostContext } from '../hooks/usePostContext';
 
 
 const HomeIndex = () => {
   const [sidebar, setSidebar] = useState(false);
+  const { user } = useAuthContext()
 
   const showSidebar = () => {
     setSidebar(!sidebar);
@@ -578,6 +581,16 @@ const HomeIndex = () => {
     loadFilterSettings();
   }, []); // Load only once when component mounts
 
+  const clearAllFilters = () => {
+    setCheckedMake([]);
+    setCheckedMakes([]);
+    setCheckedMileages([]);
+    setCheckedModels([]);
+    setCheckedPrices([]);
+    setCheckedYears([]);
+    setSearchTerm('');
+    console.log("Filters Cleared");
+  };
 
 
   return (
@@ -602,16 +615,26 @@ const HomeIndex = () => {
                 <AiOutlineClose />
               </Link>
             </li>
-            {hamburgerMenu.map((item, index) => {
-                return (
-                    <li key={index} className={item.cName}>
-                        <Link to={item.path}>
-                            {item.icon}
-                            <span>{item.title}</span>
-                        </Link>
-                    </li>
-                );
-            })}
+            {!user && hamburgerMenu.map((item, index) => {
+                    return (
+                        <li key={index} className={item.cName}>
+                            <Link to={item.path}>
+                                {item.icon}
+                                <span>{item.title}</span>
+                            </Link>
+                        </li>
+                    );
+                })}
+                {user && hamburgerMenu2.map((item, index) => {
+                    return (
+                        <li key={index} className={item.cName}>
+                            <Link to={item.path}>
+                                {item.icon}
+                                <span>{item.title}</span>
+                            </Link>
+                        </li>
+                    );
+                })}
           </ul>
         </nav>
       </IconContext.Provider>
@@ -622,9 +645,7 @@ const HomeIndex = () => {
             <div className="filter-search flex flex-col mb-4">
               <div className="filter-header flex justify-between items-center">
                 <h1 className="text-3xl font-bold text-black" style={{ textShadow: '0px 2px 4px rgba(139, 139, 139)' }}> Filter by</h1>
-                <a href="#">
-                  <h3 className="clear-filter text-xl text-blue-600 font-semibold font-bold">Clear filter</h3>
-                </a>
+                  <h3 onClick={clearAllFilters} className="clear-filter text-xl text-blue-600 font-semibold font-bold">Clear filter</h3>
               </div>
             </div>
 
@@ -701,9 +722,6 @@ const HomeIndex = () => {
                         );
                       })}
                         <div className='search'>
-                          <button onClick={handleSearchClick} style={{ marginLeft: '10px' }}>
-                            <p>Search</p>
-                          </button>
                           <button onClick={handleClearClick} style={{ marginLeft: '10px' }}>
                             <p>Clear</p>
                           </button>

@@ -19,7 +19,7 @@
   
       .user-container{
       background:#e5e5e5;  
-      height: 1000px; 
+      height: 100%; 
       top:0%; 
       }
       .view-account{
@@ -38,7 +38,7 @@
       .view-account .side-bar {
       padding-bottom: 30px;
       background-color:#ffffff;
-      height: 1000px;
+      height: 100%;
       position: absolute;
       }
       
@@ -338,11 +338,12 @@
   
   .current-righBox {
       display: flex;
+      height: 100%;
   }
   
   .current-listingBox {
       width: 100%;
-      height: 100%;
+      height: 90rem;
   
   }
   .current-listingBox h1 {

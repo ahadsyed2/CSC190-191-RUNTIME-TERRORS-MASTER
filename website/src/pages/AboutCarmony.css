@@ -209,8 +209,12 @@ span {
 }
 
 footer {
-    background:#000;
-    padding: 1.5rem;
-    text-align:center;
-    color: #fff;
+    margin-top: 24.1rem;
+  background: #000;
+  padding: 1rem;
+  text-align: center;
+  color: #fff;
+  width: 100%;
+  position: absolute;
+  flex-grow: 1;
 }
