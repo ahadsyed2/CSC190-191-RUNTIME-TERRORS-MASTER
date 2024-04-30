@@ -258,14 +258,7 @@ const UserProfile = () => {
                               </div>
                             </div>
                             <div className="car-button">
-                              <div className="view-button">
-                                <Link to={"/CarInfo/" + post._id}>
-                                  <button>View</button>
-                                </Link>
-                              </div>
-                              <div className="edit-button">
-                                <button onClick={editListing(post._id)}>Edit</button>
-                              </div>
+                              
                               <div className="delete-button">
                                 <button onClick={() => deleteButton(post._id)}>Delete</button>
                               </div>
