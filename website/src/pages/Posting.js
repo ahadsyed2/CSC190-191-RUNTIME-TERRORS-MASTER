@@ -263,7 +263,7 @@ function Posting() {
               <form onSubmit={handleSubmit} encType='multipart/form-data'>
                 <h1>About the Vehicle</h1>
 
-                <div className='vehicle-type-dropdown'>
+                <div className='vehicles-dropdown'>
                   <div className='dropdown-box' onClick={() => setIsActive(!isActive)}>
                     {selected}
                     <span className='caret-icon'>{isActive ? <FaCaretUp /> : <FaCaretDown />}</span>
