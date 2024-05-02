@@ -20,7 +20,7 @@
   <p align="center">
     A free consumer-first, automotive marketplace. No tricks, no games, and no barriers to entry. Sell your car, your way.
     <br />
-    <a href="https://github.com/ahadsyed2/CSC190-191-RUNTIME-TERRORS-MASTER/tree/main/website"><strong>Explore the Project »</strong></a>
+    <a href="https://github.com/ahadsyed2/CSC190-191-RUNTIME-TERRORS-MASTER/tree/main/website"><strong>Explore the Project »</strong>       </a>
     <br />
     <br />
   </p>
@@ -139,7 +139,34 @@ npm start
 <!-- Testing -->
 ## Testing
 
-Not Currently Available...
+### System Requirements
+
+- **Install VS Code**:
+  - Version: 1.88.0 (Universal)
+
+- **Install Node.js**:
+  - Version: v18.18.2
+
+- **Install MERN Stack**:
+  - Update npm to the latest version globally:
+    ```bash
+    npm install npm@latest -g
+    ```
+  - Install required packages:
+    ```bash
+    npm install express
+    npm install react
+    ```
+
+- **Supported Operating Systems**:
+  - Windows:
+    - Windows 10 and 11
+  - macOS:
+    - macOS 10.15 (Catalina) and above (Intel or Apple Silicon 64-bit machines)
+
+**Note**: All tests were performed on the supported operating systems mentioned above. Linux distributions or mobile devices are not tested nor officially supported.
+
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
