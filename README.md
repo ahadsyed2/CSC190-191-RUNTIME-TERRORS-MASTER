@@ -167,6 +167,73 @@ npm start
 **Note**: All tests were performed on the supported operating systems mentioned above. Linux distributions or mobile devices are not tested nor officially supported.
 
 
+### Testing React Applications with Cypress
+
+To test React applications using the Cypress framework, follow these steps:
+
+  - **Step 1: Initialize Package.json**:
+    - Create a `package.json` file to track installed dependencies and manage your project's setup:
+      ```bash
+      npm init
+      ```
+
+  - **Step 2: Install Cypress**:
+    - Cypress is shipped as a NodeJS package, you can use the npm command to install Cypress. 
+       ```bash
+      npm install cypress --save-dev
+      ```
+
+ - **Step 3: Open Cypress**;
+    - When you install Cypress for the first time, cypress needs to create all required project folders and do the initial set up. 
+      Cypress open command does all these. 
+       ```bash
+      npx cypress open
+      ```
+
+ - **Step 4: Configuring Cypress and Choose the Test Type**;
+     - Once you type the cypress open command, the Cypress window opens and asks you to choose a set of options
+
+ - **Step 5: Choose the Test Type**;
+     - The welcome window shows two different types of tests, End to End Testing and Component Testing. In this case we are performing 
+       UI end-to-end testing so you can choose the test type as E2E Tests. 
+
+<p align="center">
+  <img src="images/Cypress_1.png" alt="diagram" width="450" height="300">
+</p>
+
+- **Step 6: Review the Configuration File and continue**;
+     - The Cypress window shows that there are a set of configuration files that Cypress will create by default, you can review the 
+       files and Click on Continue. 
+
+<p align="center">
+  <img src="images/Cypress_2.png" alt="diagram" width="450" height="300">
+</p>
+
+- **Step 7: Choose a browser**;
+     - You can choose from the available browser; Cypress gathers information from all installed browsers in your System. If it 
+       supports the Browser type and browser version, then it lists in the Choose a browser section. For simplicity, let’s choose 
+       Chrome browser and Click on Start End to end Testing using Chrome. 
+ 
+<p align="center">
+  <img src="images/Cypress_3.png" alt="diagram" width="450" height="300">
+</p>
+
+- **Step 8: Create First Spec window**;
+     - Since you have created the fresh framework, you need to create the first spec, this also helps to verify if Cypress is installed 
+       correctly and able to run our automated tests.
+         - Click on Create a New Spec 
+         - Enter any name (Example: posting.cy.js) 
+         - Click on Okay, run the Spec
+
+<p align="center">
+  <img src="images/Cypress_4.png" alt="diagram" width="450" height="300">
+</p>
+
+***Note***: By default, it adds the example test script, we can modify them later as per our use case or test scenario.
+
+<p align="center">
+  <img src="images/Cypress_5.png" alt="diagram" width="450" height="300">
+</p>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
