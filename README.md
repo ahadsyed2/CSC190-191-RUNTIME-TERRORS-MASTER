@@ -135,6 +135,10 @@ npm start
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- screenshot of product -->
+## A screenshot of our product
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- Testing -->
 ## Testing
@@ -164,7 +168,8 @@ npm start
   - macOS:
     - macOS 10.15 (Catalina) and above (Intel or Apple Silicon 64-bit machines)
 
-**Note**: All tests were performed on the supported operating systems mentioned above. Linux distributions or mobile devices are not tested nor officially supported.
+**Note**: All tests were performed on the supported operating systems mentioned above. 
+  - Linux distributions or mobile devices are not tested nor officially supported.
 
 
 ### Testing React Applications with Cypress
