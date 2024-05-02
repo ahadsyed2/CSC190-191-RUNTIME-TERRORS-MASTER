@@ -137,6 +137,42 @@ npm start
 
 <!-- screenshot of product -->
 ## A screenshot of our product
+  1. Homepage
+     - Upon accessing the carmony website users are presented with a feature-rich homepage designed to cater to their vehicle search needs. The homepage offers a comprehensive array of navigation options, allowing users to seamlessly explore and discover vehicles based on their preferences and requirements (Figure 1).
+    
+<p align="center">
+  <img src="images/Homepage_1.png" alt="diagram" width="450" height="300">
+</p>
+Figure1: Homepage
+  
+  - Furthermore, users can access detailed vehicle information by clicking on the vehicle of interest directly from the homepage. This action directs them to a dedicated vehicle information page that provides comprehensive details about the selected vehicle (Figure 2). This feature enables users to easily explore and know more about specific vehicles they are interested in.
+
+<p align="center">
+  <img src="images/Carinfo.png" alt="diagram" width="450" height="300">
+</p>
+Figure2: Vehicle Information page
+
+  2. Navigation
+    - Users can access the Hamburger menu by clicking on the icon located on the homepage, which facilitates navigation to various menu options (Figure 3).
+    - If a user attempts to create a listing without being logged in, clicking the Create a listing button will redirect them to the Login page (Figure 4).
+    - If users already have an account, they can click on the Login button to access their dashboard (Figure 4).
+    - Additionally, individuals classified as Owners or Dealers who do not yet have accounts can sign up by clicking the Sign Up button on the homepage. (Figure 5).
+
+<p align="center">
+  <img src="images/navbar.png" alt="diagram" width="450" height="300">
+</p>
+Figure3: Navbar
+
+<p align="center">
+  <img src="images/Login.png" alt="diagram" width="450" height="300">
+</p>
+Figure4: Login
+
+<p align="center">
+  <img src="images/Signup.png" alt="diagram" width="450" height="300">
+</p>
+Figure5: Signup
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
