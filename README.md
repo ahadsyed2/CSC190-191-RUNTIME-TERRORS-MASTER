@@ -152,7 +152,7 @@ npm start
 </p>
 <p align="center">Figure2: Vehicle Information page</p>
 
-  2. Navigation
+  2. Navigation 
     - Users can access the Hamburger menu by clicking on the icon located on the homepage, which facilitates navigation to various menu options (Figure 3).
     - If a user attempts to create a listing without being logged in, clicking the Create a listing button will redirect them to the Login page (Figure 4).
     - If users already have an account, they can click on the Login button to access their dashboard (Figure 4).
