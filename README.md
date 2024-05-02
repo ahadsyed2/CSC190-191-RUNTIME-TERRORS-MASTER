@@ -143,14 +143,14 @@ npm start
 <p align="center">
   <img src="images/Homepage_1.png" alt="diagram" width="450" height="300">
 </p>
-Figure1: Homepage
+<p align="center">Figure1: Homepage</p>
   
   - Furthermore, users can access detailed vehicle information by clicking on the vehicle of interest directly from the homepage. This action directs them to a dedicated vehicle information page that provides comprehensive details about the selected vehicle (Figure 2). This feature enables users to easily explore and know more about specific vehicles they are interested in.
 
 <p align="center">
   <img src="images/Carinfo.png" alt="diagram" width="450" height="300">
 </p>
-Figure2: Vehicle Information page
+<p align="center">Figure2: Vehicle Information page</p>
 
   2. Navigation
     - Users can access the Hamburger menu by clicking on the icon located on the homepage, which facilitates navigation to various menu options (Figure 3).
@@ -159,19 +159,19 @@ Figure2: Vehicle Information page
     - Additionally, individuals classified as Owners or Dealers who do not yet have accounts can sign up by clicking the Sign Up button on the homepage. (Figure 5).
 
 <p align="center">
-  <img src="images/navbar.png" alt="diagram" width="450" height="300">
+  <img src="images/Navbar.png" alt="diagram" width="450" height="300">
 </p>
-Figure3: Navbar
+<p align="center">Figure3: Navbar</p>
 
 <p align="center">
   <img src="images/Login.png" alt="diagram" width="450" height="300">
 </p>
-Figure4: Login
+<p align="center">Figure4: Login</p>
 
 <p align="center">
   <img src="images/Signup.png" alt="diagram" width="450" height="300">
 </p>
-Figure5: Signup
+<p align="center">Figure5: Signup</p>
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
