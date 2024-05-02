@@ -150,17 +150,9 @@ const Signup = () => {
                     </label>
                 </div>
                 
-
-                <div className='reCaptcha'>
-                        <ReCAPTCHA
-                        sitekey='6LdiCg0pAAAAAGD_KJyjVmJlY1MgaA1TzDlYI7uP'
-                        onChange={(val) => setCapVal(val)}
-                        />
-                    </div>
-
-                    <div className='account'>
-                        <p>Already have an account? <Link to="/Login">Sign in</Link></p>
-                    </div>
+                <div className='account'>
+                     <p>Already have an account? <Link to="/Login">Sign in</Link></p>
+                </div>
 
                 <button disabled = {isLoading} className="btn">Sign Up</button>
                 {error && <div className="error">{error}</div>}
