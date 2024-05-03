@@ -422,7 +422,7 @@ No License is currently available nor is it guaranteed to be available. See `LIC
 ## Team Members and Contact
 1. Jasmine Randhawa
 2. Janeeya Chanta: janeeyachanta@csus.edu
-3. Kailee Mukai
+3. Kailee Mukai: kmukai@csus.edu
 4. Nick Chace: nickchace@csus.edu
 5. Ahad Syed
 6. Garret Learned
