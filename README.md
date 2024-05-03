@@ -427,7 +427,7 @@ No License is currently available nor is it guaranteed to be available. See `LIC
 5. Ahad Syed
 6. Garret Learned
 7. Sukhdeep Banwait
-8. Haoyang Li  
+8. Haoyang Li: haoyangli2@csus.edu  
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
