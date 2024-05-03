@@ -376,7 +376,7 @@ No License is currently available nor is it guaranteed to be available. See `LIC
 4. Nick Chace
 5. Ahad Syed
 6. Garret Learned
-7. Sukhdeep Banwait
+7. Sukhdeep Banwait sukhdeepkbanwait@csuc.edu
 8. Haoyang Li  
 
 
