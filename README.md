@@ -188,7 +188,7 @@ search functionalities. For instance, entering "Chevy" into the search bar will 
 <p align="center">Figure 7: Filter by dropdown</p>
 
  - **4. Car Posting page**
-     - After users log in or sign up on the Carmony website, they gain access to a feature allowing them to create car listings by selecting the 'Create a Listing' button. This page requires users to complete all required fields and upload a car image before final submission (Figure 8).
+     - After users log in or sign up on the Carmony website, they gain access to a feature allowing them to create car listings by selecting the 'Create a Listing' button. This page requires users to complete all required fields, upload a car image, and review all entered car information before final submission (Figure 8).
 
 <p align="center">
   <img src="images/posting.png" alt="diagram" width="450" height="300">
@@ -201,7 +201,7 @@ search functionalities. For instance, entering "Chevy" into the search bar will 
 <p align="center">
   <img src="images/profile.png" alt="diagram" width="450" height="300">
 </p>
-<p align="center">Figure 9: Car Posting page</p>
+<p align="center">Figure 9: Profile page</p>
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
