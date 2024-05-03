@@ -187,6 +187,23 @@ search functionalities. For instance, entering "Chevy" into the search bar will 
 </p>
 <p align="center">Figure 7: Filter by dropdown</p>
 
+ - **4. Car Posting page**
+     - After users log in or sign up on the Carmony website, they gain access to a feature allowing them to create car listings by selecting the 'Create a Listing' button. This page requires users to complete all required fields and upload a car image before final submission (Figure 8).
+
+<p align="center">
+  <img src="images/posting.png" alt="diagram" width="450" height="300">
+</p>
+<p align="center">Figure 8: Car Posting page</p>
+
+ - **4. Profile page**
+     - Users can access their profile by clicking on the 'Profile' button from the homepage. Within the profile page, users can view their current listings and have the ability to view, edit, and delete cars they have posted (Figure 9).
+
+<p align="center">
+  <img src="images/profile.png" alt="diagram" width="450" height="300">
+</p>
+<p align="center">Figure 9: Car Posting page</p>
+
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- Testing -->
