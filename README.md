@@ -425,7 +425,7 @@ No License is currently available nor is it guaranteed to be available. See `LIC
 3. Kailee Mukai: kmukai@csus.edu
 4. Nick Chace: nickchace@csus.edu
 5. Ahad Syed: ahadsyed2@csus.edu
-6. Garret Learned
+6. Garret Learned garretlearned@csus.edu
 7. Sukhdeep Banwait
 8. Haoyang Li: haoyangli2@csus.edu  
 
