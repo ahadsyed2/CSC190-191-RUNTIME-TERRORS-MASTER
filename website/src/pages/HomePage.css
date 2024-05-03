@@ -119,11 +119,11 @@ span {
 }
 
 .Posting-btn {
-  background-color: rgb(47, 255, 99);
+  background-color: rgb(0, 229, 57);
   border-radius: 10px;
 }
 .Posting-btn :hover {
-  color: #1900ff;
+  background-color:#86f7fd;
   transition:all;
 }
 
@@ -172,7 +172,7 @@ span {
 
 .filter-side-bar {
   flex: 20%;
-  background-color: #8ae8ca;
+  background-color: #8ae8ca;/* #8ae8ca*/
   padding: 1rem;
   height: 2650px;
   box-shadow: 4px 4px 6px #000000;
@@ -450,7 +450,7 @@ span {
   text-decoration: none;
 }
 .price-left h3 {
-  background-color: rgb(47, 255, 99);
+  background-color: #8ae8ca;
   border-radius: 20px;
   align-content: center;
   justify-content: center;
