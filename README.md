@@ -369,6 +369,15 @@ No License is currently available nor is it guaranteed to be available. See `LIC
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
+## Team Members and Contact
+1. Jasmine Randhawa
+2. Janeeya Chanta: janeeyachanta@csus.edu
+3. Kailee Mukai
+4. Nick Chace
+5. Ahad Syed
+6. Garret Learned
+7. Sukhdeep Banwait
+8. Haoyang Li  
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
