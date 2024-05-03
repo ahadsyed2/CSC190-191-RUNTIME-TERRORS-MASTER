@@ -137,22 +137,22 @@ npm start
 
 <!-- screenshot of product -->
 ## A screenshot of our product
-   **1. Homepage**
+  - **1. Homepage**
      - Upon accessing the carmony website users are presented with a feature-rich homepage designed to cater to their vehicle search needs. The homepage offers a comprehensive array of navigation options, allowing users to seamlessly explore and discover vehicles based on their preferences and requirements (Figure 1).
+<br />
+    - Furthermore, users can access detailed vehicle information by clicking on the vehicle of interest directly from the homepage. This action directs them to a dedicated vehicle information page that provides comprehensive details about the selected vehicle (Figure 2). This feature enables users to easily explore and know more about specific vehicles they are interested in.
 
 <p align="center">
   <img src="images/Homepage_1.png" alt="diagram" width="450" height="300">
 </p>
 <p align="center">Figure 1: Homepage</p>
 
-  - - Furthermore, users can access detailed vehicle information by clicking on the vehicle of interest directly from the homepage. This action directs them to a dedicated vehicle information page that provides comprehensive details about the selected vehicle (Figure 2). This feature enables users to easily explore and know more about specific vehicles they are interested in.
-
 <p align="center">
   <img src="images/Carinfo.png" alt="diagram" width="450" height="300">
 </p>
 <p align="center">Figure 2: Vehicle Information page</p>
 
-   **2. Navigation**
+  - **2. Navigation**
     - Users can access the Hamburger menu by clicking on the icon located on the homepage, which facilitates navigation to various menu options (Figure 3).
     - If a user attempts to create a listing without being logged in, clicking the Create a listing button will redirect them to the Login page (Figure 4).
     - If users already have an account, they can click on the Login button to access their dashboard (Figure 4).
@@ -173,7 +173,7 @@ npm start
 </p>
 <p align="center">Figure 5: Signup</p>
 
-   **3. Filter options**
+  - **3. Filter options**
     - Users have the ability to filter vehicles on the homepage by utilizing various 
 search functionalities. For instance, entering "Chevy" into the search bar will display relevant vehicles matching the search criteria (Figure 6). Additionally, users can refine their search further by utilizing dropdown filters for make, model, year, price, and mileage options (Figure 7). This enhances the browsing experience by allowing users to tailor their vehicle search according to specific preferences.
 
