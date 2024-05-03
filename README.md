@@ -50,8 +50,6 @@
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#testing">Testing</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#deployment">Deployment</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#supported-platforms">Supported Platforms</a></li>
     <li><a href="#additional-information">Additional Information</a></li>
@@ -88,7 +86,6 @@ Carmony is a second-hand automotive retail marketplace aiming to create a consum
 ## Developer Instructions
 
 To get a local copy up and running, complete the following steps. 
-However, please note that this project is still in active development. Prerequisites and installation instructions are still being iterated upon and will be updated once they are in a stable position.
 
 ### Prerequisites
 
@@ -98,6 +95,7 @@ Make sure to have Express.js, React, and Node.js installed to their latest versi
   npm install express
   npm install react
   ```
+
 Make sure to create your own MongoDB deployment and follow their connection instructions for connecting to MongoDB by 'Driver' and receive your connection string. 
 Additionally, install the MongoDB extension on your IDE. For Visual Studio Code proceed with the following:
 1. Open VSC
@@ -110,12 +108,75 @@ If you do not have Node.js or the Node Package Manager installed, you can downlo
 <!-- INSTALLATION -->
 ### Installation
 
-Installation Packages pending...
-Please wait for updates...
+Download the zip file from Github, unzip it, and then open the folder structure in Visual Studio Code.
+
+Next, open a terminal.
+
+Run these commands inside of the (root)/website folder:
+```sh
+  npm install @aws-sdk/client-s3
+  npm install @fortawesome/free-solid-svg-icons
+  npm install @fortawesome/react-fontawesome
+  npm install @testing-library/jest-dom
+  npm install aws
+  npm install @testing-library/user-event
+  npm install axios
+  npm install gapi-script
+  npm install multer
+  npm install react
+  npm install react-google-recaptcha
+  npm install react-router-dom
+  npm install tailwindcss
+  npm install bcrypt
+  npm install react-google-login --legacy-peer-deps
+  npm install react-icons --save
+```
+
+Inside a terminal in ./website/backend, type:
+```sh
+aws configure
+```
+This will prompt you for 4 pieces of information, one at a time. 
+You will need an Amazon S3 Bucket to be able to store and access pictures on the website and continue with the deployment. 
+Next, enter the KEY_ID and SECRET_ACCESS_KEY, the region the server is located in, and "none" for the last option. 
+
+Now, open 2 terminals. One inside of the .../website folder and one inside of the .../website/backend folder.
+Type this in each terminal:
+```sh
+  npm start
+```
+If you encounter an error because of bcrypt, this is a known error and can be resolved with these commands:
+```sh
+  npm install --save bcryptjs && npm uninstall --save bcrypt
+  npm install bcrypt
+```
+
+You should now have a functioning development space and can view the project at localhost:3000
    
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- Deployment -->
+## Deployment
+
+An example of successful deployment can be seen in the branch "deploy_test3" for reference. 
+
+To prepare the project for deployment, there are a number of minor lines to be changed.
+Here is a comprehensive list:
+
+1. Inside ./website/package.json, change the proxy to the base URL of the domain name that you are going to use.
+     For example, "https:carmony.onrender.com/"
+2. Inside of ./website/src/hooks/usePosting.js, change line 50's fetch() URL to match your domain nam again with this concatenated "api/postingRoutes/UploadImage"
+3. Inside of ./website/src/hooks/useLogin.js, change line 50's fetch() URL to match your domain nam again with this concatenated " api/userRoutes/login"
+4. Inside of ./website/src/hooks/useSignup.js, change line 50's fetch() URL to match your domain nam again with this concatenated " api/userRoutes/signup"
+5. Inside of ./website/src/hooks/useSignup.js, change line 37's href statement to point to your domain name
+6. Inside of ./website/src/pages/UserProfile.js change line 30's fetch() URL to match your domain with "api/postRoutes" concatenated
+7. Inside of ./website/src/pages/HomePage.js change line 337's fetch() URL to match your domain with "api/postRoutes" concatenated
+8. Inside of ./website/src/pages/HomePage.js change line 792's URL to match the full URL of your Amazon S3 bucket. 
+9. Inside of ./website/src/pages/CarInfo.js change line 51's URL to match your domain with "api/postRoutes" concatenated
+
+After these changes have been made, you are ready for deployment. Deployment can be different depending on your provider.
+Render.com allows for a direct connection to GitHub and they have their instructions on the process on the website.
 
 
 <!-- USAGE EXAMPLES -->
@@ -292,33 +353,6 @@ To test React applications using the Cypress framework, follow these steps:
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-<!-- ROADMAP -->
-## Roadmap
-
-- [ ] Build out front-end more front-end interfaces
-  - [ ] Profile, Create-a-post, edit-post, dealer sign-in / login, payment, "My Deals" manager pages
-- [ ] Backend Connections
-    - [ ] Finish connecting the front-end interface to the backend database for current pages
-      - [ ] Repeat with each subsequent new page
-    - [ ] Stress and optimization testing
-    - [ ] Gather data to readjust hosting resource estimates
-- [ ] UI Overhaul
-    - [ ] Implement a CSS framework
-    - [ ] Refine User experience and application flow
-    - [ ] Establish a consistent style
-
-See the [open issues](https://github.com/ahadsyed2/CSC190-191-RUNTIME-TERRORS-MASTER/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-<!-- Deployment -->
-## Deployment
-
-Deployment date TBD
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 <!-- DIAGRAMS -->
 ## Diagrams
 <p align="center">
@@ -373,7 +407,7 @@ No License is currently available nor is it guaranteed to be available. See `LIC
 1. Jasmine Randhawa
 2. Janeeya Chanta: janeeyachanta@csus.edu
 3. Kailee Mukai
-4. Nick Chace
+4. Nick Chace: nickchace@csus.edu
 5. Ahad Syed
 6. Garret Learned
 7. Sukhdeep Banwait
