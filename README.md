@@ -64,8 +64,7 @@ This is a student senior project for the California State University of Sacramen
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Carmony is a second-hand automotive retail marketplace aiming to create a consumer-friendly alternative in the online space. Carmony removes initial or recurring fees from private individuals just trying to access the site. Instead, the large focus on getting partnered dealerships involved allows the burden of operation to be shifted. The focus on connecting private individuals and dealerships also allows for a more secure, online individual-to-business opportunity instead of the oversaturated individual-to-individual ecosystems. Additionally, Carmony is focused on protecting sensitive user data from data harvesters, unlike other competitors. 
-
+Carmony is a second-hand automotive retail marketplace aiming to create a consumer-friendly alternative in the online space. Carmony removes initial or recurring fees from private individuals just trying to access the site. Instead, the large focus on getting partnered dealerships involved allows the burden of operation to be shifted. Additionally, Carmony seeks to incorporate the use of deep-learning AI algorithms to automate content moderation and create a higher quality of interactions and transactions. The current iteration of Carmony is an open-source, vehicle marketplace that allows users to post offers for vehicles they wish to sell. Other users can then contact them privately to settle the transaction. Carmony offers a wide range of filtering options, allows users to track what offers they have made, and delete offers once they are settled or unwanted. 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -129,6 +128,7 @@ Run these commands inside of the (root)/website folder:
   npm install bcrypt
   npm install react-google-login --legacy-peer-deps
   npm install react-icons --save
+  npm install mongodb
 ```
 
 Inside a terminal in ./website/backend, type:
@@ -420,13 +420,13 @@ No License is currently available nor is it guaranteed to be available. See `LIC
 
 
 ## Team Members and Contact
-1. Jasmine Randhawa
+1. Jasmine Randhawa: jrandhawa3@csus.edu
 2. Janeeya Chanta: janeeyachanta@csus.edu
 3. Kailee Mukai: kmukai@csus.edu
 4. Nick Chace: nickchace@csus.edu
 5. Ahad Syed: ahadsyed2@csus.edu
-6. Garret Learned garretlearned@csus.edu
-7. Sukhdeep Banwait
+6. Garret Learned: garretlearned@csus.edu
+7. Sukhdeep Banwait: Sukhdeepkbanwait@csus.edu
 8. Haoyang Li: haoyangli2@csus.edu  
 
 
