@@ -5,7 +5,7 @@ import HomePage from './pages/HomePage';
 import SellCar from './pages/SellCar';
 import AboutCarmony from './pages/AboutCarmony';
 import AboutDealers from './pages/AboutDealers';
-import Contact from './pages/Contact';
+import ExpertAdvice from './pages/ExpertAdvice';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Posting from './pages/Posting'; 
@@ -26,7 +26,7 @@ function App() {
           <Route path='/SellCar'  Component={SellCar} />
           <Route path='/AboutCarmony' Component={AboutCarmony} />
           <Route path='/AboutDealers' Component={AboutDealers} />
-          <Route path='/Contact' Component={Contact} />
+          <Route path='/ExpertAdvice' Component={ExpertAdvice} />
           <Route path='/Login' Component={Login} />
           <Route path='/Signup' Component={Signup} />
           <Route path='/Posting' Component={Posting} />
