@@ -211,8 +211,14 @@ span {
 }
 
 .aboutDealers {
-    height: 888px;
-    display: flex;
+    height: 200px;
     justify-content: center;
     align-content: center;
+    text-align: center;
+}
+.aboutDealers h1 {
+    font-size: 46px;
+}
+.aboutDealers p {
+    font-size: 36px;
 }
