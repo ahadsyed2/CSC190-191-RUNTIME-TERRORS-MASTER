@@ -494,7 +494,7 @@ function Posting() {
 
                   <form onSubmit={handleSubmit} encType='multipart/form-data'>
                     <div className="post-submit-button">
-                      <button type='submit' className='post-btn' disabled={isLoading}>
+                      <button type='submit' className='post-button' disabled={isLoading}>
                         {isLoading ? 'Submitting...' : 'Submit'}
                       </button>
 
