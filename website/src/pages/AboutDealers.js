@@ -3,13 +3,11 @@ import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import { hamburgerMenu } from '../components/hamburgerMenu';
-import { hamburgerMenu2 } from '../components/hamburgerMenu2';
 import { IconContext } from 'react-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import NavbarMenu from '../components/navbarMenu';
 import './AboutDealers.css'
-import { useAuthContext } from '../hooks/useAuthContext';
 
 function AboutDealers() {
   const [sidebar, setSidebar] = useState(false) 
@@ -17,7 +15,6 @@ function AboutDealers() {
   const showSidebar = () =>  setSidebar(!sidebar)
   /* utilize set side bar and this is going to update the value to whatever the opposite of it is currently*/
   /*(!sidebar) it's reversing the value true/false*/
-  const { user } = useAuthContext()
 
   return (
       <>
@@ -28,8 +25,8 @@ function AboutDealers() {
             </Link>
 
             <div className="carmony-logo w-1/10 flex justify-center items-center p-0 1rem" style={{ width: "15rem", marginLeft: "2rem" }}>
-              <img src="CARMONY_ICON2.png" alt="Logo" className="w-500 mt-3" />
-            </div>
+            <img src="CARMONY_ICON2.png" alt="Logo" className="w-500 mt-3" />
+          </div>
 
             <NavbarMenu />
           </div>
@@ -41,17 +38,7 @@ function AboutDealers() {
                         <AiOutlineClose />
                     </Link>
                 </li>
-                {!user && hamburgerMenu.map((item, index) => {
-                    return (
-                        <li key={index} className={item.cName}>
-                            <Link to={item.path}>
-                                {item.icon}
-                                <span>{item.title}</span>
-                            </Link>
-                        </li>
-                    );
-                })}
-                {user && hamburgerMenu2.map((item, index) => {
+                {hamburgerMenu.map((item, index) => {
                     return (
                         <li key={index} className={item.cName}>
                             <Link to={item.path}>
@@ -67,6 +54,7 @@ function AboutDealers() {
 
         <div className='aboutDealers'>
           <h1>About Dealers</h1>
+          <p>Dealers will be posting their information and contact here</p>
         </div>
 
       </>
