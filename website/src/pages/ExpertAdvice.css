@@ -1,0 +1,281 @@
+.navbarMenu {
+    background-color: #000000;
+    height: 100px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.hamburger-bars {
+    margin-left: 2rem;
+    font-size: 2.7rem;
+    background: none;
+}
+.logo {
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+}
+.logo img {
+    width: 200px;
+    margin-left: 3rem;
+    padding-bottom: 80px;
+}
+
+.nav-menu {
+    background-color: #000;
+    width: 300px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: -100%; /*display the hamburgerMenu bar*/
+    transition: 850ms;
+}
+
+.nav-menu.active {
+    left: 0;
+    transition: 350ms;
+}
+
+.nav-text {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 8px 0px 8px 16px;
+    list-style: none;
+    height: 60px;
+}
+
+.nav-text a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 22px;
+    width: 85%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    border-radius: 4px;
+}
+
+.nav-text a:hover {
+    background-color: rgb(2, 125, 167);
+}
+
+.nav-menu-items {
+    width: 100%;
+}
+
+.navbar-toggle {
+    background-color: #000;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+span {
+    margin-left: 16px;
+}
+
+.top-rightbox{
+    display: flex;
+    width: 100%;
+    justify-content: end;
+    align-items: end;
+}
+
+.user-icon {
+    color: #000000; 
+    font-size: 20px; 
+    padding: 0px 6px 0px 0px;
+
+}
+
+#Post ul {
+    width: 185px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #10ef38;
+    padding: 0.5rem;
+    text-decoration: none;
+    list-style: none;
+    margin: 1rem;
+}
+#Post ul li a{
+    display: flex;
+    color: black;
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0.2rem;
+    
+}
+
+#Post a:hover{
+    color:#022b84;
+}
+
+#Login ul {
+    width: 115px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    padding: 0.5rem;
+    text-decoration: none;
+    list-style: none;
+    margin: 1rem;
+}
+#Login ul li a{
+    display: flex;
+    color: black;
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0.2rem;
+    
+}
+
+#Login a:hover{
+    color:#022b84;
+}
+#SignUp ul {
+    width: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    padding: 0.5rem 0.2rem;
+    text-decoration: none;
+    list-style: none;
+    margin: 1rem;
+    margin-right: 2rem;
+}
+
+#SignUp ul li a {
+    display: flex;
+    color: black;
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0.2rem;
+}
+
+#SignUp a:hover {
+    color:#022b84;
+}
+
+.row {
+    display: flex;
+}
+
+.left { 
+    flex: 15%;
+    padding: 15px 0;
+}
+.left h2 {
+    padding-left: 8px;
+    color: #000000;
+}
+#mySearch {
+    width: 100%;
+    font-size: 18px;
+    padding: 11px;
+    border: 1px solid #a0a0a0;
+}
+#myMenu {
+    list-style-type: none;
+    display: contents;
+    width: 100%;
+}
+#myMenu li {
+    margin: 0;
+    transition: 0.5s;
+}
+#myMenu li a {
+    padding: 12px;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    display: block;
+}
+#myMenu li a:hover {
+    background-color: #8bdaf7;
+}
+.cover-container {
+    background-color:  #ecfaf6;
+    margin-top: -2rem;
+    height: 100vh;
+}
+.expert-container h1 {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 46px;
+    font-weight: 600;
+    color: #022b84;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+.outside-statment-box {
+    display: flex;
+    height: 400px;
+    justify-content: center;
+    align-content: center;
+}
+.car-statment {
+    width: 60%;
+    text-align: center;
+    margin-top: 2rem;
+    justify-content: center;
+    align-content: center;
+    color: #03463f;
+   /* background-color: #03d693;
+    border-radius: 50px;
+    box-shadow: 6px 6px 6px rgb(0, 117, 80);
+    color: #03463f;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif */
+}
+.car-statment p {
+    font-size: 26px;
+    font-weight: 600;
+    padding: 8px;
+}
+.advice-box {
+    width: 75%;
+    padding: 2rem;
+    margin-left: 4rem;
+    height: 450px;
+    margin-left: 16rem;
+
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+.advice-box h3{
+    font-size: 28px;
+    font-weight: 600;
+    margin-top: 1rem;
+    text-decoration: underline;
+
+} 
+.advice-box {
+    display: flex;
+}
+.advice-detail p {
+    font-size: 22px;
+    font-weight: 400;
+}
+.advice-car {
+    margin-left: 5rem;
+}
+.advice-box h2 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-top: 2rem;
+    padding: 5px;
+    color: #0069d9;
+    text-decoration: underline;
+}
