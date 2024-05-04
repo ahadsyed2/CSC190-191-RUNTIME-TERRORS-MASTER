@@ -30,8 +30,8 @@ export const hamburgerMenu = [
         cName: 'nav-bar-text'
     },
     {
-        title: 'Contact Us',
-        path: '/Contact',
+        title: 'Expert Advice',
+        path: '/ExpertAdvice',
         icon: <MdContactPhone />,
         cName: 'nav-bar-text'
     }
