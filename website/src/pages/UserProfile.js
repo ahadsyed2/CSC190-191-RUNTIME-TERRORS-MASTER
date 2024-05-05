@@ -233,7 +233,7 @@ const UserProfile = () => {
               <div className="current-righBox">
                 <div className="current-listingBox">
                   <h1>Current Listings</h1>
-                  {posts && posts.map((post, index) => (
+                  {posts && Array.isArray(posts) && posts.map((post, index) => (
                     filter(post) &&
                     <div className="inside-currentBox" key={index}>
                       <div className="detail-currentBox">

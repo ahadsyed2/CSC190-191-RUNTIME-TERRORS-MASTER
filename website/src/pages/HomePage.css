@@ -545,3 +545,19 @@ span {
 .viewPostTextDisplay {
   background-color: lightcoral;
 }
+
+.products-img {
+  width: 513px; 
+  height: 343px; 
+  overflow: hidden; 
+  position: relative; 
+}
+
+.products-img img {
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+  position: absolute; 
+  top: 0;
+  left: 0; 
+}
