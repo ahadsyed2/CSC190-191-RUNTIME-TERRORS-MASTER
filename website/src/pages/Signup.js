@@ -130,17 +130,21 @@ const Signup = () => {
                     />
                 </div>
                 <div className="newPassword">
-                    <h3>New Password</h3>
-                        <input
-                            type = "password"
-                            onChange={(e) => setPassword(e.target.value)}
-                            value = {password}
-                        />
+                <h3>New Password</h3>
+                <input
+                    type={show ? "text" : "password"} // Use the show state to toggle password visibility
+                    onChange={(e) => setPassword(e.target.value)}
+                    value={password}
+                />
                 </div>
 
                 <div className="confirmPassword">
                     <h3>Confirm New Password</h3>
-                         <input type={show ? "text" : 'password'} placeholder="" required />
+                    <input
+                        type={show ? "text" : "password"} // Use the show state to toggle password visibility
+                        placeholder=""
+                        required
+                    />
                 </div>
 
                 <div className="show-password-toggle">
