@@ -96,10 +96,6 @@ const CarInfo = () => {
             <FaBars onClick={showSidebar} />
           </Link>
 
-          <div className="carmony-logo w-1/10 flex justify-center items-center p-0 1rem" style={{ width: "15rem", marginLeft: "2rem" }}>
-            <img src="CARMONY_ICON2.png" alt="Logo" className="w-500 mt-3" />
-          </div>
-
           <NavbarMenu />
         </div>
 
