@@ -207,7 +207,53 @@ function Posting() {
   
   };
 
+  if(!user){
+    return (
+      <>
+        <IconContext.Provider value={{ color: '#fff' }}>
+          <div className='navbar'>
+            <Link to='#' className='hamburger-bars'>
+              <FaBars onClick={showSidebar} />
+            </Link>
   
+            <div className="car-logo w-1/10 flex justify-center items-center p-0 1rem" style={{ width: "15rem", marginLeft: "2rem" }}>
+              <img src="CARMONY_ICON2.png" alt="Logo" className="w-500 mt-3" />
+            </div>
+          </div>
+  
+          <nav className={sidebar ? 'nav-bar-menu active' : 'nav-bar-menu'}>
+            <ul className='nav-bar-menu-items' onClick={showSidebar}>
+              <li className='nav-bar-toggle'>
+                <Link to='#' className='hamburger-bars'>
+                  <AiOutlineClose />
+                </Link>
+              </li>
+              {!user && hamburgerMenu.map((item, index) => {
+                      return (
+                          <li key={index} className={item.cName}>
+                              <Link to={item.path}>
+                                  {item.icon}
+                                  <span>{item.title}</span>
+                              </Link>
+                          </li>
+                      );
+                  })}
+                  {user && hamburgerMenu2.map((item, index) => {
+                      return (
+                          <li key={index} className={item.cName}>
+                              <Link to={item.path}>
+                                  {item.icon}
+                                  <span>{item.title}</span>
+                              </Link>
+                          </li>
+                      );
+                  })}
+            </ul>
+          </nav>
+        </IconContext.Provider>
+        </>
+        );
+  }
 
 
   return (
