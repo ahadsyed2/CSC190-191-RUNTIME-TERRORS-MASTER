@@ -192,7 +192,7 @@ function Posting() {
 
 
         //I added this to take you to home page -Nick
-        window.location.href = "/";
+        //window.location.href = "/";
       } else {
         // Handle error (e.g., show an error message)
         setSuccessMessage('Posting failed, incorrect syntax please try again' , error);
@@ -207,53 +207,7 @@ function Posting() {
   
   };
 
-  if(!user){
-    return (
-      <>
-        <IconContext.Provider value={{ color: '#fff' }}>
-          <div className='navbar'>
-            <Link to='#' className='hamburger-bars'>
-              <FaBars onClick={showSidebar} />
-            </Link>
   
-            <div className="car-logo w-1/10 flex justify-center items-center p-0 1rem" style={{ width: "15rem", marginLeft: "2rem" }}>
-              <img src="CARMONY_ICON2.png" alt="Logo" className="w-500 mt-3" />
-            </div>
-          </div>
-  
-          <nav className={sidebar ? 'nav-bar-menu active' : 'nav-bar-menu'}>
-            <ul className='nav-bar-menu-items' onClick={showSidebar}>
-              <li className='nav-bar-toggle'>
-                <Link to='#' className='hamburger-bars'>
-                  <AiOutlineClose />
-                </Link>
-              </li>
-              {!user && hamburgerMenu.map((item, index) => {
-                      return (
-                          <li key={index} className={item.cName}>
-                              <Link to={item.path}>
-                                  {item.icon}
-                                  <span>{item.title}</span>
-                              </Link>
-                          </li>
-                      );
-                  })}
-                  {user && hamburgerMenu2.map((item, index) => {
-                      return (
-                          <li key={index} className={item.cName}>
-                              <Link to={item.path}>
-                                  {item.icon}
-                                  <span>{item.title}</span>
-                              </Link>
-                          </li>
-                      );
-                  })}
-            </ul>
-          </nav>
-        </IconContext.Provider>
-        </>
-        );
-  }
 
 
   return (
@@ -309,7 +263,7 @@ function Posting() {
               <form onSubmit={handleSubmit} encType='multipart/form-data'>
                 <h1>About the Vehicle</h1>
 
-                <div className='vehicles-dropdown'>
+                <div className='vehicle-type-dropdown'>
                   <div className='dropdown-box' onClick={() => setIsActive(!isActive)}>
                     {selected}
                     <span className='caret-icon'>{isActive ? <FaCaretUp /> : <FaCaretDown />}</span>
