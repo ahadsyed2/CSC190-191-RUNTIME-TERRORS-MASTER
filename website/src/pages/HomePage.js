@@ -543,6 +543,7 @@ const HomeIndex = () => {
   //SAVING FILTERS
   // Function to save filter settings to localStorage
   const saveFilterSettings = () => {
+    console.log("saving")
     const filterSettings = {
       checkedMakes,
       checkedMileages,
@@ -556,6 +557,7 @@ const HomeIndex = () => {
 
   // Function to load filter settings from localStorage
   const loadFilterSettings = () => {
+    console.log("loading");
     const savedSettings = localStorage.getItem('filterSettings');
     if (savedSettings) {
       const parsedSettings = JSON.parse(savedSettings);
@@ -571,6 +573,7 @@ const HomeIndex = () => {
   // Save filter settings when leaving the webpage
   useEffect(() => {
     window.addEventListener('beforeunload', saveFilterSettings);
+    console.log("Added Event");
     return () => {
       window.removeEventListener('beforeunload', saveFilterSettings);
     };
@@ -582,6 +585,7 @@ const HomeIndex = () => {
   }, []); // Load only once when component mounts
 
   const clearAllFilters = () => {
+    saveFilterSettings();
     setCheckedMake([]);
     setCheckedMakes([]);
     setCheckedMileages([]);

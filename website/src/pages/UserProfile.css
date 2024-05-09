@@ -19,7 +19,7 @@
   
       .user-container{
       background:#e5e5e5;  
-      height: 1000px; 
+      height: 1500px; 
       top:0%; 
       }
       .view-account{
@@ -38,7 +38,7 @@
       .view-account .side-bar {
       padding-bottom: 30px;
       background-color:#ffffff;
-      height: 1000px;
+      height: 1500px;
       position: absolute;
       }
       
@@ -356,8 +356,8 @@
       border: 2px solid rgb(22, 74, 216);
       box-shadow: 0 0 5px rgb(1, 92, 44);
       border-radius: 40px;
-      width: 75%;
-      height: 230px;
+      width: 125%;
+      height: 275px;
       grid-gap: 1rem;
       margin-left: 20rem;
       margin-top: 3rem;
@@ -367,8 +367,8 @@
       position: relative;
    }
   .car-image img {
-      width: 19%;
-      height: 19%;
+      width:50%;
+      height: 22%;
   }
   .image-box {
       position: absolute;
@@ -519,6 +519,10 @@
   
   button:hover {
       background-color: #e0e0e0; 
+  }
+
+  .imgimg{
+
   }
   /*
   .car-status {
