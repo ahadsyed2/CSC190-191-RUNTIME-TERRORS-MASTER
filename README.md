@@ -383,7 +383,7 @@ To test React applications using the Cypress framework, follow these steps:
 <!-- SCREENSHOTS -->
 ## Screenshots
 <p align="center">Current front-end UI (WIP)</p><p align="center">
-    <img src="images/Hompage.png" alt="Logo" width="500" height="300">
+    <img src="images/Hompage_3.png" alt="Logo" width="500" height="300">
 </p>
 
 
